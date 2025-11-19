@@ -1,0 +1,1009 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aac8e9c81dd1c685a0bf64c67249e0c, type: 3}
+  m_Name: General_hi
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: hi
+  m_SharedData: {fileID: 11400000, guid: 7ab7a75cf1f243542b908c0e8df785b6, type: 2}
+  m_Metadata:
+    m_Items:
+      Array: []
+  m_TableData:
+  - m_Id: 8648842267316224
+    m_Localized: फिर से खेलें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5975256138240000
+    m_Localized: स्तर
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7412414824828928
+    m_Localized: स्तर {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8369807296299008
+    m_Localized: सेटिंग्स
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5310816518656044
+    m_Localized: फिर से शुरू करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596654841856
+    m_Localized: व्यवस्थित करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596688396288
+    m_Localized: वाहन रंगों के आधार पर यात्रियों को भरें।
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10007562775457792
+    m_Localized: मुफ्त
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802021412864
+    m_Localized: जंबल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802042384384
+    m_Localized: पार्किंग स्लॉट में वाहन रंगों को फिर से मिलाएं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10081243501678592
+    m_Localized: टर्बो
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12221428460711936
+    m_Localized: वीआईपी पार्किंग
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484718034944
+    m_Localized: अपनी गेम की गति को टर्बोचार्ज करें (X2)
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395072
+    m_Localized: कतार
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395073
+    m_Localized: फ्लैश सेल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395074
+    m_Localized: अभी खरीदें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395075
+    m_Localized: कार पार्क
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395076
+    m_Localized: पार्किंग स्लॉट के लिए 1 कार पार्क स्थान अनलॉक करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395077
+    m_Localized: जारी रखें?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263577513984
+    m_Localized: ट्रैफिक हल करने के लिए पार्किंग स्थान अनलॉक करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096896
+    m_Localized: विफल!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096897
+    m_Localized: ट्रैफिक जाम में फंसे!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096898
+    m_Localized: क्या आप इस स्तर को फिर से आजमाना चाहते हैं?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24782674231177216
+    m_Localized: हाँ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 22655239585558528
+    m_Localized: हमें रेट करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24783814956036096
+    m_Localized: क्या आप हमारी गेम को फिर से रेट करना चाहते हैं?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27819957203791872
+    m_Localized: भेजें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535596240896
+    m_Localized: हमारी गेम को 5 सितारों के साथ रेट करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572544
+    m_Localized: आपके समर्थन के लिए धन्यवाद!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572545
+    m_Localized: संगीत
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25236460306055168
+    m_Localized: ध्वनि
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117672230912
+    m_Localized: कंपन
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117693202432
+    m_Localized: चालू
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096875724800
+    m_Localized: बंद
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890624
+    m_Localized: भाषा
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890625
+    m_Localized: सहायता
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890626
+    m_Localized: सहेजें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115008
+    m_Localized: छोड़ें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115009
+    m_Localized: गोपनीयता नीति
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115010
+    m_Localized: क्या खेल छोड़ना है?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115011
+    m_Localized: क्या आप वास्तव में खेल छोड़ना चाहते हैं?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27077148161228800
+    m_Localized: नहीं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444840550400
+    m_Localized: ठीक है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464960
+    m_Localized: दावा करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464961
+    m_Localized: स्तर पूरा
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464962
+    m_Localized: बिक्री
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464963
+    m_Localized: पार्किंग की जगह पूरी है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659264
+    m_Localized: पर्याप्त सिक्के नहीं हैं!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659265
+    m_Localized: छांटने के लिए कोई कार नहीं है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659266
+    m_Localized: बधाई हो! {0} सिक्के जोड़े गए!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659267
+    m_Localized: वीआईपी स्लॉट के लिए कार चुनें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196083994198016
+    m_Localized: खरीदने में विफल रहा
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196084010975232
+    m_Localized: जल्द ही आ रहा है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916621066240
+    m_Localized: दुकान
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916683980800
+    m_Localized: सहायता और समर्थन
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150728509535354880
+    m_Localized: विज्ञापन हटाएं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 152438716334407680
+    m_Localized: कृपया यात्रियों के चढ़ने की प्रतीक्षा करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047007461376
+    m_Localized: स्टार्टर किट
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047032627200
+    m_Localized: पूरा किया गया
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087782178816
+    m_Localized: सीमित
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087803150336
+    m_Localized: लोकप्रिय
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154196442051837952
+    m_Localized: सिक्के
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838297804800
+    m_Localized: अनलॉक हो गया!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838331359232
+    m_Localized: इसे प्राप्त करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155407635672268800
+    m_Localized: स्तर {0} पर अनलॉक करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155577661628354560
+    m_Localized: सभी को साथ ले आइए!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157091390900207616
+    m_Localized: खरीदारी पुनर्स्थापित करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157160653371539456
+    m_Localized: स्तरों के बीच विज्ञापन हटाएं और खेल में बैनर को अक्षम करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351752613888
+    m_Localized: मुख्य पृष्ठ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351794556928
+    m_Localized: लीडरबोर्ड
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158815030965592064
+    m_Localized: खरीदारी पुनर्स्थापित
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368762732544
+    m_Localized: बस लॉकेट
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898368
+    m_Localized: "बस का लॉकेट भरा हुआ है।\nअब इसे खरीदें और सिक्कों पर बड़ी बचत करें।"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898369
+    m_Localized: आपका बस का लॉकेट अभी तक पूरा नहीं हुआ है, और सिक्के जोड़ने के लिए खेलते रहें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898370
+    m_Localized: केवल एक बार खरीदने के लिए उपलब्ध।
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661760
+    m_Localized: सहायता किट
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661761
+    m_Localized: अपने बंडल खरीद के साथ मुफ्त इनाम अनलॉक करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371355156480
+    m_Localized: छुपा हुआ ग्राहक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739392
+    m_Localized: हमारे विशेष मेहमान एक छिपे हुए रंग के साथ!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739393
+    m_Localized: लाइन के सामने नहीं दिख रहे!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739394
+    m_Localized: स्वागत करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739395
+    m_Localized: चलें! वूहू!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739396
+    m_Localized: वी.आई.पी ग्राहक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739397
+    m_Localized: वीआईपी इंतजार कर रहा है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739398
+    m_Localized: अपनी गाड़ी में बैठें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739399
+    m_Localized: यात्रा पूरी करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162611828900298752
+    m_Localized: जारी रखने के लिए टैप करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147202
+    m_Localized: इनाम प्राप्त करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147201
+    m_Localized: सितारे अर्जित करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147200
+    m_Localized: कार्य पूरे करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189071499264
+    m_Localized: क्वेस्ट
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189151191040
+    m_Localized: गिफ्ट बॉक्स रिवार्ड्स
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590235144192
+    m_Localized: '{0} यात्रियों को क्रमित करें'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087232
+    m_Localized: '{0} स्लॉट अनलॉक करें'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087233
+    m_Localized: '{0} स्तर पार करें'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087234
+    m_Localized: शफल का {0} बार उपयोग करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087235
+    m_Localized: सॉर्ट का {0} बार उपयोग करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087236
+    m_Localized: टर्बो का {0} बार उपयोग करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087237
+    m_Localized: पुनरुद्धार का {0} बार उपयोग करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087238
+    m_Localized: 'ताज़ा करें:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087239
+    m_Localized: दैनिक क्वेस्ट
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087240
+    m_Localized: साप्ताहिक क्वेस्ट
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165505240620138496
+    m_Localized: दावा करने के लिए टैप करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165511316954480640
+    m_Localized: वीआईपी का {0} बार उपयोग करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719884681216
+    m_Localized: वीआईपी स्लॉट
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719964372992
+    m_Localized: किसी भी कार को वीआईपी स्थान पर ले जाएं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 167319226869153792
+    m_Localized: एक बार की खरीद
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168001317445369856
+    m_Localized: रंग अंधत्व
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168007607378837504
+    m_Localized: समुदाय
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286864236544
+    m_Localized: गेराज
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208064
+    m_Localized: '"जब सामने की जगह खाली होगी, तो गाड़ी बाहर निकलेगी।"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208065
+    m_Localized: '"मौजूदा गाड़ी निकलती है, और अगली गाड़ी दिखाई देती है"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208066
+    m_Localized: गाड़ियों की संख्या
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208067
+    m_Localized: "केवल कार को देखें जब यह बाहर निकलती है।\nयह देखने के लिए संकेत की जांच करें कि कितने बचे हैं।"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573291745280
+    m_Localized: दैनिक लॉगिन
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522496
+    m_Localized: दिन
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522497
+    m_Localized: नए इनाम के लिए हर दिन आएं!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323852376539136
+    m_Localized: दैनिक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169405851543601152
+    m_Localized: नया फ़ीचर
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169419130080919552
+    m_Localized: कार तीर की दिशा में चलेगी
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 170582695601045504
+    m_Localized: उपलब्ध नहीं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282386980864
+    m_Localized: हमने सुधार किया है!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478336
+    m_Localized: हमने गेम में कुछ बदलाव किए हैं जो आपके अनुभव को बेहतर बनाएंगे!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478337
+    m_Localized: अभी अपग्रेड करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 172252162956988416
+    m_Localized: सिक्कों का बंडल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738815655936
+    m_Localized: दैनिक इनाम
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738824044544
+    m_Localized: सिक्का पास
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297250361344
+    m_Localized: '{0} सिक्कों का तुरंत इनाम प्राप्त करें!'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297254555648
+    m_Localized: 30 दिनों तक दैनिक सिक्का बोनस का आनंद लें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632192
+    m_Localized: दैनिक दावा करने योग्य
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632193
+    m_Localized: '{0} दिन की सुविधाएँ'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312907190468608
+    m_Localized: अब खरीदें और दावा करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175317142929997824
+    m_Localized: बूस्टर पास
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319580445573120
+    m_Localized: 30 दिनों तक हर दिन 1 बूस्टर प्राप्त करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007232
+    m_Localized: साहसिक पास
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007233
+    m_Localized: पूरे महीने दैनिक सिक्के और रोमांचक बूस्टर प्राप्त करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175332311076765696
+    m_Localized: बंद करने के लिए टैप करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175342191208628224
+    m_Localized: सभी दावा करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175516609940709376
+    m_Localized: सदस्यता का इनाम
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175676525694222336
+    m_Localized: "मासिक\nपास"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178203791355609088
+    m_Localized: 'समय शेष:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178204503426793472
+    m_Localized: अंतिम ऑफर
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178213847312695296
+    m_Localized: आपके लिए विशेष ऑफर!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178220887468736512
+    m_Localized: मेगा फ्लैश सेल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179847752622170112
+    m_Localized: साप्ताहिक सेल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179848762774151168
+    m_Localized: मज़ेदार सप्ताहांत का आनंद लें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658428907520
+    m_Localized: फन पैक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101824
+    m_Localized: अल्टीमेट पैक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101825
+    m_Localized: दावा किया गया
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170753999470592
+    m_Localized: बोनस
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442112
+    m_Localized: जारी रखें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442113
+    m_Localized: हार गए
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183181358307278848
+    m_Localized: आप <color=#911E07>{0} सिक्के खो देंगे</color>,
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442116
+    m_Localized: क्या आप वाकई हार मानना चाहते हैं?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267029743108096
+    m_Localized: यात्री सुझाव
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252928
+    m_Localized: यात्री गाड़ी में चढ़ने का इंतजार कर रहे हैं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252929
+    m_Localized: उन्हें समय पर गाड़ी में चढ़ने में मदद करें और टिप्स कमाएं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252930
+    m_Localized: यदि आप स्तर पास करते हैं तो टिप्स आपके वॉलेट में जोड़ दिए जाएंगे
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183281109065334784
+    m_Localized: फिर से न दिखाएं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402793238528
+    m_Localized: घुमाएं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210048
+    m_Localized: लकी लूनर व्हील
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210049
+    m_Localized: लूनर शॉप
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499430252544
+    m_Localized: सुप्रीम लक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446848
+    m_Localized: शुरुआती लक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446849
+    m_Localized: खिलता लक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446850
+    m_Localized: अतिप्रवाह लक
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184676067029700608
+    m_Localized: डाइनामाइट्स
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188831633408
+    m_Localized: डबल बूम
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993536
+    m_Localized: पर्याप्त डायनामाइट नहीं है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993537
+    m_Localized: अगले 48 घंटों के लिए डायनामाइट पुरस्कार!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993538
+    m_Localized: समृद्धि में विस्फोट करें!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185358549362298880
+    m_Localized: स्तर पुरस्कार
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185361311328260096
+    m_Localized: 'मानक पुरस्कार दर: {0}%'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185387325395718144
+    m_Localized: आप <color=#911E07>इसे खो देंगे</color>,
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815872
+    m_Localized: '{0} स्तर पुरस्कार'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185422659790635008
+    m_Localized: लूनर व्हील
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815874
+    m_Localized: अधिक स्ट्रीक प्राप्त करें और गेम जीतें डायनामाइट्स प्राप्त करें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815875
+    m_Localized: व्हील को पूरी तरह चार्ज करें स्पिन अनलॉक करने के लिए।
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815876
+    m_Localized: "पटाखे तैयार हैं\nचलो तुम्हारा भाग्यशाली इनाम प्राप्त करें!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923013652480
+    m_Localized: खोलें
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923017846784
+    m_Localized: बचा
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 206488820224483328
+    m_Localized: दावा करें X2
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 1
+    m_Localized: विज्ञापन बंडल हटाएँ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 2
+    m_Localized: विज्ञापन हटाएँ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 3
+    m_Localized: बैनर और पूर्ण स्क्रीन विज्ञापन हटाता है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 4
+    m_Localized: शुरुआती बंडल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5
+    m_Localized: बढ़िया बंडल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 6
+    m_Localized: महाकाव्य बंडल
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7
+    m_Localized: स्थिर समय
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8
+    m_Localized: हथौड़ा
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 9
+    m_Localized: 20 सेकंड के लिए फ्रीज का समय।
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10
+    m_Localized: मानचित्र पर कोई भी बक्सा तोड़ो और उसे भर दो।
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 11
+    m_Localized: तीरों वाला बॉक्स केवल एक ही दिशा में चलता है
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12
+    m_Localized: एक डिब्बा भर जाने पर बर्फ पिघल जायेगी
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13
+    m_Localized: ऊपरी बॉक्स भरने पर फ़ाइलें दूर हो जाती हैं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 14
+    m_Localized: आप चट्टान को हिला सकते हैं
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 15
+    m_Localized: कुछ डिब्बे मटमैले रंग के हैं
+    m_Metadata:
+      m_Items:
+        Array: []
+  references:
+    version: 2
+    RefIds: []

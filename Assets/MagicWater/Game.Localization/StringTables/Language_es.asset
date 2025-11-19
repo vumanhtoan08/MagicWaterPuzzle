@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aac8e9c81dd1c685a0bf64c67249e0c, type: 3}
+  m_Name: Language_es
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 68d42723479b92d4d9d04384ac6406e3, type: 2}
+  m_Metadata:
+    m_Items:
+      Array: []
+  m_TableData:
+  - m_Id: 246683435782144
+    m_Localized: Inglés
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683473530880
+    m_Localized: Ucrania
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683477725184
+    m_Localized: India
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683477725185
+    m_Localized: Brasil
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683481919488
+    m_Localized: Alemania
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683481919489
+    m_Localized: Turquía
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683481919490
+    m_Localized: Rusia
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683481919491
+    m_Localized: México
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683481919492
+    m_Localized: Argentina
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 246683481919493
+    m_Localized: Japón
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 312344648339456
+    m_Localized: Corea
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 137310149162369024
+    m_Localized: España
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 137310149162369025
+    m_Localized: Indonesia
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 137310149166563328
+    m_Localized: Portugal
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 137310149166563329
+    m_Localized: France
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 137310149166563330
+    m_Localized: Vietnam
+    m_Metadata:
+      m_Items:
+        Array: []
+  references:
+    version: 2
+    RefIds: []

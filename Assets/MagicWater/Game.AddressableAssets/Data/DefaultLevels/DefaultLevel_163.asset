@@ -1,0 +1,767 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40208020989fed888f0669ee17803c94, type: 3}
+  m_Name: DefaultLevel_163
+  m_EditorClassIdentifier:
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes:
+    ReferencedUnityObjects: []
+    SerializedBytesString:
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  levelData:
+    levelIndex: 163
+    playTime: 120
+    difficultyType: 0
+    cameraData:
+      positionX: 0
+      positionY: 0
+      positionZ: 0
+      rotation: 0
+      fov: 10
+    isGateMovingOpenCloseMechanicInversed: 0
+    colorPathsData: []
+    obstacleCoordinates:
+    - x: 103
+      y: 93
+    - x: 96
+      y: 93
+    - x: 97
+      y: 93
+    - x: 98
+      y: 93
+    - x: 99
+      y: 93
+    - x: 92
+      y: 93
+    - x: 92
+      y: 92
+    - x: 99
+      y: 92
+    - x: 98
+      y: 92
+    - x: 97
+      y: 92
+    - x: 96
+      y: 92
+    - x: 103
+      y: 92
+    - x: 98
+      y: 96
+    - x: 98
+      y: 97
+    - x: 98
+      y: 95
+    - x: 97
+      y: 95
+    - x: 97
+      y: 88
+    - x: 98
+      y: 88
+    - x: 96
+      y: 98
+    - x: 96
+      y: 99
+    rewardObstacles: []
+    gatesData:
+    - matchedGateIds: 050000000500000005000000050000000500000005000000050000000500000004000000040000000400000004000000040000000400000004000000040000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f00000008000000080000000800000008000000
+      hasStar: 0
+      hasOpenCloseMechanic: 0
+      isClosedAtFirst: 1
+      isLocked: 0
+      lockId: 1
+      hasIce: 0
+      iceCount: 0
+      hasMovingOpenCloseMechanic: 0
+      horizontalPositionValue: 104
+      verticalPositionValue: 94
+      locationOrientationType: 2
+      trackOrientationType: 0
+    - matchedGateIds: 070000000700000007000000070000000700000007000000070000000700000007000000070000000700000007000000
+      hasStar: 0
+      hasOpenCloseMechanic: 0
+      isClosedAtFirst: 1
+      isLocked: 0
+      lockId: 1
+      hasIce: 0
+      iceCount: 0
+      hasMovingOpenCloseMechanic: 0
+      horizontalPositionValue: 96
+      verticalPositionValue: 114
+      locationOrientationType: 1
+      trackOrientationType: 0
+    - matchedGateIds: 0900000009000000090000000900000009000000090000000900000009000000090000000900000009000000090000000d0000000d0000000d0000000d0000000d0000000d0000000d0000000d0000000d0000000d0000000d0000000d0000000100000001000000010000000100000001000000010000000100000001000000
+      hasStar: 0
+      hasOpenCloseMechanic: 0
+      isClosedAtFirst: 1
+      isLocked: 0
+      lockId: 1
+      hasIce: 0
+      iceCount: 0
+      hasMovingOpenCloseMechanic: 0
+      horizontalPositionValue: 94
+      verticalPositionValue: 104
+      locationOrientationType: 3
+      trackOrientationType: 0
+    - matchedGateIds: 03000000030000000300000003000000030000000300000003000000030000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000a0000000200000002000000020000000200000008000000080000000800000008000000080000000800000008000000080000000400000004000000040000000400000004000000040000000400000004000000
+      hasStar: 0
+      hasOpenCloseMechanic: 0
+      isClosedAtFirst: 1
+      isLocked: 0
+      lockId: 1
+      hasIce: 0
+      iceCount: 0
+      hasMovingOpenCloseMechanic: 0
+      horizontalPositionValue: 94
+      verticalPositionValue: 94
+      locationOrientationType: 3
+      trackOrientationType: 0
+    - matchedGateIds: 06000000060000000600000006000000060000000600000006000000060000000100000001000000010000000100000001000000010000000100000001000000060000000600000006000000060000000600000006000000060000000600000006000000060000000600000006000000
+      hasStar: 0
+      hasOpenCloseMechanic: 0
+      isClosedAtFirst: 1
+      isLocked: 0
+      lockId: 1
+      hasIce: 0
+      iceCount: 0
+      hasMovingOpenCloseMechanic: 0
+      horizontalPositionValue: 104
+      verticalPositionValue: 104
+      locationOrientationType: 2
+      trackOrientationType: 0
+    blocksData:
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 95
+      horizontalPositionValue: 98
+      verticalPositionValue: 95
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 86
+      horizontalPositionValue: 96
+      verticalPositionValue: 89
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 93
+      horizontalPositionValue: 98
+      verticalPositionValue: 107
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 96
+      horizontalPositionValue: 92
+      verticalPositionValue: 107
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 98
+      horizontalPositionValue: 107
+      verticalPositionValue: 94
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 189
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 88
+      horizontalPositionValue: 103
+      verticalPositionValue: 100
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 189
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 99
+      horizontalPositionValue: 97
+      verticalPositionValue: 98
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 189
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 84
+      horizontalPositionValue: 102
+      verticalPositionValue: 111
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 103
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 89
+      horizontalPositionValue: 106
+      verticalPositionValue: 89
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 103
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 92
+      horizontalPositionValue: 101
+      verticalPositionValue: 90
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 9
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 94
+      horizontalPositionValue: 99
+      verticalPositionValue: 108
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 9
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 103
+      matchedGateId: 97
+      horizontalPositionValue: 98
+      verticalPositionValue: 92
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 103
+      matchedGateId: 88
+      horizontalPositionValue: 102
+      verticalPositionValue: 106
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 103
+      matchedGateId: 84
+      horizontalPositionValue: 98
+      verticalPositionValue: 110
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 1
+      iceCount: 7
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 103
+      matchedGateId: 93
+      horizontalPositionValue: 96
+      verticalPositionValue: 108
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 103
+      matchedGateId: 94
+      horizontalPositionValue: 92
+      verticalPositionValue: 104
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 1
+      iceCount: 2
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 103
+      matchedGateId: 95
+      horizontalPositionValue: 102
+      verticalPositionValue: 98
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 96
+      horizontalPositionValue: 106
+      verticalPositionValue: 111
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 93
+      horizontalPositionValue: 106
+      verticalPositionValue: 107
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    - visualDirectionType: 0
+      hasStar: 0
+      hasLayer: 0
+      layerMatchedGateId: -1
+      hasIce: 0
+      iceCount: 0
+      hasBomb: 0
+      hasMoveBasedBomb: 0
+      hasMovementBlocked: 0
+      bombDuration: 0
+      moveBasedBombCount: 0
+      isHoldingGateKey: 0
+      gateKeyId: 0
+      isLimitedLid: 0
+      isLidOpenAtStart: 0
+      isKey: 0
+      isLock: 0
+      isScrewdriver: 0
+      isScrewLock: 0
+      screwdriverId: 0
+      isJoinedGroup: 0
+      joinedGroupId: 0
+      screwsMatchedData: []
+      segmentsColor:
+      blockType: 96
+      matchedGateId: 99
+      horizontalPositionValue: 92
+      verticalPositionValue: 99
+      rotationX: 103
+      rotationY: 103
+      rotationZ: 1971
+    gridWidth: 93
+    gridHeight: 91
+    coolValue: 0

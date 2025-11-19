@@ -1,0 +1,1009 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aac8e9c81dd1c685a0bf64c67249e0c, type: 3}
+  m_Name: General_id
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: id
+  m_SharedData: {fileID: 11400000, guid: 7ab7a75cf1f243542b908c0e8df785b6, type: 2}
+  m_Metadata:
+    m_Items:
+      Array: []
+  m_TableData:
+  - m_Id: 8648842267316224
+    m_Localized: Main lagi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5975256138240000
+    m_Localized: Level
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7412414824828928
+    m_Localized: Level {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8369807296299008
+    m_Localized: Pengaturan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5310816518656044
+    m_Localized: Lanjutkan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596654841856
+    m_Localized: Susun
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596688396288
+    m_Localized: Isi penumpang berdasarkan...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10007562775457792
+    m_Localized: Gratis
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802021412864
+    m_Localized: Acak
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802042384384
+    m_Localized: Kocok ulang warna kendaraan...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10081243501678592
+    m_Localized: Turbo
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12221428460711936
+    m_Localized: Parkir VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484718034944
+    m_Localized: Tingkatkan kecepatan game (X2)
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395072
+    m_Localized: Antrean
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395073
+    m_Localized: Diskon kilat
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395074
+    m_Localized: Beli sekarang
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395075
+    m_Localized: Tempat parkir
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395076
+    m_Localized: Buka 1 ruang parkir...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395077
+    m_Localized: Lanjutkan?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263577513984
+    m_Localized: Buka ruang parkir untuk...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096896
+    m_Localized: Gagal!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096897
+    m_Localized: Terjebak macet!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096898
+    m_Localized: Mau coba level ini lagi...?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24782674231177216
+    m_Localized: Ya
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 22655239585558528
+    m_Localized: Beri rating
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24783814956036096
+    m_Localized: Ingin beri rating game kami lagi?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27819957203791872
+    m_Localized: Kirim!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535596240896
+    m_Localized: Beri game kami rating 5 BINTANG
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572544
+    m_Localized: Terima kasih atas dukungannya!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572545
+    m_Localized: Musik
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25236460306055168
+    m_Localized: Suara
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117672230912
+    m_Localized: Getaran
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117693202432
+    m_Localized: Aktif
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096875724800
+    m_Localized: Mati
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890624
+    m_Localized: Bahasa
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890625
+    m_Localized: Dukungan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890626
+    m_Localized: Simpan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115008
+    m_Localized: Keluar dari permainan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115009
+    m_Localized: Kebijakan privasi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115010
+    m_Localized: Keluar dari permainan?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115011
+    m_Localized: Yakin ingin keluar dari permainan?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27077148161228800
+    m_Localized: Tidak
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444840550400
+    m_Localized: Oke
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464960
+    m_Localized: Klaim
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464961
+    m_Localized: Level selesai
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464962
+    m_Localized: Penjualan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464963
+    m_Localized: Tempat parkir penuh
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659264
+    m_Localized: Koin tidak cukup!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659265
+    m_Localized: Tidak ada mobil untuk diurutkan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659266
+    m_Localized: Selamat! Menambahkan {0} koin!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659267
+    m_Localized: PILIH MOBIL KE SLOT VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196083994198016
+    m_Localized: Gagal melakukan pembelian
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196084010975232
+    m_Localized: Segera hadir
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916621066240
+    m_Localized: Toko
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916683980800
+    m_Localized: Bantuan dan Dukungan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150728509535354880
+    m_Localized: Hapus Iklan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 152438716334407680
+    m_Localized: Harap tunggu penumpang naik
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047007461376
+    m_Localized: Paket Pemula
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047032627200
+    m_Localized: Selesai
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087782178816
+    m_Localized: Terbatas
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087803150336
+    m_Localized: Populer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154196442051837952
+    m_Localized: Koin
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838297804800
+    m_Localized: Terbuka!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838331359232
+    m_Localized: Dapatkan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155407635672268800
+    m_Localized: Buka kunci di level {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155577661628354560
+    m_Localized: Bawa semua penumpang naik!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157091390900207616
+    m_Localized: Pulihkan Pembelian
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157160653371539456
+    m_Localized: Hapus iklan antar level dan nonaktifkan banner di dalam game
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351752613888
+    m_Localized: Beranda
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351794556928
+    m_Localized: Papan Peringkat
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158815030965592064
+    m_Localized: Pembelian Dipulihkan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368762732544
+    m_Localized: Loker Bus
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898368
+    m_Localized: '"Loker bus penuh. Beli sekarang untuk hemat besar koin."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898369
+    m_Localized: '"Loker bus Anda belum penuh, terus mainkan untuk menambah lebih banyak koin!"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898370
+    m_Localized: Hanya tersedia untuk pembelian sekali.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661760
+    m_Localized: Paket Dukungan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661761
+    m_Localized: Buka hadiah gratis dengan pembelian bundel Anda!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371355156480
+    m_Localized: PELANGGAN TERSEMBUNYI
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739392
+    m_Localized: Tamu spesial kami dengan warna tersembunyi!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739393
+    m_Localized: Tidak langsung muncul di depan antrean!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739394
+    m_Localized: Mari kita sambut mereka naik!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739395
+    m_Localized: Ayo pergi! Woohoo!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739396
+    m_Localized: Pelanggan VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739397
+    m_Localized: VIP sedang menunggu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739398
+    m_Localized: Naik ke MOBIL sendiri
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739399
+    m_Localized: Selesaikan perjalanan!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162611828900298752
+    m_Localized: Ketuk untuk melanjutkan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147202
+    m_Localized: Klaim hadiah!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147201
+    m_Localized: Dapatkan Bintang!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147200
+    m_Localized: Selesaikan tugas!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189071499264
+    m_Localized: Misi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189151191040
+    m_Localized: Hadiah Kotak Kado
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590235144192
+    m_Localized: Urutkan {0} penumpang
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087232
+    m_Localized: Buka kunci {0} slot
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087233
+    m_Localized: Lewati {0} level
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087234
+    m_Localized: Gunakan Acak {0} kali
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087235
+    m_Localized: Gunakan Urutkan {0} kali
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087236
+    m_Localized: Gunakan Turbo {0} kali
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087237
+    m_Localized: Gunakan Revive {0} kali
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087238
+    m_Localized: 'Segarkan dalam:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087239
+    m_Localized: Misi Harian
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087240
+    m_Localized: Misi Mingguan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165505240620138496
+    m_Localized: Ketuk untuk mengklaim
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165511316954480640
+    m_Localized: Gunakan VIP {0} kali
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719884681216
+    m_Localized: Slot VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719964372992
+    m_Localized: Pindahkan kendaraan ke slot VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 167319226869153792
+    m_Localized: Pembelian sekali
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168001317445369856
+    m_Localized: Buta Warna
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168007607378837504
+    m_Localized: Komunitas
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286864236544
+    m_Localized: Garasi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208064
+    m_Localized: '"Mobil akan keluar dari garasi jika ruang di depannya kosong."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208065
+    m_Localized: '"Mobil saat ini keluar, dan mobil berikutnya akan muncul."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208066
+    m_Localized: Jumlah Mobil
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208067
+    m_Localized: '"Hanya melihat mobil saat keluar. Periksa tanda untuk jumlah yang tersisa."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573291745280
+    m_Localized: Login Harian
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522496
+    m_Localized: Hari
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522497
+    m_Localized: Datang setiap hari untuk hadiah baru!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323852376539136
+    m_Localized: Harian
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169405851543601152
+    m_Localized: Fitur Baru
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169419130080919552
+    m_Localized: Mobil akan bergerak sesuai arah panah
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 170582695601045504
+    m_Localized: Tidak Tersedia
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282386980864
+    m_Localized: Kami telah meningkatkan!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478336
+    m_Localized: Kami membuat beberapa perubahan pada permainan untuk meningkatkan pengalaman Anda!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478337
+    m_Localized: Tingkatkan Sekarang
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 172252162956988416
+    m_Localized: Bundel Koin
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738815655936
+    m_Localized: Hadiah Harian
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738824044544
+    m_Localized: Pas Koin
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297250361344
+    m_Localized: Dapatkan hadiah langsung {0} koin!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297254555648
+    m_Localized: Nikmati bonus koin harian yang besar selama 30 hari!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632192
+    m_Localized: Bisa Diklaim Harian
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632193
+    m_Localized: Keistimewaan {0} hari
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312907190468608
+    m_Localized: Beli sekarang dan Klaim
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175317142929997824
+    m_Localized: Pas Booster
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319580445573120
+    m_Localized: Terima 1 booster setiap hari selama 30 hari!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007232
+    m_Localized: Pas Petualangan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007233
+    m_Localized: Dapatkan koin harian dan booster seru sepanjang bulan!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175332311076765696
+    m_Localized: Ketuk untuk menutup
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175342191208628224
+    m_Localized: Klaim Semua
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175516609940709376
+    m_Localized: Hadiah Langganan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175676525694222336
+    m_Localized: '"Pas Bulanan"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178203791355609088
+    m_Localized: 'Waktu Tersisa:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178204503426793472
+    m_Localized: Penawaran Terakhir
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178213847312695296
+    m_Localized: Penawaran Khusus untuk Anda!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178220887468736512
+    m_Localized: Mega Diskon Kilat
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179847752622170112
+    m_Localized: Diskon Mingguan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179848762774151168
+    m_Localized: Nikmati akhir pekan penuh keseruan!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658428907520
+    m_Localized: Paket Seru
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101824
+    m_Localized: Paket Ultimate
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101825
+    m_Localized: Sudah Diklaim
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170753999470592
+    m_Localized: Bonus
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442112
+    m_Localized: Lanjutkan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442113
+    m_Localized: Kalah
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183181358307278848
+    m_Localized: Anda akan <color=#911E07>kehilangan {0} koin</color>, yakin ingin menyerah?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442116
+    m_Localized: Apakah Anda yakin ingin menyerah?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267029743108096
+    m_Localized: Tips Penumpang
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252928
+    m_Localized: Penumpang sedang menunggu untuk naik mobil
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252929
+    m_Localized: Bantu mereka naik mobil tepat waktu untuk mendapatkan tip
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252930
+    m_Localized: Tip akan ditambahkan ke dompet Anda jika Anda melewati level
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183281109065334784
+    m_Localized: Jangan tampilkan ini lagi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402793238528
+    m_Localized: Putar
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210048
+    m_Localized: Roda Lunar Keberuntungan
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210049
+    m_Localized: Toko Lunar
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499430252544
+    m_Localized: Keberuntungan Tertinggi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446848
+    m_Localized: Keberuntungan Pemula
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446849
+    m_Localized: Keberuntungan Mekar
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446850
+    m_Localized: Keberuntungan Meluap
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184676067029700608
+    m_Localized: Dinamit
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188831633408
+    m_Localized: Doble Explosión
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993536
+    m_Localized: No hay suficientes dinamitas
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993537
+    m_Localized: "Recompensas de Dinamita\npor las próximas 48 horas!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993538
+    m_Localized: ¡Explota hacia la Prosperidad!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185358549362298880
+    m_Localized: Recompensas por Nivel
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185361311328260096
+    m_Localized: 'Tasa de Recompensa Estándar: {0}%'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185387325395718144
+    m_Localized: Perderás <color=#911E07>esto</color>,
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815872
+    m_Localized: Recompensa de Nivel {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185422659790635008
+    m_Localized: Rueda Lunar
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815874
+    m_Localized: Consigue más rachas y gana para obtener dinamitas
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815875
+    m_Localized: Carga completamente la rueda para desbloquear un giro.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815876
+    m_Localized: "Los fuegos artificiales están listos\n¡Reclamemos tu recompensa de suerte!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923013652480
+    m_Localized: Buka
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923017846784
+    m_Localized: Sisa
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 206488820224483328
+    m_Localized: Klaim X2
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 1
+    m_Localized: HAPUS PAKET IKLAN
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 2
+    m_Localized: HAPUS IKLAN
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 3
+    m_Localized: Menghapus spanduk dan iklan layar penuh
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 4
+    m_Localized: PAKET PEMULA
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5
+    m_Localized: PAKET BESAR
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 6
+    m_Localized: BUNDEL EPIK
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7
+    m_Localized: BEKUKAN WAKTU
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8
+    m_Localized: PALU
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 9
+    m_Localized: Bekukan waktu selama 20 detik.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10
+    m_Localized: Hancurkan kotak apa pun di peta dan isi.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 11
+    m_Localized: Kotak dengan Panah Bergerak Hanya dalam satu Arah
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12
+    m_Localized: Es akan mencair ketika Kotak terisi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13
+    m_Localized: Kotak atas File pergi Saat Terisi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 14
+    m_Localized: Anda dapat memindahkan Batu itu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 15
+    m_Localized: Beberapa kotak berwarna mutil
+    m_Metadata:
+      m_Items:
+        Array: []
+  references:
+    version: 2
+    RefIds: []

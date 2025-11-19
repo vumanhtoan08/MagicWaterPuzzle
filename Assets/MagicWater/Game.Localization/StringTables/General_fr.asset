@@ -1,0 +1,1009 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aac8e9c81dd1c685a0bf64c67249e0c, type: 3}
+  m_Name: General_fr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 7ab7a75cf1f243542b908c0e8df785b6, type: 2}
+  m_Metadata:
+    m_Items:
+      Array: []
+  m_TableData:
+  - m_Id: 5310816518656044
+    m_Localized: Reprendre
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5975256138240000
+    m_Localized: Niveau
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7412414824828928
+    m_Localized: Niveau {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596654841856
+    m_Localized: Organiser
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596688396288
+    m_Localized: Remplir les passagers en fonction de...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10007562775457792
+    m_Localized: Gratuit
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8369807296299008
+    m_Localized: Paramètres
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8648842267316224
+    m_Localized: Rejouer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802021412864
+    m_Localized: Mélanger
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802042384384
+    m_Localized: Réorganiser les couleurs des véhicules
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10081243501678592
+    m_Localized: Turbo
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12221428460711936
+    m_Localized: Parking VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484718034944
+    m_Localized: Accélérez votre vitesse de jeu (X2)
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395072
+    m_Localized: File d'attente
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395073
+    m_Localized: Vente flash
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395074
+    m_Localized: Achetez maintenant
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395075
+    m_Localized: Parking
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395076
+    m_Localized: Débloquez 1 espace de stationnement...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395077
+    m_Localized: Continuer ?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263577513984
+    m_Localized: Débloquez un espace de stationnement...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096896
+    m_Localized: Échoué !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096897
+    m_Localized: Pris dans un embouteillage !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096898
+    m_Localized: Voulez-vous réessayer ce niveau...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 22655239585558528
+    m_Localized: Évaluez-nous
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24782674231177216
+    m_Localized: Oui
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24783814956036096
+    m_Localized: Voulez-vous évaluer notre jeu à nouveau?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535596240896
+    m_Localized: Évaluez notre jeu avec 5 ÉTOILES
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572544
+    m_Localized: Merci pour votre soutien !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572545
+    m_Localized: Musique
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25236460306055168
+    m_Localized: Son
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117672230912
+    m_Localized: Vibration
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117693202432
+    m_Localized: Activé
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096875724800
+    m_Localized: Désactivé
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890624
+    m_Localized: Langue
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890625
+    m_Localized: Support
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890626
+    m_Localized: Sauvegarder
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115008
+    m_Localized: Quitter le jeu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115009
+    m_Localized: Politique de confidentialité
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115010
+    m_Localized: Quitter le jeu ?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115011
+    m_Localized: Voulez-vous vraiment quitter le jeu ?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27077148161228800
+    m_Localized: Non
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27819957203791872
+    m_Localized: Soumettre !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444840550400
+    m_Localized: D'accord
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464960
+    m_Localized: Réclamer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464961
+    m_Localized: Niveau terminé
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464962
+    m_Localized: Vente
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464963
+    m_Localized: L'espace de stationnement est plein
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659264
+    m_Localized: Pas assez de pièces !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659265
+    m_Localized: Pas de voiture à trier
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659266
+    m_Localized: Félicitations ! Vous avez ajouté {0} pièces !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659267
+    m_Localized: SÉLECTIONNEZ UNE VOITURE POUR LE VIP SLOT
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196083994198016
+    m_Localized: Échec de l'achat
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196084010975232
+    m_Localized: Bientôt
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916621066240
+    m_Localized: Boutique
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916683980800
+    m_Localized: Aide et support
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150728509535354880
+    m_Localized: Supprimer les annonces
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 152438716334407680
+    m_Localized: Veuillez attendre que les passagers montent
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047007461376
+    m_Localized: Kit de démarrage
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047032627200
+    m_Localized: Terminé
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087782178816
+    m_Localized: Limité
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087803150336
+    m_Localized: Populaire
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154196442051837952
+    m_Localized: Pièces
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838297804800
+    m_Localized: Déverrouillé !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838331359232
+    m_Localized: Obtenez-le
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155407635672268800
+    m_Localized: Déverrouiller au niveau {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155577661628354560
+    m_Localized: Faites monter tout le monde !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157091390900207616
+    m_Localized: Restaurer l'achat
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157160653371539456
+    m_Localized: Supprimez les publicités entre les niveaux et désactivez les bannières dans le jeu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351752613888
+    m_Localized: Accueil
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351794556928
+    m_Localized: Classement
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158815030965592064
+    m_Localized: Achat restauré
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368762732544
+    m_Localized: Coffre du bus
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898368
+    m_Localized: '"Le coffre du bus est plein. Achetez-le maintenant pour économiser des pièces."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898369
+    m_Localized: '"Le coffre de votre bus n''est pas encore plein, continuez à jouer pour ajouter plus de pièces!"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898370
+    m_Localized: Disponible pour un seul achat.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661760
+    m_Localized: Kit de support
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661761
+    m_Localized: Déverrouillez des récompenses gratuites avec votre achat groupé !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371355156480
+    m_Localized: CLIENT CACHÉ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739392
+    m_Localized: Notre invité spécial avec une couleur cachée !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739393
+    m_Localized: Ne s'affiche pas directement en tête de la file !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739394
+    m_Localized: Accueillons-les à bord !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739395
+    m_Localized: On y va ! Woohoo !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739396
+    m_Localized: Client VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739397
+    m_Localized: Le VIP attend
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739398
+    m_Localized: Monte dans sa propre VOITURE
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739399
+    m_Localized: Terminez le trajet !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162611828900298752
+    m_Localized: Appuyez pour continuer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147202
+    m_Localized: Réclamez des récompenses !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147201
+    m_Localized: Gagnez des étoiles !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147200
+    m_Localized: Terminez les tâches !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189071499264
+    m_Localized: Quête
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189151191040
+    m_Localized: Récompenses de boîte cadeau
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590235144192
+    m_Localized: Triez {0} passagers
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087232
+    m_Localized: Déverrouillez {0} emplacements
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087233
+    m_Localized: Passez {0} niveaux
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087234
+    m_Localized: Utilisez Mélanger {0} fois
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087235
+    m_Localized: Utilisez Trier {0} fois
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087236
+    m_Localized: Utilisez Turbo {0} fois
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087237
+    m_Localized: Utilisez Revivre {0} fois
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087238
+    m_Localized: 'Actualise dans :'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087239
+    m_Localized: Quête Quotidienne
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087240
+    m_Localized: Quête Hebdomadaire
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165505240620138496
+    m_Localized: Appuyez pour réclamer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165511316954480640
+    m_Localized: Utilisez VIP {0} fois
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719884681216
+    m_Localized: Emplacement VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719964372992
+    m_Localized: Déplacez n'importe quelle voiture...
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 167319226869153792
+    m_Localized: Achat unique
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168001317445369856
+    m_Localized: Daltonien
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168007607378837504
+    m_Localized: Communauté
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286864236544
+    m_Localized: Garage
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208064
+    m_Localized: '"Les voitures quitteront le garage quand l''espace devant sera dégagé."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208065
+    m_Localized: '"La voiture actuelle part, et la suivante apparaîtra."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208066
+    m_Localized: Nombre de voitures
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208067
+    m_Localized: '"Vous ne verrez la voiture que lorsqu''elle sort. Vérifiez le panneau pour savoir combien il en reste."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573291745280
+    m_Localized: Connexion quotidienne
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522496
+    m_Localized: Jour
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522497
+    m_Localized: Venez tous les jours pour de nouvelles récompenses !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323852376539136
+    m_Localized: Quotidien
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169405851543601152
+    m_Localized: Nouvelle fonctionnalité
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169419130080919552
+    m_Localized: La voiture se déplacera dans la direction de la flèche
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 170582695601045504
+    m_Localized: Indisponible
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282386980864
+    m_Localized: Nous avons amélioré !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478336
+    m_Localized: Nous avons apporté des modifications au jeu pour améliorer votre expérience !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478337
+    m_Localized: Mettez à niveau maintenant
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 172252162956988416
+    m_Localized: Lot de pièces
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738815655936
+    m_Localized: Récompense quotidienne
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738824044544
+    m_Localized: Pass Pièces
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297250361344
+    m_Localized: Obtenez une récompense instantanée de {0} pièces !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297254555648
+    m_Localized: Profitez d'un généreux bonus quotidien de pièces pendant 30 jours !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632192
+    m_Localized: Réclamable quotidiennement
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632193
+    m_Localized: Privilèges de {0} jours
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312907190468608
+    m_Localized: Achetez maintenant et réclamez
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175317142929997824
+    m_Localized: Pass Booster
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319580445573120
+    m_Localized: Recevez 1 booster chaque jour pendant 30 jours !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007232
+    m_Localized: Pass Aventure
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007233
+    m_Localized: Obtenez des pièces quotidiennes et des boosters excitants tout au long du mois !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175332311076765696
+    m_Localized: Appuyez pour fermer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175342191208628224
+    m_Localized: Tout réclamer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175516609940709376
+    m_Localized: Récompense de l'abonnement
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175676525694222336
+    m_Localized: '"Pass Mensuel"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178203791355609088
+    m_Localized: 'Temps restant :'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178204503426793472
+    m_Localized: Dernière Offre
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178213847312695296
+    m_Localized: Offre spéciale pour vous !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178220887468736512
+    m_Localized: Méga Vente Flash
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179847752622170112
+    m_Localized: Vente Hebdomadaire
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179848762774151168
+    m_Localized: Profitez d'un week-end plein de plaisir !
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658428907520
+    m_Localized: Pack Amusement
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101824
+    m_Localized: Pack Ultime
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101825
+    m_Localized: Réclamé
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170753999470592
+    m_Localized: Bonus
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442112
+    m_Localized: Continuer
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442113
+    m_Localized: Perdre
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183181358307278848
+    m_Localized: Vous <color=#911E07>perdrez {0} pièces</color>, êtes-vous sûr de vouloir abandonne
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442116
+    m_Localized: Êtes-vous sûr de vouloir abandonner ?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267029743108096
+    m_Localized: Conseils Passager
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252928
+    m_Localized: Les passagers attendent d'embarquer dans la voiture
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252929
+    m_Localized: Aidez-les à monter à bord à temps pour gagner des pourboires
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252930
+    m_Localized: Les pourboires seront ajoutés à votre portefeuille si vous passez un niveau
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183281109065334784
+    m_Localized: Ne plus afficher
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402793238528
+    m_Localized: Tourner
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210048
+    m_Localized: Roue Lunaire Chanceuse
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210049
+    m_Localized: Boutique Lunaire
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499430252544
+    m_Localized: Chance Suprême
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446848
+    m_Localized: Chance du Débutant
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446849
+    m_Localized: Chance Fleurissante
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446850
+    m_Localized: Chance Débordante
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184676067029700608
+    m_Localized: Bâtons de Dynamite
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188831633408
+    m_Localized: Double Explosion
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993536
+    m_Localized: Pas assez de dynamite
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993537
+    m_Localized: "Récompenses Dynamite\npendant les 48 prochaines heures!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993538
+    m_Localized: Explosion vers la Prospérité!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185358549362298880
+    m_Localized: Récompenses par Niveau
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185361311328260096
+    m_Localized: 'Taux de Récompense Standard: {0}%'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185387325395718144
+    m_Localized: Vous <color=#911E07>perdrez cela</color>,
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815872
+    m_Localized: Récompense Niveau {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185422659790635008
+    m_Localized: Roue Lunaire
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815874
+    m_Localized: Obtenez plus de séries et gagnez pour réclamer des dynamites
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815875
+    m_Localized: Chargez complètement la roue pour déverrouiller un tour.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815876
+    m_Localized: "Les feux d'artifice sont prêts\nRéclamons votre récompense chanceuse !"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923013652480
+    m_Localized: Ouvrir
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923017846784
+    m_Localized: Reste
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 206488820224483328
+    m_Localized: Réclamer X2
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 1
+    m_Localized: SUPPRIMER LE GROUPE DE PUBLICITÉS
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 2
+    m_Localized: SUPPRIMER LES PUBLICITÉS
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 3
+    m_Localized: Supprime les bannières et les publicités plein écran
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 4
+    m_Localized: FORFAIT DÉBUTANT
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5
+    m_Localized: SUPER PACK
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 6
+    m_Localized: PACK ÉPIQUE
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7
+    m_Localized: TEMPS DE CONGELATION
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8
+    m_Localized: MARTEAU
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 9
+    m_Localized: Temps de congélation pendant 20 secondes.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10
+    m_Localized: Cassez n'importe quelle case sur la carte et remplissez-la.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 11
+    m_Localized: Boîte avec des flèches se déplaçant dans une seule direction
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12
+    m_Localized: La glace fondra lorsqu'une boîte sera remplie
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13
+    m_Localized: Boîte supérieure classée une fois remplie
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 14
+    m_Localized: Vous pouvez déplacer le rocher
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 15
+    m_Localized: Certaines boîtes sont multicolores
+    m_Metadata:
+      m_Items:
+        Array: []
+  references:
+    version: 2
+    RefIds: []

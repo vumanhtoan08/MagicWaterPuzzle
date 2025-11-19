@@ -1,0 +1,1009 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aac8e9c81dd1c685a0bf64c67249e0c, type: 3}
+  m_Name: General_vi
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: vi
+  m_SharedData: {fileID: 11400000, guid: 7ab7a75cf1f243542b908c0e8df785b6, type: 2}
+  m_Metadata:
+    m_Items:
+      Array: []
+  m_TableData:
+  - m_Id: 5310816518656044
+    m_Localized: Tiếp tục
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5975256138240000
+    m_Localized: Cấp độ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7412414824828928
+    m_Localized: Cấp độ {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596654841856
+    m_Localized: Sắp xếp
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596688396288
+    m_Localized: Điền hành khách dựa vào màu của xe
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10007562775457792
+    m_Localized: Miễn phí
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8369807296299008
+    m_Localized: Cài đặt
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8648842267316224
+    m_Localized: Chơi lại
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802021412864
+    m_Localized: Xáo trộn
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802042384384
+    m_Localized: Xáo trộn lại màu xe trong bãi đỗ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10081243501678592
+    m_Localized: Tăng tốc
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12221428460711936
+    m_Localized: Đỗ xe VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484718034944
+    m_Localized: Tăng tốc độ chơi game (X2)
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395072
+    m_Localized: Hàng chờ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395073
+    m_Localized: Ưu đãi chớp nhoáng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395074
+    m_Localized: Mua ngay
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395075
+    m_Localized: Bãi đỗ xe
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395076
+    m_Localized: Mở khóa 1 vị trí đỗ xe
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395077
+    m_Localized: Tiếp tục?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263577513984
+    m_Localized: Mở khóa chỗ đỗ để giải tỏa giao thông!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096896
+    m_Localized: Thất bại!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096897
+    m_Localized: Kẹt xe rồi!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096898
+    m_Localized: Bạn có muốn thử lại cấp độ này không?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 22655239585558528
+    m_Localized: Đánh giá chúng tôi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24782674231177216
+    m_Localized: Có
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24783814956036096
+    m_Localized: Bạn có muốn đánh giá trò chơi của chúng tôi lại không?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535596240896
+    m_Localized: Đánh giá trò chơi của chúng tôi 5 SAO
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572544
+    m_Localized: Cảm ơn bạn đã ủng hộ!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572545
+    m_Localized: Âm nhạc
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25236460306055168
+    m_Localized: Âm thanh
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117672230912
+    m_Localized: Rung
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117693202432
+    m_Localized: Bật
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096875724800
+    m_Localized: Tắt
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890624
+    m_Localized: Ngôn ngữ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890625
+    m_Localized: Hỗ trợ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890626
+    m_Localized: Lưu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115008
+    m_Localized: Rời khỏi trò chơi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115009
+    m_Localized: Chính sách bảo mật
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115010
+    m_Localized: Rời khỏi trò chơi?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115011
+    m_Localized: Bạn có chắc chắn muốn rời trò chơi?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27077148161228800
+    m_Localized: Không
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27819957203791872
+    m_Localized: Gửi đi!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444840550400
+    m_Localized: Được
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464960
+    m_Localized: Nhận thưởng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464961
+    m_Localized: Hoàn thành cấp độ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464962
+    m_Localized: Giảm giá
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464963
+    m_Localized: Bãi đỗ xe đã đầy
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659264
+    m_Localized: Không đủ xu!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659265
+    m_Localized: Không có xe để sắp xếp
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659266
+    m_Localized: Chúc mừng! Thêm {0} xu!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659267
+    m_Localized: CHỌN XE ĐỂ ĐẾN VỊ TRÍ VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196083994198016
+    m_Localized: Không thể thực hiện giao dịch
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196084010975232
+    m_Localized: Sắp ra mắt
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916621066240
+    m_Localized: Cửa hàng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916683980800
+    m_Localized: Hỗ trợ và trợ giúp
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150728509535354880
+    m_Localized: Xóa quảng cáo
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 152438716334407680
+    m_Localized: Vui lòng chờ hành khách lên xe
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047007461376
+    m_Localized: Gói bắt đầu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047032627200
+    m_Localized: Đã hoàn thành
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087782178816
+    m_Localized: Giới hạn
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087803150336
+    m_Localized: Phổ biến
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154196442051837952
+    m_Localized: Xu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838297804800
+    m_Localized: Đã mở khóa!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838331359232
+    m_Localized: Nhận ngay
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155407635672268800
+    m_Localized: Mở khóa ở cấp {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155577661628354560
+    m_Localized: Đưa tất cả hành khách lên xe!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157091390900207616
+    m_Localized: Khôi phục giao dịch
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157160653371539456
+    m_Localized: Gỡ bỏ quảng cáo giữa các cấp độ và tắt banner trong trò chơi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351752613888
+    m_Localized: Trang chủ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351794556928
+    m_Localized: Bảng xếp hạng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158815030965592064
+    m_Localized: Giao dịch đã được khôi phục
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368762732544
+    m_Localized: Khoang chứa của xe buýt
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898368
+    m_Localized: '"Khoang chứa của xe buýt đã đầy. Mua ngay để tiết kiệm nhiều xu."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898369
+    m_Localized: '"Khoang chứa của xe buýt chưa đầy, tiếp tục chơi để thêm xu!"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898370
+    m_Localized: Chỉ có sẵn cho giao dịch một lần.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661760
+    m_Localized: Gói hỗ trợ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661761
+    m_Localized: Mở khóa phần thưởng miễn phí với gói mua của bạn!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371355156480
+    m_Localized: KHÁCH HÀNG ẨN
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739392
+    m_Localized: Vị khách đặc biệt của chúng tôi có màu sắc ẩn!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739393
+    m_Localized: Không xuất hiện ngay đầu hàng!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739394
+    m_Localized: Hãy chào đón họ lên xe!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739395
+    m_Localized: Chúng ta đi thôi! Woohoo!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739396
+    m_Localized: Khách hàng VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739397
+    m_Localized: VIP đang chờ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739398
+    m_Localized: Lên xe riêng của mình
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739399
+    m_Localized: Hoàn thành chuyến đi!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162611828900298752
+    m_Localized: Nhấn để tiếp tục
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147202
+    m_Localized: Nhận phần thưởng!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147201
+    m_Localized: Kiếm sao!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147200
+    m_Localized: Hoàn thành nhiệm vụ!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189071499264
+    m_Localized: Nhiệm vụ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189151191040
+    m_Localized: Phần thưởng Hộp quà
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590235144192
+    m_Localized: Sắp xếp {0} hành khách
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087232
+    m_Localized: Mở khóa {0} ô trống
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087233
+    m_Localized: Vượt qua {0} cấp độ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087234
+    m_Localized: Sử dụng Xáo trộn {0} lần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087235
+    m_Localized: Sử dụng Sắp xếp {0} lần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087236
+    m_Localized: Sử dụng Tăng tốc {0} lần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087237
+    m_Localized: Sử dụng Hồi sinh {0} lần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087238
+    m_Localized: 'Làm mới trong:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087239
+    m_Localized: Nhiệm vụ hằng ngày
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087240
+    m_Localized: Nhiệm vụ hằng tuần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165505240620138496
+    m_Localized: Nhấn để nhận
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165511316954480640
+    m_Localized: Sử dụng VIP {0} lần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719884681216
+    m_Localized: Vị trí VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719964372992
+    m_Localized: Chuyển bất kỳ xe nào đến vị trí VIP
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 167319226869153792
+    m_Localized: Mua một lần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168001317445369856
+    m_Localized: Mù màu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168007607378837504
+    m_Localized: Cộng đồng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286864236544
+    m_Localized: Nhà xe
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208064
+    m_Localized: '"Xe sẽ rời khỏi nhà xe khi không gian phía trước đã trống."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208065
+    m_Localized: '"Chiếc xe hiện tại rời đi, chiếc tiếp theo sẽ xuất hiện."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208066
+    m_Localized: Số lượng xe
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208067
+    m_Localized: '"Chỉ thấy xe khi nó chạy ra. Kiểm tra biển báo để biết còn bao nhiêu."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573291745280
+    m_Localized: Đăng nhập hằng ngày
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522496
+    m_Localized: Ngày
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522497
+    m_Localized: Đăng nhập mỗi ngày để nhận phần thưởng mới!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323852376539136
+    m_Localized: Hằng ngày
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169405851543601152
+    m_Localized: Tính năng mới
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169419130080919552
+    m_Localized: Xe sẽ di chuyển theo hướng mũi tên
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 170582695601045504
+    m_Localized: Không khả dụng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282386980864
+    m_Localized: Chúng tôi đã cải tiến!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478336
+    m_Localized: Chúng tôi đã thực hiện một số thay đổi để cải thiện trải nghiệm của bạn!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478337
+    m_Localized: Nâng cấp ngay
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 172252162956988416
+    m_Localized: Gói xu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738815655936
+    m_Localized: Phần thưởng hằng ngày
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738824044544
+    m_Localized: Vé Xu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297250361344
+    m_Localized: Nhận ngay phần thưởng {0} xu!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297254555648
+    m_Localized: Tận hưởng phần thưởng xu hằng ngày trong 30 ngày!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632192
+    m_Localized: Có thể nhận hằng ngày
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632193
+    m_Localized: Đặc quyền {0} ngày
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312907190468608
+    m_Localized: Mua ngay và nhận
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175317142929997824
+    m_Localized: Vé Booster
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319580445573120
+    m_Localized: Nhận 1 booster mỗi ngày trong 30 ngày!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007232
+    m_Localized: Vé phiêu lưu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007233
+    m_Localized: Nhận xu hằng ngày và booster hấp dẫn trong cả tháng!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175332311076765696
+    m_Localized: Chạm để đóng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175342191208628224
+    m_Localized: Nhận tất cả
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175516609940709376
+    m_Localized: Phần thưởng đăng ký
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175676525694222336
+    m_Localized: '"Vé tháng"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178203791355609088
+    m_Localized: 'Thời gian còn lại:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178204503426793472
+    m_Localized: Ưu đãi cuối cùng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178213847312695296
+    m_Localized: Ưu đãi đặc biệt dành cho bạn!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178220887468736512
+    m_Localized: Giảm giá cực lớn
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179847752622170112
+    m_Localized: Giảm giá hàng tuần
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179848762774151168
+    m_Localized: Tận hưởng cuối tuần tràn ngập niềm vui!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658428907520
+    m_Localized: Gói niềm vui
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101824
+    m_Localized: Gói tối thượng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101825
+    m_Localized: Đã nhận
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170753999470592
+    m_Localized: Tiền thưởng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442112
+    m_Localized: Tiếp tục
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442113
+    m_Localized: Thua
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183181358307278848
+    m_Localized: Bạn sẽ <color=#911E07>mất {0} xu</color>, chắc chắn muốn bỏ cuộc?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442116
+    m_Localized: Bạn có chắc chắn muốn bỏ cuộc không?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267029743108096
+    m_Localized: Chi phí hậu tạ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252928
+    m_Localized: Hành khách đang chờ lên xe
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252929
+    m_Localized: Giúp họ lên xe đúng giờ để kiếm tiền boa
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252930
+    m_Localized: Tiền boa sẽ được thêm vào ví nếu bạn qua cấp
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183281109065334784
+    m_Localized: Không hiển thị cho lần sau
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402793238528
+    m_Localized: Kích hoạt
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210048
+    m_Localized: Vòng quay năm mới
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210049
+    m_Localized: Cửa hàng năm mới
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499430252544
+    m_Localized: May mắn tối thượng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446848
+    m_Localized: May mắn khởi đầu
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446849
+    m_Localized: May mắn nở hoa
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446850
+    m_Localized: May mắn tràn đầy
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184676067029700608
+    m_Localized: Thuốc nổ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188831633408
+    m_Localized: Niềm vui nhân đôi
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993536
+    m_Localized: Không Đủ Thuốc Nổ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993537
+    m_Localized: "Phần Thưởng Thuốc Nổ\ntrong 48 giờ tới!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993538
+    m_Localized: Tiếng pháo thịnh vượng!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185358549362298880
+    m_Localized: Phần Thưởng Theo Cấp
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185361311328260096
+    m_Localized: 'Tỷ Lệ Thưởng Tiêu Chuẩn: {0}%'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185387325395718144
+    m_Localized: Bạn sẽ <color=#911E07>mất những thứ này</color>,
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815872
+    m_Localized: Phần Thưởng Cấp {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185422659790635008
+    m_Localized: Vòng Quay Năm Moiws
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815874
+    m_Localized: Giành nhiều chuỗi thắng hơn và nhận thuốc nổ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815875
+    m_Localized: Sạc đầy bánh xe để mở khóa vòng quay.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815876
+    m_Localized: "Pháo hoa đã sẵn sàng\nHãy nhận phần thưởng may mắn của bạn!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923013652480
+    m_Localized: Mở
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923017846784
+    m_Localized: Còn
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 206488820224483328
+    m_Localized: Nhận thưởng X2
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 1
+    m_Localized: XÓA BỘ QUẢNG CÁO
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 2
+    m_Localized: XÓA QUẢNG CÁO
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 3
+    m_Localized: Loại bỏ các biểu ngữ và quảng cáo toàn màn hình
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 4
+    m_Localized: GÓI NGƯỜI MỚI BẮT ĐẦU
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5
+    m_Localized: GÓI TUYỆT VỜI
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 6
+    m_Localized: BỘ EPIC
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7
+    m_Localized: ĐÓNG BĂNG THỜI GIAN
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8
+    m_Localized: BÚA
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 9
+    m_Localized: Thời gian đóng băng trong 20 giây.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10
+    m_Localized: Phá vỡ bất kỳ ô nào trên bản đồ và điền vào nó.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 11
+    m_Localized: Hộp có mũi tên chỉ di chuyển theo một hướng
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12
+    m_Localized: Băng sẽ tan khi Hộp được lấp đầy
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13
+    m_Localized: Hộp phía trên Tập tin đi khi đầy
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 14
+    m_Localized: Bạn có thể di chuyển Rock
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 15
+    m_Localized: Một số hộp có nhiều màu sắc
+    m_Metadata:
+      m_Items:
+        Array: []
+  references:
+    version: 2
+    RefIds: []

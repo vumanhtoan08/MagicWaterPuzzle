@@ -1,0 +1,1009 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aac8e9c81dd1c685a0bf64c67249e0c, type: 3}
+  m_Name: General_ru
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: RU
+  m_SharedData: {fileID: 11400000, guid: 7ab7a75cf1f243542b908c0e8df785b6, type: 2}
+  m_Metadata:
+    m_Items:
+      Array: []
+  m_TableData:
+  - m_Id: 8648842267316224
+    m_Localized: Переиграть
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5975256138240000
+    m_Localized: Уровень
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7412414824828928
+    m_Localized: Уровень {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8369807296299008
+    m_Localized: Настройки
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5310816518656044
+    m_Localized: Возобновить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596654841856
+    m_Localized: Упорядочить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10001596688396288
+    m_Localized: Заполните пассажиров в зависимости от цветов транспортных средств.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10007562775457792
+    m_Localized: Бесплатно
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802021412864
+    m_Localized: Перемешать
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10030802042384384
+    m_Localized: Перемешать цвета транспортных средств в парковочном слоте
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10081243501678592
+    m_Localized: Турбо
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12221428460711936
+    m_Localized: VIP парковка
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484718034944
+    m_Localized: Увеличьте скорость игры (X2)
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395072
+    m_Localized: Очередь
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395073
+    m_Localized: Быстрая Распродажа
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395074
+    m_Localized: Купить сейчас
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395075
+    m_Localized: Автостоянка
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395076
+    m_Localized: Открыть 1 место на автостоянке для парковочного слота
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13235484747395077
+    m_Localized: Продолжить?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263577513984
+    m_Localized: Открыть место для парковки, чтобы решить пробку!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096896
+    m_Localized: Неудача!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096897
+    m_Localized: Попал в пробку!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13292263590096898
+    m_Localized: Хотите попробовать этот уровень еще раз?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24782674231177216
+    m_Localized: Да
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 22655239585558528
+    m_Localized: Оцените нас
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 24783814956036096
+    m_Localized: Вы хотите оценить нашу игру снова?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27819957203791872
+    m_Localized: Отправить!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535596240896
+    m_Localized: Оцените нашу игру на 5 ЗВЕЗД
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572544
+    m_Localized: Спасибо за вашу поддержку!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25235535646572545
+    m_Localized: Música
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25236460306055168
+    m_Localized: Sonido
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117672230912
+    m_Localized: Vibración
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25265117693202432
+    m_Localized: Вкл
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096875724800
+    m_Localized: Выкл
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890624
+    m_Localized: Язык
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890625
+    m_Localized: Поддержка
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25673096900890626
+    m_Localized: Сохранить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115008
+    m_Localized: Уйти из игры?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115009
+    m_Localized: Политика конфиденциальности
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115010
+    m_Localized: Уйти из игры?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 25825164707115011
+    m_Localized: Вы действительно хотите покинуть игру?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 27077148161228800
+    m_Localized: No
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444840550400
+    m_Localized: Хорошо
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464960
+    m_Localized: Получить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464961
+    m_Localized: Уровень завершен
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464962
+    m_Localized: Распродажа
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444903464963
+    m_Localized: Парковочное место заполнено
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659264
+    m_Localized: Недостаточно монет!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659265
+    m_Localized: Нет автомобиля для сортировки
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659266
+    m_Localized: Поздравляем! Добавлено {0} монет!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150190444907659267
+    m_Localized: Выберите автомобиль для VIP-слота
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196083994198016
+    m_Localized: Не удалось совершить покупку
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150196084010975232
+    m_Localized: Скоро будет
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916621066240
+    m_Localized: Магазин
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150680916683980800
+    m_Localized: Помощь и поддержка
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 150728509535354880
+    m_Localized: Убрать рекламу
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 152438716334407680
+    m_Localized: Пожалуйста, подождите, пока пассажиры садятся
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047007461376
+    m_Localized: Стартовый набор
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154130047032627200
+    m_Localized: Завершено
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087782178816
+    m_Localized: Ограниченный
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154164087803150336
+    m_Localized: Популярный
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 154196442051837952
+    m_Localized: Монеты
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838297804800
+    m_Localized: Разблокировано!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155354838331359232
+    m_Localized: Получить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155407635672268800
+    m_Localized: Открыть на уровне {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 155577661628354560
+    m_Localized: Всех на борт!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157091390900207616
+    m_Localized: Восстановить покупку
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 157160653371539456
+    m_Localized: Удалите рекламу между уровнями и отключите баннеры в игре
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351752613888
+    m_Localized: Главная
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158087351794556928
+    m_Localized: Таблица лидеров
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 158815030965592064
+    m_Localized: Покупка восстановлена
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368762732544
+    m_Localized: Сейф автобуса
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898368
+    m_Localized: "Сейф автобуса полон.\nКупите его сейчас, чтобы сэкономить много монет."
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898369
+    m_Localized: Ваш сейф ещё не полный, продолжайте играть, чтобы добавить больше монет!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160068368787898370
+    m_Localized: Доступно только для одноразовой покупки.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661760
+    m_Localized: Набор поддержки
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 160075055548661761
+    m_Localized: Откройте бесплатные награды с покупкой набора!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371355156480
+    m_Localized: СКРЫТЫЙ КЛИЕНТ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739392
+    m_Localized: Наш особенный гость с скрытым цветом!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739393
+    m_Localized: Не появляется прямо в начале очереди!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739394
+    m_Localized: Давайте поприветствуем его на борту!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739395
+    m_Localized: Вперёд! Ура!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739396
+    m_Localized: VIP Клиент
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739397
+    m_Localized: VIP ждет
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739398
+    m_Localized: Садится в свою МАШИНУ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162608371367739399
+    m_Localized: Завершите поездку!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 162611828900298752
+    m_Localized: Нажмите, чтобы продолжить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147202
+    m_Localized: Получите награды!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147201
+    m_Localized: Заработайте звезды!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168035674084147200
+    m_Localized: Выполните задания!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189071499264
+    m_Localized: Задание
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165134189151191040
+    m_Localized: Награды за подарочную коробку
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590235144192
+    m_Localized: Отсортируйте {0} пассажиров
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087232
+    m_Localized: Разблокируйте {0} слотов
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087233
+    m_Localized: Пройдите {0} уровней
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087234
+    m_Localized: Используйте перемешивание {0} раз
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087235
+    m_Localized: Используйте сортировку {0} раз
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087236
+    m_Localized: Используйте турбо {0} раз
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087237
+    m_Localized: Используйте возрождение {0} раз
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087238
+    m_Localized: 'Обновить через:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087239
+    m_Localized: Ежедневное задание
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165373590277087240
+    m_Localized: Еженедельное задание
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165505240620138496
+    m_Localized: Нажмите, чтобы получить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165511316954480640
+    m_Localized: Используйте VIP {0} раз
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719884681216
+    m_Localized: VIP слот
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 165896719964372992
+    m_Localized: Переместите ЛЮБУЮ МАШИНУ в VIP-зону
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 167319226869153792
+    m_Localized: Одноразовая покупка
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168001317445369856
+    m_Localized: Дальтонизм
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168007607378837504
+    m_Localized: Сообщество
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286864236544
+    m_Localized: Гараж
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208064
+    m_Localized: '"Машины выйдут из гаража, когда место впереди освободится."'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208065
+    m_Localized: '"Текущая машина уходит, и появляется следующая"'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208066
+    m_Localized: Количество машин
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168034286885208067
+    m_Localized: "Видите машину только, когда она выезжает.\nПроверьте знак, чтобы узнать, сколько осталось."
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573291745280
+    m_Localized: Ежедневный вход
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522496
+    m_Localized: День
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323573308522497
+    m_Localized: Заходите каждый день за новыми наградами!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 168323852376539136
+    m_Localized: Ежедневно
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169405851543601152
+    m_Localized: Новая функция
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 169419130080919552
+    m_Localized: Машина будет двигаться в направлении стрелки
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 170582695601045504
+    m_Localized: Недоступно
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282386980864
+    m_Localized: Мы улучшились!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478336
+    m_Localized: Мы внесли изменения в игру, чтобы улучшить ваш опыт!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 171760282462478337
+    m_Localized: Обновить сейчас
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 172252162956988416
+    m_Localized: Пакет монет
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738815655936
+    m_Localized: Ежедневная награда
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175308738824044544
+    m_Localized: Монетный Пропуск
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297250361344
+    m_Localized: Получите мгновенное вознаграждение {0} монет!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319297254555648
+    m_Localized: Наслаждайтесь щедрым ежедневным бонусом монет в течение 30 дней!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632192
+    m_Localized: Доступно ежедневно
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312139930632193
+    m_Localized: Привилегии на {0} дней
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175312907190468608
+    m_Localized: Купите сейчас и получите
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175317142929997824
+    m_Localized: Пропуск Бустеров
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175319580445573120
+    m_Localized: Получайте 1 бустер каждый день в течение 30 дней!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007232
+    m_Localized: Приключенческий Пропуск
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175329212887007233
+    m_Localized: Получайте ежедневные монеты и захватывающие бустеры в течение месяца!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175332311076765696
+    m_Localized: Нажмите для закрытия
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175342191208628224
+    m_Localized: Получить все
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175516609940709376
+    m_Localized: Награда подписки
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 175676525694222336
+    m_Localized: "Ежемесячный\nПропуск"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178203791355609088
+    m_Localized: 'Оставшееся время:'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178204503426793472
+    m_Localized: Последнее предложение
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178213847312695296
+    m_Localized: Специальное предложение для вас!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 178220887468736512
+    m_Localized: Мега Быстрая Распродажа
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179847752622170112
+    m_Localized: Еженедельная Распродажа
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179848762774151168
+    m_Localized: Наслаждайтесь веселыми выходными!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658428907520
+    m_Localized: Веселый Пакет
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101824
+    m_Localized: Ультимативный Пакет
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 179865658433101825
+    m_Localized: Получено
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170753999470592
+    m_Localized: Бонус
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442112
+    m_Localized: Продолжить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442113
+    m_Localized: Проиграть
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183181358307278848
+    m_Localized: Вы <color=#911E07>потеряете {0} монет</color>,
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183170754020442116
+    m_Localized: Вы уверены, что хотите сдаться?
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267029743108096
+    m_Localized: Советы пассажирам
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252928
+    m_Localized: Пассажиры ждут, чтобы сесть в автомобиль
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252929
+    m_Localized: Помогите им сесть вовремя, чтобы заработать чаевые
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183267591184252930
+    m_Localized: Чаевые будут добавлены в ваш кошелек, если вы пройдете уровень
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183281109065334784
+    m_Localized: Больше не показывать
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402793238528
+    m_Localized: Крутить
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210048
+    m_Localized: Счастливое лунное колесо
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 183636402814210049
+    m_Localized: Лунный магазин
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499430252544
+    m_Localized: Высшее везение
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446848
+    m_Localized: Начальная удача
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446849
+    m_Localized: Цветущее везение
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184615499434446850
+    m_Localized: Избыточная удача
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 184676067029700608
+    m_Localized: Динамита
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188831633408
+    m_Localized: Двойной взрыв
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993536
+    m_Localized: Недостаточно динамита
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993537
+    m_Localized: "Награды за динамит\nв течение следующих 48 часов!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185348188860993538
+    m_Localized: Взрыв в процветание!
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185358549362298880
+    m_Localized: Награды за уровни
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185361311328260096
+    m_Localized: 'Стандартная ставка награды: {0}%'
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185387325395718144
+    m_Localized: Вы <color=#911E07>потеряете это</color>,
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815872
+    m_Localized: Награда уровня {0}
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185422659790635008
+    m_Localized: Лунное Колесо
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815874
+    m_Localized: Получайте больше победных серий и добывайте динамиты
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815875
+    m_Localized: Полностью зарядите колесо, чтобы открыть вращение.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185432485076815876
+    m_Localized: "Фейерверки готовы\nДавайте заберем ваш счастливый приз!"
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923013652480
+    m_Localized: Открыть
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 185798923017846784
+    m_Localized: Остаток
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 206488820224483328
+    m_Localized: Получить X2
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 1
+    m_Localized: УДАЛИТЬ НАБОР РЕКЛАМ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 2
+    m_Localized: УДАЛИТЬ РЕКЛАМУ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 3
+    m_Localized: Удаляет баннеры и полноэкранную рекламу
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 4
+    m_Localized: НАБОР ДЛЯ НАЧИНАЮЩИХ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 5
+    m_Localized: ОТЛИЧНЫЙ ПАКЕТ
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 6
+    m_Localized: ЭПИЧЕСКИЙ НАБОР
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 7
+    m_Localized: ЗАморозить время
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 8
+    m_Localized: МОЛОТОК
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 9
+    m_Localized: Время заморозки на 20 секунд.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 10
+    m_Localized: Разбейте любой ящик на карте и заполните его.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 11
+    m_Localized: Коробка со стрелками, движущимися только в одном направлении
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 12
+    m_Localized: Лед растает, когда ящик наполнится.
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 13
+    m_Localized: Верхний ящик Файлы удаляются при заполнении
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 14
+    m_Localized: Вы можете переместить камень
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 15
+    m_Localized: Некоторые коробки разных цветов
+    m_Metadata:
+      m_Items:
+        Array: []
+  references:
+    version: 2
+    RefIds: []

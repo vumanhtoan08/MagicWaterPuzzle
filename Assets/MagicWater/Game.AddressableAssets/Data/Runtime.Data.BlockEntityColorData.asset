@@ -1,0 +1,315 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106d5bfcd401031902cb29ce8683713e, type: 3}
+  m_Name: Runtime.Data.BlockEntityColorData
+  m_EditorClassIdentifier:
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes:
+    ReferencedUnityObjects: []
+    SerializedBytesString:
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  colorItemEnityColorData:
+    defaultData:
+      colorMaterial: {fileID: 2100000, guid: 6ee7a1851155eb44f96e663ce2df993c, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 193f3224b66732a4bab626dcab248f91, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: d845944283b6ffd4fa44ddf63bad4eef, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 7e2dd6678715c2f48ba40a3b5582b16f, type: 2}
+      mainColor: {r: 1, g: 1, b: 1, a: 1}
+    colorsData:
+    - colorMaterial: {fileID: 2100000, guid: e384b58880fdb234a901f9b5012a6271, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 193f3224b66732a4bab626dcab248f91, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 27db03d3a9c21ec44a441cd4190b9948, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 8e798bd426d46be46b6791e75d86aafc, type: 2}
+      mainColor: {r: 0.9245283, g: 0.24555685, b: 0.22241008, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 8741347166aade4458a02e7f06d76bb8, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 29ebc3d021c48f04e955616f8bec2000, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 90eaa49c515eef2458ccb0a081846aa2, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 0d5e3389ff5eb7348b7fbbcded541f8a, type: 2}
+      mainColor: {r: 0.22022964, g: 0.33681646, b: 0.9528302, a: 0.6156863}
+    - colorMaterial: {fileID: 2100000, guid: 39679d065c33585488ccbc4936e21284, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 426f74521f5e0184383b50579c16fba6, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 80cd8ee1574d153408c085f3702a6edc, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 8726c8ee0505cb54db2abf38fc41d414, type: 2}
+      mainColor: {r: 0.9716981, g: 0.81911904, b: 0.22459061, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 1485922983b892d4292f90244fb94c8c, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 526f54314a53425408913f33fa608a78, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 54aa0265c387039418e8b510af0a1666, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 7abee53237546fa4db8f39b8728d8f6f, type: 2}
+      mainColor: {r: 0.32467073, g: 0.8962264, b: 0.18178178, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 2a5c04ce947c7c44ea82fc74a3c278bd, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 3936da6f4d40f5d468aab57eff1d26b7, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 21c14c39c45486c4a852423daccc8865, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 51e1923c8e6c72c42828c18807050d35, type: 2}
+      mainColor: {r: 0.5829194, g: 0.1745283, b: 1, a: 0.6745098}
+    - colorMaterial: {fileID: 2100000, guid: 46693f8fc4aa82f43b9f9595f0b78790, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 08837457569c51b4c888851e0d8e1124, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7612a28ad5af56c43bbdb89322fdd51b, type: 2}
+      waterMaterial: {fileID: 2100000, guid: e3aa44d819f462f47a52c3ec860cc68f, type: 2}
+      mainColor: {r: 0.9529412, g: 0.27450982, b: 0.6907353, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 0fe63d5df2d53ad42a6dc501a29bbb53, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 013264777aa9fad4995ab82c8f2e586c, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7e6d59fdf0ed1f741beaa29c8b2d1405, type: 2}
+      waterMaterial: {fileID: 2100000, guid: c011b0ffba2e946409b71a96bfcbbde5, type: 2}
+      mainColor: {r: 0.7169812, g: 0.40922037, b: 0.26041296, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 1f959f329f5c9364bbf88371d2e3a449, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 0ebedc08d94ee9c4cb580d95ebcd4161, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: fe50bfe6b85e6b54fab92fb541437104, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 8d6ac716bf57b0d43b0fffc4217fde0c, type: 2}
+      mainColor: {r: 0.3341887, g: 0.8605441, b: 0.9056604, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 3c54a44d2197f3d4593e05398992ee5b, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: f3bbeb5ee704b84468218911cc2f6b07, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 8d937b896cc9c69499e8d14118cca7bc, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 3875bb41ac502c3438053f1f3a591958, type: 2}
+      mainColor: {r: 1, g: 0.55600834, b: 0.1462264, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: d53808bd246b2f54fbff8493fc5cfdad, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 56a3cbd18a6921c418513f14df2e3e54, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: db6c38a1897b30041bb67240e8029b20, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 2b91bca16207c5f4cb3c7f241e92a6bb, type: 2}
+      mainColor: {r: 0.49202436, g: 0.6981132, b: 0.2733179, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 2b0424b17d2ec144590865e53f7f5e52, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: bce0b75b9f244d24db5dd633835a2d2b, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: bce480586849e7a40b1ec2f9b298f3a5, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 084c2e88559a07845bb5e2430f7a43a9, type: 2}
+      mainColor: {r: 0.7817005, g: 0.4669811, b: 1, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: f887413d3b9e1b54b8f70adf5666069d, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 51b98a0946bd9bd4287903574380f687, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7d2cbe6bff47d4b4da188b199bea63a9, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 7539a083aa1291b40947b48fa3124271, type: 2}
+      mainColor: {r: 0.16078432, g: 0.4784314, b: 0.0627451, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 7eb06889221f7b34c83f856179b7a11f, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 60964f7593a7189488aa55e24c0b0dfa, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 59305f545ff365f4892ef345efbb3484, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 04c4152ac1b45ff42804da85f1f86af9, type: 2}
+      mainColor: {r: 1, g: 0.6541384, b: 0.5707547, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: da6c84707a3c4b64aabf7f66e2b81cbf, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: bdf5b6353aa2e084c8346d0979ab29f9, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 97635b963bdc08a429a625f9036bdaa7, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 533f6a5f748cdb74394802a6dce871fc, type: 2}
+      mainColor: {r: 0.5647059, g: 0.23066638, b: 0.12549019, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 2e93e6b1004d36740863f3ec2accb13f, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: b61f9f4e43975d643aefed19344959f5, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 1f28f94c67af4a642acccfa49a985f2f, type: 2}
+      waterMaterial: {fileID: 2100000, guid: e2ac901a202eb304f8339c0b765aabe0, type: 2}
+      mainColor: {r: 1, g: 0.5424528, b: 0.81612587, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 5b1e524e55666704d97b34ff9f9a7015, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 5cfb805a60d1c5e499494b2e0d250818, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7f5aa615762a7ea44afbc356f879309a, type: 2}
+      waterMaterial: {fileID: 2100000, guid: cae7d878981ce7f498faccba06ad200e, type: 2}
+      mainColor: {r: 0.9403366, g: 0.8160377, b: 1, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 715f4b3f1ee772448924ee10a689db66, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 2979802f452c96b44aea35fc9fbbe0c4, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: ccd6cfe717735f147b43eac71172e3c4, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 00862e670d9cf094798561d984152f7b, type: 2}
+      mainColor: {r: 0.8692453, g: 1, b: 0.5330188, a: 1}
+  blockItemEnityColorData:
+    defaultData:
+      colorMaterial: {fileID: 2100000, guid: 6ee7a1851155eb44f96e663ce2df993c, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 193f3224b66732a4bab626dcab248f91, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: d845944283b6ffd4fa44ddf63bad4eef, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 7e2dd6678715c2f48ba40a3b5582b16f, type: 2}
+      mainColor: {r: 1, g: 1, b: 1, a: 1}
+    colorsData:
+    - colorMaterial: {fileID: 2100000, guid: e384b58880fdb234a901f9b5012a6271, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 193f3224b66732a4bab626dcab248f91, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 27db03d3a9c21ec44a441cd4190b9948, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 8e798bd426d46be46b6791e75d86aafc, type: 2}
+      mainColor: {r: 0.9245283, g: 0.24555685, b: 0.22241008, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 8741347166aade4458a02e7f06d76bb8, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 29ebc3d021c48f04e955616f8bec2000, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 90eaa49c515eef2458ccb0a081846aa2, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 0d5e3389ff5eb7348b7fbbcded541f8a, type: 2}
+      mainColor: {r: 0.22022964, g: 0.33681646, b: 0.9528302, a: 0.6156863}
+    - colorMaterial: {fileID: 2100000, guid: 39679d065c33585488ccbc4936e21284, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 426f74521f5e0184383b50579c16fba6, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 80cd8ee1574d153408c085f3702a6edc, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 8726c8ee0505cb54db2abf38fc41d414, type: 2}
+      mainColor: {r: 0.9716981, g: 0.81911904, b: 0.22459061, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 1485922983b892d4292f90244fb94c8c, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 526f54314a53425408913f33fa608a78, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 54aa0265c387039418e8b510af0a1666, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 7abee53237546fa4db8f39b8728d8f6f, type: 2}
+      mainColor: {r: 0.32467073, g: 0.8962264, b: 0.18178178, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 2a5c04ce947c7c44ea82fc74a3c278bd, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 3936da6f4d40f5d468aab57eff1d26b7, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 21c14c39c45486c4a852423daccc8865, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 51e1923c8e6c72c42828c18807050d35, type: 2}
+      mainColor: {r: 0.5829194, g: 0.1745283, b: 1, a: 0.6745098}
+    - colorMaterial: {fileID: 2100000, guid: 46693f8fc4aa82f43b9f9595f0b78790, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 08837457569c51b4c888851e0d8e1124, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7612a28ad5af56c43bbdb89322fdd51b, type: 2}
+      waterMaterial: {fileID: 2100000, guid: e3aa44d819f462f47a52c3ec860cc68f, type: 2}
+      mainColor: {r: 0.9529412, g: 0.27450982, b: 0.6907353, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 0fe63d5df2d53ad42a6dc501a29bbb53, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 013264777aa9fad4995ab82c8f2e586c, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7e6d59fdf0ed1f741beaa29c8b2d1405, type: 2}
+      waterMaterial: {fileID: 2100000, guid: c011b0ffba2e946409b71a96bfcbbde5, type: 2}
+      mainColor: {r: 0.7169812, g: 0.40922037, b: 0.26041296, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 1f959f329f5c9364bbf88371d2e3a449, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 0ebedc08d94ee9c4cb580d95ebcd4161, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: fe50bfe6b85e6b54fab92fb541437104, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 8d6ac716bf57b0d43b0fffc4217fde0c, type: 2}
+      mainColor: {r: 0.3341887, g: 0.8605441, b: 0.9056604, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 3c54a44d2197f3d4593e05398992ee5b, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: f3bbeb5ee704b84468218911cc2f6b07, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 8d937b896cc9c69499e8d14118cca7bc, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 3875bb41ac502c3438053f1f3a591958, type: 2}
+      mainColor: {r: 1, g: 0.55600834, b: 0.1462264, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: d53808bd246b2f54fbff8493fc5cfdad, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 56a3cbd18a6921c418513f14df2e3e54, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: db6c38a1897b30041bb67240e8029b20, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 2b91bca16207c5f4cb3c7f241e92a6bb, type: 2}
+      mainColor: {r: 0.49202436, g: 0.6981132, b: 0.2733179, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 2b0424b17d2ec144590865e53f7f5e52, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: bce0b75b9f244d24db5dd633835a2d2b, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: bce480586849e7a40b1ec2f9b298f3a5, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 084c2e88559a07845bb5e2430f7a43a9, type: 2}
+      mainColor: {r: 0.7817005, g: 0.4669811, b: 1, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: f887413d3b9e1b54b8f70adf5666069d, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 51b98a0946bd9bd4287903574380f687, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7d2cbe6bff47d4b4da188b199bea63a9, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 7539a083aa1291b40947b48fa3124271, type: 2}
+      mainColor: {r: 0.16078432, g: 0.4784314, b: 0.0627451, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 7eb06889221f7b34c83f856179b7a11f, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 60964f7593a7189488aa55e24c0b0dfa, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 59305f545ff365f4892ef345efbb3484, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 04c4152ac1b45ff42804da85f1f86af9, type: 2}
+      mainColor: {r: 1, g: 0.6541384, b: 0.5707547, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: da6c84707a3c4b64aabf7f66e2b81cbf, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: bdf5b6353aa2e084c8346d0979ab29f9, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 97635b963bdc08a429a625f9036bdaa7, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 533f6a5f748cdb74394802a6dce871fc, type: 2}
+      mainColor: {r: 0.5647059, g: 0.23066638, b: 0.12549019, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 2e93e6b1004d36740863f3ec2accb13f, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: b61f9f4e43975d643aefed19344959f5, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 1f28f94c67af4a642acccfa49a985f2f, type: 2}
+      waterMaterial: {fileID: 2100000, guid: e2ac901a202eb304f8339c0b765aabe0, type: 2}
+      mainColor: {r: 1, g: 0.5424528, b: 0.81612587, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 5b1e524e55666704d97b34ff9f9a7015, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 5cfb805a60d1c5e499494b2e0d250818, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: 7f5aa615762a7ea44afbc356f879309a, type: 2}
+      waterMaterial: {fileID: 2100000, guid: cae7d878981ce7f498faccba06ad200e, type: 2}
+      mainColor: {r: 0.9403366, g: 0.8160377, b: 1, a: 1}
+    - colorMaterial: {fileID: 2100000, guid: 715f4b3f1ee772448924ee10a689db66, type: 2}
+      lidsColorMaterial: {fileID: 2100000, guid: 2979802f452c96b44aea35fc9fbbe0c4, type: 2}
+      transparentMaterial: {fileID: 2100000, guid: ccd6cfe717735f147b43eac71172e3c4, type: 2}
+      waterMaterial: {fileID: 2100000, guid: 00862e670d9cf094798561d984152f7b, type: 2}
+      mainColor: {r: 0.8692453, g: 1, b: 0.5330188, a: 1}
+  blockEntityColorData:
+    iceColor: {r: 0.6745098, g: 0.90196085, b: 0.9725491, a: 1}
+    colorsData:
+    - colorType: 0
+      mainColor: {r: 0.98823535, g: 0.26666668, b: 0.26666668, a: 1}
+      shadowColor: {r: 0.8196079, g: 0.16862746, b: 0.16862746, a: 1}
+    - colorType: 1
+      mainColor: {r: 0.20392159, g: 0.5137255, b: 0.9960785, a: 1}
+      shadowColor: {r: 0.2509804, g: 0.454902, b: 0.9058824, a: 1}
+    - colorType: 2
+      mainColor: {r: 0.9960785, g: 0.9960785, b: 0.32156864, a: 1}
+      shadowColor: {r: 0.91372555, g: 0.9176471, b: 0.36078432, a: 1}
+    - colorType: 3
+      mainColor: {r: 0.48627454, g: 0.9686275, b: 0.4666667, a: 1}
+      shadowColor: {r: 0.18039216, g: 0.5882353, b: 0.16862746, a: 1}
+    - colorType: 4
+      mainColor: {r: 0.6509804, g: 0.29803923, b: 0.9960785, a: 1}
+      shadowColor: {r: 0.42352945, g: 0.18039216, b: 0.6627451, a: 1}
+    - colorType: 5
+      mainColor: {r: 0.9921569, g: 0.72156864, b: 0.9960785, a: 1}
+      shadowColor: {r: 0.7058824, g: 0.39607847, b: 0.72156864, a: 1}
+    - colorType: 6
+      mainColor: {r: 0.72156864, g: 0.5058824, b: 0.4156863, a: 1}
+      shadowColor: {r: 0.49803925, g: 0.3137255, b: 0.25490198, a: 1}
+    - colorType: 7
+      mainColor: {r: 0.3529412, g: 0.9725491, b: 0.9960785, a: 1}
+      shadowColor: {r: 0.10196079, g: 0.59607846, b: 0.6156863, a: 1}
+    - colorType: 8
+      mainColor: {r: 0.9960785, g: 0.627451, b: 0.16078432, a: 1}
+      shadowColor: {r: 0.63529414, g: 0.30980393, b: 0, a: 1}
+    - colorType: 9
+      mainColor: {r: 0.47058827, g: 0.78823537, b: 0.9960785, a: 1}
+      shadowColor: {r: 0.21568629, g: 0.43921572, b: 0.64705884, a: 1}
+    - colorType: 10
+      mainColor: {r: 0.03137255, g: 0.6745098, b: 0.74509805, a: 1}
+      shadowColor: {r: 0, g: 0.34509805, b: 0.3921569, a: 1}
+    - colorType: 11
+      mainColor: {r: 0.34509805, g: 0.7058824, b: 0.32156864, a: 1}
+      shadowColor: {r: 0.11764707, g: 0.37254903, b: 0.10588236, a: 1}
+    - colorType: 12
+      mainColor: {r: 0.98823535, g: 0.8352942, b: 0.4156863, a: 1}
+      shadowColor: {r: 0.62352943, g: 0.45882356, b: 0.14509805, a: 1}
+    - colorType: 13
+      mainColor: {r: 0.5294118, g: 0.3647059, b: 0.3137255, a: 1}
+      shadowColor: {r: 0.29411766, g: 0.16078432, b: 0.121568635, a: 1}
+    - colorType: 14
+      mainColor: {r: 0.9960785, g: 0.4901961, b: 0.7843138, a: 1}
+      shadowColor: {r: 0.6745098, g: 0.26666668, b: 0.4666667, a: 1}
+    - colorType: 15
+      mainColor: {r: 0.8235295, g: 0.8352942, b: 0.90196085, a: 1}
+      shadowColor: {r: 0.48627454, g: 0.49803925, b: 0.5529412, a: 1}
+    - colorType: 16
+      mainColor: {r: 0.3254902, g: 0.30980393, b: 0.30588236, a: 1}
+      shadowColor: {r: 0.10196079, g: 0.10196079, b: 0.10196079, a: 1}
+  blockScrewcolorsData:
+  - colorType: 0
+    mainColor: {r: 0.8400001, g: 0.22666669, b: 0.22666669, a: 1}
+    shadowColor: {r: 0.6966667, g: 0.14333335, b: 0.14333335, a: 1}
+  - colorType: 1
+    mainColor: {r: 0.17333335, g: 0.4366667, b: 0.84666675, a: 1}
+    shadowColor: {r: 0.21333335, g: 0.38666672, b: 0.7700001, a: 1}
+  - colorType: 2
+    mainColor: {r: 0.84666675, g: 0.84666675, b: 0.27333334, a: 1}
+    shadowColor: {r: 0.77666676, g: 0.7800001, b: 0.30666667, a: 1}
+  - colorType: 3
+    mainColor: {r: 0.41333336, g: 0.8233334, b: 0.3966667, a: 1}
+    shadowColor: {r: 0.15333334, g: 0.50000006, b: 0.14333335, a: 1}
+  - colorType: 4
+    mainColor: {r: 0.55333334, g: 0.25333336, b: 0.84666675, a: 1}
+    shadowColor: {r: 0.36000004, g: 0.15333334, b: 0.5633334, a: 1}
+  - colorType: 5
+    mainColor: {r: 0.8433334, g: 0.61333334, b: 0.84666675, a: 1}
+    shadowColor: {r: 0.6, g: 0.3366667, b: 0.61333334, a: 1}
+  - colorType: 6
+    mainColor: {r: 0.61333334, g: 0.43000004, b: 0.35333338, a: 1}
+    shadowColor: {r: 0.42333338, g: 0.26666668, b: 0.21666668, a: 1}
+  - colorType: 7
+    mainColor: {r: 0.3, g: 0.8266667, b: 0.84666675, a: 1}
+    shadowColor: {r: 0.08666667, g: 0.5066667, b: 0.5233334, a: 1}
+  - colorType: 8
+    mainColor: {r: 0.84666675, g: 0.53333336, b: 0.13666667, a: 1}
+    shadowColor: {r: 0.54, g: 0.26333335, b: 0, a: 1}
+  - colorType: 9
+    mainColor: {r: 0.40000004, g: 0.6700001, b: 0.84666675, a: 1}
+    shadowColor: {r: 0.18333335, g: 0.37333336, b: 0.55, a: 1}
+  - colorType: 10
+    mainColor: {r: 0.02666667, g: 0.5733334, b: 0.6333334, a: 1}
+    shadowColor: {r: 0, g: 0.29333335, b: 0.33333337, a: 1}
+  - colorType: 11
+    mainColor: {r: 0.29333335, g: 0.6, b: 0.27333334, a: 1}
+    shadowColor: {r: 0.10000001, g: 0.3166667, b: 0.09000001, a: 1}
+  - colorType: 12
+    mainColor: {r: 0.8400001, g: 0.7100001, b: 0.35333338, a: 1}
+    shadowColor: {r: 0.53000003, g: 0.39000005, b: 0.12333334, a: 1}
+  - colorType: 13
+    mainColor: {r: 0.45000005, g: 0.31, b: 0.26666668, a: 1}
+    shadowColor: {r: 0.25000003, g: 0.13666667, b: 0.10333334, a: 1}
+  - colorType: 14
+    mainColor: {r: 0.84666675, g: 0.41666672, b: 0.66666675, a: 1}
+    shadowColor: {r: 0.5733334, g: 0.22666669, b: 0.3966667, a: 1}
+  - colorType: 15
+    mainColor: {r: 0.7000001, g: 0.7100001, b: 0.76666677, a: 1}
+    shadowColor: {r: 0.41333336, g: 0.42333338, b: 0.47000003, a: 1}
+  - colorType: 16
+    mainColor: {r: 0.27666667, g: 0.26333335, b: 0.26000002, a: 1}
+    shadowColor: {r: 0.08666667, g: 0.08666667, b: 0.08666667, a: 1}

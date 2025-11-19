@@ -1,0 +1,34 @@
+
+Coin.png
+size: 324,324
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Skin_04/Coin
+  rotate: false
+  xy: 2, 121
+  size: 199, 199
+  orig: 199, 199
+  offset: 0, 0
+  index: -1
+Skin_04/Coin_Side
+  rotate: true
+  xy: 2, 52
+  size: 67, 200
+  orig: 69, 200
+  offset: 1, 0
+  index: -1
+Skin_04/icon_PiggyBank
+  rotate: true
+  xy: 204, 76
+  size: 117, 116
+  orig: 117, 116
+  offset: 0, 0
+  index: -1
+Skin_04/icon_PiggyFont
+  rotate: false
+  xy: 203, 195
+  size: 116, 125
+  orig: 116, 125
+  offset: 0, 0
+  index: -1
