@@ -50,21 +50,21 @@ public class GridEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        // =========================
         // PANEL THEO MODE
-        // =========================
         switch (currentMode)
         {
             case EditorMode.Grid:
                 DrawMapSettingsRealtime();
+                DrawResetMapButton();
                 break;
 
             case EditorMode.Pipe:
                 DrawPipeEditorPanel();
+                DrawClearAllPipesButton();
                 break;
 
             case EditorMode.Holder:
-                DrawHolderEditorPanel(); // TODO: bạn tự triển khai sau
+                DrawHolderEditorPanel();
                 break;
         }
 
@@ -194,7 +194,26 @@ public class GridEditorWindow : EditorWindow
     }
 
     // ================================================================
-    // GRID VISUAL + CLICK LOGIC
+    // RESET MAP BUTTON (Grid Mode)
+    // ================================================================
+    private void DrawResetMapButton()
+    {
+        GUI.backgroundColor = Color.yellow;
+
+        if (GUILayout.Button("Reset Map (All isSpawn = TRUE)"))
+        {
+            foreach (var node in currentMap.nodes)
+                node.isSpawn = true;
+
+            EditorUtility.SetDirty(currentMap);
+            Repaint();
+        }
+
+        GUI.backgroundColor = Color.white;
+    }
+
+    // ================================================================
+    // GRID VISUAL & CLICK LOGIC
     // ================================================================
     private void DrawGridUI()
     {
@@ -214,7 +233,6 @@ public class GridEditorWindow : EditorWindow
                 NodeData node = currentMap.nodes.Find(n => n.x == x && n.y == y);
                 PipeData pipe = currentMap.pipes.Find(p => p.x == x && p.y == y);
 
-                // Hightlight: ô có Pipe = cyan, còn lại theo isSpawn
                 if (pipe != null)
                     GUI.backgroundColor = Color.cyan;
                 else
@@ -245,15 +263,11 @@ public class GridEditorWindow : EditorWindow
             case EditorMode.Pipe:
                 OnClickPipeCell(x, y);
                 break;
-
-            case EditorMode.Holder:
-                // TODO: sau này bạn xử lý click cho Holder
-                break;
         }
     }
 
     // ================================================================
-    // PIPE CLICK & EDITOR PANEL (MODE: PIPE)
+    // PIPE PANEL
     // ================================================================
     private void OnClickPipeCell(int x, int y)
     {
@@ -281,7 +295,9 @@ public class GridEditorWindow : EditorWindow
 
         if (selectedPipeData == null)
         {
-            EditorGUILayout.HelpBox("Click một ô trong Grid (khi đang ở Design Pipe) để tạo / chọn Pipe.", MessageType.Info);
+            EditorGUILayout.HelpBox(
+                "Click một ô trong Grid (khi đang ở Design Pipe) để tạo/chọn Pipe.",
+                MessageType.Info);
             return;
         }
 
@@ -321,12 +337,12 @@ public class GridEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        // Nút xoá pipe này
         GUI.backgroundColor = Color.red;
         if (GUILayout.Button("Delete This Pipe"))
         {
             currentMap.pipes.Remove(selectedPipeData);
             selectedPipeData = null;
+
             GUI.backgroundColor = Color.white;
             EditorUtility.SetDirty(currentMap);
             Repaint();
@@ -338,12 +354,34 @@ public class GridEditorWindow : EditorWindow
     }
 
     // ================================================================
-    // HOLDER PANEL (MODE: HOLDER) – BẠN TỰ IMPLEMENT SAU
+    // CLEAR ALL PIPES BUTTON (Pipe Mode)
+    // ================================================================
+    private void DrawClearAllPipesButton()
+    {
+        GUI.backgroundColor = new Color(1f, 0.6f, 0.6f);
+
+        if (GUILayout.Button("Clear All Pipes"))
+        {
+            if (EditorUtility.DisplayDialog("Clear All Pipes", "Xóa TẤT CẢ Pipe trong map?", "Yes", "No"))
+            {
+                currentMap.pipes.Clear();
+                selectedPipeData = null;
+
+                EditorUtility.SetDirty(currentMap);
+                Repaint();
+            }
+        }
+
+        GUI.backgroundColor = Color.white;
+    }
+
+    // ================================================================
+    // HOLDER PANEL
     // ================================================================
     private void DrawHolderEditorPanel()
     {
         EditorGUILayout.LabelField("Holder Editor", EditorStyles.boldLabel);
-        EditorGUILayout.HelpBox("Chưa implement. Bạn có thể dùng pattern giống PipeData/Pipe editor để làm HolderData.", MessageType.Info);
+        EditorGUILayout.HelpBox("Chưa implement. Bạn có thể dùng pattern giống Pipe Editor.", MessageType.Info);
     }
 
     // ================================================================

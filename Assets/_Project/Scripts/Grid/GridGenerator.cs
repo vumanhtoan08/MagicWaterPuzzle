@@ -266,21 +266,34 @@ public class GridGenerator : MonoBehaviour
         foreach (var pipe in mapData.pipes)
         {
             NodeData node = GetNode(pipe.x, pipe.y);
+            GameObject pipeObj;
 
             if (pipe.y == 0)
-                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing - 2), Quaternion.identity, pipeHolder);
+            {
+                pipeObj = Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing - 2), Quaternion.identity, pipeHolder);
+            }
             else if (pipe.x == 0)
-                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing - 2, pipe.y * spacing), Quaternion.Euler(0, 0, 270), pipeHolder);
+            {
+                pipeObj = Instantiate(pipePrefabs, new Vector2(pipe.x * spacing - 2, pipe.y * spacing), Quaternion.Euler(0, 0, 270), pipeHolder);
+            }
             else if (pipe.y == mapData.height - 1)
-                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing + 2), Quaternion.Euler(0, 0, 180), pipeHolder);
+            {
+                pipeObj = Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing + 2), Quaternion.Euler(0, 0, 180), pipeHolder);
+            }
             else if (pipe.x == mapData.width - 1)
-                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing + 2, pipe.y * spacing), Quaternion.Euler(0, 0, 90), pipeHolder);
+            {
+                pipeObj = Instantiate(pipePrefabs, new Vector2(pipe.x * spacing + 2, pipe.y * spacing), Quaternion.Euler(0, 0, 90), pipeHolder);
+            }
+            else
+            {
+                // fallback
+                pipeObj = Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing), Quaternion.identity, pipeHolder);
+            }
+
+            PipeBase pipeBase = pipeObj.GetComponent<PipeBase>();
+            pipeBase.GetPipeData(pipe);
+            pipeBase.GenWater();
         }
-    }
-
-    private void GenWater()
-    {
-
     }
 
     #endregion

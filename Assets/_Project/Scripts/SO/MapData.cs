@@ -32,8 +32,24 @@ public class PipeData
 {
     public int x;
     public int y;
-
     public PipeType type;
-
     public List<WaterColor> waterColors = new();
+
+    public PipeData() { }
+
+    public PipeData(PipeData other)
+    {
+        x = other.x;
+        y = other.y;
+        type = other.type;
+        waterColors = new List<WaterColor>(other.waterColors);
+    }
+}
+
+
+[System.Serializable]
+public class WaterColor
+{
+    public EnumColor color;
+    public float Value;
 }

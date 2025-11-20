@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,13 +20,49 @@ public static class VMTExtentions
         return false;
     }
 
+    #region Compare
     /// <summary>
-    /// Hàm check đủ giá trị hay không <br/>
-    /// Cách dùng: Viết biến + gọi hàm <br/>
-    /// VD: var a = 10; a.IsGreaterThanZero(); 
+    /// So sánh giá trị hiện tại với một giá trị khác.
+    /// Trả về:
+    ///  -1 nếu nhỏ hơn
+    ///   0 nếu bằng nhau
+    ///   1 nếu lớn hơn
     /// </summary>
-    public static bool IsGreaterThanZero<T>(this T value) where T : struct, System.IComparable
+    public static int CompareToEx<T>(this T value, T other) where T : IComparable
     {
-        return value.CompareTo(0) > 0;
+        return value.CompareTo(other);
     }
+
+    /// <summary>
+    /// Kiểm tra giá trị nhỏ hơn giá trị khác
+    /// </summary>
+    public static bool LessThan<T>(this T value, T other) where T : IComparable
+    {
+        return value.CompareTo(other) < 0;
+    }
+
+    /// <summary>
+    /// Kiểm tra giá trị lớn hơn giá trị khác
+    /// </summary>
+    public static bool GreaterThan<T>(this T value, T other) where T : IComparable
+    {
+        return value.CompareTo(other) > 0;
+    }
+
+    /// <summary>
+    /// Kiểm tra giá trị nhỏ hơn hoặc bằng
+    /// </summary>
+    public static bool LessOrEqual<T>(this T value, T other) where T : IComparable
+    {
+        return value.CompareTo(other) <= 0;
+    }
+
+    /// <summary>
+    /// Kiểm tra giá trị lớn hơn hoặc bằng
+    /// </summary>
+    public static bool GreaterOrEqual<T>(this T value, T other) where T : IComparable
+    {
+        return value.CompareTo(other) >= 0;
+    }
+    #endregion
 }
