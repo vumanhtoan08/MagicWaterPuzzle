@@ -3,20 +3,30 @@ using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
-    #region Gen Node and Boder
-
     [Header("Information Grid")]
     private MapData mapData;
     public float spacing = 2f;
-    [SerializeField] private Transform nodeHolder;
-    [SerializeField] private Transform boderHolder;
+
     [SerializeField] private GameObject nodePrefab;
     [SerializeField] private Camera camObj;
+
+    public void OnStart()
+    {
+        mapData = LevelManager.Instance.CurrentMap;
+
+        GenGrid();
+        GenBorder();
+        GenPipe();
+    }
+
+    #region Gen Node and Boder
 
     [Header("Visual Boder")]
     [SerializeField] private GameObject straightPrefab;
     [SerializeField] private GameObject outerPrefab;
     [SerializeField] private GameObject interPrefab;
+    [SerializeField] private Transform nodeHolder;
+    [SerializeField] private Transform boderHolder;
 
     [Header("Outer Border Settings")]
     public OuterBorderConfig topRightOuterConfig;
@@ -29,14 +39,6 @@ public class GridGenerator : MonoBehaviour
     public InterBorderConfig botRightConfig;
     public InterBorderConfig botLeftConfig;
     public InterBorderConfig topLeftConfig;
-
-    public void OnStart()
-    {
-        mapData = LevelManager.Instance.CurrentMap; 
-
-        GenGrid();
-        GenBorder();
-    }
 
     private void GenGrid()
     {
@@ -257,6 +259,29 @@ public class GridGenerator : MonoBehaviour
 
     [Header("Pipe REF")]
     [SerializeField] private GameObject pipePrefabs;
+    [SerializeField] private Transform pipeHolder;
+
+    private void GenPipe()
+    {
+        foreach (var pipe in mapData.pipes)
+        {
+            NodeData node = GetNode(pipe.x, pipe.y);
+
+            if (pipe.y == 0)
+                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing - 2), Quaternion.identity, pipeHolder);
+            else if (pipe.x == 0)
+                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing - 2, pipe.y * spacing), Quaternion.Euler(0, 0, 270), pipeHolder);
+            else if (pipe.y == mapData.height - 1)
+                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing + 2), Quaternion.Euler(0, 0, 180), pipeHolder);
+            else if (pipe.x == mapData.width - 1)
+                Instantiate(pipePrefabs, new Vector2(pipe.x * spacing + 2, pipe.y * spacing), Quaternion.Euler(0, 0, 90), pipeHolder);
+        }
+    }
+
+    private void GenWater()
+    {
+
+    }
 
     #endregion
 

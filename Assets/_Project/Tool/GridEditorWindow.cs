@@ -2,15 +2,27 @@
 using UnityEditor;
 using System.Collections.Generic;
 
+public enum EditorMode
+{
+    Grid,
+    Pipe,
+    Holder
+}
+
 public class GridEditorWindow : EditorWindow
 {
     private MapData currentMap;
 
     private Vector2 scrollPos;
-
     private const float cellSize = 40f;
 
-    [MenuItem("Tools/Grid Map Editor")]
+    // Mode đang chọn
+    private EditorMode currentMode = EditorMode.Grid;
+
+    // Pipe đang được chọn để edit
+    private PipeData selectedPipeData = null;
+
+    [MenuItem("Tools/Level Editor")]
     public static void Open()
     {
         GetWindow<GridEditorWindow>("Grid Editor");
@@ -20,6 +32,7 @@ public class GridEditorWindow : EditorWindow
     {
         EditorGUILayout.Space();
 
+        // Chọn MapData
         currentMap = (MapData)EditorGUILayout.ObjectField("Map Data", currentMap, typeof(MapData), false);
 
         if (currentMap == null)
@@ -30,17 +43,65 @@ public class GridEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        DrawMapSettingsRealtime(); // 👈 Auto resize real-time
+        // =========================
+        // 3 MODE: GRID / PIPE / HOLDER
+        // =========================
+        DrawModeToolbar();
 
         EditorGUILayout.Space();
+
+        // =========================
+        // PANEL THEO MODE
+        // =========================
+        switch (currentMode)
+        {
+            case EditorMode.Grid:
+                DrawMapSettingsRealtime();
+                break;
+
+            case EditorMode.Pipe:
+                DrawPipeEditorPanel();
+                break;
+
+            case EditorMode.Holder:
+                DrawHolderEditorPanel(); // TODO: bạn tự triển khai sau
+                break;
+        }
+
+        EditorGUILayout.Space();
+
+        // =========================
+        // GRID VISUAL
+        // =========================
         DrawGridUI();
 
+        // =========================
+        // SAVE + DELETE
+        // =========================
         DrawButtons();
     }
 
+    // ================================================================
+    // MODE TOOLBAR
+    // ================================================================
+    private void DrawModeToolbar()
+    {
+        EditorGUILayout.BeginHorizontal();
+
+        if (GUILayout.Toggle(currentMode == EditorMode.Grid, "Design Grid", "Button"))
+            currentMode = EditorMode.Grid;
+
+        if (GUILayout.Toggle(currentMode == EditorMode.Pipe, "Design Pipe", "Button"))
+            currentMode = EditorMode.Pipe;
+
+        if (GUILayout.Toggle(currentMode == EditorMode.Holder, "Design Holder", "Button"))
+            currentMode = EditorMode.Holder;
+
+        EditorGUILayout.EndHorizontal();
+    }
 
     // ================================================================
-    // Create New Map
+    // CREATE NEW MAP
     // ================================================================
     private int newWidth = 5;
     private int newHeight = 5;
@@ -65,6 +126,7 @@ public class GridEditorWindow : EditorWindow
         currentMap.height = height;
 
         currentMap.nodes = new List<NodeData>();
+        currentMap.pipes = new List<PipeData>();
 
         for (int x = 0; x < width; x++)
             for (int y = 0; y < height; y++)
@@ -83,9 +145,8 @@ public class GridEditorWindow : EditorWindow
         }
     }
 
-
     // ================================================================
-    // REAL-TIME RESIZE GRID
+    // REAL-TIME RESIZE GRID (MODE: GRID)
     // ================================================================
     private void DrawMapSettingsRealtime()
     {
@@ -93,8 +154,14 @@ public class GridEditorWindow : EditorWindow
 
         int width = EditorGUILayout.IntField("Width", currentMap.width);
         int height = EditorGUILayout.IntField("Height", currentMap.height);
+        float time = EditorGUILayout.FloatField("Time", currentMap.time);
 
-        // ONLY resize when value changed
+        if (!Mathf.Approximately(time, currentMap.time))
+        {
+            currentMap.time = time;
+            EditorUtility.SetDirty(currentMap);
+        }
+
         if (width != currentMap.width || height != currentMap.height)
         {
             ResizeGrid(width, height);
@@ -112,14 +179,9 @@ public class GridEditorWindow : EditorWindow
                 NodeData oldNode = currentMap.nodes.Find(n => n.x == x && n.y == y);
 
                 if (oldNode != null)
-                {
                     newNodes.Add(oldNode);
-                }
                 else
-                {
-                    // New nodes default isSpawn = true
                     newNodes.Add(new NodeData(x, y, true));
-                }
             }
         }
 
@@ -131,9 +193,8 @@ public class GridEditorWindow : EditorWindow
         Repaint();
     }
 
-
     // ================================================================
-    // PAINT GRID GUI
+    // GRID VISUAL + CLICK LOGIC
     // ================================================================
     private void DrawGridUI()
     {
@@ -151,13 +212,17 @@ public class GridEditorWindow : EditorWindow
             for (int x = 0; x < w; x++)
             {
                 NodeData node = currentMap.nodes.Find(n => n.x == x && n.y == y);
+                PipeData pipe = currentMap.pipes.Find(p => p.x == x && p.y == y);
 
-                GUI.backgroundColor = node.isSpawn ? Color.gray : Color.black;
+                // Hightlight: ô có Pipe = cyan, còn lại theo isSpawn
+                if (pipe != null)
+                    GUI.backgroundColor = Color.cyan;
+                else
+                    GUI.backgroundColor = node.isSpawn ? Color.gray : Color.black;
 
                 if (GUILayout.Button($"{x},{y}", GUILayout.Width(cellSize), GUILayout.Height(cellSize)))
                 {
-                    node.isSpawn = !node.isSpawn;
-                    EditorUtility.SetDirty(currentMap);
+                    HandleCellClick(x, y, node);
                 }
             }
 
@@ -165,10 +230,121 @@ public class GridEditorWindow : EditorWindow
         }
 
         GUI.backgroundColor = Color.white;
-
         EditorGUILayout.EndScrollView();
     }
 
+    private void HandleCellClick(int x, int y, NodeData node)
+    {
+        switch (currentMode)
+        {
+            case EditorMode.Grid:
+                node.isSpawn = !node.isSpawn;
+                EditorUtility.SetDirty(currentMap);
+                break;
+
+            case EditorMode.Pipe:
+                OnClickPipeCell(x, y);
+                break;
+
+            case EditorMode.Holder:
+                // TODO: sau này bạn xử lý click cho Holder
+                break;
+        }
+    }
+
+    // ================================================================
+    // PIPE CLICK & EDITOR PANEL (MODE: PIPE)
+    // ================================================================
+    private void OnClickPipeCell(int x, int y)
+    {
+        PipeData pipe = currentMap.pipes.Find(p => p.x == x && p.y == y);
+
+        if (pipe == null)
+        {
+            pipe = new PipeData()
+            {
+                x = x,
+                y = y,
+                waterColors = new List<WaterColor>()
+            };
+            currentMap.pipes.Add(pipe);
+        }
+
+        selectedPipeData = pipe;
+        EditorUtility.SetDirty(currentMap);
+        Repaint();
+    }
+
+    private void DrawPipeEditorPanel()
+    {
+        EditorGUILayout.LabelField("Pipe Editor", EditorStyles.boldLabel);
+
+        if (selectedPipeData == null)
+        {
+            EditorGUILayout.HelpBox("Click một ô trong Grid (khi đang ở Design Pipe) để tạo / chọn Pipe.", MessageType.Info);
+            return;
+        }
+
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField($"Pipe at ({selectedPipeData.x},{selectedPipeData.y})", EditorStyles.boldLabel);
+
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Water List", EditorStyles.boldLabel);
+
+        for (int i = 0; i < selectedPipeData.waterColors.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+
+            selectedPipeData.waterColors[i].color =
+                (EnumColor)EditorGUILayout.EnumPopup(selectedPipeData.waterColors[i].color, GUILayout.Width(100));
+
+            selectedPipeData.waterColors[i].Value =
+                EditorGUILayout.FloatField(selectedPipeData.waterColors[i].Value, GUILayout.Width(60));
+
+            if (GUILayout.Button("X", GUILayout.Width(20)))
+            {
+                selectedPipeData.waterColors.RemoveAt(i);
+                break;
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        if (GUILayout.Button("Add Water"))
+        {
+            selectedPipeData.waterColors.Add(new WaterColor()
+            {
+                color = EnumColor.None,
+                Value = 1
+            });
+        }
+
+        EditorGUILayout.Space();
+
+        // Nút xoá pipe này
+        GUI.backgroundColor = Color.red;
+        if (GUILayout.Button("Delete This Pipe"))
+        {
+            currentMap.pipes.Remove(selectedPipeData);
+            selectedPipeData = null;
+            GUI.backgroundColor = Color.white;
+            EditorUtility.SetDirty(currentMap);
+            Repaint();
+            return;
+        }
+        GUI.backgroundColor = Color.white;
+
+        EditorUtility.SetDirty(currentMap);
+    }
+
+    // ================================================================
+    // HOLDER PANEL (MODE: HOLDER) – BẠN TỰ IMPLEMENT SAU
+    // ================================================================
+    private void DrawHolderEditorPanel()
+    {
+        EditorGUILayout.LabelField("Holder Editor", EditorStyles.boldLabel);
+        EditorGUILayout.HelpBox("Chưa implement. Bạn có thể dùng pattern giống PipeData/Pipe editor để làm HolderData.", MessageType.Info);
+    }
 
     // ================================================================
     // SAVE + DELETE
@@ -193,6 +369,7 @@ public class GridEditorWindow : EditorWindow
             {
                 AssetDatabase.DeleteAsset(path);
                 currentMap = null;
+                selectedPipeData = null;
             }
         }
         GUI.backgroundColor = Color.white;

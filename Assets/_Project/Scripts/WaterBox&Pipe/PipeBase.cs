@@ -28,5 +28,5 @@ public class PipeBase : MonoBehaviour
 public class WaterColor
 {
     public EnumColor color;
-    public int Value; 
+    public float Value; 
 }

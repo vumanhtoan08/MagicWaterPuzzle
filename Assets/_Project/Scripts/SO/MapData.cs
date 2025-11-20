@@ -6,6 +6,7 @@ public class MapData : ScriptableObject
 {
     public int width;
     public int height;
+    public float time; 
 
     public List<NodeData> nodes = new List<NodeData>();
     public List<PipeData> pipes = new List<PipeData>(); 
@@ -32,5 +33,7 @@ public class PipeData
     public int x;
     public int y;
 
-    public List<WaterColor> waterColors = new List<WaterColor>();
+    public PipeType type;
+
+    public List<WaterColor> waterColors = new();
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 6
   height: 6
+  time: 120
   nodes:
   - x: 0
     y: 0
@@ -116,7 +117,7 @@ MonoBehaviour:
     isSpawn: 1
   - x: 5
     y: 3
-    isSpawn: 1
+    isSpawn: 0
   - x: 5
     y: 4
     isSpawn: 1
@@ -124,24 +125,11 @@ MonoBehaviour:
     y: 5
     isSpawn: 1
   pipes:
-  - x: 4
-    y: 1
-    waterColors: []
-  - x: 4
+  - x: 5
     y: 3
-    waterColors: []
-  - x: 4
-    y: 2
-    waterColors: []
-  - x: 3
-    y: 2
-    waterColors: []
-  - x: 2
-    y: 2
-    waterColors: []
-  - x: 2
-    y: 1
-    waterColors: []
-  - x: 2
-    y: 0
-    waterColors: []
+    type: 0
+    waterColors:
+    - color: 1
+      Value: 1
+    - color: 2
+      Value: 2
