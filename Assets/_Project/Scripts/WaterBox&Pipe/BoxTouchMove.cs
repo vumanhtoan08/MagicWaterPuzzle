@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private Camera cam;
-    private Rigidbody2D rb;
+    private Rigidbody2D rb; 
 
     private Vector3 offset;
     private float zDepth;
@@ -28,8 +28,6 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("DRAGG");
-
         dragging = true;
         snapping = false;
         rb.bodyType = RigidbodyType2D.Dynamic;

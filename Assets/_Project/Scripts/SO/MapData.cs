@@ -9,7 +9,8 @@ public class MapData : ScriptableObject
     public float time; 
 
     public List<NodeData> nodes = new List<NodeData>();
-    public List<PipeData> pipes = new List<PipeData>(); 
+    public List<PipeData> pipes = new List<PipeData>();
+    public List<HolderData> holders = new List<HolderData>();
 }
 
 [System.Serializable]
@@ -52,4 +53,16 @@ public class WaterColor
 {
     public EnumColor color;
     public float Value;
+}
+
+[System.Serializable]
+public class HolderData
+{
+    public int x;
+    public int y;
+
+    public HolderShape shapeType;     // tên prefab
+    public float rotation;
+    public EnumColor color;
+    public HolderType type;     // basic, ice, stone...
 }
