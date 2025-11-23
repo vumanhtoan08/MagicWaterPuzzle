@@ -124,5 +124,37 @@ MonoBehaviour:
   - x: 5
     y: 5
     isSpawn: 1
-  pipes: []
+  pipes:
+  - x: 1
+    y: 5
+    type: 0
+    waterColors:
+    - color: 2
+      Value: 4
+  - x: 4
+    y: 5
+    type: 0
+    waterColors:
+    - color: 6
+      Value: 2
+  - x: 5
+    y: 4
+    type: 0
+    waterColors:
+    - color: 6
+      Value: 2
+  - x: 4
+    y: 0
+    type: 0
+    waterColors:
+    - color: 3
+      Value: 3
+    - color: 4
+      Value: 4
+  - x: 0
+    y: 1
+    type: 0
+    waterColors:
+    - color: 1
+      Value: 3
   holders: []

@@ -33,7 +33,9 @@ public class PipeBase : MonoBehaviour
 
     public void GenWater()
     {
-        headRenderer.material = SOMaterialColor.Instance.GetMaterial(pipeData.waterColors[0].color);
+        if (pipeData.waterColors.Count <= 0) return;
+        
+        headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
 
         float positionY = 0;
         foreach (var waterColor in pipeData.waterColors)
@@ -45,7 +47,7 @@ public class PipeBase : MonoBehaviour
             water.transform.localScale = new Vector3(0.8f, waterColor.Value * 3, 1f);
 
             WaterBase waterBase = water.GetComponent<WaterBase>();
-            waterBase.meshRenderer.material = SOMaterialColor.Instance.GetMaterial(waterColor.color);
+            waterBase.meshRenderer.material = SOMaterialColor.GetMaterial(waterColor.color);
 
             positionY += waterColor.Value;
         }

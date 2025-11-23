@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa05d6ee2628d24886ac8cfe35855dd, type: 3}
+  m_Name: SOBoxPrefabs
+  m_EditorClassIdentifier: 
+  boxPrefabs:
+  - shape: 0
+    prefab: {fileID: 1602505039612712141, guid: dad1b6d971679814698d00f59257dc3c, type: 3}
+  - shape: 1
+    prefab: {fileID: 5696838296844141946, guid: f98c4b0daddb1374fb7055b421ee8a27, type: 3}
+  - shape: 2
+    prefab: {fileID: 5627681184682124143, guid: e0fc20af33f2452478ed44f53b5d8d82, type: 3}
+  - shape: 3
+    prefab: {fileID: 8701350815069619513, guid: 5d566984aa7791f45a36bbc903e112c3, type: 3}
+  - shape: 4
+    prefab: {fileID: 7607716342302963196, guid: 152a9b27303724c48bf4bb759abaf4fb, type: 3}
+  - shape: 5
+    prefab: {fileID: 6647294739629112668, guid: 823fd82e5197ca24894edce85ad24edd, type: 3}
+  - shape: 6
+    prefab: {fileID: 2935551112087058615, guid: 5ee2b3b6128340747bf19566b3a73a98, type: 3}
+  - shape: 7
+    prefab: {fileID: 9089414703153698183, guid: 6031feac89427cb4baaebd823cd4157a, type: 3}
+  - shape: 8
+    prefab: {fileID: 5311717545289222108, guid: 9b3196900c8cf184f8fc1ab564b5ed60, type: 3}
+  - shape: 9
+    prefab: {fileID: 4983002751809445454, guid: e265a6566c309ed428610caf0568a86d, type: 3}

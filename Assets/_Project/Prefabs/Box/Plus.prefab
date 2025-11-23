@@ -5714,7 +5714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4808125422115108915
 Transform:
   m_ObjectHideFlags: 0
@@ -5724,7 +5724,7 @@ Transform:
   m_GameObject: {fileID: 890898082529339679}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.2, z: -0}
+  m_LocalPosition: {x: 0, y: 0.4, z: -0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29394,7 +29394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &649652954587863223
 Transform:
   m_ObjectHideFlags: 0
@@ -32003,7 +32003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8534702684121261494
 Transform:
   m_ObjectHideFlags: 0
@@ -49238,7 +49238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6005960111473669461
 Transform:
   m_ObjectHideFlags: 0
@@ -49248,7 +49248,7 @@ Transform:
   m_GameObject: {fileID: 4516205377381076122}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.2, z: -0}
+  m_LocalPosition: {x: 0, y: 0.51, z: -0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70682,7 +70682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8421594706809438266
 Transform:
   m_ObjectHideFlags: 0
@@ -73824,7 +73824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8682977872363100817
 Transform:
   m_ObjectHideFlags: 0
@@ -98372,6 +98372,7 @@ GameObject:
   - component: {fileID: 1145813103905330077}
   - component: {fileID: 2561777122776856355}
   - component: {fileID: 6844631841538960156}
+  - component: {fileID: 5383291647459839861}
   m_Layer: 0
   m_Name: Plus
   m_TagString: Untagged
@@ -98436,6 +98437,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.02
   snapSmoothTime: 0.06
+--- !u!114 &5383291647459839861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089414703153698183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d881700f6db777140a9c9b32376b657e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  half_01:
+    meshRenderers:
+    - {fileID: 5789175712572273151}
+    - {fileID: 6011756175724063581}
+    - {fileID: 6443651752720422619}
+    - {fileID: 2976148090324324318}
+    - {fileID: 3494953324698587343}
+    - {fileID: 4567022813941227785}
+    - {fileID: 3255734548173579928}
+    - {fileID: 5359021314250227295}
+    - {fileID: 3090836061063845529}
+    - {fileID: 8603664463874816442}
+    - {fileID: 6376185387372073073}
+    - {fileID: 1412101061728144332}
+  half_02:
+    meshRenderers: []
+  directionObj:
+  - {fileID: 3719635232495794826}
+  - {fileID: 8182790206788696854}
+  iceVisual: {fileID: 262453240148990490}
+  stone: {fileID: 944124489790156756}
+  stoneDirection:
+  - {fileID: 890898082529339679}
+  - {fileID: 4516205377381076122}
+  lockVisual: {fileID: 4693115358730917664}
+  keyVisual: {fileID: 1843378931777559084}
+  lidsVisual: {fileID: 0}
 --- !u!1 &9168789536562942811
 GameObject:
   m_ObjectHideFlags: 0

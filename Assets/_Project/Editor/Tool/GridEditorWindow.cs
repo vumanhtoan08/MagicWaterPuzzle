@@ -10,20 +10,6 @@ public enum EditorMode
     Holder
 }
 
-// 10 loại shape của Holder
-public enum HolderShape
-{
-    One,
-    L,
-    ReverseL,
-    ShortL,
-    ShortT,
-    Three,
-    ThreeSquare,
-    Plus,
-    Two,
-    TwoSquare
-}
 
 // Góc quay chỉ 4 trạng thái
 public enum HolderRotation
@@ -53,7 +39,12 @@ public class GridEditorWindow : EditorWindow
     private HolderShape? selectedShape = null;
     private HolderRotation selectedRotation = HolderRotation.Deg0;
     private Vector2Int? holderOrigin = null;
+    private HolderDirection selectedDirection = HolderDirection.None;
     private EnumColor selectedEnumColor = EnumColor.red;
+    private HolderType selectedHolderType = HolderType.Basic;
+
+    private int selectedIceBreak = 0;
+    private EnumColor selectedEnumKeyColor = EnumColor.None;
 
     // Scroll tổng cho 3 grid (dọc)
     private Vector2 mainScroll;
@@ -109,9 +100,9 @@ public class GridEditorWindow : EditorWindow
             { HolderShape.L, new[]
                 {
                     new Vector2Int(0, 0),
-                    new Vector2Int(-1,0),
                     new Vector2Int(0, -1),
                     new Vector2Int(0, -2),
+                    new Vector2Int(-1, 0)
                 }
             },
 
@@ -119,20 +110,20 @@ public class GridEditorWindow : EditorWindow
             { HolderShape.ReverseL, new[]
                 {
                     new Vector2Int(0, 0),
-                    new Vector2Int(1,0),
                     new Vector2Int(0, -1),
                     new Vector2Int(0, -2),
+                    new Vector2Int(1, 0)
                 }
             },
 
-            // 3x3
+            // 2x2
             { HolderShape.ThreeSquare, new[]
                 {
                     new Vector2Int(0, 0),
-                    new Vector2Int(1, 0),
                     new Vector2Int(-1, 0),
-                    new Vector2Int(0, 1),
+                    new Vector2Int(1, 0),
                     new Vector2Int(-1, 1),
+                    new Vector2Int(0, 1),
                     new Vector2Int(1, 1),
                     new Vector2Int(-1, -1),
                     new Vector2Int(0, -1),
@@ -454,11 +445,39 @@ public class GridEditorWindow : EditorWindow
 
     private void DrawCellHolder(int x, int y)
     {
-        HolderData holder = currentMap.holders.Find(h => h.x == x && h.y == y);
+        // Tính xem cell này có nằm trong shape nào không
+        EnumColor cellEnumColor = EnumColor.None;
+        bool isOrigin = false;
 
-        if (holder != null)
+        foreach (var holder in currentMap.holders)
         {
-            GUI.backgroundColor = ConvertEnumColor(holder.color); // màu theo data
+            int step = RotationToStep(holder.rotation);
+            List<Vector2Int> cells = GetShapeCells(holder.shapeType, step);
+
+            for (int i = 0; i < cells.Count; i++)
+            {
+                int hx = holder.x + cells[i].x;
+                int hy = holder.y + cells[i].y;
+
+                if (hx == x && hy == y)
+                {
+                    cellEnumColor = holder.color;
+                    if (holder.x == x && holder.y == y)
+                        isOrigin = true;
+                    break;
+                }
+            }
+        }
+
+        if (cellEnumColor != EnumColor.None)
+        {
+            Color c = ConvertEnumColor(cellEnumColor);
+            if (!isOrigin)
+            {
+                // non-origin cell → màu nhạt hơn
+                c *= 0.7f;
+            }
+            GUI.backgroundColor = c;
         }
         else
         {
@@ -469,8 +488,16 @@ public class GridEditorWindow : EditorWindow
         {
             if (currentMode == EditorMode.Holder)
             {
-                // chọn ô gốc
                 holderOrigin = new Vector2Int(x, y);
+
+                // Nếu click vào origin của holder đã tồn tại → load lại data vào panel
+                HolderData existing = currentMap.holders.Find(h => h.x == x && h.y == y);
+                if (existing != null)
+                {
+                    selectedShape = existing.shapeType;
+                    selectedRotation = StepToRotation(RotationToStep(existing.rotation));
+                    selectedEnumColor = existing.color;
+                }
             }
         }
 
@@ -630,8 +657,31 @@ public class GridEditorWindow : EditorWindow
         // Rotation dropdown
         selectedRotation = (HolderRotation)EditorGUILayout.EnumPopup("Rotation", selectedRotation);
 
-        // Color picker
+        // Color enum picker
         selectedEnumColor = (EnumColor)EditorGUILayout.EnumPopup("Holder Color", selectedEnumColor);
+
+      
+
+        // HolderType
+        selectedHolderType = (HolderType)EditorGUILayout.EnumPopup("Holder Type", selectedHolderType);
+
+        // HolderDirection
+        if (selectedHolderType == HolderType.Direction || selectedHolderType == HolderType.Stone)
+        {
+            selectedDirection = (HolderDirection)EditorGUILayout.EnumPopup("Holder Direction", selectedDirection);
+        }
+
+        // HolderType
+        if (selectedHolderType == HolderType.Ice)
+        {
+            selectedIceBreak = EditorGUILayout.IntField("Ice Break", selectedIceBreak);
+        }
+
+        // Holder Key Color
+        if (selectedHolderType == HolderType.Key)
+        {
+            selectedEnumKeyColor = (EnumColor)EditorGUILayout.EnumPopup("Key Color", selectedEnumKeyColor);
+        }
 
         // Preview
         EditorGUILayout.Space();
@@ -671,31 +721,28 @@ public class GridEditorWindow : EditorWindow
         GUI.backgroundColor = Color.white;
     }
 
+    /// <summary>
+    /// Chỉ lưu 1 HolderData tại ô origin, không lưu các cell mở rộng.
+    /// </summary>
     private void ApplyHolderShape(int originX, int originY, HolderShape shape, int rotateStep)
     {
-        List<Vector2Int> cells = GetShapeCells(shape, rotateStep);
+        // Xóa holder cũ chỉ tại ô origin
+        currentMap.holders.RemoveAll(h => h.x == originX && h.y == originY);
 
-        // Xóa holder cũ ở các cell sẽ chiếm rồi add mới
-        foreach (var c in cells)
+        // Thêm duy nhất 1 holder data → origin
+        currentMap.holders.Add(new HolderData()
         {
-            int tx = originX + c.x;
-            int ty = originY + c.y;
+            x = originX,
+            y = originY,
+            shapeType = shape,
+            rotation = rotateStep * 90,
+            color = selectedEnumColor,
+            type = selectedHolderType,
 
-            if (tx < 0 || ty < 0 || tx >= currentMap.width || ty >= currentMap.height)
-                continue;
-
-            currentMap.holders.RemoveAll(h => h.x == tx && h.y == ty);
-
-            currentMap.holders.Add(new HolderData()
-            {
-                x = tx,
-                y = ty,
-                shapeType = shape,
-                rotation = rotateStep * 90,
-                color = selectedEnumColor,
-                type = HolderType.Basic
-            });
-        }
+            direction = selectedDirection,
+            iceBreak = selectedIceBreak,
+            keyColor = selectedEnumKeyColor,
+        });
 
         EditorUtility.SetDirty(currentMap);
         Repaint();
@@ -705,7 +752,7 @@ public class GridEditorWindow : EditorWindow
     {
         var baseOffsets = shapeOffsets[shape];
         List<Vector2Int> result = new List<Vector2Int>();
-
+         
         foreach (var o in baseOffsets)
         {
             Vector2 v = new Vector2(o.x, o.y);
@@ -731,7 +778,8 @@ public class GridEditorWindow : EditorWindow
         GUILayout.FlexibleSpace();
 
         const int previewSize = 150;
-        Rect rect = GUILayoutUtility.GetRect(previewSize, previewSize, GUILayout.Width(previewSize), GUILayout.Height(previewSize));
+        Rect rect = GUILayoutUtility.GetRect(previewSize, previewSize,
+            GUILayout.Width(previewSize), GUILayout.Height(previewSize));
 
         // ----------------------------
         // Nền preview
@@ -745,17 +793,15 @@ public class GridEditorWindow : EditorWindow
         Handles.color = new Color(1, 1, 1, 0.08f);
         for (int i = 0; i <= 5; i++)
         {
-            // vertical lines
+            // vertical
             Handles.DrawLine(
                 new Vector2(rect.x + i * cell, rect.y),
-                new Vector2(rect.x + i * cell, rect.y + rect.height)
-            );
+                new Vector2(rect.x + i * cell, rect.y + rect.height));
 
-            // horizontal lines
+            // horizontal
             Handles.DrawLine(
                 new Vector2(rect.x, rect.y + i * cell),
-                new Vector2(rect.x + rect.width, rect.y + i * cell)
-            );
+                new Vector2(rect.x + rect.width, rect.y + i * cell));
         }
 
         // ----------------------------
@@ -777,8 +823,7 @@ public class GridEditorWindow : EditorWindow
                 rect.x + pos.x * cell,
                 rect.y + (4 - pos.y) * cell,   // invert Y
                 cell,
-                cell
-            );
+                cell);
 
             EditorGUI.DrawRect(r, color);
         }
@@ -805,6 +850,21 @@ public class GridEditorWindow : EditorWindow
             EnumColor.darkgreen => new Color(0f, 0.3f, 0f),
             _ => Color.white,
         };
+    }
+
+    private int RotationToStep(float rot)
+    {
+        int step = Mathf.RoundToInt(rot / 90f);
+        step %= 4;
+        if (step < 0) step += 4;
+        return step;
+    }
+
+    private HolderRotation StepToRotation(int step)
+    {
+        step %= 4;
+        if (step < 0) step += 4;
+        return (HolderRotation)step;
     }
 
     // =====================================================================

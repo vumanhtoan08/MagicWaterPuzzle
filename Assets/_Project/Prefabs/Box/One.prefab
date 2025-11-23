@@ -13304,6 +13304,7 @@ GameObject:
   - component: {fileID: 4425952781000516005}
   - component: {fileID: 4007199751950942515}
   - component: {fileID: 2523549332661158515}
+  - component: {fileID: 5385176017856647014}
   m_Layer: 0
   m_Name: One
   m_TagString: Untagged
@@ -13368,6 +13369,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.05
   snapSmoothTime: 0.06
+--- !u!114 &5385176017856647014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602505039612712141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d881700f6db777140a9c9b32376b657e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  half_01:
+    meshRenderers:
+    - {fileID: 5192498827967081251}
+    - {fileID: 7662977503640724835}
+  half_02:
+    meshRenderers:
+    - {fileID: 3561871395878551734}
+    - {fileID: 4663064914366132226}
+  directionObj:
+  - {fileID: 7862550657184884859}
+  - {fileID: 7218190270311232593}
+  iceVisual: {fileID: 35853920702471939}
+  stone: {fileID: 1094386755741895105}
+  stoneDirection:
+  - {fileID: 4707958757338426814}
+  - {fileID: 7129986938375129260}
+  lockVisual: {fileID: 2623001379085124176}
+  keyVisual: {fileID: 7973717953970956318}
+  lidsVisual: {fileID: 6200510455034811358}
 --- !u!1 &1609060184110693046
 GameObject:
   m_ObjectHideFlags: 0

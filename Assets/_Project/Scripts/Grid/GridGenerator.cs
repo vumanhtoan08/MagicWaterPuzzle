@@ -17,6 +17,7 @@ public class GridGenerator : MonoBehaviour
         GenGrid();
         GenBorder();
         GenPipe();
+        GenBox();
     }
 
     #region Gen Node and Boder
@@ -294,6 +295,28 @@ public class GridGenerator : MonoBehaviour
             pipeBase.GetPipeData(pipe);
             pipeBase.GenWater();
         }
+    }
+
+    #endregion
+
+    #region Gen Box
+
+    [Header("Holder REF")]
+    [SerializeField] private Transform boxHolder; 
+
+    private void GenBox()
+    {
+        foreach (var holder in mapData.holders)
+        {
+            NodeData node = GetNode(holder.x, holder.y);
+            GameObject holderObj;
+
+            holderObj = Instantiate(SOBoxPrefabs.GetBoxPrefabs(holder.shapeType),
+                new Vector3(holder.x * spacing, holder.y * spacing), Quaternion.Euler(0,0,holder.rotation) ,boxHolder);
+
+            BoxVisual boxVisual = holderObj.GetComponent<BoxVisual>();
+            boxVisual.OnUpdateVisualOfHolderType(holder.type, holder.color);
+        } 
     }
 
     #endregion

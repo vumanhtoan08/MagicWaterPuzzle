@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MapData", menuName = "Custom/Grid Map Data")]
@@ -61,8 +61,12 @@ public class HolderData
     public int x;
     public int y;
 
-    public HolderShape shapeType;     // t�n prefab
+    public HolderShape shapeType;            // tên prefab
     public float rotation;
     public EnumColor color;
-    public HolderType type;     // basic, ice, stone...
+    public HolderType type;                  // basic, ice, stone...
+    
+    public HolderDirection direction;
+    public int iceBreak;                     // số lượt holder cần để phá băng
+    public EnumColor keyColor;               // nếu None thì là không có khóa 
 }
