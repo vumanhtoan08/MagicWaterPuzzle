@@ -34,16 +34,18 @@ public class PipeBase : MonoBehaviour
     public void GenWater()
     {
         if (pipeData.waterColors.Count <= 0) return;
-        
+
         headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
 
         float positionY = 0;
         foreach (var waterColor in pipeData.waterColors)
         {
             GameObject water = Instantiate(waterPrefab, waterHolder);
-            water.transform.position = new Vector3(waterHolder.position.x,
-                                                    waterHolder.position.y,
-                                                    waterHolder.position.z + positionY * 3);
+            water.transform.localPosition = new Vector3(
+                                                            0,
+                                                            0,
+                                                            positionY * -3
+                                                        );
             water.transform.localScale = new Vector3(0.8f, waterColor.Value * 3, 1f);
 
             WaterBase waterBase = water.GetComponent<WaterBase>();

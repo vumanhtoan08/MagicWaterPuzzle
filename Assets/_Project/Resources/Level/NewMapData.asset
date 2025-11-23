@@ -130,7 +130,9 @@ MonoBehaviour:
     type: 0
     waterColors:
     - color: 2
-      Value: 4
+      Value: 1
+    - color: 1
+      Value: 2
   - x: 4
     y: 5
     type: 0
@@ -143,6 +145,8 @@ MonoBehaviour:
     waterColors:
     - color: 6
       Value: 2
+    - color: 1
+      Value: 1
   - x: 4
     y: 0
     type: 0
