@@ -23,7 +23,6 @@ public class BoxVisual : MonoBehaviour
         switch (type)
         {
             case HolderType.Basic:
-                Debug.Log("Thay màu");
                 if (half_01.meshRenderers.Count <= 0) return;
                 foreach (var mesh in half_01.meshRenderers)
                 {
