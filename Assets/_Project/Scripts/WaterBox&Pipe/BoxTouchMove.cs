@@ -19,8 +19,6 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     [SerializeField] private float smoothTime = 0.02f;   // mượt khi kéo
     [SerializeField] private float snapSmoothTime = 0.06f;  // mượt khi snap
 
-    bool hasTrigged = false;
-
     private void Awake()
     {
         cam = Camera.main;
@@ -102,19 +100,5 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         snapTargetPos = new Vector2(gx, gy);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (hasTrigged) return;
-
-        if (collision.CompareTag("Pipe"))
-        {
-            hasTrigged = true;
-            Debug.Log("Va cham voi Pipe" + collision.name);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        hasTrigged = false;
-    }
+    
 }

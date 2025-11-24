@@ -8303,7 +8303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9168512674526130667
 Transform:
   m_ObjectHideFlags: 0
@@ -19357,7 +19357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2768648417679711079
 Transform:
   m_ObjectHideFlags: 0
@@ -30357,7 +30357,7 @@ Transform:
   m_GameObject: {fileID: 3554316397882874028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710564, z: -0, w: 0.70710796}
-  m_LocalPosition: {x: -0.98, y: 0, z: -1.0000067}
+  m_LocalPosition: {x: -1, y: 0, z: -1.0000067}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40914,6 +40914,7 @@ GameObject:
   - component: {fileID: 3248714801746551910}
   - component: {fileID: 3028534236164534263}
   - component: {fileID: 838756911657472753}
+  - component: {fileID: 5056234112768600588}
   m_Layer: 6
   m_Name: TwoSquare
   m_TagString: Untagged
@@ -40978,6 +40979,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.02
   snapSmoothTime: 0.06
+--- !u!114 &5056234112768600588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4983002751809445454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d881700f6db777140a9c9b32376b657e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  half_01:
+    meshRenderers:
+    - {fileID: 1469679232688001990}
+    - {fileID: 8993748770890393576}
+    - {fileID: 6651619023572912519}
+    - {fileID: 2027255463313266514}
+    - {fileID: 4222148576634926876}
+    - {fileID: 2123419216359416864}
+  half_02:
+    meshRenderers:
+    - {fileID: 8311448803113929109}
+    - {fileID: 6357094710956179273}
+    - {fileID: 2121750031439891044}
+    - {fileID: 4987508224717458817}
+    - {fileID: 953288373223701765}
+    - {fileID: 4026436646992110608}
+  directionObj:
+  - {fileID: 2183395607098383761}
+  - {fileID: 5127762529331532702}
+  iceVisual: {fileID: 8391266029032285743}
+  stone: {fileID: 2231257869876732396}
+  stoneDirection:
+  - {fileID: 2579323236233274390}
+  - {fileID: 1183625209170772370}
 --- !u!1 &5119758833145624305
 GameObject:
   m_ObjectHideFlags: 0

@@ -46071,7 +46071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7476600057634069095
 Transform:
   m_ObjectHideFlags: 0
@@ -56528,6 +56528,7 @@ GameObject:
   - component: {fileID: 5129349775141601488}
   - component: {fileID: 1111825222055916298}
   - component: {fileID: 3099929487512969665}
+  - component: {fileID: 6607790502053337558}
   m_Layer: 6
   m_Name: Three
   m_TagString: Untagged
@@ -56592,6 +56593,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.02
   snapSmoothTime: 0.06
+--- !u!114 &6607790502053337558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6647294739629112668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d881700f6db777140a9c9b32376b657e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  half_01:
+    meshRenderers:
+    - {fileID: 1795193620801058601}
+    - {fileID: 2434779128882733786}
+    - {fileID: 8683394485811464450}
+    - {fileID: 3714804760813832650}
+  half_02:
+    meshRenderers:
+    - {fileID: 3419733162710090310}
+    - {fileID: 4324378855623205121}
+    - {fileID: 7778415685944670264}
+    - {fileID: 3818189680121698978}
+  directionObj:
+  - {fileID: 2984264290463496820}
+  - {fileID: 6470482213448307751}
+  iceVisual: {fileID: 4224126799090645925}
+  stone: {fileID: 2927933798361666067}
+  stoneDirection:
+  - {fileID: 8659157426941809659}
+  - {fileID: 5612707942539742727}
 --- !u!1 &6668464025345481940
 GameObject:
   m_ObjectHideFlags: 0
@@ -63595,7 +63628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2607453017759861200
 Transform:
   m_ObjectHideFlags: 0

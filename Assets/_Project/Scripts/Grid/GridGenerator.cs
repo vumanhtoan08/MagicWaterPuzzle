@@ -315,7 +315,7 @@ public class GridGenerator : MonoBehaviour
                 new Vector3(holder.x * spacing, holder.y * spacing), Quaternion.Euler(0,0,holder.rotation) ,boxHolder);
 
             BoxVisual boxVisual = holderObj.GetComponent<BoxVisual>();
-            boxVisual.OnUpdateVisualOfHolderType(holder.type, holder.color);
+            boxVisual.OnUpdateVisualOfHolderType(holder);
         } 
     }
 

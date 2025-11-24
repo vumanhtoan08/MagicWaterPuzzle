@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.LightingExplorerTableColumn;
 
 public class BoxVisual : MonoBehaviour
 {
@@ -14,30 +15,65 @@ public class BoxVisual : MonoBehaviour
     [SerializeField] private GameObject stone;  
     [SerializeField] private List<GameObject> stoneDirection;  
 
-    [SerializeField] private GameObject lockVisual;   
-    [SerializeField] private GameObject keyVisual;
-    [SerializeField] private GameObject lidsVisual;
+    //[SerializeField] private GameObject lockVisual;   
+    //[SerializeField] private GameObject keyVisual;
+    //[SerializeField] private GameObject lidsVisual;
 
-    public void OnUpdateVisualOfHolderType(HolderType type, EnumColor color)
+    public void OnUpdateVisualOfHolderType(HolderData data)
     {
-        switch (type)
+        switch (data.type)
         {
             case HolderType.Basic:
                 if (half_01.meshRenderers.Count <= 0) return;
+
+                int indexHalf01 = 0;
+
                 foreach (var mesh in half_01.meshRenderers)
                 {
-                    Material[] materials = new Material[2];
-                    materials[0] = SOMaterialColor.GetMaterialTrans(color);
-                    materials[1] = SOMaterialColor.GetMaterial(color);
+                    Material[] materials;
+
+                    if ((data.shapeType == HolderShape.ThreeSquare || data.shapeType == HolderShape.TwoSquare) && indexHalf01 == 0)
+                    {
+                        materials = new Material[1];
+                        materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
+                        mesh.materials = materials;
+                        Debug.Log("1 Material");
+
+                        indexHalf01++; 
+                        continue;
+                    }
+
+                    materials = new Material[2];
+                    materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
+                    materials[1] = SOMaterialColor.GetMaterial(data.color);
                     mesh.materials = materials;
+
+                    indexHalf01++;
                 }
                 if (half_02.meshRenderers.Count <= 0) return;
+
+                int indexHalf02 = 0;
+
                 foreach (var mesh in half_02.meshRenderers)
                 {
-                    Material[] materials = new Material[2];
-                    materials[0] = SOMaterialColor.GetMaterialTrans(color);
-                    materials[1] = SOMaterialColor.GetMaterial(color);
+                    Material[] materials;
+
+                    if (data.shapeType == HolderShape.TwoSquare && indexHalf02 == 0)
+                    {
+                        materials = new Material[1];
+                        materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
+                        mesh.materials = materials;
+
+                        indexHalf02++;
+                        continue;
+                    }
+
+                    materials = new Material[2];
+                    materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
+                    materials[1] = SOMaterialColor.GetMaterial(data.color);
                     mesh.materials = materials;
+
+                    indexHalf02++;
                 }
                 break;
             case HolderType.Ice:
