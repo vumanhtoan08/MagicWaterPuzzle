@@ -60,11 +60,13 @@ public class HolderData
 {
     public int x;
     public int y;
+    public float rotation;
+
+    public HolderType type;                  // basic, ice, stone...
+    public List<WaterColor> holderValue;             // giá trị fill tối đa của holder
 
     public HolderShape shapeType;            // tên prefab
-    public float rotation;
     public EnumColor color;
-    public HolderType type;                  // basic, ice, stone...
     
     public HolderDirection direction;
     public int iceBreak;                     // số lượt holder cần để phá băng

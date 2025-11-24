@@ -13305,6 +13305,7 @@ GameObject:
   - component: {fileID: 4007199751950942515}
   - component: {fileID: 2523549332661158515}
   - component: {fileID: 5385176017856647014}
+  - component: {fileID: 6457555612769789071}
   m_Layer: 6
   m_Name: One
   m_TagString: Untagged
@@ -13367,7 +13368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6655b42993342c747af2b9943b4be7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 0.02
+  smoothTime: 0.05
   snapSmoothTime: 0.06
 --- !u!114 &5385176017856647014
 MonoBehaviour:
@@ -13397,9 +13398,32 @@ MonoBehaviour:
   stoneDirection:
   - {fileID: 4707958757338426814}
   - {fileID: 7129986938375129260}
-  lockVisual: {fileID: 2623001379085124176}
-  keyVisual: {fileID: 7973717953970956318}
-  lidsVisual: {fileID: 6200510455034811358}
+--- !u!114 &6457555612769789071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602505039612712141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93be48638004614ba223eb5236cf2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxTouchMove: {fileID: 0}
+  boxData:
+    x: 0
+    y: 0
+    rotation: 0
+    type: 0
+    holderValue: []
+    shapeType: 0
+    color: 0
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+  currentColor: []
+  childColliders: []
 --- !u!1 &1609060184110693046
 GameObject:
   m_ObjectHideFlags: 0
@@ -31969,6 +31993,7 @@ GameObject:
   - component: {fileID: 2585204094980291344}
   - component: {fileID: 8209931116553658346}
   - component: {fileID: 1742970577986345324}
+  - component: {fileID: 4559364583303641415}
   m_Layer: 6
   m_Name: Block
   m_TagString: Untagged
@@ -32083,6 +32108,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &4559364583303641415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7759261020196613353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451642db6e16eca46960ea2b177db2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7768208672286515815
 GameObject:
   m_ObjectHideFlags: 0

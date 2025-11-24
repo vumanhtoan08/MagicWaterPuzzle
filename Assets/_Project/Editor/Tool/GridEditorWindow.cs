@@ -42,6 +42,9 @@ public class GridEditorWindow : EditorWindow
     private HolderDirection selectedDirection = HolderDirection.None;
     private EnumColor selectedEnumColor = EnumColor.red;
     private HolderType selectedHolderType = HolderType.Basic;
+    // Holder Water Values (List<WaterColor>)
+    private List<WaterColor> holderWaterValues = new();
+
 
     private int selectedIceBreak = 0;
     private EnumColor selectedEnumKeyColor = EnumColor.None;
@@ -445,19 +448,18 @@ public class GridEditorWindow : EditorWindow
 
     private void DrawCellHolder(int x, int y)
     {
-        // Tính xem cell này có nằm trong shape nào không
         EnumColor cellEnumColor = EnumColor.None;
         bool isOrigin = false;
 
         foreach (var holder in currentMap.holders)
         {
             int step = RotationToStep(holder.rotation);
-            List<Vector2Int> cells = GetShapeCells(holder.shapeType, step);
+            var cells = GetShapeCells(holder.shapeType, step);
 
-            for (int i = 0; i < cells.Count; i++)
+            foreach (var c in cells)
             {
-                int hx = holder.x + cells[i].x;
-                int hy = holder.y + cells[i].y;
+                int hx = holder.x + c.x;
+                int hy = holder.y + c.y;
 
                 if (hx == x && hy == y)
                 {
@@ -469,14 +471,11 @@ public class GridEditorWindow : EditorWindow
             }
         }
 
+        // Màu cell
         if (cellEnumColor != EnumColor.None)
         {
             Color c = ConvertEnumColor(cellEnumColor);
-            if (!isOrigin)
-            {
-                // non-origin cell → màu nhạt hơn
-                c *= 0.7f;
-            }
+            if (!isOrigin) c *= 0.7f;
             GUI.backgroundColor = c;
         }
         else
@@ -484,20 +483,40 @@ public class GridEditorWindow : EditorWindow
             GUI.backgroundColor = Color.gray;
         }
 
+        // CLICK CELL
         if (GUILayout.Button($"{x},{y}", GUILayout.Width(cellSize), GUILayout.Height(cellSize)))
         {
             if (currentMode == EditorMode.Holder)
             {
                 holderOrigin = new Vector2Int(x, y);
 
-                // Nếu click vào origin của holder đã tồn tại → load lại data vào panel
-                HolderData existing = currentMap.holders.Find(h => h.x == x && h.y == y);
+                // Load lại data nếu Holder tồn tại
+                var existing = currentMap.holders.Find(h => h.x == x && h.y == y);
                 if (existing != null)
                 {
                     selectedShape = existing.shapeType;
                     selectedRotation = StepToRotation(RotationToStep(existing.rotation));
                     selectedEnumColor = existing.color;
+                    selectedHolderType = existing.type;
+                    selectedDirection = existing.direction;
+                    selectedIceBreak = existing.iceBreak;
+                    selectedEnumKeyColor = existing.keyColor;
+
+                    // ⭐ Load List<WaterColor>
+                    holderWaterValues = new List<WaterColor>();
+                    if (existing.holderValue != null)
+                    {
+                        foreach (var w in existing.holderValue)
+                            holderWaterValues.Add(new WaterColor() { color = w.color, Value = w.Value });
+                    }
                 }
+                else
+                {
+                    // Không có holder → reset data
+                    holderWaterValues = new List<WaterColor>();
+                }
+
+                Repaint();
             }
         }
 
@@ -683,6 +702,44 @@ public class GridEditorWindow : EditorWindow
             selectedEnumKeyColor = (EnumColor)EditorGUILayout.EnumPopup("Key Color", selectedEnumKeyColor);
         }
 
+        // ----------------------------
+        // Water Value List (List<WaterColor>)
+        // ----------------------------
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Holder Water Values", EditorStyles.boldLabel);
+
+        if (holderWaterValues == null)
+            holderWaterValues = new List<WaterColor>();
+
+        for (int i = 0; i < holderWaterValues.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+
+            holderWaterValues[i].color =
+                (EnumColor)EditorGUILayout.EnumPopup(holderWaterValues[i].color, GUILayout.Width(100));
+
+            holderWaterValues[i].Value =
+                EditorGUILayout.FloatField(holderWaterValues[i].Value, GUILayout.Width(60));
+
+            if (GUILayout.Button("X", GUILayout.Width(22)))
+            {
+                holderWaterValues.RemoveAt(i);
+                i--;
+                continue;
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        if (GUILayout.Button("Add Water Value"))
+        {
+            holderWaterValues.Add(new WaterColor() { color = EnumColor.None, Value = 1 });
+        }
+
+        EditorGUILayout.Space();
+
+
+
         // Preview
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Preview:", EditorStyles.boldLabel);
@@ -726,11 +783,9 @@ public class GridEditorWindow : EditorWindow
     /// </summary>
     private void ApplyHolderShape(int originX, int originY, HolderShape shape, int rotateStep)
     {
-        // Xóa holder cũ chỉ tại ô origin
         currentMap.holders.RemoveAll(h => h.x == originX && h.y == originY);
 
-        // Thêm duy nhất 1 holder data → origin
-        currentMap.holders.Add(new HolderData()
+        HolderData newHolder = new HolderData()
         {
             x = originX,
             y = originY,
@@ -742,7 +797,21 @@ public class GridEditorWindow : EditorWindow
             direction = selectedDirection,
             iceBreak = selectedIceBreak,
             keyColor = selectedEnumKeyColor,
-        });
+
+            holderValue = new List<WaterColor>()
+        };
+
+        // ⭐ SAVE LIST<WaterColor>
+        foreach (var w in holderWaterValues)
+        {
+            newHolder.holderValue.Add(new WaterColor()
+            {
+                color = w.color,
+                Value = w.Value
+            });
+        }
+
+        currentMap.holders.Add(newHolder);
 
         EditorUtility.SetDirty(currentMap);
         Repaint();

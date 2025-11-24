@@ -39,7 +39,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         offset = transform.position - wp;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData = default)
     {
         dragging = false;
 
@@ -91,14 +91,21 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
     }
 
-    private void SnapBoxToGrid()
+    public void SnapBoxToGrid(Vector3? pos = null)
     {
-        // grid size = 2
-        float gx = Mathf.Round(transform.position.x / 2f) * 2f;
-        float gy = Mathf.Round(transform.position.y / 2f) * 2f;
+        Vector3 p = pos ?? transform.position;
+
+        float gx = Mathf.Round(p.x / 2f) * 2f;
+        float gy = Mathf.Round(p.y / 2f) * 2f;
 
         snapTargetPos = new Vector2(gx, gy);
     }
 
-    
+    public Vector3 GetSnappedPosition(Vector3 pos)
+    {
+        float gx = Mathf.Round(pos.x / 2f) * 2f;
+        float gy = Mathf.Round(pos.y / 2f) * 2f;
+
+        return new Vector3(gx, gy, transform.position.z);
+    }
 }

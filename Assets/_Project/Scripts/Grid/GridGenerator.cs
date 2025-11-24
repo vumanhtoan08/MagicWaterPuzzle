@@ -316,6 +316,9 @@ public class GridGenerator : MonoBehaviour
 
             BoxVisual boxVisual = holderObj.GetComponent<BoxVisual>();
             boxVisual.OnUpdateVisualOfHolderType(holder);
+
+            BoxHandleCollider boxHandleCollider = holderObj.GetComponent<BoxHandleCollider>();
+            boxHandleCollider.GetHolderData(holder);
         } 
     }
 

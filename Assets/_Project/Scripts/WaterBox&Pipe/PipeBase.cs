@@ -12,6 +12,8 @@ public class PipeBase : MonoBehaviour
     [SerializeField] private GameObject waterPrefab;
     [SerializeField] private Renderer headRenderer;
 
+    public bool IsFilling { get; set; }
+
     /// <summary>
     /// Lấy Data cho Pipe ở trong MapData khi Init
     /// </summary>
@@ -25,10 +27,35 @@ public class PipeBase : MonoBehaviour
         pipeData.waterColors.Remove(waterColor);
     }
 
-    public virtual void FillWater()
+    public virtual void FillWater(BoxTouchMove boxTouchMove, HolderData data, List<WaterColor> waterColors)
     {
         // Coroutine
+        StartCoroutine(FillingWater(boxTouchMove, data, waterColors));
+
         // Lấy water trong list ở index = 0. lấy value của nó trừ đi value trong box. nếu value trong water = 0 thì remove ở index = 0 đi. sửa lại currentColor = color ở vị trí 0
+    }
+
+    private IEnumerator FillingWater(BoxTouchMove boxTouchMove, HolderData data, List<WaterColor> waterColors)
+    {
+        IsFilling = true;                   // ngăn không bị lặp lại 
+
+        yield return new WaitForSeconds(1f); // chờ 1 giây
+
+        IsFilling = false;
+    }
+
+
+    // điều kiện để box được fill là có cùng màu và trong watercolor còn giá trị 
+    public bool CheckBoxCondition(HolderData data)
+    {
+        if (pipeData.waterColors.Count <= 0) return false;
+
+        if (data.color == pipeData.waterColors[0].color && pipeData.waterColors[0].Value > 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void GenWater()
