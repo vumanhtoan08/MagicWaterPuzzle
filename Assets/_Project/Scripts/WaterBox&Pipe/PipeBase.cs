@@ -16,7 +16,7 @@ public class PipeBase : MonoBehaviour
     private float durationTime = 0.5f;
 
     public bool IsFilling { get; set; }
-
+    public PipeData PipeData => pipeData;
     /// <summary>
     /// Lấy Data cho Pipe ở trong MapData khi Init
     /// </summary>
@@ -43,10 +43,10 @@ public class PipeBase : MonoBehaviour
         StartCoroutine(FillingWater(boxTouchMove, data));
     }
 
+    // sửa lại để có thể thực hiện với nhiều màu nước
     private IEnumerator FillingWater(BoxTouchMove boxTouchMove, HolderData data)
     {
         float subValue = Mathf.Min(pipeData.waterColors[0].Value, data.holderValue[0].Value);
-        Debug.Log($"Sub Value: {subValue}");
         pipeData.waterColors[0].Value -= subValue;
 
         Transform firstWater = waters[0];
@@ -93,9 +93,9 @@ public class PipeBase : MonoBehaviour
     {
         if (pipeData.waterColors.Count <= 0) return false;
 
-        if (data.color == pipeData.waterColors[0].color && pipeData.waterColors[0].Value > 0)
+        foreach (var holder in data.holderValue)
         {
-            return true;
+            if (pipeData.waterColors[0].color == holder.color) return true; 
         }
 
         return false;

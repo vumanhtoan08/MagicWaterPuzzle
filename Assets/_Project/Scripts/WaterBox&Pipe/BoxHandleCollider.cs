@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,7 +47,38 @@ public class BoxHandleCollider : MonoBehaviour
             Vector3 finalPos = snappedChild + offset;
             boxTouchMove.SnapBoxToGrid(finalPos);
 
-            pipeBase.FillWater(boxTouchMove, boxData);
+            // Clone ra them HolderData truyen vao Pipe
+            HolderData cloneHolderData = new HolderData(boxData);
+            ReceiveWater(pipeBase);
+            pipeBase.FillWater(boxTouchMove, cloneHolderData);
+        }
+    }
+
+    private void ReceiveWater(PipeBase pipeBase)
+    {
+        // fill 
+        WaterColor fillValue = boxData.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+        float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
+        fillValue.Value -= subValue;
+
+        // check không còn phần tử trong list
+        if (fillValue.Value <= 0)
+        {
+            Debug.Log("Fill het");
+            boxData.holderValue.Remove(fillValue);
+        }
+        else
+        {
+            Debug.Log("Fill chua het");
+        }
+        // nếu không còn nữa destroy holder
+        if (boxData.holderValue.Count <= 0)
+        {
+            DOVirtual.DelayedCall(subValue * 0.5f, () =>
+            {
+                transform.DOScale(0, 0.5f)
+                    .OnComplete(() => Destroy(gameObject));
+            });
         }
     }
 
