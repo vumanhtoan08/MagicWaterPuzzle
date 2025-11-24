@@ -97,15 +97,25 @@ MonoBehaviour:
     type: 0
     waterColors:
     - color: 1
-      Value: 3
-    - color: 3
+      Value: 1
+    - color: 2
+      Value: 1
+    - color: 1
+      Value: 1
+    - color: 2
       Value: 1
   - x: 1
     y: 0
     type: 0
     waterColors:
     - color: 2
-      Value: 3
+      Value: 1
+    - color: 1
+      Value: 1
+    - color: 2
+      Value: 1
+    - color: 1
+      Value: 1
   holders:
   - x: 4
     y: 3

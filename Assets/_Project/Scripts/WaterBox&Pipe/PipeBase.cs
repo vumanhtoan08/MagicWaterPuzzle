@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PipeBase : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PipeBase : MonoBehaviour
     [SerializeField] private Transform waterHolder;
     [SerializeField] private GameObject waterPrefab;
     [SerializeField] private Renderer headRenderer;
+    [SerializeField] private float durationTime = 0.25f;
 
     public bool IsFilling { get; set; }
 
@@ -42,9 +44,10 @@ public class PipeBase : MonoBehaviour
         IsFilling = true;                   // ngăn không bị lặp lại 
 
         // Tính toán lượng giá trị còn lại 
-        float afterSubValue = pipeData.waterColors[0].Value;                                    // giá trị trước khi trừ để DOTween về giá trị sau khi trừ 
-        float beforeSubValue = pipeData.waterColors[0].Value - data.holderValue[0].Value;      // giá trị sau khi trừ. 
-        pipeData.waterColors[0].Value = beforeSubValue;
+        // tính giá trị thực tế khi trừ 
+        float subValue = Mathf.Min(pipeData.waterColors[0].Value, data.holderValue[0].Value);       // giá trị thực tế phải trừ trong Pipe
+        Debug.Log($"Sub Value: {subValue}");
+        pipeData.waterColors[0].Value -= subValue;
 
         // Xử lý việc giảm nước của Visual
         Transform firstWater = waters[0];
@@ -52,20 +55,31 @@ public class PipeBase : MonoBehaviour
         // Pipe Fill hết nước
         if (pipeData.waterColors[0].Value <= 0)
         {
-            pipeData.waterColors[0].Value = 0f;
-            firstWater.DOScaleY(0f, afterSubValue * 0.25f);
+            // xử lý visual
+            firstWater.DOScaleY(0f, subValue * durationTime).OnComplete(() =>
+            {
+                RemoveWater();
+                RemoveWaterTrans(firstWater);
+            });
+
+            float positionY = 0;
+
+            for (int i = 0; i < waters.Count; i++)
+            {
+                waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
+                positionY += pipeData.waterColors[i].Value;
+            }
         }
         // Pipe fill nhưng trong Pipe vẫn còn nước
         else
         {
-            firstWater.DOScaleY(pipeData.waterColors[0].Value * 3f, afterSubValue * 0.25f);
+            firstWater.DOScaleY(pipeData.waterColors[0].Value * 3f, subValue * durationTime);
         }
 
-        yield return new WaitForSeconds(afterSubValue * 0.25f); // chờ 1 giây
+        yield return new WaitForSeconds(subValue * durationTime); // chờ 1 giây
 
         IsFilling = false;
     }
-
 
     // điều kiện để box được fill là có cùng màu và trong watercolor còn giá trị 
     public bool CheckBoxCondition(HolderData data)
