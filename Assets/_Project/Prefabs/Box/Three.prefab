@@ -56605,7 +56605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6655b42993342c747af2b9943b4be7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 0.05
+  smoothTime: 0.03
   snapSmoothTime: 0.06
 --- !u!114 &6607790502053337558
 MonoBehaviour:
@@ -56652,6 +56652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxTouchMove: {fileID: 0}
+  boxVisual: {fileID: 0}
   boxData:
     x: 0
     y: 0

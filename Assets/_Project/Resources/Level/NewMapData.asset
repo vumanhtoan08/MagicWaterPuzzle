@@ -97,46 +97,46 @@ MonoBehaviour:
     type: 0
     waterColors:
     - color: 1
-      Value: 1
+      Value: 3
     - color: 2
-      Value: 1
+      Value: 3
     - color: 1
-      Value: 1
+      Value: 3
     - color: 2
-      Value: 1
+      Value: 3
   - x: 1
     y: 0
     type: 0
     waterColors:
     - color: 2
-      Value: 1
+      Value: 3
     - color: 1
-      Value: 1
+      Value: 3
     - color: 2
-      Value: 1
+      Value: 3
     - color: 1
-      Value: 1
+      Value: 3
   holders:
-  - x: 4
+  - x: 3
     y: 3
     rotation: 0
     type: 0
     holderValue:
     - color: 1
-      Value: 3
-    shapeType: 5
+      Value: 1
+    shapeType: 0
     color: 1
     direction: 0
     iceBreak: 0
     keyColor: 0
-  - x: 0
+  - x: 1
     y: 1
     rotation: 0
     type: 0
     holderValue:
     - color: 2
-      Value: 3
-    shapeType: 5
+      Value: 1
+    shapeType: 0
     color: 2
     direction: 0
     iceBreak: 0

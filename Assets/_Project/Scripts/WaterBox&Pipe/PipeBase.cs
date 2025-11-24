@@ -13,7 +13,7 @@ public class PipeBase : MonoBehaviour
     [SerializeField] private Transform waterHolder;
     [SerializeField] private GameObject waterPrefab;
     [SerializeField] private Renderer headRenderer;
-    [SerializeField] private float durationTime = 0.25f;
+    private float durationTime = 0.5f;
 
     public bool IsFilling { get; set; }
 
@@ -27,61 +27,68 @@ public class PipeBase : MonoBehaviour
 
     public virtual void RemoveWater()
     {
+        if (waters.Count > 0)
+        {
+            waters[0].DOKill();
+        }
+
         pipeData.waterColors.RemoveAt(0);
     }
 
     public virtual void FillWater(BoxTouchMove boxTouchMove, HolderData data)
     {
-        // Coroutine
-        StartCoroutine(FillingWater(boxTouchMove, data));
+        if (IsFilling) return;
+        IsFilling = true;
 
-        // Lấy water trong list ở index = 0. lấy value của nó trừ đi value trong box. nếu value trong water = 0 thì remove ở index = 0 đi. sửa lại currentColor = color ở vị trí 0
+        StartCoroutine(FillingWater(boxTouchMove, data));
     }
 
-    // Xử lý Logic và Visual trong lúc Fill 
     private IEnumerator FillingWater(BoxTouchMove boxTouchMove, HolderData data)
     {
-        IsFilling = true;                   // ngăn không bị lặp lại 
-
-        // Tính toán lượng giá trị còn lại 
-        // tính giá trị thực tế khi trừ 
-        float subValue = Mathf.Min(pipeData.waterColors[0].Value, data.holderValue[0].Value);       // giá trị thực tế phải trừ trong Pipe
+        float subValue = Mathf.Min(pipeData.waterColors[0].Value, data.holderValue[0].Value);
         Debug.Log($"Sub Value: {subValue}");
         pipeData.waterColors[0].Value -= subValue;
 
-        // Xử lý việc giảm nước của Visual
         Transform firstWater = waters[0];
+        //firstWater.DOKill();
 
-        // Pipe Fill hết nước
         if (pipeData.waterColors[0].Value <= 0)
         {
-            // xử lý visual
             firstWater.DOScaleY(0f, subValue * durationTime).OnComplete(() =>
             {
                 RemoveWater();
                 RemoveWaterTrans(firstWater);
+                headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
             });
 
             float positionY = 0;
 
             for (int i = 0; i < waters.Count; i++)
             {
+                //waters[i].DOKill();
                 waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
                 positionY += pipeData.waterColors[i].Value;
             }
         }
-        // Pipe fill nhưng trong Pipe vẫn còn nước
         else
         {
             firstWater.DOScaleY(pipeData.waterColors[0].Value * 3f, subValue * durationTime);
+
+            float positionY = pipeData.waterColors[0].Value;
+
+            for (int i = 1; i < waters.Count; i++)
+            {
+                //waters[i].DOKill();
+                waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
+                positionY += pipeData.waterColors[i].Value;
+            }
         }
 
-        yield return new WaitForSeconds(subValue * durationTime); // chờ 1 giây
+        yield return new WaitForSeconds(subValue * durationTime);
 
         IsFilling = false;
     }
 
-    // điều kiện để box được fill là có cùng màu và trong watercolor còn giá trị 
     public bool CheckBoxCondition(HolderData data)
     {
         if (pipeData.waterColors.Count <= 0) return false;
@@ -94,7 +101,6 @@ public class PipeBase : MonoBehaviour
         return false;
     }
 
-    // Dùng cho Visual
     public void GenWater()
     {
         if (pipeData.waterColors.Count <= 0) return;
@@ -133,6 +139,7 @@ public class PipeBase : MonoBehaviour
 
     public void RemoveWaterTrans(Transform transform)
     {
+        transform.DOKill();
         waters.Remove(transform);
     }
 
