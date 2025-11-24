@@ -38,21 +38,35 @@ public class PipeData
 
     public PipeData() { }
 
+    // Deep copy constructor
     public PipeData(PipeData other)
     {
         x = other.x;
         y = other.y;
         type = other.type;
-        waterColors = new List<WaterColor>(other.waterColors);
+
+        // Copy deep từng WaterColor
+        waterColors = new List<WaterColor>();
+        foreach (var wc in other.waterColors)
+        {
+            waterColors.Add(new WaterColor(wc));
+        }
     }
 }
-
 
 [System.Serializable]
 public class WaterColor
 {
     public EnumColor color;
     public float Value;
+
+    public WaterColor() { }
+
+    public WaterColor(WaterColor other)
+    {
+        color = other.color;
+        Value = other.Value;
+    }
 }
 
 [System.Serializable]
@@ -63,12 +77,40 @@ public class HolderData
     public float rotation;
 
     public HolderType type;                  // basic, ice, stone...
-    public List<WaterColor> holderValue;             // giá trị fill tối đa của holder
+    public List<WaterColor> holderValue;     // giá trị fill tối đa của holder
 
     public HolderShape shapeType;            // tên prefab
     public EnumColor color;
-    
+
     public HolderDirection direction;
     public int iceBreak;                     // số lượt holder cần để phá băng
-    public EnumColor keyColor;               // nếu None thì là không có khóa 
+    public EnumColor keyColor;               // nếu None thì là không có khóa
+
+    public HolderData() { }
+
+    // DEEP COPY CONSTRUCTOR
+    public HolderData(HolderData other)
+    {
+        x = other.x;
+        y = other.y;
+        rotation = other.rotation;
+
+        type = other.type;
+        shapeType = other.shapeType;
+        color = other.color;
+
+        direction = other.direction;
+        iceBreak = other.iceBreak;
+        keyColor = other.keyColor;
+
+        // IMPORTANT: Deep copy List<WaterColor>
+        holderValue = new List<WaterColor>();
+        if (other.holderValue != null)
+        {
+            foreach (var wc in other.holderValue)
+            {
+                holderValue.Add(new WaterColor(wc));
+            }
+        }
+    }
 }

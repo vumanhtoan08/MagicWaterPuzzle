@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Gần như là Controller quản lý việc Move, Visual và điều kiện 
 public class BoxHandleCollider : MonoBehaviour
 {
+    [Header("Main REF")]
     [SerializeField] private BoxTouchMove boxTouchMove;
+    [SerializeField] private BoxVisual boxVisual;
+
     [SerializeField] private HolderData boxData;
     [SerializeField] private List<WaterColor> currentColor;
     [SerializeField] private List<NodeBoxCheckCollider> childColliders;
 
     public void GetHolderData(HolderData data)
     {
-        boxData = data;
+        boxData = new HolderData(data);
         InitStartValueWaterColor();
         boxTouchMove = GetComponent<BoxTouchMove>();
+        boxVisual = GetComponent<BoxVisual>();
     }
 
     private void InitStartValueWaterColor()
@@ -40,6 +45,8 @@ public class BoxHandleCollider : MonoBehaviour
             Vector3 snappedChild = boxTouchMove.GetSnappedPosition(childTransform.position);
             Vector3 finalPos = snappedChild + offset;
             boxTouchMove.SnapBoxToGrid(finalPos);
+
+            pipeBase.FillWater(boxTouchMove, boxData);
         }
     }
 
@@ -60,36 +67,4 @@ public class BoxHandleCollider : MonoBehaviour
             child.OnChildTriggerEnter = null;
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (hasTrigged) return;
-
-    //    if (collision.CompareTag("Pipe"))
-    //    {
-    //        hasTrigged = true;
-
-    //        // Lay component cua pipe
-    //        PipeBase pipeBase = collision.GetComponent<PipeBase>();
-    //        if (pipeBase.CheckBoxCondition(boxData))
-    //        {
-    //            boxTouchMove.OnPointerUp();
-    //            Transform hitObject = collision.transform;
-    //            Debug.Log("Va chạm với: " + hitObject.name);
-
-
-    //            boxTouchMove.SnapBoxToGrid(hitObject.position);
-    //            pipeBase.FillWater(boxTouchMove, boxData, currentColor);
-
-    //        }
-    //        // Goi ham check
-
-    //        // Neu true thi fill nuoc bang coroutine
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    hasTrigged = false;
-    //}
 }
