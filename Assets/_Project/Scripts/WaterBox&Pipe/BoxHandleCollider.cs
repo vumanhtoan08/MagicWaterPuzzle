@@ -69,9 +69,14 @@ public class BoxHandleCollider : MonoBehaviour
             DOVirtual.DelayedCall(subValue * 0.5f, () =>
             {
                 boxTouchMove.IsFillMax = true;
-                LevelManager.Instance.SubIceBreakAllHolder();
-                LevelManager.Instance.RemoveBoxWater(this);
 
+                // voi truong hop la ice holder
+                LevelManager.Instance.SubIceBreakAllHolder();
+
+                // voi truong hop la key holder
+                if (boxData.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
+
+                LevelManager.Instance.RemoveBoxWater(this);
                 transform.DOScale(0, 0.5f)
                     .OnComplete(() =>
                     {

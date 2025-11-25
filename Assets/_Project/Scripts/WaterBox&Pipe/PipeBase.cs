@@ -10,6 +10,9 @@ public class PipeBase : MonoBehaviour
     [SerializeField] private PipeData pipeData;
 
     [Header("Visual Pipe")]
+    [SerializeField] private GameObject lockVisualObj;
+    [SerializeField] private Renderer lockMaterials;
+
     [SerializeField] private Transform waterHolder;
     [SerializeField] private GameObject waterPrefab;
     [SerializeField] private Renderer headRenderer;
@@ -17,6 +20,8 @@ public class PipeBase : MonoBehaviour
 
     public bool IsFilling { get; set; }
     public PipeData PipeData => pipeData;
+    public GameObject LockVisual => lockVisualObj;
+    public Renderer LockMaterials => lockMaterials;
     /// <summary>
     /// Lấy Data cho Pipe ở trong MapData khi Init
     /// </summary>
@@ -93,6 +98,8 @@ public class PipeBase : MonoBehaviour
 
     public bool CheckBoxCondition(HolderData data)
     {
+        if (pipeData.type == PipeType.Lock) return false;                   // đang là Lock không cho Fill luôn 
+
         if (pipeData.waterColors.Count <= 0) return false;
 
         switch (data.type)

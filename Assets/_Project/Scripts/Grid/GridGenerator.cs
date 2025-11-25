@@ -294,6 +294,21 @@ public class GridGenerator : MonoBehaviour
             PipeBase pipeBase = pipeObj.GetComponent<PipeBase>();
             pipeBase.GetPipeData(pipe);
             pipeBase.GenWater();
+
+            if (pipe.type == PipeType.Lock)
+            {
+                Material[] materials;
+                materials = new Material[]
+                {
+                     SOMaterialColor.GetMaterial(pipe.keyColor)
+                };
+
+                pipeBase.LockMaterials.materials = materials;
+                pipeBase.LockMaterials.transform.localRotation = Quaternion.Euler(0, 0, pipeBase.LockMaterials.transform.localRotation.z - pipeObj.transform.rotation.z);
+                pipeBase.LockVisual.SetActive(true);
+            }
+
+            LevelManager.Instance.AddPipeWater(pipeBase);
         }
     }
 

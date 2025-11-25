@@ -17818,10 +17818,14 @@ MonoBehaviour:
     x: 0
     y: 0
     type: 0
+    keyColor: 0
     waterColors: []
+  lockVisualObj: {fileID: 6785705961218149930}
+  lockMaterials: {fileID: 6013309977847114266}
   waterHolder: {fileID: 5881108753701159041}
   waterPrefab: {fileID: 2539933373344674912, guid: edd49795a97520c47997c22e6a42cc53, type: 3}
   headRenderer: {fileID: 2367176490214752521}
+  waters: []
 --- !u!61 &8874114135867193460
 BoxCollider2D:
   m_ObjectHideFlags: 0

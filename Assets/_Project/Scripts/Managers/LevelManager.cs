@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,6 +49,39 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     #endregion
+
+    #region Key 
+
+    public void KeyBreakDown(HolderData data)
+    {
+        List<PipeBase> pipeLock = pipes.FindAll(x => x.PipeData.type == PipeType.Lock);
+
+        foreach(PipeBase pipe in pipeLock)
+        {
+            if (pipe.PipeData.keyColor == data.keyColor)
+            {
+                // BreakDown Key di
+                pipe.LockVisual.transform.DOScale(0, 0.5f);
+                pipe.PipeData.type = PipeType.Basic;
+            }
+        }
+    }
+
+    #endregion
+
+    #endregion
+
+    #region Pipe Handle
+
+    public void AddPipeWater(PipeBase pipeBase)
+    {
+        pipes.Add(pipeBase);
+    }
+
+    public void RemovePipeWater(PipeBase pipeBase)
+    {
+        pipes.Remove(pipeBase);
+    }
 
     #endregion
 }
