@@ -7,7 +7,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private BoxHandleCollider handleCollider;
 
     private Camera cam;
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
 
     private Vector3 offset;
     private float zDepth;
@@ -36,6 +36,8 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (handleCollider.BoxData.type == HolderType.Ice && handleCollider.BoxData.iceBreak > 0) return;
+
         dragging = true;
         snapping = false;
         rb.bodyType = RigidbodyType2D.Dynamic;
@@ -58,18 +60,31 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         rb.bodyType = RigidbodyType2D.Dynamic; // để MovePosition vẫn hoạt động
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (IsFilling || IsFillMax) return;
 
         if (dragging)
         {
-            // cập nhật target theo chuột
             Vector3 wp = cam.ScreenToWorldPoint(Input.mousePosition);
             wp.z = zDepth;
             targetPos = wp + offset;
 
-            // Smooth kéo
+            // ✅ Giới hạn hướng di chuyển
+            if (handleCollider.BoxData.type == HolderType.Direction || handleCollider.BoxData.type == HolderType.Stone)
+            {
+                if (handleCollider.BoxData.direction == HolderDirection.Horizontal)
+                {
+                    // chỉ đổi X
+                    targetPos.y = rb.position.y;
+                }
+                else if (handleCollider.BoxData.direction == HolderDirection.Vertical)
+                {
+                    // chỉ đổi Y
+                    targetPos.x = rb.position.x;
+                }
+            }
+
             Vector2 newPos = Vector2.SmoothDamp(
                 rb.position,
                 targetPos,
@@ -81,7 +96,6 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
         else if (snapping)
         {
-            // Smooth snap về vị trí ô grid
             Vector2 newPos = Vector2.SmoothDamp(
                 rb.position,
                 snapTargetPos,
@@ -91,7 +105,6 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
             rb.MovePosition(newPos);
 
-            // Nếu gần đến vị trí snap thì dừng lại
             if (Vector2.Distance(rb.position, snapTargetPos) < 0.01f)
             {
                 rb.MovePosition(snapTargetPos);
@@ -100,6 +113,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             }
         }
     }
+
 
     public void SnapBoxToGrid(Vector3? pos = null)
     {

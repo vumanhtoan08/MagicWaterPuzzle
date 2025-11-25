@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2be0b7170f1bae847a33f07a008dc83e, type: 3}
-  m_Name: NewMapData
+  m_Name: Test Ice
   m_EditorClassIdentifier: 
   width: 5
   height: 5
@@ -109,7 +109,7 @@ MonoBehaviour:
     - color: 2
       Value: 1
   - x: 3
-    y: 0
+    y: 4
     type: 0
     waterColors:
     - color: 2
@@ -125,27 +125,63 @@ MonoBehaviour:
     - color: 1
       Value: 1
   holders:
-  - x: 3
-    y: 3
+  - x: 0
+    y: 0
     rotation: 0
     type: 0
     holderValue:
     - color: 1
-      Value: 10
-    shapeType: 1
+      Value: 1
+    shapeType: 0
     color: 1
     direction: 0
     iceBreak: 0
     keyColor: 0
   - x: 1
-    y: 1
-    rotation: 180
-    type: 0
+    y: 0
+    rotation: 0
+    type: 1
     holderValue:
     - color: 2
-      Value: 10
-    shapeType: 1
+      Value: 1
+    shapeType: 0
     color: 2
     direction: 0
-    iceBreak: 0
+    iceBreak: 1
+    keyColor: 0
+  - x: 2
+    y: 0
+    rotation: 0
+    type: 1
+    holderValue:
+    - color: 1
+      Value: 1
+    shapeType: 0
+    color: 1
+    direction: 0
+    iceBreak: 2
+    keyColor: 0
+  - x: 3
+    y: 0
+    rotation: 0
+    type: 1
+    holderValue:
+    - color: 2
+      Value: 1
+    shapeType: 0
+    color: 2
+    direction: 0
+    iceBreak: 3
+    keyColor: 0
+  - x: 4
+    y: 0
+    rotation: 0
+    type: 1
+    holderValue:
+    - color: 1
+      Value: 1
+    shapeType: 0
+    color: 1
+    direction: 0
+    iceBreak: 4
     keyColor: 0

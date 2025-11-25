@@ -44,7 +44,7 @@ Shader "Linh/Glass"
         LOD 200
 
         Blend SrcAlpha OneMinusSrcAlpha
-
+        ZWrite On
         CGPROGRAM
         #pragma surface surf Standard alpha:fade
         #pragma target 3.0

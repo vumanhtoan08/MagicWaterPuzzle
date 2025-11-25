@@ -19,24 +19,11 @@ public class BoxHandleCollider : MonoBehaviour
     public void GetHolderData(HolderData data)
     {
         boxData = new HolderData(data);
-        InitStartValueWaterColor();
         boxTouchMove = GetComponent<BoxTouchMove>();
         boxVisual = GetComponent<BoxVisual>();
     }
 
-    private void InitStartValueWaterColor()
-    {
-        currentColor = new List<WaterColor>();
-
-        foreach (WaterColor color in boxData.holderValue)
-        {
-            WaterColor newCurrentColor = new WaterColor();
-            newCurrentColor.color = color.color;
-            newCurrentColor.Value = 0f;
-            currentColor.Add(newCurrentColor);
-        }
-    }
-
+    // Kiểm tra va chạm của các Box con
     private void HandleChildTrigger(Collider2D other, Transform childTransform)
     {
         PipeBase pipeBase = other.GetComponent<PipeBase>();
@@ -58,6 +45,7 @@ public class BoxHandleCollider : MonoBehaviour
         }
     }
 
+    // Hàm nhận nước dùng chung được với nhiều nước màu
     private void ReceiveWater(PipeBase pipeBase)
     {
         // fill 
@@ -81,6 +69,9 @@ public class BoxHandleCollider : MonoBehaviour
             DOVirtual.DelayedCall(subValue * 0.5f, () =>
             {
                 boxTouchMove.IsFillMax = true;
+                LevelManager.Instance.SubIceBreakAllHolder();
+                LevelManager.Instance.RemoveBoxWater(this);
+
                 transform.DOScale(0, 0.5f)
                     .OnComplete(() =>
                     {
@@ -89,6 +80,17 @@ public class BoxHandleCollider : MonoBehaviour
             });
         }
     }
+
+    #region IceHolder
+
+    public void SubIceBreak()
+    {
+        boxData.iceBreak -= 1;
+        boxVisual.UpdateVisualForIceHolder(boxData.iceBreak);
+        if (boxData.iceBreak <= 0) boxVisual.OnIceBreak();
+    }
+
+    #endregion
 
     private void OnEnable()
     {

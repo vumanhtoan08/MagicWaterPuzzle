@@ -46,7 +46,8 @@ public class PipeBase : MonoBehaviour
     // sửa lại để có thể thực hiện với nhiều màu nước
     private IEnumerator FillingWater(BoxTouchMove boxTouchMove, HolderData data)
     {
-        float subValue = Mathf.Min(pipeData.waterColors[0].Value, data.holderValue[0].Value);
+        WaterColor goalWaterColor = data.holderValue.Find(x => x.color == pipeData.waterColors[0].color);
+        float subValue = Mathf.Min(pipeData.waterColors[0].Value, goalWaterColor.Value);
         pipeData.waterColors[0].Value -= subValue;
 
         Transform firstWater = waters[0];
@@ -94,9 +95,33 @@ public class PipeBase : MonoBehaviour
     {
         if (pipeData.waterColors.Count <= 0) return false;
 
-        foreach (var holder in data.holderValue)
+        switch (data.type)
         {
-            if (pipeData.waterColors[0].color == holder.color) return true; 
+            case HolderType.Basic:
+                foreach (var holder in data.holderValue)
+                {
+                    if (pipeData.waterColors[0].color == holder.color) return true;
+                }
+                break;
+            case HolderType.Ice:
+                if (data.iceBreak > 0) return false;
+                foreach (var holder in data.holderValue)
+                {
+                    if (pipeData.waterColors[0].color == holder.color) return true;
+                }
+                break;
+            case HolderType.Direction:
+                foreach (var holder in data.holderValue)
+                {
+                    if (pipeData.waterColors[0].color == holder.color) return true;
+                }
+                break;
+            case HolderType.Stone:
+                return false;
+            case HolderType.Key:
+                break;
+            case HolderType.Lock:
+                break;
         }
 
         return false;

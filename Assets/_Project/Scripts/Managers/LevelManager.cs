@@ -12,7 +12,10 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private GridGenerator gridGenerator;
     [SerializeField] private MapData currentMap;
 
-
+    [Header("List Manager")]
+    [SerializeField] private List<MapData> mapDatas = new();                                        // là nơi chưa SO của Level. 
+    [SerializeField] private List<BoxHandleCollider> boxHandleColliders = new();                    // chứa Box có mặt trong map để check thắng thua.
+    [SerializeField] private List<PipeBase> pipes = new();                                          // chứa Pipe có mặt tỏng map.
 
     public MapData CurrentMap => currentMap;
 
@@ -20,4 +23,31 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (!gridGenerator.IsNull($"chưa gán {gridGenerator.name}")) gridGenerator.OnStart();
     }
+
+    #region BoxWater Handle 
+
+    public void AddBoxWater(BoxHandleCollider boxHandleCollider)
+    {
+        boxHandleColliders.Add(boxHandleCollider);
+    }
+
+    public void RemoveBoxWater(BoxHandleCollider boxHandleCollider)
+    {
+        boxHandleColliders.Remove(boxHandleCollider);
+    }
+
+    #region Ice
+
+    public void SubIceBreakAllHolder()
+    {
+        List<BoxHandleCollider> iceBoxs = boxHandleColliders.FindAll(x => x.BoxData.type == HolderType.Ice);
+        
+        if(iceBoxs.Count <= 0) return;
+
+        iceBoxs.ForEach(i => i.SubIceBreak());                                                                                     // ForEach
+    }
+
+    #endregion
+
+    #endregion
 }

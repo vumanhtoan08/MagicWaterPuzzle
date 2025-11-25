@@ -1,6 +1,6 @@
 ﻿public enum PipeType
 {
     Basic,
-    Lockm,
+    Lock,
     Gate
 }

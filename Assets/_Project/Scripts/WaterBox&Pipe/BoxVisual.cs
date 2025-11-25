@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BoxVisual : MonoBehaviour
@@ -8,87 +8,169 @@ public class BoxVisual : MonoBehaviour
     [SerializeField] public HalfBox half_01;
     [SerializeField] public HalfBox half_02;
 
-    [Header("For Box Type")]
+    [Header("For Direction")]
     [SerializeField] private List<GameObject> directionObj;
-    [SerializeField] private GameObject iceVisual;
-    [SerializeField] private GameObject stone;  
-    [SerializeField] private List<GameObject> stoneDirection;  
 
-    //[SerializeField] private GameObject lockVisual;   
-    //[SerializeField] private GameObject keyVisual;
-    //[SerializeField] private GameObject lidsVisual;
+    [Header("For Ice")]
+    [SerializeField] private GameObject iceVisual;
+    [SerializeField] private TextMeshPro iceText;
+
+    [Header("For Stone")]
+    [SerializeField] private GameObject stone;
+    [SerializeField] private List<GameObject> stoneDirection;
 
     public void OnUpdateVisualOfHolderType(HolderData data)
     {
+        ResetVisual();
+
         switch (data.type)
         {
             case HolderType.Basic:
-                if (half_01.meshRenderers.Count <= 0) return;
-
-                int indexHalf01 = 0;
-
-                foreach (var mesh in half_01.meshRenderers)
-                {
-                    Material[] materials;
-
-                    if ((data.shapeType == HolderShape.ThreeSquare || data.shapeType == HolderShape.TwoSquare) && indexHalf01 == 0)
-                    {
-                        materials = new Material[1];
-                        materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
-                        mesh.materials = materials;
-                        Debug.Log("1 Material");
-
-                        indexHalf01++; 
-                        continue;
-                    }
-
-                    materials = new Material[2];
-                    materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
-                    materials[1] = SOMaterialColor.GetMaterial(data.color);
-                    mesh.materials = materials;
-
-                    indexHalf01++;
-                }
-                if (half_02.meshRenderers.Count <= 0) return;
-
-                int indexHalf02 = 0;
-
-                foreach (var mesh in half_02.meshRenderers)
-                {
-                    Material[] materials;
-
-                    if (data.shapeType == HolderShape.TwoSquare && indexHalf02 == 0)
-                    {
-                        materials = new Material[1];
-                        materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
-                        mesh.materials = materials;
-
-                        indexHalf02++;
-                        continue;
-                    }
-
-                    materials = new Material[2];
-                    materials[0] = SOMaterialColor.GetMaterialTrans(data.color);
-                    materials[1] = SOMaterialColor.GetMaterial(data.color);
-                    mesh.materials = materials;
-
-                    indexHalf02++;
-                }
+                ApplyMaterials(data);
                 break;
+
             case HolderType.Ice:
+                UpdateIceVisual(data);
+                ApplyMaterials(data);
                 break;
+
             case HolderType.Direction:
+                UpdateDirectionVisual(data);
+                ApplyMaterials(data);
                 break;
+
             case HolderType.Stone:
+                UpdateStoneVisual(data);
                 break;
+
             case HolderType.Key:
+                // TODO: visual key
                 break;
+
             case HolderType.Lock:
+                // TODO: visual lock
                 break;
         }
     }
+
+    #region Material Apply
+
+    private void ApplyMaterials(HolderData data)
+    {
+        ApplyMaterialsToHalf(half_01.meshRenderers, data, true);
+        ApplyMaterialsToHalf(half_02.meshRenderers, data, false);
+    }
+
+    private void ApplyMaterialsToHalf(List<MeshRenderer> renderers, HolderData data, bool isHalf01)
+    {
+        if (renderers == null || renderers.Count == 0) return;
+
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            MeshRenderer mesh = renderers[i];
+            Material[] materials;
+
+            bool useSingle =
+                (data.shapeType == HolderShape.ThreeSquare || data.shapeType == HolderShape.TwoSquare)
+                && i == 0
+                && isHalf01
+                ||
+                (data.shapeType == HolderShape.TwoSquare && i == 0 && !isHalf01);
+
+            if (useSingle)
+            {
+                materials = new Material[]
+                {
+                    SOMaterialColor.GetMaterialTrans(data.color)
+                };
+            }
+            else
+            {
+                materials = new Material[]
+                {
+                    SOMaterialColor.GetMaterialTrans(data.color),
+                    SOMaterialColor.GetMaterial(data.color)
+                };
+            }
+
+            mesh.materials = materials;
+        }
+    }
+
+    #endregion
+
+    #region Ice Visual
+
+    private void UpdateIceVisual(HolderData data)
+    {
+        iceVisual.SetActive(true);
+        iceText.text = $"{data.iceBreak}";
+        iceText.transform.localRotation =
+            Quaternion.Euler(0, 0, iceText.transform.localRotation.z - data.rotation);
+    }
+
+    public void UpdateVisualForIceHolder(int iceBreak)
+    {
+        iceText.text = $"{iceBreak}";
+    }
+
+    public void OnIceBreak()
+    {
+        iceVisual.SetActive(false);
+    }
+
+    #endregion
+
+    #region Direction Visual
+
+    private void UpdateDirectionVisual(HolderData data)
+    {
+        if (data.direction == HolderDirection.Horizontal)
+        {
+            if (data.rotation == 0) directionObj[1].SetActive(true);
+            if (data.rotation == 90) directionObj[0].SetActive(true);
+        }
+
+        if (data.direction == HolderDirection.Vertical)
+        {
+            if(data.rotation == 0) directionObj[0].SetActive(true);
+            if(data.rotation == 90) directionObj[1].SetActive(true);
+        }
+    }
+
+    #endregion
+
+    #region Stone Visual
+
+    private void UpdateStoneVisual(HolderData data)
+    {
+        stone.SetActive(true);
+
+        if (data.direction == HolderDirection.Horizontal)
+        {
+            if (data.rotation == 0) stoneDirection[1].SetActive(true);
+            if (data.rotation == 90) stoneDirection[0].SetActive(true);
+        }
+
+        if (data.direction == HolderDirection.Vertical)
+        {
+            if (data.rotation == 0) stoneDirection[0].SetActive(true);
+            if (data.rotation == 90) stoneDirection[1].SetActive(true);
+        }
+    }
+
+    #endregion
+
+    private void ResetVisual()
+    {
+        iceVisual.SetActive(false);
+
+        foreach (var obj in stoneDirection)
+            obj.SetActive(false);
+    }
 }
-    [System.Serializable]
+
+[System.Serializable]
 public class HalfBox
 {
     public List<MeshRenderer> meshRenderers;

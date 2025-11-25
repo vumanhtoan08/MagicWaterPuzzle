@@ -319,6 +319,7 @@ public class GridGenerator : MonoBehaviour
 
             BoxHandleCollider boxHandleCollider = holderObj.GetComponent<BoxHandleCollider>();
             boxHandleCollider.GetHolderData(holder);
+            LevelManager.Instance.AddBoxWater(boxHandleCollider);
         } 
     }
 

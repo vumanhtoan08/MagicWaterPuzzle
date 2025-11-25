@@ -1534,7 +1534,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridGenerator: {fileID: 1004403390}
-  currentMap: {fileID: 11400000, guid: 698a579df1d686d40906b46a047545ef, type: 2}
+  currentMap: {fileID: 11400000, guid: 6ccaa1a0f5cea824eb443e4385166df9, type: 2}
+  mapDatas: []
+  boxHandleColliders: []
+  pipes: []
 --- !u!1001 &1856434408
 PrefabInstance:
   m_ObjectHideFlags: 0
