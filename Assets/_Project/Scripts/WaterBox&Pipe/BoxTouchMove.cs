@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    [Header("Main REF")]
+    private BoxHandleCollider handleCollider;
+
     private Camera cam;
     private Rigidbody2D rb; 
 
@@ -19,10 +22,15 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     [SerializeField] private float smoothTime = 0.02f;   // mượt khi kéo
     [SerializeField] private float snapSmoothTime = 0.06f;  // mượt khi snap
 
+    public bool IsFilling { get; set; }
+    public bool IsFillMax { get; set; }
+
     private void Awake()
     {
         cam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+        handleCollider = GetComponent<BoxHandleCollider>();
+
         rb.interpolation = RigidbodyInterpolation2D.Interpolate; // siêu mượt
     }
 
@@ -52,6 +60,8 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private void FixedUpdate()
     {
+        if (IsFilling || IsFillMax) return;
+
         if (dragging)
         {
             // cập nhật target theo chuột

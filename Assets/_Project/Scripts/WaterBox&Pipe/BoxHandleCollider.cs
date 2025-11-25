@@ -14,6 +14,8 @@ public class BoxHandleCollider : MonoBehaviour
     [SerializeField] private List<WaterColor> currentColor;
     [SerializeField] private List<NodeBoxCheckCollider> childColliders;
 
+    public HolderData BoxData => boxData;
+
     public void GetHolderData(HolderData data)
     {
         boxData = new HolderData(data);
@@ -45,7 +47,9 @@ public class BoxHandleCollider : MonoBehaviour
             Vector3 offset = transform.position - childTransform.position;
             Vector3 snappedChild = boxTouchMove.GetSnappedPosition(childTransform.position);
             Vector3 finalPos = snappedChild + offset;
-            boxTouchMove.SnapBoxToGrid(finalPos);
+
+            Sequence seq = DOTween.Sequence().AppendCallback(() => boxTouchMove.SnapBoxToGrid(finalPos))            // ngăn không cho di chuyển lúc fill
+                .AppendInterval(0.2f).OnComplete(() => boxTouchMove.IsFilling = true);
 
             // Clone ra them HolderData truyen vao Pipe
             HolderData cloneHolderData = new HolderData(boxData);
@@ -76,8 +80,12 @@ public class BoxHandleCollider : MonoBehaviour
         {
             DOVirtual.DelayedCall(subValue * 0.5f, () =>
             {
+                boxTouchMove.IsFillMax = true;
                 transform.DOScale(0, 0.5f)
-                    .OnComplete(() => Destroy(gameObject));
+                    .OnComplete(() =>
+                    {
+                        Destroy(gameObject);
+                    });
             });
         }
     }

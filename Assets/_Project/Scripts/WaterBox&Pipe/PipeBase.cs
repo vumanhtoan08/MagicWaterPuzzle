@@ -87,6 +87,7 @@ public class PipeBase : MonoBehaviour
         yield return new WaitForSeconds(subValue * durationTime);
 
         IsFilling = false;
+        boxTouchMove.IsFilling = false;
     }
 
     public bool CheckBoxCondition(HolderData data)
