@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -18,6 +18,9 @@ public class BoxVisual : MonoBehaviour
     [Header("For Stone")]
     [SerializeField] private GameObject stone;
     [SerializeField] private List<GameObject> stoneDirection;
+
+    [Header("For Key")]
+    [SerializeField] private MeshRenderer keyMesh;
 
     public void OnUpdateVisualOfHolderType(HolderData data)
     {
@@ -44,7 +47,8 @@ public class BoxVisual : MonoBehaviour
                 break;
 
             case HolderType.Key:
-                // TODO: visual key
+                UpdateKeyVisual(data);
+                ApplyMaterials(data);
                 break;
 
             case HolderType.Lock:
@@ -133,8 +137,8 @@ public class BoxVisual : MonoBehaviour
 
         if (data.direction == HolderDirection.Vertical)
         {
-            if(data.rotation == 0) directionObj[0].SetActive(true);
-            if(data.rotation == 90) directionObj[1].SetActive(true);
+            if (data.rotation == 0) directionObj[0].SetActive(true);
+            if (data.rotation == 90) directionObj[1].SetActive(true);
         }
     }
 
@@ -157,6 +161,24 @@ public class BoxVisual : MonoBehaviour
             if (data.rotation == 0) stoneDirection[0].SetActive(true);
             if (data.rotation == 90) stoneDirection[1].SetActive(true);
         }
+    }
+
+    #endregion
+
+    #region Key Visual
+
+    private void UpdateKeyVisual(HolderData data)
+    {
+        keyMesh.gameObject.SetActive(true);
+        keyMesh.transform.localRotation = Quaternion.Euler(0, 0, keyMesh.transform.localRotation.z - data.rotation);            // đảm bảo key nằm ngang với mọi trường hợp 
+
+        Material[] materials;
+        materials = new Material[]
+        {
+            SOMaterialColor.GetMaterial(data.color)
+        };
+
+        keyMesh.materials = materials;
     }
 
     #endregion

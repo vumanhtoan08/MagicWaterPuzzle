@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -537,6 +538,8 @@ public class GridEditorWindow : EditorWindow
             {
                 x = x,
                 y = y,
+                type = PipeType.Basic,
+                keyColor = EnumColor.None,
                 waterColors = new List<WaterColor>()
             };
             currentMap.pipes.Add(pipe);
@@ -561,6 +564,16 @@ public class GridEditorWindow : EditorWindow
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField($"Pipe at ({selectedPipeData.x},{selectedPipeData.y})", EditorStyles.boldLabel);
+
+        // Pipe Type
+        selectedPipeData.type = (PipeType)EditorGUILayout.EnumPopup("Pipe type", selectedPipeData.type);
+
+
+        // key color
+        if (selectedPipeData.type == PipeType.Lock)
+        {
+            selectedPipeData.keyColor = (EnumColor)EditorGUILayout.EnumPopup("Key Color", selectedPipeData.keyColor);
+        }
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Water List", EditorStyles.boldLabel);
@@ -678,8 +691,6 @@ public class GridEditorWindow : EditorWindow
 
         // Color enum picker
         selectedEnumColor = (EnumColor)EditorGUILayout.EnumPopup("Holder Color", selectedEnumColor);
-
-      
 
         // HolderType
         selectedHolderType = (HolderType)EditorGUILayout.EnumPopup("Holder Type", selectedHolderType);
@@ -821,7 +832,7 @@ public class GridEditorWindow : EditorWindow
     {
         var baseOffsets = shapeOffsets[shape];
         List<Vector2Int> result = new List<Vector2Int>();
-         
+
         foreach (var o in baseOffsets)
         {
             Vector2 v = new Vector2(o.x, o.y);

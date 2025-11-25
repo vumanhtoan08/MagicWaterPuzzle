@@ -34,6 +34,7 @@ public class PipeData
     public int x;
     public int y;
     public PipeType type;
+    public EnumColor keyColor;
     public List<WaterColor> waterColors = new();
 
     public PipeData() { }
@@ -44,6 +45,7 @@ public class PipeData
         x = other.x;
         y = other.y;
         type = other.type;
+        keyColor = other.keyColor;
 
         // Copy deep từng WaterColor
         waterColors = new List<WaterColor>();

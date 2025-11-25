@@ -43826,7 +43826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6914009335733287632
 Transform:
   m_ObjectHideFlags: 0
@@ -46684,6 +46684,7 @@ MonoBehaviour:
   stoneDirection:
   - {fileID: 8968938422295241234}
   - {fileID: 5104540933715509550}
+  keyMesh: {fileID: 2553057484766142020}
 --- !u!114 &3211982724935709251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86694,7 +86695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1951412556380473970
 Transform:
   m_ObjectHideFlags: 0
@@ -86740,7 +86741,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e384b58880fdb234a901f9b5012a6271, type: 2}
-  - {fileID: 2100000, guid: a3ea83c8db91c3e4190cd4bc9f5006bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

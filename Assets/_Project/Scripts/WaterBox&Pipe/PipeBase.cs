@@ -119,6 +119,10 @@ public class PipeBase : MonoBehaviour
             case HolderType.Stone:
                 return false;
             case HolderType.Key:
+                foreach (var holder in data.holderValue)
+                {
+                    if (pipeData.waterColors[0].color == holder.color) return true;
+                }
                 break;
             case HolderType.Lock:
                 break;
