@@ -50,7 +50,7 @@ public class BoxHandleCollider : MonoBehaviour
             Vector3 finalPos = snappedChild + offset;
 
             Sequence seq = DOTween.Sequence().AppendCallback(() => boxTouchMove.SnapBoxToGrid(finalPos))            // ngăn không cho di chuyển lúc fill
-                .AppendInterval(0.2f).OnComplete(() => boxTouchMove.IsFilling = true);
+                .AppendInterval(0.1f).OnComplete(() => boxTouchMove.IsFilling = true);
 
             // Clone ra them HolderData truyen vao Pipe
             HolderData cloneHolderData = new HolderData(boxData);

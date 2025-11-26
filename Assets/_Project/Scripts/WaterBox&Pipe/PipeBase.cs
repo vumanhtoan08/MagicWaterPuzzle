@@ -45,7 +45,6 @@ public class PipeBase : MonoBehaviour
         if (IsFilling) return;
         IsFilling = true;
 
-        Debug.Log($"{data.secondaryHolder == null}");
         StartCoroutine(FillingWater(boxTouchMove, data));
     }
 
@@ -82,11 +81,14 @@ public class PipeBase : MonoBehaviour
 
             float positionY = 0;
 
-            for (int i = 0; i < waters.Count; i++)
+            if (waters.Count > 0)
             {
-                //waters[i].DOKill();
-                waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
-                positionY += pipeData.waterColors[i].Value;
+                for (int i = 1; i < waters.Count; i++)
+                {
+                    //waters[i].DOKill();
+                    waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
+                    positionY += pipeData.waterColors[i].Value;
+                }
             }
         }
         else
@@ -95,11 +97,14 @@ public class PipeBase : MonoBehaviour
 
             float positionY = pipeData.waterColors[0].Value;
 
-            for (int i = 1; i < waters.Count; i++)
+            if (waters.Count > 0)
             {
-                //waters[i].DOKill();
-                waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
-                positionY += pipeData.waterColors[i].Value;
+                for (int i = 1; i < waters.Count; i++)
+                {
+                    //waters[i].DOKill();
+                    waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
+                    positionY += pipeData.waterColors[i].Value;
+                }
             }
         }
 

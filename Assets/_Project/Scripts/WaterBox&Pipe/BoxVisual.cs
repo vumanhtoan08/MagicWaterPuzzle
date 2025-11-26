@@ -208,12 +208,16 @@ public class BoxVisual : MonoBehaviour
         {
             if (data.rotation == 0) directionObj[1].SetActive(true);
             if (data.rotation == 90) directionObj[0].SetActive(true);
+            if (data.rotation == 180) directionObj[1].SetActive(true);
+            if (data.rotation == 270) directionObj[0].SetActive(true);
         }
 
         if (data.direction == HolderDirection.Vertical)
         {
             if (data.rotation == 0) directionObj[0].SetActive(true);
             if (data.rotation == 90) directionObj[1].SetActive(true);
+            if (data.rotation == 180) directionObj[0].SetActive(true);
+            if (data.rotation == 270) directionObj[1].SetActive(true);
         }
     }
 
@@ -229,12 +233,16 @@ public class BoxVisual : MonoBehaviour
         {
             if (data.rotation == 0) stoneDirection[1].SetActive(true);
             if (data.rotation == 90) stoneDirection[0].SetActive(true);
+            if (data.rotation == 180) stoneDirection[1].SetActive(true);
+            if (data.rotation == 270) stoneDirection[0].SetActive(true);
         }
 
         if (data.direction == HolderDirection.Vertical)
         {
             if (data.rotation == 0) stoneDirection[0].SetActive(true);
             if (data.rotation == 90) stoneDirection[1].SetActive(true);
+            if (data.rotation == 180) stoneDirection[0].SetActive(true);
+            if (data.rotation == 270) stoneDirection[1].SetActive(true);
         }
     }
 

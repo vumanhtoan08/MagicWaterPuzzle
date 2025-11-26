@@ -41,13 +41,12 @@ public class GameManager : Singleton<GameManager>
 
     #region Unity Methods
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
+        DontDestroyOnLoad(gameObject);
+
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-
-        DontDestroyOnLoad(gameObject);
 
         if (!dataManager.IsNull("DataManager đang null")) dataManager.OnAwake();
     }

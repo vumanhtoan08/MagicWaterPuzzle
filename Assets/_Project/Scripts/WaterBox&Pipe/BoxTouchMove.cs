@@ -24,6 +24,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public bool IsFilling { get; set; }
     public bool IsFillMax { get; set; }
+    public Rigidbody2D Rb => rb;
 
     #region Unity Methods
     public void OnStart()
@@ -84,7 +85,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             {
                 rb.MovePosition(snapTargetPos);
                 snapping = false;
-                rb.bodyType = RigidbodyType2D.Kinematic;
+                //rb.bodyType = RigidbodyType2D.Kinematic;
             }
         }
     }
@@ -114,11 +115,8 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         SnapBoxToGrid();
 
         snapping = true;
-        rb.bodyType = RigidbodyType2D.Dynamic; // để MovePosition vẫn hoạt động
+        rb.bodyType = RigidbodyType2D.Kinematic; 
     }
-
-    
-
 
     public void SnapBoxToGrid(Vector3? pos = null)
     {

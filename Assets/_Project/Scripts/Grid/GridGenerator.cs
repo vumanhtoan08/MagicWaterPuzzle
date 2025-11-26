@@ -10,7 +10,7 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] private GameObject nodePrefab;
     [SerializeField] private Camera camObj;
 
-    public void OnStart()
+    public void OnGenerateMap()
     {
         mapData = LevelManager.Instance.CurrentMap;
 
@@ -18,6 +18,21 @@ public class GridGenerator : MonoBehaviour
         GenBorder();
         GenPipe();
         GenBox();
+    }
+
+    public void ClearGrid()
+    {
+        for (int i = nodeHolder.childCount - 1; i >= 0; i--)
+            Destroy(nodeHolder.GetChild(i).gameObject);
+        
+        for (int i = boderHolder.childCount - 1; i >= 0; i--)
+            Destroy(boderHolder.GetChild(i).gameObject);
+
+        for (int i = pipeHolder.childCount - 1; i >= 0; i--)
+            Destroy(pipeHolder.GetChild(i).gameObject);
+
+        for (int i = boxHolder.childCount - 1; i >= 0; i--)
+            Destroy(boxHolder.GetChild(i).gameObject);
     }
 
     #region Gen Node and Boder
