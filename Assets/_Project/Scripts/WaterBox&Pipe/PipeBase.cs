@@ -133,6 +133,14 @@ public class PipeBase : MonoBehaviour
                 break;
             case HolderType.Lock:
                 break;
+            case HolderType.MergeColor:
+                foreach (var holder in data.holderValue)
+                {
+                    if (pipeData.waterColors[0].color == holder.color) return true;
+                }
+                break;
+            case HolderType.Stack2:
+                break;
         }
 
         return false;

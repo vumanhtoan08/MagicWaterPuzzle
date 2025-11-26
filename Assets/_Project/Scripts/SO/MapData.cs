@@ -87,6 +87,8 @@ public class HolderData
     public HolderDirection direction;
     public int iceBreak;                     // số lượt holder cần để phá băng
     public EnumColor keyColor;               // nếu None thì là không có khóa
+    public EnumColor secondaryColor;
+    public SecondaryHolder secondaryHolder;
 
     public HolderData() { }
 
@@ -104,6 +106,8 @@ public class HolderData
         direction = other.direction;
         iceBreak = other.iceBreak;
         keyColor = other.keyColor;
+        secondaryColor = other.secondaryColor;
+        secondaryHolder = other.secondaryHolder != null ? new SecondaryHolder(other.secondaryHolder) : null;
 
         // IMPORTANT: Deep copy List<WaterColor>
         holderValue = new List<WaterColor>();
@@ -113,6 +117,37 @@ public class HolderData
             {
                 holderValue.Add(new WaterColor(wc));
             }
+        }
+    }
+}
+
+[System.Serializable]
+public class SecondaryHolder
+{
+    public HolderType type;
+    public EnumColor color;
+    public List<WaterColor> holderValue;
+    public EnumColor keyColor;
+
+    public SecondaryHolder() 
+    { 
+        type = HolderType.Basic;
+        color = EnumColor.red;
+        holderValue = new List<WaterColor>();
+        keyColor = EnumColor.None;
+    }
+
+    public SecondaryHolder(SecondaryHolder other)
+    {
+        type = other.type;
+        color = other.color;
+        keyColor = other.keyColor;
+
+        holderValue = new List<WaterColor>();
+        if (other.holderValue != null)
+        {
+            foreach (var wc in other.holderValue)
+                holderValue.Add(new WaterColor(wc));
         }
     }
 }

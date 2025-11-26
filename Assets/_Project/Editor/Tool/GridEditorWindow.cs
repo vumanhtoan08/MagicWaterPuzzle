@@ -43,6 +43,8 @@ public class GridEditorWindow : EditorWindow
     private HolderDirection selectedDirection = HolderDirection.None;
     private EnumColor selectedEnumColor = EnumColor.red;
     private HolderType selectedHolderType = HolderType.Basic;
+    private EnumColor selectedSecondaryColor = EnumColor.red;
+    private SecondaryHolder secondaryHolder = null;
     // Holder Water Values (List<WaterColor>)
     private List<WaterColor> holderWaterValues = new();
 
@@ -713,6 +715,92 @@ public class GridEditorWindow : EditorWindow
             selectedEnumKeyColor = (EnumColor)EditorGUILayout.EnumPopup("Key Color", selectedEnumKeyColor);
         }
 
+        // Holder Merge Color 
+        if (selectedHolderType == HolderType.MergeColor)
+        {
+            selectedSecondaryColor = (EnumColor)EditorGUILayout.EnumPopup("Secondary Color", selectedSecondaryColor);
+        }
+
+        // Holder Stack Color 
+        if (selectedHolderType == HolderType.Stack2)
+        {
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Secondary Holder", EditorStyles.boldLabel);
+
+            // tạo nếu chưa có
+            if (secondaryHolder == null)
+            {
+                if (GUILayout.Button("Create Secondary Holder"))
+                {
+                    secondaryHolder = new SecondaryHolder()
+                    {
+                        type = HolderType.Basic,
+                        color = EnumColor.red,
+                        keyColor = EnumColor.None,
+                        holderValue = new List<WaterColor>()
+                    };
+                }
+                return;
+            }
+
+            // Secondary type (nếu bạn muốn cố định chỉ Base/Key thì giữ EnumPopup, nếu không thì bỏ)
+            secondaryHolder.type =
+                (HolderType)EditorGUILayout.EnumPopup("Type", secondaryHolder.type);
+
+            // Secondary color
+            secondaryHolder.color =
+                (EnumColor)EditorGUILayout.EnumPopup("Color", secondaryHolder.color);
+
+            // Key Color chỉ hiện nếu loại Key
+            if (secondaryHolder.type == HolderType.Key)
+            {
+                secondaryHolder.keyColor =
+                    (EnumColor)EditorGUILayout.EnumPopup("Key Color", secondaryHolder.keyColor);
+            }
+
+            // Water values
+            EditorGUILayout.LabelField("Water Values");
+
+            if (secondaryHolder.holderValue == null)
+                secondaryHolder.holderValue = new List<WaterColor>();
+
+            for (int i = 0; i < secondaryHolder.holderValue.Count; i++)
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                secondaryHolder.holderValue[i].color =
+                    (EnumColor)EditorGUILayout.EnumPopup(
+                        secondaryHolder.holderValue[i].color, GUILayout.Width(100)
+                    );
+
+                secondaryHolder.holderValue[i].Value =
+                    EditorGUILayout.FloatField(
+                        secondaryHolder.holderValue[i].Value, GUILayout.Width(60)
+                    );
+
+                if (GUILayout.Button("X", GUILayout.Width(22)))
+                {
+                    secondaryHolder.holderValue.RemoveAt(i);
+                    i--;
+                    continue;
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+
+            if (GUILayout.Button("Add Secondary Water"))
+            {
+                secondaryHolder.holderValue.Add(
+                    new WaterColor() { color = EnumColor.None, Value = 1 }
+                );
+            }
+
+            if (GUILayout.Button("Remove Secondary Holder"))
+            {
+                secondaryHolder = null;
+            }
+        }
+
         // ----------------------------
         // Water Value List (List<WaterColor>)
         // ----------------------------
@@ -794,6 +882,7 @@ public class GridEditorWindow : EditorWindow
     /// </summary>
     private void ApplyHolderShape(int originX, int originY, HolderShape shape, int rotateStep)
     {
+        // Xóa holder cũ tại vị trí này
         currentMap.holders.RemoveAll(h => h.x == originX && h.y == originY);
 
         HolderData newHolder = new HolderData()
@@ -808,25 +897,53 @@ public class GridEditorWindow : EditorWindow
             direction = selectedDirection,
             iceBreak = selectedIceBreak,
             keyColor = selectedEnumKeyColor,
+            secondaryColor = selectedSecondaryColor,
 
             holderValue = new List<WaterColor>()
         };
 
-        // ⭐ SAVE LIST<WaterColor>
-        foreach (var w in holderWaterValues)
+        // ⭐ COPY MAIN WATER VALUES
+        if (holderWaterValues != null)
         {
-            newHolder.holderValue.Add(new WaterColor()
+            foreach (var w in holderWaterValues)
             {
-                color = w.color,
-                Value = w.Value
-            });
+                newHolder.holderValue.Add(new WaterColor(w));
+            }
         }
 
+        // ⭐ COPY SECONDARY HOLDER nếu loại này có secondary
+        if (selectedHolderType == HolderType.Stack2 && secondaryHolder != null)
+        {
+            newHolder.secondaryHolder = new SecondaryHolder()
+            {
+                type = secondaryHolder.type,
+                color = secondaryHolder.color,
+                keyColor = secondaryHolder.keyColor,
+                holderValue = new List<WaterColor>()
+            };
+
+            if (secondaryHolder.holderValue != null)
+            {
+                foreach (var w in secondaryHolder.holderValue)
+                {
+                    newHolder.secondaryHolder.holderValue.Add(new WaterColor(w));
+                }
+            }
+        }
+        else
+        {
+            newHolder.secondaryHolder = null;
+        }
+
+        // ✅ ADD TO MAP
         currentMap.holders.Add(newHolder);
 
         EditorUtility.SetDirty(currentMap);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
         Repaint();
     }
+
 
     private List<Vector2Int> GetShapeCells(HolderShape shape, int rotateStep)
     {

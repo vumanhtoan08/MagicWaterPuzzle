@@ -22,6 +22,11 @@ public class BoxVisual : MonoBehaviour
     [Header("For Key")]
     [SerializeField] private MeshRenderer keyMesh;
 
+    [Header("For Stack2")]
+    [SerializeField] private GameObject stack2Layer; 
+    [SerializeField] private HalfBox half_01_Second;
+    [SerializeField] private HalfBox half_02_Second;
+
     public void OnUpdateVisualOfHolderType(HolderData data)
     {
         ResetVisual();
@@ -54,6 +59,17 @@ public class BoxVisual : MonoBehaviour
             case HolderType.Lock:
                 // TODO: visual lock
                 break;
+
+            case HolderType.Stack2:
+                stack2Layer.SetActive(true);
+                ApplyMaterialsSecondaryStack(data);
+                ApplyMaterials(data);
+                break;
+
+            case HolderType.MergeColor:
+                ApplyMaterials(data);
+                ApplyMaterialsToHalf(half_02.meshRenderers, data, false, data.secondaryColor);
+                break;
         }
     }
 
@@ -63,6 +79,12 @@ public class BoxVisual : MonoBehaviour
     {
         ApplyMaterialsToHalf(half_01.meshRenderers, data, true);
         ApplyMaterialsToHalf(half_02.meshRenderers, data, false);
+    }
+
+    private void ApplyMaterialsSecondaryStack(HolderData data)
+    {
+        ApplyMaterialsToHalf(half_01_Second.meshRenderers, data, true, data.secondaryColor);
+        ApplyMaterialsToHalf(half_02_Second.meshRenderers, data, false, data.secondaryColor);
     }
 
     private void ApplyMaterialsToHalf(List<MeshRenderer> renderers, HolderData data, bool isHalf01)
@@ -94,6 +116,42 @@ public class BoxVisual : MonoBehaviour
                 {
                     SOMaterialColor.GetMaterialTrans(data.color),
                     SOMaterialColor.GetMaterial(data.color)
+                };
+            }
+
+            mesh.materials = materials;
+        }
+    }
+
+    private void ApplyMaterialsToHalf(List<MeshRenderer> renderers, HolderData data, bool isHalf01, EnumColor secondaryColor)
+    {
+        if (renderers == null || renderers.Count == 0) return;
+
+        for (int i = 0; i < renderers.Count; i++)
+        {
+            MeshRenderer mesh = renderers[i];
+            Material[] materials;
+
+            bool useSingle =
+                (data.shapeType == HolderShape.ThreeSquare || data.shapeType == HolderShape.TwoSquare)
+                && i == 0
+                && isHalf01
+                ||
+                (data.shapeType == HolderShape.TwoSquare && i == 0 && !isHalf01);
+
+            if (useSingle)
+            {
+                materials = new Material[]
+                {
+                    SOMaterialColor.GetMaterialTrans(secondaryColor)
+                };
+            }
+            else
+            {
+                materials = new Material[]
+                {
+                    SOMaterialColor.GetMaterialTrans(secondaryColor),
+                    SOMaterialColor.GetMaterial(secondaryColor)
                 };
             }
 

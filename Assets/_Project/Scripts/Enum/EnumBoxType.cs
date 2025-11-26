@@ -5,6 +5,8 @@
     Direction,
     Stone,
     Key, 
+    MergeColor, 
+    Stack2, 
     Lock
 }
 
