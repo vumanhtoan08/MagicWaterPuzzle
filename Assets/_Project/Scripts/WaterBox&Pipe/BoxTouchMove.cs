@@ -25,7 +25,8 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public bool IsFilling { get; set; }
     public bool IsFillMax { get; set; }
 
-    private void Awake()
+    #region Unity Methods
+    public void OnStart()
     {
         cam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
@@ -34,33 +35,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         rb.interpolation = RigidbodyInterpolation2D.Interpolate; // siêu mượt
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (handleCollider.BoxData.type == HolderType.Ice && handleCollider.BoxData.iceBreak > 0) return;
-
-        dragging = true;
-        snapping = false;
-        rb.bodyType = RigidbodyType2D.Dynamic;
-
-        Vector3 wp = cam.ScreenToWorldPoint(eventData.position);
-        zDepth = transform.position.z;
-        wp.z = zDepth;
-
-        offset = transform.position - wp;
-    }
-
-    public void OnPointerUp(PointerEventData eventData = default)
-    {
-        dragging = false;
-
-        // tính vị trí snap
-        SnapBoxToGrid();
-
-        snapping = true;
-        rb.bodyType = RigidbodyType2D.Dynamic; // để MovePosition vẫn hoạt động
-    }
-
-    private void Update()
+    public void OnUpdate()
     {
         if (IsFilling || IsFillMax) return;
 
@@ -113,6 +88,36 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             }
         }
     }
+
+    #endregion
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (handleCollider.BoxData.type == HolderType.Ice && handleCollider.BoxData.iceBreak > 0) return;
+
+        dragging = true;
+        snapping = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
+
+        Vector3 wp = cam.ScreenToWorldPoint(eventData.position);
+        zDepth = transform.position.z;
+        wp.z = zDepth;
+
+        offset = transform.position - wp;
+    }
+
+    public void OnPointerUp(PointerEventData eventData = default)
+    {
+        dragging = false;
+
+        // tính vị trí snap
+        SnapBoxToGrid();
+
+        snapping = true;
+        rb.bodyType = RigidbodyType2D.Dynamic; // để MovePosition vẫn hoạt động
+    }
+
+    
 
 
     public void SnapBoxToGrid(Vector3? pos = null)

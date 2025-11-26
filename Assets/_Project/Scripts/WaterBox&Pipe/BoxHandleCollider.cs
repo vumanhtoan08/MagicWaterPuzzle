@@ -16,6 +16,20 @@ public class BoxHandleCollider : MonoBehaviour
 
     public HolderData BoxData => boxData;
 
+    #region Unity Methods
+
+    public void OnStart()
+    {
+        if(!boxTouchMove.IsNull("Không có BoxTouchMove")) boxTouchMove.OnStart();
+    }
+
+    public void OnUpdate()
+    {
+        if (!boxTouchMove.IsNull("Không có BoxTouchMove")) boxTouchMove.OnUpdate();
+    }
+
+    #endregion
+
     public void GetHolderData(HolderData data)
     {
         boxData = new HolderData(data);

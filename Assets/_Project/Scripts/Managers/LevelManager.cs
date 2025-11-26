@@ -23,6 +23,18 @@ public class LevelManager : Singleton<LevelManager>
     public void OnStart()
     {
         if (!gridGenerator.IsNull($"chưa gán {gridGenerator.name}")) gridGenerator.OnStart();
+        boxHandleColliders.ForEach((b) =>
+        {
+            if (b.IsNull("Không có BoxHandleCollider")) b.OnStart();
+        });
+    }
+
+    public void OnUpdate()
+    {
+        boxHandleColliders.ForEach((b) =>
+        {
+            if (b.IsNull("Không có BoxHandleCollider")) b.OnUpdate();
+        });
     }
 
     #region BoxWater Handle 
@@ -42,8 +54,8 @@ public class LevelManager : Singleton<LevelManager>
     public void SubIceBreakAllHolder()
     {
         List<BoxHandleCollider> iceBoxs = boxHandleColliders.FindAll(x => x.BoxData.type == HolderType.Ice);
-        
-        if(iceBoxs.Count <= 0) return;
+
+        if (iceBoxs.Count <= 0) return;
 
         iceBoxs.ForEach(i => i.SubIceBreak());                                                                                     // ForEach
     }
@@ -56,7 +68,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         List<PipeBase> pipeLock = pipes.FindAll(x => x.PipeData.type == PipeType.Lock);
 
-        foreach(PipeBase pipe in pipeLock)
+        foreach (PipeBase pipe in pipeLock)
         {
             if (pipe.PipeData.keyColor == data.keyColor || pipe.PipeData.keyColor == data.secondaryHolder.keyColor)
             {
