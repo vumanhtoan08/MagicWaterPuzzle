@@ -110,6 +110,7 @@ public class PipeBase : MonoBehaviour
                     if (pipeData.waterColors[0].color == holder.color) return true;
                 }
                 break;
+
             case HolderType.Ice:
                 if (data.iceBreak > 0) return false;
                 foreach (var holder in data.holderValue)
@@ -117,28 +118,34 @@ public class PipeBase : MonoBehaviour
                     if (pipeData.waterColors[0].color == holder.color) return true;
                 }
                 break;
+            
             case HolderType.Direction:
                 foreach (var holder in data.holderValue)
                 {
                     if (pipeData.waterColors[0].color == holder.color) return true;
                 }
                 break;
+
             case HolderType.Stone:
                 return false;
+            
             case HolderType.Key:
                 foreach (var holder in data.holderValue)
                 {
                     if (pipeData.waterColors[0].color == holder.color) return true;
                 }
                 break;
+            
             case HolderType.Lock:
                 break;
+            
             case HolderType.MergeColor:
                 foreach (var holder in data.holderValue)
                 {
                     if (pipeData.waterColors[0].color == holder.color) return true;
                 }
                 break;
+            
             case HolderType.Stack2:
                 break;
         }

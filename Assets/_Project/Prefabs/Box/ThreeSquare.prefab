@@ -46685,6 +46685,20 @@ MonoBehaviour:
   - {fileID: 8968938422295241234}
   - {fileID: 5104540933715509550}
   keyMesh: {fileID: 2553057484766142020}
+  stack2Layer: {fileID: 0}
+  half_01_Second:
+    meshRenderers:
+    - {fileID: 1542217073730717120}
+    - {fileID: 1493124125913096611}
+    - {fileID: 6518765844079680442}
+    - {fileID: 5023809029117965182}
+    - {fileID: 2683120653768911800}
+    - {fileID: 7395454377088092893}
+    - {fileID: 5823216795475240906}
+    - {fileID: 39710978114827968}
+    - {fileID: 8231143822899709739}
+  half_02_Second:
+    meshRenderers: []
 --- !u!114 &3211982724935709251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46710,6 +46724,12 @@ MonoBehaviour:
     direction: 0
     iceBreak: 0
     keyColor: 0
+    secondaryColor: 0
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
   currentColor: []
   childColliders: []
 --- !u!1 &2964860040226250672
@@ -73845,7 +73865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3615363708550429842
 Transform:
   m_ObjectHideFlags: 0
@@ -138884,7 +138904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1110316725422795717
 Transform:
   m_ObjectHideFlags: 0

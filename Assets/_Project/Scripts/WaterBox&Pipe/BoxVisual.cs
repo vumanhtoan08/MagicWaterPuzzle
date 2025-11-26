@@ -83,8 +83,9 @@ public class BoxVisual : MonoBehaviour
 
     private void ApplyMaterialsSecondaryStack(HolderData data)
     {
-        ApplyMaterialsToHalf(half_01_Second.meshRenderers, data, true, data.secondaryColor);
-        ApplyMaterialsToHalf(half_02_Second.meshRenderers, data, false, data.secondaryColor);
+        Debug.Log($"Update Visual: {data.secondaryHolder.color}");
+        ApplyMaterialsToHalf(half_01_Second.meshRenderers, data, true, data.secondaryHolder.color);
+        ApplyMaterialsToHalf(half_02_Second.meshRenderers, data, false, data.secondaryHolder.color);
     }
 
     private void ApplyMaterialsToHalf(List<MeshRenderer> renderers, HolderData data, bool isHalf01)
