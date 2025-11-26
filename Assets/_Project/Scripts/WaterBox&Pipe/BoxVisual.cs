@@ -23,10 +23,12 @@ public class BoxVisual : MonoBehaviour
     [SerializeField] private MeshRenderer keyMesh;
 
     [Header("For Stack2")]
-    [SerializeField] private GameObject stack2Layer; 
+    [SerializeField] private GameObject stack2Layer;
     [SerializeField] private HalfBox half_01_Second;
     [SerializeField] private HalfBox half_02_Second;
 
+    public GameObject Stack2Layer => stack2Layer;
+    public MeshRenderer KeyMesh => keyMesh;
     public void OnUpdateVisualOfHolderType(HolderData data)
     {
         ResetVisual();
@@ -64,6 +66,20 @@ public class BoxVisual : MonoBehaviour
                 stack2Layer.SetActive(true);
                 ApplyMaterialsSecondaryStack(data);
                 ApplyMaterials(data);
+
+                if (data.secondaryHolder.type == HolderType.Key)
+                {
+                    keyMesh.gameObject.SetActive(true);
+                    keyMesh.transform.localRotation = Quaternion.Euler(0, 0, keyMesh.transform.localRotation.z - data.rotation);            // đảm bảo key nằm ngang với mọi trường hợp 
+
+                    Material[] materials;
+                    materials = new Material[]
+                    {
+                        SOMaterialColor.GetMaterial(data.secondaryHolder.color)
+                    };
+
+                    keyMesh.materials = materials;
+                }
                 break;
 
             case HolderType.MergeColor:

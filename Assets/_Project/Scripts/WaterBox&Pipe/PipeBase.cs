@@ -45,15 +45,28 @@ public class PipeBase : MonoBehaviour
         if (IsFilling) return;
         IsFilling = true;
 
+        Debug.Log($"{data.secondaryHolder == null}");
         StartCoroutine(FillingWater(boxTouchMove, data));
     }
 
     // sửa lại để có thể thực hiện với nhiều màu nước
     private IEnumerator FillingWater(BoxTouchMove boxTouchMove, HolderData data)
     {
-        WaterColor goalWaterColor = data.holderValue.Find(x => x.color == pipeData.waterColors[0].color);
-        float subValue = Mathf.Min(pipeData.waterColors[0].Value, goalWaterColor.Value);
-        pipeData.waterColors[0].Value -= subValue;
+        WaterColor goalWaterColor;
+        float subValue;
+
+        if (data.type == HolderType.Stack2 && data.secondaryHolder.holderValue.Count > 0)
+        {
+            goalWaterColor = data.secondaryHolder.holderValue.Find(x => x.color == pipeData.waterColors[0].color);
+            subValue = Mathf.Min(pipeData.waterColors[0].Value, goalWaterColor.Value);
+            pipeData.waterColors[0].Value -= subValue;
+        }
+        else
+        {
+            goalWaterColor = data.holderValue.Find(x => x.color == pipeData.waterColors[0].color);
+            subValue = Mathf.Min(pipeData.waterColors[0].Value, goalWaterColor.Value);
+            pipeData.waterColors[0].Value -= subValue;
+        }
 
         Transform firstWater = waters[0];
         //firstWater.DOKill();
@@ -147,6 +160,16 @@ public class PipeBase : MonoBehaviour
                 break;
             
             case HolderType.Stack2:
+                if (data.secondaryHolder.holderValue.Count <= 0)
+                {
+                    foreach (var holder in data.holderValue)
+                    {
+                        if (pipeData.waterColors[0].color == holder.color) return true;
+                    }
+                }
+
+                if (pipeData.waterColors[0].color == data.secondaryHolder.color) return true;
+
                 break;
         }
 

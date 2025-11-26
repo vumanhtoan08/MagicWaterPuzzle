@@ -40,7 +40,15 @@ public class BoxHandleCollider : MonoBehaviour
 
             // Clone ra them HolderData truyen vao Pipe
             HolderData cloneHolderData = new HolderData(boxData);
-            ReceiveWater(pipeBase);
+            if (boxData.secondaryHolder.holderValue.Count > 0)
+            {
+                ReceiveSecondaryWater(pipeBase);
+            }
+            else
+            {
+                ReceiveWater(pipeBase);
+            }
+
             pipeBase.FillWater(boxTouchMove, cloneHolderData);
         }
     }
@@ -82,6 +90,42 @@ public class BoxHandleCollider : MonoBehaviour
                     {
                         Destroy(gameObject);
                     });
+            });
+        }
+    }
+
+    private void ReceiveSecondaryWater(PipeBase pipeBase)
+    {
+        // fill 
+        WaterColor fillValue = boxData.secondaryHolder.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+        float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
+        fillValue.Value -= subValue;
+
+        // check không còn phần tử trong list
+        if (fillValue.Value <= 0)
+        {
+            Debug.Log("Fill het");
+            boxData.secondaryHolder.holderValue.Remove(fillValue);
+        }
+        else
+        {
+            Debug.Log("Fill chua het");
+        }
+        // nếu không còn nữa destroy holder
+        if (boxData.secondaryHolder.holderValue.Count <= 0)
+        {
+            DOVirtual.DelayedCall(subValue * 0.5f, () =>
+            {
+                // voi truong hop la ice holder
+                LevelManager.Instance.SubIceBreakAllHolder();
+
+                // voi truong hop la key holder
+                if (boxData.secondaryHolder.type == HolderType.Key)
+                {
+                    boxVisual.KeyMesh.transform.DOScale(0, 0.5f);
+                    LevelManager.Instance.KeyBreakDown(boxData);
+                }
+                boxVisual.Stack2Layer.transform.DOScale(0, 0.5f);
             });
         }
     }

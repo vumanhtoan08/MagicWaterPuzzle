@@ -94,39 +94,37 @@ MonoBehaviour:
   pipes:
   - x: 1
     y: 4
-    type: 0
-    keyColor: 0
+    type: 1
+    keyColor: 2
     waterColors:
     - color: 1
-      Value: 1
-    - color: 2
-      Value: 1
-    - color: 1
-      Value: 1
-    - color: 2
-      Value: 1
-    - color: 1
-      Value: 1
-    - color: 2
-      Value: 1
+      Value: 4
   - x: 3
     y: 4
     type: 0
     keyColor: 0
     waterColors:
     - color: 2
-      Value: 1
-    - color: 1
-      Value: 1
-    - color: 2
-      Value: 1
-    - color: 1
-      Value: 1
-    - color: 2
-      Value: 1
-    - color: 1
-      Value: 1
+      Value: 2
   holders:
+  - x: 3
+    y: 2
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 1
+      Value: 2
+    shapeType: 8
+    color: 1
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
   - x: 1
     y: 2
     rotation: 0
@@ -141,9 +139,9 @@ MonoBehaviour:
     keyColor: 0
     secondaryColor: 1
     secondaryHolder:
-      type: 0
+      type: 4
       color: 2
       holderValue:
       - color: 2
         Value: 2
-      keyColor: 0
+      keyColor: 2

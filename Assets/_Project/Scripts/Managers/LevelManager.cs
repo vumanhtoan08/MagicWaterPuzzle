@@ -58,7 +58,7 @@ public class LevelManager : Singleton<LevelManager>
 
         foreach(PipeBase pipe in pipeLock)
         {
-            if (pipe.PipeData.keyColor == data.keyColor)
+            if (pipe.PipeData.keyColor == data.keyColor || pipe.PipeData.keyColor == data.secondaryHolder.keyColor)
             {
                 // BreakDown Key di
                 pipe.LockVisual.transform.DOScale(0, 0.5f);
