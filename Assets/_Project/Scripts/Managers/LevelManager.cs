@@ -28,12 +28,12 @@ public class LevelManager : Singleton<LevelManager>
         LoadAllMapsInResouces();
 
         LoadMapToDictinary();
-        //if (!gridGenerator.IsNull($"chưa gán {gridGenerator.name}")) gridGenerator.OnGenerateMap();
+        ////if (!gridGenerator.IsNull($"chưa gán {gridGenerator.name}")) gridGenerator.OnGenerateMap();
 
-        boxHandleColliders.ForEach((b) =>
-        {
-            if (!b.IsNull("Không có BoxHandleCollider")) b.OnStart();
-        });
+        //boxHandleColliders.ForEach((b) =>
+        //{
+        //    if (!b.IsNull("Không có BoxHandleCollider")) b.OnStart();
+        //});
     }
 
     public void OnUpdate()
@@ -44,6 +44,7 @@ public class LevelManager : Singleton<LevelManager>
         });
 
         SubCounterTime();
+        SubFrozeCounterTime();
     }
 
     #endregion
@@ -120,7 +121,31 @@ public class LevelManager : Singleton<LevelManager>
 
     #region Boosters
 
+    [SerializeField] private float frozeDuration = 20f;                                            // hiệu lực của trạng thái đóng băng
+    [SerializeField] private float frozeTimeCouter;                                                // bộ đếm hiệu lực 
+    public bool IsFroze { get; set; }
+
     // Đóng băng: đóng băng thời gian trong 20s
+    public void OnFrozeBoosterActive()
+    {
+        InitFrozeBooster();
+    }
+
+    private void InitFrozeBooster()
+    {
+        frozeTimeCouter = frozeDuration;
+        IsFroze = true;
+    }
+
+    private void SubFrozeCounterTime()
+    {
+        if (!IsFroze) return;
+
+        frozeTimeCouter -= Time.deltaTime;
+        frozeTimeCouter = Mathf.Clamp(frozeTimeCouter, 0, frozeDuration);
+
+        if (frozeTimeCouter <= 0) IsFroze = false;
+    }
 
     // Bom: phá hủy random một khối trên map 
 
@@ -143,9 +168,10 @@ public class LevelManager : Singleton<LevelManager>
         IsTimeRunning = false;
     }
     public void StartTimer() => IsTimeRunning = true;
-    public void SubCounterTime()
+    private void SubCounterTime()
     {
         if (!IsTimeRunning || GameManager.Instance.CurrentGameState != GameState.Playing) return;
+        if (IsFroze) return;
 
         currentTime -= Time.deltaTime;
         currentTime = Mathf.Clamp(currentTime, 0, currentMap.time);
@@ -187,7 +213,10 @@ public class LevelManager : Singleton<LevelManager>
 
         gridGenerator.OnGenerateMap();
 
-        OnStart(); // chạy init cho Box / Pipe
+        boxHandleColliders.ForEach((b) =>
+        {
+            if (!b.IsNull("Không có BoxHandleCollider")) b.OnStart();
+        });
         GameManager.Instance.ChangeState(GameState.Playing);
     }
 

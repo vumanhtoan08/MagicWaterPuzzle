@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeState(GameState newState)
     {
-        if (newState == currentGameState) return;
+        //if (newState == currentGameState) return;
         currentGameState = newState;
 
         switch (currentGameState)

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,7 @@ public class GameplayScreen : ScreenUI
     [Header("Properties Button Booster")]
     [SerializeField] private Button frozenBtn;
     [SerializeField] private Button bombBtn;
-    [SerializeField] private Button hammerBtn; 
+    [SerializeField] private Button hammerBtn;
 
     private LevelManager levelManager = LevelManager.Instance;
 
@@ -36,32 +37,40 @@ public class GameplayScreen : ScreenUI
     {
         base.Active();
 
+        Color32 textColor = new Color32(255, 255, 255, 255);
         // Level & Time
         switch (levelManager.CurrentMap.levelDifficult)
         {
             case LevelDifficult.Normal:
                 iconLevelImg.gameObject.SetActive(false);
+                textColor = new Color32(255, 255, 255, 255);
                 break;
             case LevelDifficult.Hard:
                 iconLevelImg.gameObject.SetActive(true);
                 iconLevelImg.sprite = levelSprites[0];
+                textColor = new Color32(255, 56, 59, 255);
                 break;
             case LevelDifficult.SuperHard:
                 iconLevelImg.gameObject.SetActive(true);
                 iconLevelImg.sprite = levelSprites[1];
+                textColor = new Color32(139, 58, 251, 255);
                 break;
         }
-        levelTxt.text = $"Level {levelManager.CurrentMap.level}";
+        levelTxt.text = $"LEVEL {levelManager.CurrentMap.level}";
+        levelTxt.color = textColor;
+
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
 
         // Button Action
 
         // Button Booster
+        frozenBtn.onClick.RemoveAllListeners();
+        frozenBtn.onClick.AddListener(LevelManager.Instance.OnFrozeBoosterActive);
     }
 
     protected override void OnScreenDestroyed()
     {
-        
+
     }
 
     #region Time Convert
