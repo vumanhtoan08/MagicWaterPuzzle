@@ -15,14 +15,10 @@ public class LevelManager : Singleton<LevelManager>
 
     [Header("List Manager")]
     [SerializeField] private List<MapData> mapDatas = new();                                        // là nơi chưa SO của Level. 
-    private Dictionary<int, MapData> dictionaryMapDatas = new(); 
+    private Dictionary<int, MapData> dictionaryMapDatas = new();
     [SerializeField] private List<BoxHandleCollider> boxHandleColliders = new();                    // chứa Box có mặt trong map để check thắng thua.
     [SerializeField] private List<PipeBase> pipes = new();                                          // chứa Pipe có mặt tỏng map.   
 
-    [Header("Game para")]
-    [SerializeField] private float currentTime;
-    public bool IsStart { get; set; }
-    
     public MapData CurrentMap => currentMap;
 
     #region Unity Methods
@@ -46,6 +42,8 @@ public class LevelManager : Singleton<LevelManager>
         {
             if (!b.IsNull("Không có BoxHandleCollider")) b.OnUpdate();
         });
+
+        SubCounterTime();
     }
 
     #endregion
@@ -132,9 +130,45 @@ public class LevelManager : Singleton<LevelManager>
 
     #region Game Running
 
-    // Quản lý việc giảm thời gian của game
+    [Header("Game para")]
+    [SerializeField] private float currentTime;
+    public float CurrentTime => currentTime;
+    public bool IsTimeRunning { get; set; }
 
+    #region TimeInGame
+
+    public void InitTimer()
+    {
+        currentTime = currentMap.time;
+        IsTimeRunning = false;
+    }
+    public void StartTimer() => IsTimeRunning = true;
+    public void SubCounterTime()
+    {
+        if (!IsTimeRunning || GameManager.Instance.CurrentGameState != GameState.Playing) return;
+
+        currentTime -= Time.deltaTime;
+        currentTime = Mathf.Clamp(currentTime, 0, currentMap.time);
+
+        CheckGameWinLose();
+    }
+
+    #endregion
     // Quản lý thắng thua của game
+    public void CheckGameWinLose()                                              // Check liên tục theo delta time, vì thằng thua có liên quan tới thời gian 
+    {
+        if (GameManager.Instance.CurrentGameState != GameState.Playing) return;
+        if (!IsTimeRunning) return;
+
+        if (currentTime > 0)
+        {
+            if (boxHandleColliders.Count <= 0) GameManager.Instance.ChangeState(GameState.Win);
+        }
+        else
+        {
+            if (boxHandleColliders.Count > 0) GameManager.Instance.ChangeState(GameState.Lose);
+        }
+    }
 
     #endregion
 
@@ -147,16 +181,19 @@ public class LevelManager : Singleton<LevelManager>
         RemoveAllBoxWater();
         RemoveAllPupeWater();
 
-        currentMap = mapDatas[level];
+        // SetUp dữ liệu ban đầu
+        currentMap = dictionaryMapDatas[level];
+        InitTimer();                                                       // đặt thời gian khi load map 
 
         gridGenerator.OnGenerateMap();
 
         OnStart(); // chạy init cho Box / Pipe
+        GameManager.Instance.ChangeState(GameState.Playing);
     }
 
     public void LoadMapToDictinary()
     {
-        int index = 1; 
+        int index = 1;
 
         foreach (var mapData in mapDatas)
         {

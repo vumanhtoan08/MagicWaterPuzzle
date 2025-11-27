@@ -94,6 +94,8 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!LevelManager.Instance.IsTimeRunning) LevelManager.Instance.IsTimeRunning = true;
+
         if (handleCollider.BoxData.type == HolderType.Ice && handleCollider.BoxData.iceBreak > 0) return;
 
         dragging = true;

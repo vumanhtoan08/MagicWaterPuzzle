@@ -298,6 +298,8 @@ public class GridEditorWindow : EditorWindow
 
         int width = EditorGUILayout.IntField("Width", currentMap.width);
         int height = EditorGUILayout.IntField("Height", currentMap.height);
+        int level = EditorGUILayout.IntField("Level", currentMap.level);
+        LevelDifficult levelDifficult = (LevelDifficult)EditorGUILayout.EnumPopup("Difficult", currentMap.levelDifficult);
         float time = EditorGUILayout.FloatField("Time", currentMap.time);
 
         if (!Mathf.Approximately(time, currentMap.time))
@@ -306,10 +308,24 @@ public class GridEditorWindow : EditorWindow
             EditorUtility.SetDirty(currentMap);
         }
 
+        if (level != currentMap.level)
+        {
+            currentMap.level = level;
+            EditorUtility.SetDirty(currentMap);
+        }
+
+        if (levelDifficult != currentMap.levelDifficult)
+        {
+            currentMap.levelDifficult = levelDifficult;
+            EditorUtility.SetDirty(currentMap);
+        }
+
         if (width != currentMap.width || height != currentMap.height)
         {
             ResizeGrid(width, height);
         }
+
+
     }
 
     private void ResizeGrid(int newWidth, int newHeight)

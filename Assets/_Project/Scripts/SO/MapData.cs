@@ -6,6 +6,9 @@ public class MapData : ScriptableObject
 {
     public int width;
     public int height;
+
+    public int level; 
+    public LevelDifficult levelDifficult;
     public float time; 
 
     public List<NodeData> nodes = new List<NodeData>();
@@ -150,4 +153,11 @@ public class SecondaryHolder
                 holderValue.Add(new WaterColor(wc));
         }
     }
+}
+
+public enum LevelDifficult
+{
+    Normal, 
+    Hard,
+    SuperHard
 }

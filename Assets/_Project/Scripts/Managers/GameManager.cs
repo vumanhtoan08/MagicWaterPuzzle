@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.MainMenu:
                 break;
             case GameState.Playing:
+                uiManager.ShowScreen<GameplayScreen>();
                 break;
             case GameState.Pause:
                 break;
@@ -37,6 +38,8 @@ public class GameManager : Singleton<GameManager>
             case GameState.GiveUp:
                 break;
         }
+
+        Debug.Log($"Chuyển trạng thái {currentGameState}");
     }
 
     #region Unity Methods
@@ -49,6 +52,7 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = 60;
 
         if (!dataManager.IsNull("DataManager đang null")) dataManager.OnAwake();
+        if (!uiManager.IsNull("UIManager đang null")) uiManager.Initialize(); 
     }
 
     private void Start()

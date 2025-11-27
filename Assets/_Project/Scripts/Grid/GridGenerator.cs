@@ -74,7 +74,7 @@ public class GridGenerator : MonoBehaviour
             }
         }
 
-        camObj.transform.position = new Vector3(mapData.width - 1, mapData.height - 1, camObj.transform.position.z);
+        camObj.transform.position = new Vector3(mapData.width - 1, mapData.height - 3, camObj.transform.position.z);
         camObj.orthographicSize = mapData.width * 3;
     }
 
