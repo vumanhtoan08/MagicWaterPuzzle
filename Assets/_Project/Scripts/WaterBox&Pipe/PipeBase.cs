@@ -16,7 +16,7 @@ public class PipeBase : MonoBehaviour
     [SerializeField] private Transform waterHolder;
     [SerializeField] private GameObject waterPrefab;
     [SerializeField] private Renderer headRenderer;
-    private float durationTime = 0.5f;
+    private float durationTime = 0.25f;
 
     public bool IsFilling { get; set; }
     public PipeData PipeData => pipeData;

@@ -69,6 +69,14 @@ public class GameplayScreen : ScreenUI
         // Button Booster
         frozenBtn.onClick.RemoveAllListeners();
         frozenBtn.onClick.AddListener(LevelManager.Instance.OnFrozeBoosterActive);
+
+        // Test
+        nextButton.onClick.RemoveAllListeners();
+        nextButton.onClick.AddListener(LevelManager.Instance.OnNextLevel);
+
+        previourButton.onClick.RemoveAllListeners();
+        previourButton.onClick.AddListener(LevelManager.Instance.OnPreviourLevel);
+
     }
 
     protected override void OnScreenDestroyed()
@@ -118,6 +126,13 @@ public class GameplayScreen : ScreenUI
         int s = Mathf.FloorToInt(seconds % 60f);
         return $"{m:00}:{s:00}";
     }
+
+    #endregion
+
+    #region Building Test
+
+    [SerializeField] private Button nextButton; 
+    [SerializeField] private Button previourButton; 
 
     #endregion
 }

@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.Init:
                 DataManager.Instance.StartGameData();
+                AudioManager.Instance.PlayMusic(SoundKey.MainMusic, 0.3f, true);
                 break;
             case GameState.MainMenu:
                 break;

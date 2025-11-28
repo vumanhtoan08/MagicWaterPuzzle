@@ -34,6 +34,7 @@ public class LevelManager : Singleton<LevelManager>
         //{
         //    if (!b.IsNull("Không có BoxHandleCollider")) b.OnStart();
         //});
+        LoadLevel(levelTest);
     }
 
     public void OnUpdate()
@@ -122,7 +123,7 @@ public class LevelManager : Singleton<LevelManager>
     #region Boosters
 
     [SerializeField] private float frozeDuration = 20f;                                            // hiệu lực của trạng thái đóng băng
-    [SerializeField] private float frozeTimeCouter;                                                // bộ đếm hiệu lực 
+    [SerializeField] private float frozeTimeCouter = 0f;                                                // bộ đếm hiệu lực 
     public float FrozeTimeCouter => frozeTimeCouter;
     public bool IsFroze { get; set; }
 
@@ -134,7 +135,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private void InitFrozeBooster()
     {
-        frozeTimeCouter = frozeDuration;
+        frozeTimeCouter += frozeDuration;
         IsFroze = true;
     }
 
@@ -143,12 +144,16 @@ public class LevelManager : Singleton<LevelManager>
         if (!IsFroze) return;
 
         frozeTimeCouter -= Time.deltaTime;
-        frozeTimeCouter = Mathf.Clamp(frozeTimeCouter, 0, frozeDuration);
+        frozeTimeCouter = Mathf.Clamp(frozeTimeCouter, 0, Mathf.Infinity);
 
         if (frozeTimeCouter <= 0) IsFroze = false;
     }
 
     // Bom: phá hủy random một khối trên map 
+    public void OnBombBoosterActive()
+    {
+        if (boxHandleColliders.Count <= 0) return;
+    }
 
     // Búa: phá hủy 1 khối chỉ định trên map 
 
@@ -166,6 +171,7 @@ public class LevelManager : Singleton<LevelManager>
     public void InitTimer()
     {
         currentTime = currentMap.time;
+        frozeTimeCouter = 0;
         IsTimeRunning = false;
     }
     public void StartTimer() => IsTimeRunning = true;
@@ -250,4 +256,29 @@ public class LevelManager : Singleton<LevelManager>
 
     #endregion
 
+    private int levelTest = 1;
+
+    #region Build Test
+
+    public void OnNextLevel()
+    {
+        levelTest++;
+        if (levelTest > dictionaryMapDatas.Count)
+        {
+            levelTest = 1;
+        }
+        LoadLevel(levelTest);
+    }
+
+    public void OnPreviourLevel()
+    {
+        levelTest--;
+        if (levelTest <= dictionaryMapDatas.Count)
+        {
+            levelTest = dictionaryMapDatas.Count;
+        }
+        LoadLevel(levelTest);
+    }
+
+    #endregion
 }

@@ -94,7 +94,7 @@ public class BoxHandleCollider : MonoBehaviour
             {
                 fillAmountBefore = x;
                 boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.5f);
+            }, fillAmountAfter, subValue * 0.25f);
 
             boxData.holderValue.Remove(fillValue);
         }
@@ -108,12 +108,12 @@ public class BoxHandleCollider : MonoBehaviour
             {
                 fillAmountBefore = x;
                 boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.5f);
+            }, fillAmountAfter, subValue * 0.25f);
         }
         // nếu không còn nữa destroy holder
         if (boxData.holderValue.Count <= 0)
         {
-            DOVirtual.DelayedCall(subValue * 0.5f, () =>
+            DOVirtual.DelayedCall(subValue * 0.25f, () =>
             {
                 boxTouchMove.IsFillMax = true;
 
@@ -124,7 +124,7 @@ public class BoxHandleCollider : MonoBehaviour
                 if (boxData.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
 
                 LevelManager.Instance.RemoveBoxWater(this);
-                transform.DOScale(0, 0.5f)
+                transform.DOScale(0, 0.25f)
                     .OnComplete(() =>
                     {
                         Destroy(gameObject);
@@ -154,7 +154,7 @@ public class BoxHandleCollider : MonoBehaviour
             {
                 fillAmountBefore = x;
                 boxVisual.SetFillAmountToLayerMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.5f);
+            }, fillAmountAfter, subValue * 0.25f);
 
             boxData.holderValue.Remove(fillValue);
 
@@ -170,12 +170,12 @@ public class BoxHandleCollider : MonoBehaviour
             {
                 fillAmountBefore = x;
                 boxVisual.SetFillAmountToLayerMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.5f);
+            }, fillAmountAfter, subValue * 0.25f);
         }
         // nếu không còn nữa destroy holder
         if (boxData.secondaryHolder.holderValue.Count <= 0)
         {
-            DOVirtual.DelayedCall(subValue * 0.5f, () =>
+            DOVirtual.DelayedCall(subValue * 0.25f, () =>
             {
                 // voi truong hop la ice holder
                 LevelManager.Instance.SubIceBreakAllHolder();
@@ -183,7 +183,7 @@ public class BoxHandleCollider : MonoBehaviour
                 // voi truong hop la key holder
                 if (boxData.secondaryHolder.type == HolderType.Key)
                 {
-                    boxVisual.KeyMesh.transform.DOScale(0, 0.5f);
+                    boxVisual.KeyMesh.transform.DOScale(0, 0.25f);
                     LevelManager.Instance.KeyBreakDown(boxData);
                 }
                 boxVisual.Stack2Layer.transform.DOScale(0, 0.5f);

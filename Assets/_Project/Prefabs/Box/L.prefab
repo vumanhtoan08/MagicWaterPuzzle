@@ -41222,6 +41222,7 @@ GameObject:
   - component: {fileID: 3662594600764322925}
   - component: {fileID: 1454562219645422490}
   - component: {fileID: 9048464381039437798}
+  - component: {fileID: -8168744624915754693}
   m_Layer: 6
   m_Name: L
   m_TagString: Untagged
@@ -41284,7 +41285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6655b42993342c747af2b9943b4be7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 0.02
+  smoothTime: 0.05
   snapSmoothTime: 0.01
 --- !u!114 &1454562219645422490
 MonoBehaviour:
@@ -41378,6 +41379,18 @@ MonoBehaviour:
       keyColor: 0
   currentColor: []
   childColliders: []
+--- !u!114 &-8168744624915754693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696838296844141946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5709884101701891369
 GameObject:
   m_ObjectHideFlags: 0
