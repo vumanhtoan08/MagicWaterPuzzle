@@ -77,6 +77,9 @@ public class BoxVisual : MonoBehaviour
                 ApplyMaterialsSecondaryStack(data);
                 ApplyMaterials(data);
 
+                ApplyMaterialsToMainWater(data);
+                ApplyMaterialsToLayerWater(data);
+
                 if (data.secondaryHolder.type == HolderType.Key)
                 {
                     keyMesh.gameObject.SetActive(true);
@@ -213,6 +216,35 @@ public class BoxVisual : MonoBehaviour
                 break;
         }
         SetFillAmountToMainMesh(0);
+    }
+
+    private void ApplyMaterialsToLayerWater(HolderData data)
+    {
+        layerMesh.material = SOMaterialColor.GetMaterialWater(data.secondaryHolder.color);
+        switch (data.rotation)
+        {
+            case 0:
+                layerMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) layerMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) layerMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                break;
+            case 90:
+                layerMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) layerMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ReverseL) layerMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                break;
+            case 180:
+                layerMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) layerMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) layerMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                break;
+            case 270:
+                layerMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) layerMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ReverseL) layerMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                break;
+        }
+        SetFillAmountToLayerMesh(0);
     }
 
     // Chỉnh nước chính 
