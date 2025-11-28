@@ -123,6 +123,7 @@ public class LevelManager : Singleton<LevelManager>
 
     [SerializeField] private float frozeDuration = 20f;                                            // hiệu lực của trạng thái đóng băng
     [SerializeField] private float frozeTimeCouter;                                                // bộ đếm hiệu lực 
+    public float FrozeTimeCouter => frozeTimeCouter;
     public bool IsFroze { get; set; }
 
     // Đóng băng: đóng băng thời gian trong 20s

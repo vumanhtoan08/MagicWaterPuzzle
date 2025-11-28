@@ -29408,7 +29408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &649652954587863223
 Transform:
   m_ObjectHideFlags: 0
@@ -50028,7 +50028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8942793871867003900
 Transform:
   m_ObjectHideFlags: 0
@@ -98732,6 +98732,10 @@ MonoBehaviour:
     - {fileID: 213361737123310663}
   half_02_Second:
     meshRenderers: []
+  mainMesh: {fileID: 769460632880133660}
+  layerMesh: {fileID: 1004044171415033144}
+  mesh1: {fileID: 0}
+  mesh2: {fileID: 0}
 --- !u!114 &4612356936759755137
 MonoBehaviour:
   m_ObjectHideFlags: 0

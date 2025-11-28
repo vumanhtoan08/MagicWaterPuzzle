@@ -3,7 +3,7 @@
     Properties
     {
         _WaterEdge ("Water", 2D) = "white" {}
-        _Color ("Color", Vector) = (1,1,1,1)
+        _Color ("Color", Color) = (1,1,1,1)
         _Fill ("Fill", Range(0, 1)) = 1
         _Speed01 ("Speed 01", Range(0, 1)) = 0.3
         _Speed02 ("Speed 02", Range(0, 1)) = 0.3

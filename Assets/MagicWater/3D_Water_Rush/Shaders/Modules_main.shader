@@ -1,7 +1,7 @@
 Shader "LINH/3D/Modules_main" {
 	Properties {
 		[IntRange] _StencilID ("Stencil ID", Range(0, 255)) = 0
-		_Color ("Main Color", Vector) = (1,1,1,1)
+		_Color ("Main Color", Color) = (1,1,1,1)
 	}
 	//DummyShaderTextExporter
 	SubShader{

@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // Gần như là Controller quản lý việc Move, Visual và điều kiện 
@@ -16,11 +17,13 @@ public class BoxHandleCollider : MonoBehaviour
 
     public HolderData BoxData => boxData;
 
+    private HolderData boxDataTemp; 
+
     #region Unity Methods
 
     public void OnStart()
     {
-        if(!boxTouchMove.IsNull("Không có BoxTouchMove")) boxTouchMove.OnStart();
+        if (!boxTouchMove.IsNull("Không có BoxTouchMove")) boxTouchMove.OnStart();
     }
 
     public void OnUpdate()
@@ -33,6 +36,7 @@ public class BoxHandleCollider : MonoBehaviour
     public void GetHolderData(HolderData data)
     {
         boxData = new HolderData(data);
+        boxDataTemp = new HolderData(data);
         boxTouchMove = GetComponent<BoxTouchMove>();
         boxVisual = GetComponent<BoxVisual>();
     }
@@ -73,17 +77,38 @@ public class BoxHandleCollider : MonoBehaviour
         // fill 
         WaterColor fillValue = boxData.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
         float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
+
         fillValue.Value -= subValue;
+
+        WaterColor tempColor;
+        float fillAmountValueMax;
+        float fillAmountBefore; 
+        float fillAmountAfter; 
 
         // check không còn phần tử trong list
         if (fillValue.Value <= 0)
         {
-            Debug.Log("Fill het");
+            fillAmountBefore = boxVisual.GetFillAmountToMainMesh();
+            fillAmountAfter = 1f;
+            DOTween.To(() => fillAmountBefore, x =>
+            {
+                fillAmountBefore = x;
+                boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
+            }, fillAmountAfter, subValue * 0.5f);
+
             boxData.holderValue.Remove(fillValue);
         }
         else
         {
-            Debug.Log("Fill chua het");
+            tempColor = boxDataTemp.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+            fillAmountValueMax = tempColor.Value;
+            fillAmountBefore = boxVisual.GetFillAmountToMainMesh();
+            fillAmountAfter = fillAmountBefore + subValue / fillAmountValueMax;
+            DOTween.To(() => fillAmountBefore, x =>
+            {
+                fillAmountBefore = x;
+                boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
+            }, fillAmountAfter, subValue * 0.5f);
         }
         // nếu không còn nữa destroy holder
         if (boxData.holderValue.Count <= 0)
@@ -115,15 +140,37 @@ public class BoxHandleCollider : MonoBehaviour
         float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
         fillValue.Value -= subValue;
 
+        WaterColor tempColor;
+        float fillAmountValueMax;
+        float fillAmountBefore;
+        float fillAmountAfter;
+
         // check không còn phần tử trong list
         if (fillValue.Value <= 0)
         {
-            Debug.Log("Fill het");
+            fillAmountBefore = boxVisual.GetFillAmountToLayerMesh();
+            fillAmountAfter = 1f;
+            DOTween.To(() => fillAmountBefore, x =>
+            {
+                fillAmountBefore = x;
+                boxVisual.SetFillAmountToLayerMesh(fillAmountBefore);
+            }, fillAmountAfter, subValue * 0.5f);
+
+            boxData.holderValue.Remove(fillValue);
+
             boxData.secondaryHolder.holderValue.Remove(fillValue);
         }
         else
         {
-            Debug.Log("Fill chua het");
+            tempColor = boxDataTemp.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+            fillAmountValueMax = tempColor.Value;
+            fillAmountBefore = boxVisual.GetFillAmountToLayerMesh();
+            fillAmountAfter = fillAmountBefore + subValue / fillAmountValueMax;
+            DOTween.To(() => fillAmountBefore, x =>
+            {
+                fillAmountBefore = x;
+                boxVisual.SetFillAmountToLayerMesh(fillAmountBefore);
+            }, fillAmountAfter, subValue * 0.5f);
         }
         // nếu không còn nữa destroy holder
         if (boxData.secondaryHolder.holderValue.Count <= 0)

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class GameplayScreen : ScreenUI
     [SerializeField] private Button homeBtn;
     [SerializeField] private Button retryBtn;
     [SerializeField] private Button pauseBtn;
+    [SerializeField] private Button timeBtn;
 
     [Header("Properties Button Booster")]
     [SerializeField] private Button frozenBtn;
@@ -29,6 +31,7 @@ public class GameplayScreen : ScreenUI
     private void Update()
     {
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
+        OnScreenFroze();
     }
 
     #endregion
@@ -72,6 +75,40 @@ public class GameplayScreen : ScreenUI
     {
 
     }
+
+    #region Game Visual
+
+    [Header("Frozen Screen")]
+    [SerializeField] private GameObject frozeScreen;
+    [SerializeField] private Image timeButtonImg;
+    [SerializeField] private List<Sprite> timeButtonFroze;
+    [SerializeField] private GameObject clockObj;                       // đồng hồ lúc bình thường
+    [SerializeField] private GameObject frezenObj;                       // đồng hồ lúc đóng băng
+    [SerializeField] private GameObject iceCounter;
+    [SerializeField] private Text timeFrozeTxt;
+ 
+    private bool isFrozenScreenActive = false;
+    private bool isReskinFrozen = false;
+    private void OnScreenFroze()
+    {
+        //if (!LevelManager.Instance.IsFroze) return;
+
+        if (!isFrozenScreenActive) isFrozenScreenActive = true;
+
+        if (!isReskinFrozen)
+        {
+            frozeScreen.SetActive(LevelManager.Instance.IsFroze ? true : false);
+            timeButtonImg.sprite = LevelManager.Instance.IsFroze ? timeButtonFroze[1] : timeButtonFroze[0];
+            timeBtn.interactable = LevelManager.Instance.IsFroze ? false : true;
+            clockObj.SetActive(LevelManager.Instance.IsFroze ? false : true);
+            frezenObj.SetActive(LevelManager.Instance.IsFroze ? true : false);
+            iceCounter.SetActive(LevelManager.Instance.IsFroze ? true : false);
+        }
+
+        timeFrozeTxt.text = $"{(int)LevelManager.Instance.FrozeTimeCouter}";
+    }
+
+    #endregion
 
     #region Time Convert
 

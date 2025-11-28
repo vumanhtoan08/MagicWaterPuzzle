@@ -27,6 +27,12 @@ public class BoxVisual : MonoBehaviour
     [SerializeField] private HalfBox half_01_Second;
     [SerializeField] private HalfBox half_02_Second;
 
+    [Header("Water Mesh")]
+    [SerializeField] private Renderer mainMesh;
+    [SerializeField] private Renderer layerMesh;
+    [SerializeField] private Renderer mesh1;
+    [SerializeField] private Renderer mesh2;
+
     public GameObject Stack2Layer => stack2Layer;
     public MeshRenderer KeyMesh => keyMesh;
     public void OnUpdateVisualOfHolderType(HolderData data)
@@ -37,16 +43,19 @@ public class BoxVisual : MonoBehaviour
         {
             case HolderType.Basic:
                 ApplyMaterials(data);
+                ApplyMaterialsToMainWater(data);
                 break;
 
             case HolderType.Ice:
                 UpdateIceVisual(data);
                 ApplyMaterials(data);
+                ApplyMaterialsToMainWater(data);
                 break;
 
             case HolderType.Direction:
                 UpdateDirectionVisual(data);
                 ApplyMaterials(data);
+                ApplyMaterialsToMainWater(data);
                 break;
 
             case HolderType.Stone:
@@ -56,6 +65,7 @@ public class BoxVisual : MonoBehaviour
             case HolderType.Key:
                 UpdateKeyVisual(data);
                 ApplyMaterials(data);
+                ApplyMaterialsToMainWater(data);
                 break;
 
             case HolderType.Lock:
@@ -175,6 +185,51 @@ public class BoxVisual : MonoBehaviour
             mesh.materials = materials;
         }
     }
+
+    private void ApplyMaterialsToMainWater(HolderData data)
+    {
+        mainMesh.material = SOMaterialColor.GetMaterialWater(data.color);
+        switch (data.rotation)
+        {
+            case 0:
+                mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                break;
+            case 90:
+                mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                break;
+            case 180:
+                mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                break;
+            case 270:
+                mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                break;
+        }
+        SetFillAmountToMainMesh(0);
+    }
+
+    // Chỉnh nước chính 
+    public void SetFillAmountToMainMesh(float amount) => mainMesh.material.SetFloat("_FillAmount", amount);
+    public float GetFillAmountToMainMesh() => mainMesh.material.GetFloat("_FillAmount");
+
+    // Chỉnh nước phụ
+    public void SetFillAmountToLayerMesh(float amount) => layerMesh.material.SetFloat("_FillAmount", amount);
+    public float GetFillAmountToLayerMesh() => layerMesh.material.GetFloat("_FillAmount");
+
+    // chỉnh nước half01
+    public void SetFillAmountToHalf_01Mesh(float amount) => mesh1.material.SetFloat("_FillAmount", amount);
+    public float GetFillAmountToHalf_01Mesh() => mesh1.material.GetFloat("_FillAmount");
+
+    // chỉnh nước half02
+    public void SetFillAmountToHalf_02Mesh(float amount) => mesh2.material.SetFloat("_FillAmount", amount);
+    public void GetFillAmountToHalf_02Mesh() => mesh2.material.GetFloat("_FillAmount");
 
     #endregion
 
