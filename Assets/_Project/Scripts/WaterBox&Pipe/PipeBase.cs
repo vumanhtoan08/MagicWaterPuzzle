@@ -40,6 +40,11 @@ public class PipeBase : MonoBehaviour
         pipeData.waterColors.RemoveAt(0);
     }
 
+    public void RemoveWater(WaterColor waterColor)
+    {
+        pipeData.waterColors.Remove(waterColor);
+    }
+
     public virtual void FillWater(BoxTouchMove boxTouchMove, HolderData data)
     {
         if (IsFilling) return;
@@ -112,6 +117,15 @@ public class PipeBase : MonoBehaviour
 
         IsFilling = false;
         boxTouchMove.IsFilling = false;
+    }
+
+    public IEnumerator FillingWaterWhenBoxBreak(PipeBase goalPipe, WaterColor goalWater)
+    {
+        float subValue; 
+
+        
+
+        yield return null;
     }
 
     public bool CheckBoxCondition(HolderData data)

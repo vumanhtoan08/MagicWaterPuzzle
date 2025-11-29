@@ -70,6 +70,9 @@ public class GameplayScreen : ScreenUI
         frozenBtn.onClick.RemoveAllListeners();
         frozenBtn.onClick.AddListener(LevelManager.Instance.OnFrozeBoosterActive);
 
+        bombBtn.onClick.RemoveAllListeners();
+        bombBtn.onClick.AddListener(LevelManager.Instance.OnBombBoosterActive);
+
         // Test
         nextButton.onClick.RemoveAllListeners();
         nextButton.onClick.AddListener(LevelManager.Instance.OnNextLevel);

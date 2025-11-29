@@ -279,6 +279,8 @@ public class GridGenerator : MonoBehaviour
 
     private void GenPipe()
     {
+        int index = 0; 
+
         foreach (var pipe in mapData.pipes)
         {
             NodeData node = GetNode(pipe.x, pipe.y);
@@ -305,6 +307,9 @@ public class GridGenerator : MonoBehaviour
                 // fallback
                 pipeObj = Instantiate(pipePrefabs, new Vector2(pipe.x * spacing, pipe.y * spacing), Quaternion.identity, pipeHolder);
             }
+
+            pipeObj.name = $"Pipe {index}";
+            index++;
 
             PipeBase pipeBase = pipeObj.GetComponent<PipeBase>();
             pipeBase.GetPipeData(pipe);
@@ -336,6 +341,8 @@ public class GridGenerator : MonoBehaviour
 
     private void GenBox()
     {
+        int index = 0;
+
         foreach (var holder in mapData.holders)
         {
             NodeData node = GetNode(holder.x, holder.y);
@@ -350,6 +357,9 @@ public class GridGenerator : MonoBehaviour
             BoxHandleCollider boxHandleCollider = holderObj.GetComponent<BoxHandleCollider>();
             boxHandleCollider.GetHolderData(holder);
             LevelManager.Instance.AddBoxWater(boxHandleCollider);
+
+            holderObj.name = $"Box {index}";
+            index++;
         } 
     }
 

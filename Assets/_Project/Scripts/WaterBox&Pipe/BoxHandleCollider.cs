@@ -1,6 +1,8 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.WebSockets;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -17,7 +19,7 @@ public class BoxHandleCollider : MonoBehaviour
 
     public HolderData BoxData => boxData;
 
-    private HolderData boxDataTemp; 
+    private HolderData boxDataTemp;
 
     #region Unity Methods
 
@@ -40,7 +42,6 @@ public class BoxHandleCollider : MonoBehaviour
         boxTouchMove = GetComponent<BoxTouchMove>();
         boxVisual = GetComponent<BoxVisual>();
     }
-
     // Kiểm tra va chạm của các Box con
     private void HandleChildTrigger(Collider2D other, Transform childTransform)
     {
@@ -70,7 +71,6 @@ public class BoxHandleCollider : MonoBehaviour
             pipeBase.FillWater(boxTouchMove, cloneHolderData);
         }
     }
-
     // Hàm nhận nước dùng chung được với nhiều nước màu
     private void ReceiveWater(PipeBase pipeBase)
     {
@@ -82,8 +82,8 @@ public class BoxHandleCollider : MonoBehaviour
 
         WaterColor tempColor;
         float fillAmountValueMax;
-        float fillAmountBefore; 
-        float fillAmountAfter; 
+        float fillAmountBefore;
+        float fillAmountAfter;
 
         // check không còn phần tử trong list
         if (fillValue.Value <= 0)
@@ -132,7 +132,6 @@ public class BoxHandleCollider : MonoBehaviour
             });
         }
     }
-
     private void ReceiveSecondaryWater(PipeBase pipeBase)
     {
         // fill 
@@ -189,6 +188,77 @@ public class BoxHandleCollider : MonoBehaviour
                 boxVisual.Stack2Layer.transform.DOScale(0, 0.5f);
             });
         }
+    }
+    public void BoxBreak(List<PipeBase> pipeBases)
+    {
+        List<WaterColor> waterColorsInBox = new List<WaterColor>();
+
+        if (boxData.type == HolderType.Stack2)
+        {
+            waterColorsInBox.AddRange(boxData.secondaryHolder.holderValue);
+            waterColorsInBox.AddRange(boxData.holderValue);
+        }
+        else
+            waterColorsInBox.AddRange(boxData.holderValue);
+
+        // Duyệt từng pipe
+        foreach (var pipe in pipeBases)
+        {
+            // Duyệt từng water của pipe
+            foreach (var water in pipe.PipeData.waterColors.ToList())
+            {
+                // Không còn waterBox nào -> dừng hẳn
+                if (waterColorsInBox.Count == 0)
+                    break;
+
+                // Duyệt Box Water để trừ
+                for (int i = 0; i < waterColorsInBox.Count; i++)
+                {
+                    var waterBox = waterColorsInBox[i];
+
+                    // Nếu khác màu -> bỏ qua
+                    if (water.color != waterBox.color)
+                        continue;
+
+                    // Trừ nước
+                    float sub = Mathf.Min(waterBox.Value, water.Value);
+                    waterBox.Value -= sub;
+                    water.Value -= sub;
+
+                    Debug.Log($"[BoxBreak] Box:{gameObject.name} - Pipe:{pipe.gameObject.name} - Color:{water.color} - Sub:{sub} - BoxLeft:{waterBox.Value} - PipeLeft:{water.Value}");
+
+                    // Nếu nước trong box hết
+                    if (waterBox.Value <= 0)
+                    {
+                        waterColorsInBox.RemoveAt(i);
+                        i--; // dồn lại index
+
+                        // Nếu nước trong pipe cũng hết → dừng xử lý water này, chuyển sang water khác / pipe khác
+                        if (water.Value <= 0)
+                        {
+                            pipe.RemoveWater(water);
+                            break;  // break vòng for waterBox → chuyển sang water tiếp theo hoặc pipe tiếp theo
+                        }
+
+                        // Nếu pipe còn nước → tiếp tục lặp lại pipe này và box water kế tiếp
+                        continue;
+                    }
+                    else
+                    {
+                        // Box chưa hết nhưng pipe hết → remove water và chuyển sang PIPE tiếp theo
+                        if (water.Value <= 0)
+                        {
+                            pipe.RemoveWater(water);
+                            goto NextPipe; // NHẢY RA KHỎI water hiện tại và SANG PIPE TIẾP THEO
+                        }
+                    }
+                }
+            NextPipe:
+                continue;
+            }
+        }
+
+        LevelManager.Instance.RemoveBoxWater(this);
     }
 
     #region IceHolder

@@ -153,6 +153,15 @@ public class LevelManager : Singleton<LevelManager>
     public void OnBombBoosterActive()
     {
         if (boxHandleColliders.Count <= 0) return;
+        Debug.Log($"Số Box còn lại là {boxHandleColliders.Count}");
+
+        List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
+        BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
+
+        boxHandleCollider.BoxBreak(pipes);
+        // trừ đi một lượng nước tương ứng với box đó trên pipe, phải trừ cả với trường hợp 1 box có 2 màu hoặc là box stack 
+
+        // destroy box đó trên map 
     }
 
     // Búa: phá hủy 1 khối chỉ định trên map 

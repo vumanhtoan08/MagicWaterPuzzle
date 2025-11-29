@@ -1,7 +1,7 @@
 ﻿Shader "Shader Graphs/Modules_trans_Glass" {
     Properties {
-        _Color ("Color", Vector) = (1, 0.4, 0.6, 0.4)
-        _Alpha ("Alpha", Range(0,1)) = 0.5
+        _Color ("Color", Color) = (1, 0.4, 0.6, 0.4)
+        _Alpha ("Alpha", Range(0,1)) = 0.25
         _Gloss ("Glossiness", Range(0,1)) = 0.6
         _Highlight ("Edge Highlight", Range(0,1)) = 0.4
         _InnerDarkness ("Inner Darkness", Range(0,1)) = 0.7
