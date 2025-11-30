@@ -18,7 +18,7 @@ public abstract class ScreenUI : MonoBehaviour
     }
     public virtual void Deactive()
     {
-        Debug.Log("Gọi vào Deactive");
+        //Debug.Log("Gọi vào Deactive");
         gameObject.SetActive(false);
         if (!isCache)
         {

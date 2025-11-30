@@ -201,6 +201,13 @@ public class BoxHandleCollider : MonoBehaviour
         else
             waterColorsInBox.AddRange(boxData.holderValue);
 
+        foreach (PipeBase pipeBase in pipeBases)
+        {
+            pipeBase.FillingWaterWhenBoxBreak(pipeBase, waterColorsInBox, this);
+            //pipeBase.UpdateWaterWhenBoxBreak(pipeBase, waterColorsInBox, this);
+        }
+
+        /*
         // Duyệt từng pipe
         foreach (var pipe in pipeBases)
         {
@@ -259,6 +266,7 @@ public class BoxHandleCollider : MonoBehaviour
         }
 
         LevelManager.Instance.RemoveBoxWater(this);
+        */
     }
 
     #region IceHolder

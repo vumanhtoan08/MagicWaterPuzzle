@@ -153,7 +153,7 @@ public class LevelManager : Singleton<LevelManager>
     public void OnBombBoosterActive()
     {
         if (boxHandleColliders.Count <= 0) return;
-        Debug.Log($"Số Box còn lại là {boxHandleColliders.Count}");
+        //Debug.Log($"Số Box còn lại là {boxHandleColliders.Count}");
 
         List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
         BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
