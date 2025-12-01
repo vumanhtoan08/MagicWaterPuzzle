@@ -215,9 +215,8 @@ public class PipeBase : MonoBehaviour
                 waters[i].DOLocalMoveZ(positionY * -3, 0.5f);
                 positionY += pipeData.waterColors[i].Value;
             }
+            headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
         }
-
-        headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
     }
 
     public bool CheckBoxCondition(HolderData data)

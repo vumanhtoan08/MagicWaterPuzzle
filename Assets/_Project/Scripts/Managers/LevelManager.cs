@@ -149,20 +149,88 @@ public class LevelManager : Singleton<LevelManager>
         if (frozeTimeCouter <= 0) IsFroze = false;
     }
 
-    // Bom: phá hủy random một khối trên map 
+    [SerializeField] private Camera mainCam;
+    [SerializeField] private GameObject bombPrefab;
+
     public void OnBombBoosterActive()
     {
         if (boxHandleColliders.Count <= 0) return;
-        //Debug.Log($"Số Box còn lại là {boxHandleColliders.Count}");
 
         List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
         BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
 
-        boxHandleCollider.BoxBreak(pipes);
-        // trừ đi một lượng nước tương ứng với box đó trên pipe, phải trừ cả với trường hợp 1 box có 2 màu hoặc là box stack 
+        Vector3 startPos = new Vector3(mainCam.transform.position.x, -mainCam.orthographicSize * 1.5f, -5f);
+        Vector3 endPos = boxHandleCollider.transform.position;
 
-        // destroy box đó trên map 
+        GameObject bomb = Instantiate(bombPrefab, startPos, Quaternion.identity);
+
+        if (mainCam.orthographicSize >= 20f)
+        {
+            bomb.transform.localScale = new Vector3(20f / mainCam.orthographicSize, 20 / mainCam.orthographicSize, 20f / mainCam.orthographicSize);
+        }
+        else
+        {
+            bomb.transform.localScale = new Vector3((20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2);
+        }
+
+        MoveParabola(
+             bomb.transform,
+             startPos,
+             endPos,
+             height: 4f,         // độ cao parabol bạn chỉnh được
+             duration: 0.8f,     // tốc độ
+             onComplete: () =>
+             {
+                 boxHandleCollider.BoxBreak(pipes);
+                 Destroy(bomb);
+                 ShakeCamera();
+                 Destroy(boxHandleCollider.gameObject);
+             }
+         );
+
     }
+    public void MoveParabola(Transform obj, Vector3 startPos, Vector3 endPos, float height, float duration, TweenCallback onComplete = null)
+    {
+        float t = 0;
+
+        DOTween.To(() => t, x =>
+        {
+            t = x;
+
+            // Lerp ngang (x,y) theo tuyến tính
+            Vector3 pos = Vector3.Lerp(startPos, endPos, t);
+
+            // Công thức parabol (đỉnh giữa đường đi)
+            float parabola = -4 * height * (t - 0.5f) * (t - 0.5f) + height;
+
+            // Chỉ cộng vào trục Y, không xoay hệ trục
+            pos.y += parabola;
+
+            pos.z = -5f;
+
+            obj.position = pos;
+
+        }, 1f, duration)
+        .SetEase(Ease.Linear)
+        .OnComplete(onComplete);
+    }
+    private void ShakeCamera(float duration = 0.3f, float strength = 0.5f, int vibrato = 20)
+    {
+        Camera mainCam = this.mainCam;
+
+        if (mainCam == null) return;
+
+        // Giữ lại vị trí ban đầu
+        Vector3 originalPos = mainCam.transform.localPosition;
+
+        mainCam.transform.DOShakePosition(duration, strength, vibrato, 90f, false, true)
+            .OnComplete(() =>
+            {
+                // Reset về đúng vị trí ban đầu sau khi rung xong
+                mainCam.transform.localPosition = originalPos;
+            });
+    }
+
 
     // Búa: phá hủy 1 khối chỉ định trên map 
 
