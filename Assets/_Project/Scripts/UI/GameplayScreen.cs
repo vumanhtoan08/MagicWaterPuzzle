@@ -23,6 +23,11 @@ public class GameplayScreen : ScreenUI
     [SerializeField] private Button frozenBtn;
     [SerializeField] private Button bombBtn;
     [SerializeField] private Button hammerBtn;
+    [SerializeField] private List<GameObject> listObjInScreen; 
+    public Button FrozenBtn => frozenBtn;
+    public Button BombBtn => bombBtn;
+    public Button HammerBtn => hammerBtn;
+    public List<GameObject> ListObjInScreen => listObjInScreen; 
 
     private LevelManager levelManager = LevelManager.Instance;
 
@@ -97,7 +102,7 @@ public class GameplayScreen : ScreenUI
     [SerializeField] private GameObject frezenObj;                       // đồng hồ lúc đóng băng
     [SerializeField] private GameObject iceCounter;
     [SerializeField] private Text timeFrozeTxt;
- 
+
     private bool isFrozenScreenActive = false;
     private bool isReskinFrozen = false;
     private void OnScreenFroze()
@@ -134,8 +139,8 @@ public class GameplayScreen : ScreenUI
 
     #region Building Test
 
-    [SerializeField] private Button nextButton; 
-    [SerializeField] private Button previourButton; 
+    [SerializeField] private Button nextButton;
+    [SerializeField] private Button previourButton;
 
     #endregion
 }

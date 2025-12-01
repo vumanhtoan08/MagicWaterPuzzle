@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 3356042619416889094}
   m_Layer: 5
   m_Name: GameplayScreen
-  m_TagString: Untagged
+  m_TagString: GameplayScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1047,6 +1047,10 @@ MonoBehaviour:
   frozenBtn: {fileID: 7266299966650221867}
   bombBtn: {fileID: 4698592110191461036}
   hammerBtn: {fileID: 5000075546120974263}
+  listObjInScreen:
+  - {fileID: 5281847106228916682}
+  - {fileID: 9048860531096780825}
+  - {fileID: 2177698933385466024}
   frozeScreen: {fileID: 4000773925527101252}
   timeButtonImg: {fileID: 5308255417062758380}
   timeButtonFroze:

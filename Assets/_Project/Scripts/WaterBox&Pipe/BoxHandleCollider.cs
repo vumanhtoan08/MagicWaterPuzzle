@@ -201,6 +201,12 @@ public class BoxHandleCollider : MonoBehaviour
         else
             waterColorsInBox.AddRange(boxData.holderValue);
 
+        if (boxData.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
+        if (boxData.type == HolderType.Stack2)
+        {
+            if (boxData.secondaryHolder.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
+        }
+
         foreach (PipeBase pipeBase in pipeBases)
         {
             pipeBase.FillingWaterWhenBoxBreak(pipeBase, waterColorsInBox, this);

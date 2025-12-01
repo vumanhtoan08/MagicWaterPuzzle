@@ -149,12 +149,23 @@ public class LevelManager : Singleton<LevelManager>
         if (frozeTimeCouter <= 0) IsFroze = false;
     }
 
+    // Búa: phá random một box trong map
     [SerializeField] private Camera mainCam;
     [SerializeField] private GameObject bombPrefab;
+    private bool isBombActive;
 
     public void OnBombBoosterActive()
     {
         if (boxHandleColliders.Count <= 0) return;
+        if (isBombActive) return; 
+        isBombActive = true;
+
+        GameplayScreen gameplayScreen = GameObject.FindGameObjectWithTag("GameplayScreen").GetComponent<GameplayScreen>();
+
+        gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(0, 0.2f).SetEase(Ease.InBack));
+        gameplayScreen.FrozenBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+        gameplayScreen.BombBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+        gameplayScreen.HammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() => gameplayScreen.gameObject.SetActive(false));
 
         List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
         BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
@@ -185,6 +196,18 @@ public class LevelManager : Singleton<LevelManager>
                  Destroy(bomb);
                  ShakeCamera();
                  Destroy(boxHandleCollider.gameObject);
+                 DOVirtual.DelayedCall(0.5f, () =>
+                 {
+                     gameplayScreen.BombBtn.transform.localScale = Vector3.zero;
+                     gameplayScreen.gameObject.SetActive(true);
+                     gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(1, 0.2f).SetEase(Ease.OutBack));
+                     DOVirtual.DelayedCall(0.5f, () =>
+                     {
+                         gameplayScreen.FrozenBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                         gameplayScreen.BombBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                         gameplayScreen.HammerBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                     }).OnComplete(()=> isBombActive = false);
+                 });
              }
          );
 

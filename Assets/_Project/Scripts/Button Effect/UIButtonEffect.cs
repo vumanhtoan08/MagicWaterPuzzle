@@ -17,13 +17,17 @@ public class UIButtonEffect : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     private RectTransform rect;
 
+    public bool IsActive { get; set; }
+
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
+        IsActive = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!IsActive) return;
         // stop previous tweens
         rect.DOKill();
 
@@ -33,6 +37,8 @@ public class UIButtonEffect : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (!IsActive) return;
+
         rect.DOKill();
 
         // scale back to normal
