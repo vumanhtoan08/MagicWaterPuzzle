@@ -15,12 +15,12 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private bool dragging = false;
     private bool snapping = false;
 
-    private Vector2 targetPos;       // vị trí mục tiêu khi kéo
-    private Vector2 snapTargetPos;   // vị trí snap sau khi thả
-    private Vector2 smoothVelocity;  // cho SmoothDamp
+    private Vector2 targetPos;
+    private Vector2 snapTargetPos;
+    private Vector2 smoothVelocity;
 
-    [SerializeField] private float smoothTime = 0.02f;   // mượt khi kéo
-    [SerializeField] private float snapSmoothTime = 0.06f;  // mượt khi snap
+    [SerializeField] private float smoothTime = 0.02f;
+    [SerializeField] private float snapSmoothTime = 0.06f;
 
     public bool IsFilling { get; set; }
     public bool IsFillMax { get; set; }
@@ -33,7 +33,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         rb = GetComponent<Rigidbody2D>();
         handleCollider = GetComponent<BoxHandleCollider>();
 
-        rb.interpolation = RigidbodyInterpolation2D.Interpolate; // siêu mượt
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
     public void OnUpdate()
@@ -46,46 +46,24 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             wp.z = zDepth;
             targetPos = wp + offset;
 
-            // ✅ Giới hạn hướng di chuyển
             if (handleCollider.BoxData.type == HolderType.Direction || handleCollider.BoxData.type == HolderType.Stone)
             {
-                if (handleCollider.BoxData.direction == HolderDirection.Horizontal)
-                {
-                    // chỉ đổi X
-                    targetPos.y = rb.position.y;
-                }
-                else if (handleCollider.BoxData.direction == HolderDirection.Vertical)
-                {
-                    // chỉ đổi Y
-                    targetPos.x = rb.position.x;
-                }
+                if (handleCollider.BoxData.direction == HolderDirection.Horizontal) targetPos.y = rb.position.y;
+                else if (handleCollider.BoxData.direction == HolderDirection.Vertical) targetPos.x = rb.position.x;
             }
 
-            Vector2 newPos = Vector2.SmoothDamp(
-                rb.position,
-                targetPos,
-                ref smoothVelocity,
-                smoothTime
-            );
-
+            Vector2 newPos = Vector2.SmoothDamp(rb.position, targetPos, ref smoothVelocity, smoothTime);
             rb.MovePosition(newPos);
         }
         else if (snapping)
         {
-            Vector2 newPos = Vector2.SmoothDamp(
-                rb.position,
-                snapTargetPos,
-                ref smoothVelocity,
-                snapSmoothTime
-            );
-
+            Vector2 newPos = Vector2.SmoothDamp(rb.position, snapTargetPos, ref smoothVelocity, snapSmoothTime);
             rb.MovePosition(newPos);
 
             if (Vector2.Distance(rb.position, snapTargetPos) < 0.01f)
             {
                 rb.MovePosition(snapTargetPos);
                 snapping = false;
-                //rb.bodyType = RigidbodyType2D.Kinematic;
             }
         }
     }
@@ -96,6 +74,11 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (!LevelManager.Instance.IsTimeRunning) LevelManager.Instance.StartTimer();
 
+        if (LevelManager.Instance.IsHammerWaiting)
+        {
+            LevelManager.Instance.OnHammerActive(handleCollider);
+            return;
+        }
         if (handleCollider.BoxData.type == HolderType.Ice && handleCollider.BoxData.iceBreak > 0) return;
 
         dragging = true;
@@ -112,12 +95,9 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void OnPointerUp(PointerEventData eventData = default)
     {
         dragging = false;
-
-        // tính vị trí snap
         SnapBoxToGrid();
-
         snapping = true;
-        rb.bodyType = RigidbodyType2D.Kinematic; 
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     public void SnapBoxToGrid(Vector3? pos = null)

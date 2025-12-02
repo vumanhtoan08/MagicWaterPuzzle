@@ -64,12 +64,13 @@ public class GameplayScreen : ScreenUI
                 textColor = new Color32(139, 58, 251, 255);
                 break;
         }
+
+        frozeScreen = UIManager.Instance.GetScreen<FrozeScreen>();
+
         levelTxt.text = $"LEVEL {levelManager.CurrentMap.level}";
         levelTxt.color = textColor;
 
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
-
-        // Button Action
 
         // Button Booster
         frozenBtn.onClick.RemoveAllListeners();
@@ -77,6 +78,11 @@ public class GameplayScreen : ScreenUI
 
         bombBtn.onClick.RemoveAllListeners();
         bombBtn.onClick.AddListener(LevelManager.Instance.OnBombBoosterActive);
+
+        hammerBtn.onClick.RemoveAllListeners();
+        hammerBtn.onClick.AddListener(OnHammerReady);
+        closeHammer.onClick.RemoveAllListeners();
+        closeHammer.onClick.AddListener(OnHammerClose);
 
         // Test
         nextButton.onClick.RemoveAllListeners();
@@ -92,10 +98,10 @@ public class GameplayScreen : ScreenUI
 
     }
 
-    #region Game Visual
+    #region Ice Visual
 
     [Header("Frozen Screen")]
-    [SerializeField] private GameObject frozeScreen;
+    [SerializeField] private FrozeScreen frozeScreen;
     [SerializeField] private Image timeButtonImg;
     [SerializeField] private List<Sprite> timeButtonFroze;
     [SerializeField] private GameObject clockObj;                       // đồng hồ lúc bình thường
@@ -107,13 +113,11 @@ public class GameplayScreen : ScreenUI
     private bool isReskinFrozen = false;
     private void OnScreenFroze()
     {
-        //if (!LevelManager.Instance.IsFroze) return;
-
         if (!isFrozenScreenActive) isFrozenScreenActive = true;
 
         if (!isReskinFrozen)
         {
-            frozeScreen.SetActive(LevelManager.Instance.IsFroze ? true : false);
+            frozeScreen.gameObject.SetActive(LevelManager.Instance.IsFroze ? true : false);
             timeButtonImg.sprite = LevelManager.Instance.IsFroze ? timeButtonFroze[1] : timeButtonFroze[0];
             timeBtn.interactable = LevelManager.Instance.IsFroze ? false : true;
             clockObj.SetActive(LevelManager.Instance.IsFroze ? false : true);
@@ -143,4 +147,63 @@ public class GameplayScreen : ScreenUI
     [SerializeField] private Button previourButton;
 
     #endregion
+
+    #region Hammer Visual
+
+    [SerializeField] private CanvasGroup hammerGroup;
+    [SerializeField] private Button closeHammer;
+
+    private void OnHammerReady()
+    {
+        LevelManager.Instance.IsHammerWaiting = true;
+
+        listObjInScreen.ForEach(x =>
+        {
+            x.transform.DOKill();
+            x.transform.DOScale(0, 0.2f).SetEase(Ease.InBack);
+        });
+
+        frozenBtn.transform.DOKill();
+        frozenBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+
+        bombBtn.transform.DOKill();
+        bombBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+
+        hammerBtn.transform.DOKill();
+        hammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            hammerGroup.DOKill();             
+            hammerGroup.DOFade(1, 0.3f).SetEase(Ease.OutBack);
+        });
+    }
+
+    public void OnHammerClose()
+    {
+        LevelManager.Instance.IsHammerWaiting = false;
+
+        hammerGroup.DOKill();                   
+        hammerGroup.DOFade(0, 0.3f).SetEase(Ease.InCubic).OnComplete(() =>
+        {
+            listObjInScreen.ForEach(x =>
+            {
+                x.transform.DOKill();          
+                x.transform.DOScale(1, 0.2f).SetEase(Ease.OutBack);
+            });
+
+            DOVirtual.DelayedCall(0.5f, () =>
+            {
+                frozenBtn.transform.DOKill();
+                frozenBtn.transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack);
+
+                bombBtn.transform.DOKill();
+                bombBtn.transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack);
+
+                hammerBtn.transform.DOKill();
+                hammerBtn.transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack);
+            });
+        });
+    }
+
+    #endregion
+
 }

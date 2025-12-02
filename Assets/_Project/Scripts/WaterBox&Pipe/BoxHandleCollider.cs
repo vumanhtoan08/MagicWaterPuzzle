@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,11 +125,12 @@ public class BoxHandleCollider : MonoBehaviour
                 if (boxData.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
 
                 LevelManager.Instance.RemoveBoxWater(this);
-                transform.DOScale(0, 0.25f)
-                    .OnComplete(() =>
-                    {
-                        Destroy(gameObject);
-                    });
+                //transform.DOScale(0, 0.25f)
+                //    .OnComplete(() =>
+                //    {
+                //        Destroy(gameObject);
+                //    });
+                AnimWhenBoxFillMax();
             });
         }
     }
@@ -201,6 +203,7 @@ public class BoxHandleCollider : MonoBehaviour
         else
             waterColorsInBox.AddRange(boxData.holderValue);
 
+        LevelManager.Instance.SubIceBreakAllHolder();
         if (boxData.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
         if (boxData.type == HolderType.Stack2)
         {
@@ -302,5 +305,40 @@ public class BoxHandleCollider : MonoBehaviour
         {
             child.OnChildTriggerEnter = null;
         }
+    }
+
+    [Header("Effect")]
+    [SerializeField] private GameObject box_hit_effect;
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float duration;
+
+    public void AnimWhenBoxFillMax()
+    {
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(transform.DOMoveZ(-2f, 0.1f).SetEase(Ease.InCubic))
+            .AppendInterval(0.5f)
+            .AppendCallback(() =>
+            {
+                Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxClear), new Vector3(boxVisual.CenterPos.position.x, boxVisual.CenterPos.position.y, -3));
+                DOVirtual.DelayedCall(0.5f, () => ObjectPooling.ReturnObject(effect));
+            })
+            .AppendCallback(() =>
+            {
+                // Bay sang phải
+                if (Mathf.RoundToInt(transform.position.x) > Mathf.RoundToInt(LevelManager.Instance.CurrentMap.width / 2))
+                {
+                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y - 40f, transform.localPosition.z), 25, 1, 3);
+                }
+                // Bay sang trái
+                else
+                {
+                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 3);
+                }
+            });
+        //.OnComplete(() =>
+        //{
+        //    Destroy(gameObject);
+        //});
     }
 }

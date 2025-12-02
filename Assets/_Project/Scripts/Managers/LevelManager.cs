@@ -26,14 +26,7 @@ public class LevelManager : Singleton<LevelManager>
     public void OnStart()
     {
         LoadAllMapsInResouces();
-
         LoadMapToDictinary();
-        ////if (!gridGenerator.IsNull($"chưa gán {gridGenerator.name}")) gridGenerator.OnGenerateMap();
-
-        //boxHandleColliders.ForEach((b) =>
-        //{
-        //    if (!b.IsNull("Không có BoxHandleCollider")) b.OnStart();
-        //});
         LoadLevel(levelTest);
     }
 
@@ -72,10 +65,13 @@ public class LevelManager : Singleton<LevelManager>
     public void SubIceBreakAllHolder()
     {
         List<BoxHandleCollider> iceBoxs = boxHandleColliders.FindAll(x => x.BoxData.type == HolderType.Ice);
-
         if (iceBoxs.Count <= 0) return;
-
-        iceBoxs.ForEach(i => i.SubIceBreak());                                                                                     // ForEach
+        //iceBoxs.ForEach(i => i.SubIceBreak());  
+        foreach (BoxHandleCollider box in iceBoxs)
+        {
+            box.SubIceBreak();
+            if (box.BoxData.iceBreak <= 0) box.BoxData.type = HolderType.Basic;
+        }
     }
 
     #endregion
@@ -90,7 +86,6 @@ public class LevelManager : Singleton<LevelManager>
         {
             if (pipe.PipeData.keyColor == data.keyColor || pipe.PipeData.keyColor == data.secondaryHolder.keyColor)
             {
-                // BreakDown Key di
                 pipe.LockVisual.transform.DOScale(0, 0.5f);
                 pipe.PipeData.type = PipeType.Basic;
             }
@@ -122,12 +117,12 @@ public class LevelManager : Singleton<LevelManager>
 
     #region Boosters
 
+    #region Froze Đóng băng: đóng băng thời gian trong 20s
+    [Header("Froze Setting")]
     [SerializeField] private float frozeDuration = 20f;                                            // hiệu lực của trạng thái đóng băng
     [SerializeField] private float frozeTimeCouter = 0f;                                                // bộ đếm hiệu lực 
     public float FrozeTimeCouter => frozeTimeCouter;
     public bool IsFroze { get; set; }
-
-    // Đóng băng: đóng băng thời gian trong 20s
     public void OnFrozeBoosterActive()
     {
         InitFrozeBooster();
@@ -149,26 +144,31 @@ public class LevelManager : Singleton<LevelManager>
         if (frozeTimeCouter <= 0) IsFroze = false;
     }
 
-    // Búa: phá random một box trong map
+    #endregion
+
     [SerializeField] private Camera mainCam;
+
+    #region Bomb: phá hủy random 1 khối trong map
+    // Búa: phá random một box trong map
+
     [SerializeField] private GameObject bombPrefab;
     private bool isBombActive;
 
     public void OnBombBoosterActive()
     {
         if (boxHandleColliders.Count <= 0) return;
-        if (isBombActive) return; 
+        if (isBombActive) return;
         isBombActive = true;
 
-        GameplayScreen gameplayScreen = GameObject.FindGameObjectWithTag("GameplayScreen").GetComponent<GameplayScreen>();
+        List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
+        if (boxEnableDestroy.Count <= 0) return;
+        BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
 
+        GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
         gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(0, 0.2f).SetEase(Ease.InBack));
         gameplayScreen.FrozenBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
         gameplayScreen.BombBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
         gameplayScreen.HammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() => gameplayScreen.gameObject.SetActive(false));
-
-        List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
-        BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
 
         Vector3 startPos = new Vector3(mainCam.transform.position.x, -mainCam.orthographicSize * 1.5f, -5f);
         Vector3 endPos = boxHandleCollider.transform.position;
@@ -188,25 +188,28 @@ public class LevelManager : Singleton<LevelManager>
              bomb.transform,
              startPos,
              endPos,
-             height: 4f,         // độ cao parabol bạn chỉnh được
-             duration: 0.8f,     // tốc độ
+             height: 4f,
+             duration: 0.8f,
              onComplete: () =>
              {
                  boxHandleCollider.BoxBreak(pipes);
                  Destroy(bomb);
                  ShakeCamera();
                  Destroy(boxHandleCollider.gameObject);
+                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BombExplosion), boxHandleCollider.transform.position);
                  DOVirtual.DelayedCall(0.5f, () =>
                  {
                      gameplayScreen.BombBtn.transform.localScale = Vector3.zero;
                      gameplayScreen.gameObject.SetActive(true);
                      gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(1, 0.2f).SetEase(Ease.OutBack));
+                     ObjectPooling.ReturnObject(effect);
+
                      DOVirtual.DelayedCall(0.5f, () =>
                      {
                          gameplayScreen.FrozenBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
                          gameplayScreen.BombBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
                          gameplayScreen.HammerBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-                     }).OnComplete(()=> isBombActive = false);
+                     }).OnComplete(() => isBombActive = false);
                  });
              }
          );
@@ -243,18 +246,53 @@ public class LevelManager : Singleton<LevelManager>
 
         if (mainCam == null) return;
 
-        // Giữ lại vị trí ban đầu
         Vector3 originalPos = mainCam.transform.localPosition;
 
         mainCam.transform.DOShakePosition(duration, strength, vibrato, 90f, false, true)
             .OnComplete(() =>
             {
-                // Reset về đúng vị trí ban đầu sau khi rung xong
                 mainCam.transform.localPosition = originalPos;
             });
     }
+    #endregion
 
-    // Búa: phá hủy 1 khối chỉ định trên map 
+    #region Búa: phá hủy 1 khối chỉ định trên map 
+
+    [SerializeField] private GameObject hammerPrefab;
+    public bool IsHammerWaiting { get; set; }
+
+    public void OnHammerActive(BoxHandleCollider boxHandleCollider)
+    {
+        GameObject hammerObj = Instantiate(hammerPrefab, new Vector3(boxHandleCollider.transform.position.x, boxHandleCollider.transform.position.y, -3), Quaternion.identity);
+
+        if (mainCam.orthographicSize >= 20f)
+        {
+            hammerObj.transform.localScale = new Vector3(20f / mainCam.orthographicSize, 20 / mainCam.orthographicSize, 20f / mainCam.orthographicSize);
+        }
+        else
+        {
+            hammerObj.transform.localScale = new Vector3((20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2);
+        }
+
+        GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
+
+        DOVirtual.DelayedCall(0.67f, () =>
+        {
+            boxHandleCollider.BoxBreak(pipes);
+            ShakeCamera();
+            Destroy(boxHandleCollider.gameObject);
+            Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxHit), new Vector3(boxHandleCollider.transform.position.x, boxHandleCollider.transform.position.y, 0));
+            DOVirtual.DelayedCall(0.33f, () =>
+            {
+                Destroy(hammerObj);
+                IsHammerWaiting = false;
+                gameplayScreen.OnHammerClose();
+                ObjectPooling.ReturnObject(effect);
+            });
+        });
+    }
+
+    #endregion
 
     #endregion
 
@@ -286,19 +324,20 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     #endregion
-    // Quản lý thắng thua của game
     public void CheckGameWinLose()                                              // Check liên tục theo delta time, vì thằng thua có liên quan tới thời gian 
     {
         if (GameManager.Instance.CurrentGameState != GameState.Playing) return;
         if (!IsTimeRunning) return;
 
+        List<BoxHandleCollider> currentHolder = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Stone);
+
         if (currentTime > 0)
         {
-            if (boxHandleColliders.Count <= 0) GameManager.Instance.ChangeState(GameState.Win);
+            if (currentHolder.Count <= 0) GameManager.Instance.ChangeState(GameState.Win);
         }
         else
         {
-            if (boxHandleColliders.Count > 0) GameManager.Instance.ChangeState(GameState.Lose);
+            if (currentHolder.Count > 0) GameManager.Instance.ChangeState(GameState.Lose);
         }
     }
 

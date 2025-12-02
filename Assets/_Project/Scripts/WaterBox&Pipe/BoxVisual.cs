@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BoxVisual : MonoBehaviour
 {
+    [SerializeField] private Transform centerPos;
+    public Transform CenterPos => centerPos;
+
     [Header("Box Visual")]
     [SerializeField] public HalfBox half_01;
     [SerializeField] public HalfBox half_02;

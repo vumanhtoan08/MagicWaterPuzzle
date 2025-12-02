@@ -41192,6 +41192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d881700f6db777140a9c9b32376b657e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  centerPos: {fileID: 483321482562992302}
   half_01:
     meshRenderers:
     - {fileID: 1469679232688001990}
@@ -41272,6 +41273,7 @@ MonoBehaviour:
       keyColor: 0
   currentColor: []
   childColliders: []
+  box_hit_effect: {fileID: 0}
 --- !u!114 &-2691961407871745383
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -201,7 +201,7 @@ public class PipeBase : MonoBehaviour
 
         foreach (var child in childrenDic)
         {
-            Debug.Log($"Name: {child.Key.gameObject.name} -- Value: {child.Value}");
+            //Debug.Log($"Name: {child.Key.gameObject.name} -- Value: {child.Value}");
             child.Key.DOScaleY(child.Value * 3f, 0.5f);
         }
 

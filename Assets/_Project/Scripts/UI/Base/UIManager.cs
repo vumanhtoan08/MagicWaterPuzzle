@@ -72,7 +72,7 @@ public class UIManager : Singleton<UIManager>
         IsFoldScreen = false;
         for (int i = 0; i < canvasScaler.Length; i++)
         {
-            canvasScaler[i].matchWidthOrHeight = 0;
+            canvasScaler[i].matchWidthOrHeight = 1;
             // if (mygame.sdk.SdkUtil.isiPad())
             // {
             //     canvasScaler[i].matchWidthOrHeight = 1f;
