@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: SOMaterialColor
   m_EditorClassIdentifier: 
   materialColors:
+  - color: 0
+    materialColors: {fileID: 2100000, guid: 6ee7a1851155eb44f96e663ce2df993c, type: 2}
+    materialTransColors: {fileID: 2100000, guid: d845944283b6ffd4fa44ddf63bad4eef, type: 2}
+    materialWaterColors: {fileID: 2100000, guid: 7e2dd6678715c2f48ba40a3b5582b16f, type: 2}
   - color: 1
     materialColors: {fileID: 2100000, guid: e384b58880fdb234a901f9b5012a6271, type: 2}
     materialTransColors: {fileID: 2100000, guid: 27db03d3a9c21ec44a441cd4190b9948, type: 2}

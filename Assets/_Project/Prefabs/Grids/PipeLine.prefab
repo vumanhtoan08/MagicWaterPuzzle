@@ -2589,7 +2589,7 @@ GameObject:
   - component: {fileID: 3436580693868143857}
   - component: {fileID: 3017651666938372046}
   - component: {fileID: 5319476324034160687}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: BubbleSubEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2628,7 +2628,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -3018,7 +3018,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 3
+        scalar: 4.32
         minScalar: 0
         maxCurve:
           serializedVersion: 2
@@ -12771,7 +12771,7 @@ GameObject:
   - component: {fileID: 2368585465790712458}
   - component: {fileID: 9001240367354981240}
   - component: {fileID: 4445000340989969127}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DropletsSubEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12810,7 +12810,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -15219,7 +15219,7 @@ GameObject:
   - component: {fileID: 2159306843440474896}
   - component: {fileID: 7916690078824713048}
   - component: {fileID: 1140657732506426027}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Action_Bubbles_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15251,7 +15251,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5004488952798357645}
   serializedVersion: 8
-  lengthInSec: 2
+  lengthInSec: 0.15
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -15260,7 +15260,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -15270,13 +15270,49 @@ ParticleSystem:
     minScalar: 0
     maxCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     minCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -15389,8 +15425,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.55
-      minScalar: 0.25
+      scalar: 0.45
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve: []
@@ -15643,8 +15679,66 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 0
-    m_Bursts: []
+    m_BurstCount: 1
+    m_Bursts:
+    - serializedVersion: 2
+      time: 0
+      countCurve:
+        serializedVersion: 2
+        minMaxState: 0
+        scalar: 5
+        minScalar: 30
+        maxCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        minCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+      cycleCount: 1
+      repeatInterval: 0.01
+      probability: 1
   SizeModule:
     enabled: 1
     curve:
@@ -17825,6 +17919,8 @@ MonoBehaviour:
   waterHolder: {fileID: 5881108753701159041}
   waterPrefab: {fileID: 2539933373344674912, guid: edd49795a97520c47997c22e6a42cc53, type: 3}
   headRenderer: {fileID: 2367176490214752521}
+  idleBubble: {fileID: 4691413393995578138}
+  activeBubble: {fileID: 7916690078824713048}
   waters: []
 --- !u!61 &8874114135867193460
 BoxCollider2D:

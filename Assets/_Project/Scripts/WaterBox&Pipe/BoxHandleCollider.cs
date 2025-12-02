@@ -55,8 +55,11 @@ public class BoxHandleCollider : MonoBehaviour
             Vector3 snappedChild = boxTouchMove.GetSnappedPosition(childTransform.position);
             Vector3 finalPos = snappedChild + offset;
 
-            Sequence seq = DOTween.Sequence().AppendCallback(() => boxTouchMove.SnapBoxToGrid(finalPos))            // ngăn không cho di chuyển lúc fill
-                .AppendInterval(0.1f).OnComplete(() => boxTouchMove.IsFilling = true);
+            Sequence seq = DOTween.Sequence().AppendCallback(() =>
+            {
+                boxTouchMove.SnapBoxToGrid(finalPos);
+            })
+            .AppendInterval(0.1f).OnComplete(() => boxTouchMove.IsFilling = true);
 
             // Clone ra them HolderData truyen vao Pipe
             HolderData cloneHolderData = new HolderData(boxData);
@@ -317,9 +320,11 @@ public class BoxHandleCollider : MonoBehaviour
         Sequence seq = DOTween.Sequence();
 
         seq.Append(transform.DOMoveZ(-2f, 0.1f).SetEase(Ease.InCubic))
+            .AppendCallback(() => childColliders.ForEach(c => c.gameObject.SetActive(false)))
             .AppendInterval(0.5f)
             .AppendCallback(() =>
             {
+                boxVisual.VFX_Fly.SetActive(true);
                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxClear), new Vector3(boxVisual.CenterPos.position.x, boxVisual.CenterPos.position.y, -3));
                 DOVirtual.DelayedCall(0.5f, () => ObjectPooling.ReturnObject(effect));
             })
@@ -328,12 +333,12 @@ public class BoxHandleCollider : MonoBehaviour
                 // Bay sang phải
                 if (Mathf.RoundToInt(transform.position.x) > Mathf.RoundToInt(LevelManager.Instance.CurrentMap.width / 2))
                 {
-                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y - 40f, transform.localPosition.z), 25, 1, 3);
+                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y - 40f, transform.localPosition.z), 25, 1, 2).SetEase(Ease.InCubic);
                 }
                 // Bay sang trái
                 else
                 {
-                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 3);
+                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 2).SetEase(Ease.InCubic);
                 }
             });
         //.OnComplete(() =>

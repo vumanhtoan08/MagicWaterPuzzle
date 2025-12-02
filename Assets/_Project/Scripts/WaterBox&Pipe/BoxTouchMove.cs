@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -81,6 +82,8 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
         if (handleCollider.BoxData.type == HolderType.Ice && handleCollider.BoxData.iceBreak > 0) return;
 
+        transform.DOMoveZ(-1f, 0.1f);
+
         dragging = true;
         snapping = false;
         rb.bodyType = RigidbodyType2D.Dynamic;
@@ -94,6 +97,9 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerUp(PointerEventData eventData = default)
     {
+        transform.DOKill();
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+
         dragging = false;
         SnapBoxToGrid();
         snapping = true;

@@ -7,6 +7,9 @@ public class BoxVisual : MonoBehaviour
     [SerializeField] private Transform centerPos;
     public Transform CenterPos => centerPos;
 
+    [Header("BoxVFX")]
+    [SerializeField] public GameObject VFX_Fly;
+
     [Header("Box Visual")]
     [SerializeField] public HalfBox half_01;
     [SerializeField] public HalfBox half_02;

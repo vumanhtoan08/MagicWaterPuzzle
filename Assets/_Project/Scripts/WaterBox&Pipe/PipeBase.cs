@@ -17,6 +17,10 @@ public class PipeBase : MonoBehaviour
     [SerializeField] private Transform waterHolder;
     [SerializeField] private GameObject waterPrefab;
     [SerializeField] private Renderer headRenderer;
+
+    [Header("Pipe Bubble")]
+    [SerializeField] private ParticleSystem idleBubble;
+    [SerializeField] private ParticleSystem activeBubble; 
     private float durationTime = 0.25f;
 
     public bool IsFilling { get; set; }
@@ -50,6 +54,7 @@ public class PipeBase : MonoBehaviour
     {
         if (IsFilling) return;
         IsFilling = true;
+        activeBubble.Play();
 
         StartCoroutine(FillingWater(boxTouchMove, data));
     }
@@ -82,7 +87,13 @@ public class PipeBase : MonoBehaviour
             {
                 RemoveWater();
                 RemoveWaterTrans(firstWater);
-                headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
+                if (pipeData.waterColors.Count <= 0)
+                {
+                    idleBubble.Stop();
+                    headRenderer.material = SOMaterialColor.GetMaterial(EnumColor.None);
+                }
+                else
+                    headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
             });
 
             float positionY = 0;
@@ -118,6 +129,7 @@ public class PipeBase : MonoBehaviour
 
         IsFilling = false;
         boxTouchMove.IsFilling = false;
+        activeBubble.Stop(false);
     }
 
     public void FillingWaterWhenBoxBreak(PipeBase pipeBase, List<WaterColor> waterColorsInBox, BoxHandleCollider boxCollider)
@@ -215,7 +227,13 @@ public class PipeBase : MonoBehaviour
                 waters[i].DOLocalMoveZ(positionY * -3, 0.5f);
                 positionY += pipeData.waterColors[i].Value;
             }
-            headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
+            if (pipeData.waterColors.Count <= 0)
+            {
+                idleBubble.Stop();
+                headRenderer.material = SOMaterialColor.GetMaterial(EnumColor.None);
+            }
+            else
+                headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
         }
     }
 
