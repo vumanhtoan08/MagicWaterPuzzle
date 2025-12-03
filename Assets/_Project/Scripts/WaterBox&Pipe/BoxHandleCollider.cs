@@ -19,6 +19,7 @@ public class BoxHandleCollider : MonoBehaviour
     [SerializeField] private List<NodeBoxCheckCollider> childColliders;
 
     public HolderData BoxData => boxData;
+    public BoxVisual BoxVisual => boxVisual;
 
     private HolderData boxDataTemp;
 
@@ -92,28 +93,85 @@ public class BoxHandleCollider : MonoBehaviour
         // check không còn phần tử trong list
         if (fillValue.Value <= 0)
         {
-            fillAmountBefore = boxVisual.GetFillAmountToMainMesh();
-            fillAmountAfter = 1f;
-            DOTween.To(() => fillAmountBefore, x =>
+            if (boxData.type == HolderType.MergeColor)
             {
-                fillAmountBefore = x;
-                boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.25f);
+                if (boxData.color == pipeBase.PipeData.waterColors[0].color)
+                {
+                    fillAmountBefore = boxVisual.GetFillAmountToHalf_01Mesh();
+                    fillAmountAfter = 1f;
+                    DOTween.To(() => fillAmountBefore, x =>
+                    {
+                        fillAmountBefore = x;
+                        boxVisual.SetFillAmountToHalf_01Mesh(fillAmountBefore);
+                    }, fillAmountAfter, subValue * 0.25f);
+                }
+                if (boxData.secondaryColor == pipeBase.PipeData.waterColors[0].color)
+                {
+                    fillAmountBefore = boxVisual.GetFillAmountToHalf_02Mesh();
+                    fillAmountAfter = 1f;
+                    DOTween.To(() => fillAmountBefore, x =>
+                    {
+                        fillAmountBefore = x;
+                        boxVisual.SetFillAmountToHalf_02Mesh(fillAmountBefore);
+                    }, fillAmountAfter, subValue * 0.25f);
+                }
+            }
+            else
+            {
+                fillAmountBefore = boxVisual.GetFillAmountToMainMesh();
+                fillAmountAfter = 1f;
+                DOTween.To(() => fillAmountBefore, x =>
+                {
+                    fillAmountBefore = x;
+                    boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
+                }, fillAmountAfter, subValue * 0.25f);
+            }
 
             boxData.holderValue.Remove(fillValue);
         }
         else
         {
-            tempColor = boxDataTemp.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
-            fillAmountValueMax = tempColor.Value;
-            fillAmountBefore = boxVisual.GetFillAmountToMainMesh();
-            fillAmountAfter = fillAmountBefore + subValue / fillAmountValueMax;
-            DOTween.To(() => fillAmountBefore, x =>
+            if (boxData.type == HolderType.MergeColor)
             {
-                fillAmountBefore = x;
-                boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.25f);
+                if (boxData.color == pipeBase.PipeData.waterColors[0].color)
+                {
+                    tempColor = boxDataTemp.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+                    fillAmountValueMax = tempColor.Value;
+                    fillAmountBefore = boxVisual.GetFillAmountToHalf_01Mesh();
+                    fillAmountAfter = fillAmountBefore + subValue / fillAmountValueMax;
+                    DOTween.To(() => fillAmountBefore, x =>
+                    {
+                        fillAmountBefore = x;
+                        boxVisual.SetFillAmountToHalf_01Mesh(fillAmountBefore);
+                    }, fillAmountAfter, subValue * 0.25f);
+                }
+                if (boxData.secondaryColor == pipeBase.PipeData.waterColors[0].color)
+                {
+                    tempColor = boxDataTemp.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+                    fillAmountValueMax = tempColor.Value;
+                    fillAmountBefore = boxVisual.GetFillAmountToHalf_02Mesh();
+                    fillAmountAfter = fillAmountBefore + subValue / fillAmountValueMax;
+                    DOTween.To(() => fillAmountBefore, x =>
+                    {
+                        fillAmountBefore = x;
+                        boxVisual.SetFillAmountToHalf_02Mesh(fillAmountBefore);
+                    }, fillAmountAfter, subValue * 0.25f);
+                }
+            }
+            else
+            {
+                tempColor = boxDataTemp.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+                fillAmountValueMax = tempColor.Value;
+                fillAmountBefore = boxVisual.GetFillAmountToMainMesh();
+                fillAmountAfter = fillAmountBefore + subValue / fillAmountValueMax;
+                DOTween.To(() => fillAmountBefore, x =>
+                {
+                    fillAmountBefore = x;
+                    boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
+                }, fillAmountAfter, subValue * 0.25f);
+            }
         }
+
         // nếu không còn nữa destroy holder
         if (boxData.holderValue.Count <= 0)
         {
@@ -128,11 +186,6 @@ public class BoxHandleCollider : MonoBehaviour
                 if (boxData.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
 
                 LevelManager.Instance.RemoveBoxWater(this);
-                //transform.DOScale(0, 0.25f)
-                //    .OnComplete(() =>
-                //    {
-                //        Destroy(gameObject);
-                //    });
                 AnimWhenBoxFillMax();
             });
         }
@@ -320,12 +373,16 @@ public class BoxHandleCollider : MonoBehaviour
         Sequence seq = DOTween.Sequence();
 
         seq.Append(transform.DOMoveZ(-2f, 0.1f).SetEase(Ease.InCubic))
-            .AppendCallback(() => childColliders.ForEach(c => c.gameObject.SetActive(false)))
+            .AppendCallback(() =>
+            {
+                childColliders.ForEach(c => c.gameObject.SetActive(false));
+            })
             .AppendInterval(0.5f)
             .AppendCallback(() =>
             {
                 boxVisual.VFX_Fly.SetActive(true);
                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxClear), new Vector3(boxVisual.CenterPos.position.x, boxVisual.CenterPos.position.y, -3));
+                AudioManager.Instance.PlayOneShot(SoundKey.ClearBlock, 1f);
                 DOVirtual.DelayedCall(0.5f, () => ObjectPooling.ReturnObject(effect));
             })
             .AppendCallback(() =>
@@ -334,16 +391,14 @@ public class BoxHandleCollider : MonoBehaviour
                 if (Mathf.RoundToInt(transform.position.x) > Mathf.RoundToInt(LevelManager.Instance.CurrentMap.width / 2))
                 {
                     transform.DOLocalJump(new Vector3(-10, transform.localPosition.y - 40f, transform.localPosition.z), 25, 1, 2).SetEase(Ease.InCubic);
+                   
                 }
                 // Bay sang trái
                 else
                 {
                     transform.DOLocalJump(new Vector3(-10, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 2).SetEase(Ease.InCubic);
                 }
+                transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 2f).SetEase(Ease.InCubic);
             });
-        //.OnComplete(() =>
-        //{
-        //    Destroy(gameObject);
-        //});
     }
 }

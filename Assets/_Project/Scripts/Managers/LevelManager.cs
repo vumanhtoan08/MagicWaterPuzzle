@@ -20,6 +20,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private List<PipeBase> pipes = new();                                          // chứa Pipe có mặt tỏng map.   
 
     public MapData CurrentMap => currentMap;
+    public bool IsBoxTouched { get; set; }
 
     #region Unity Methods
 
@@ -27,7 +28,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         LoadAllMapsInResouces();
         LoadMapToDictinary();
-        LoadLevel(levelTest);
+        //LoadLevel(levelTest);
     }
 
     public void OnUpdate()
@@ -132,6 +133,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         frozeTimeCouter += frozeDuration;
         IsFroze = true;
+        AudioManager.Instance.PlayOneShot(SoundKey.Freeze, 1f);
     }
 
     private void SubFrozeCounterTime()
@@ -141,7 +143,11 @@ public class LevelManager : Singleton<LevelManager>
         frozeTimeCouter -= Time.deltaTime;
         frozeTimeCouter = Mathf.Clamp(frozeTimeCouter, 0, Mathf.Infinity);
 
-        if (frozeTimeCouter <= 0) IsFroze = false;
+        if (frozeTimeCouter <= 0)
+        {
+            AudioManager.Instance.PlayOneShot(SoundKey.EndFreeze, 1f);
+            IsFroze = false;
+        }
     }
 
     #endregion
@@ -171,7 +177,7 @@ public class LevelManager : Singleton<LevelManager>
         gameplayScreen.HammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() => gameplayScreen.gameObject.SetActive(false));
 
         Vector3 startPos = new Vector3(mainCam.transform.position.x, -mainCam.orthographicSize * 1.5f, -5f);
-        Vector3 endPos = boxHandleCollider.transform.position;
+        Vector3 endPos = boxHandleCollider.BoxVisual.CenterPos.position;
 
         GameObject bomb = Instantiate(bombPrefab, startPos, Quaternion.identity);
 
@@ -194,9 +200,10 @@ public class LevelManager : Singleton<LevelManager>
              {
                  boxHandleCollider.BoxBreak(pipes);
                  Destroy(bomb);
+                 AudioManager.Instance.PlayOneShot(SoundKey.Explo, 1f);
                  ShakeCamera();
                  Destroy(boxHandleCollider.gameObject);
-                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BombExplosion), boxHandleCollider.transform.position);
+                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BombExplosion), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -2f));
                  DOVirtual.DelayedCall(0.5f, () =>
                  {
                      gameplayScreen.BombBtn.transform.localScale = Vector3.zero;
@@ -263,7 +270,8 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnHammerActive(BoxHandleCollider boxHandleCollider)
     {
-        GameObject hammerObj = Instantiate(hammerPrefab, new Vector3(boxHandleCollider.transform.position.x, boxHandleCollider.transform.position.y, -3), Quaternion.identity);
+        GameObject hammerObj = Instantiate(hammerPrefab, new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -3), Quaternion.identity);
+        AudioManager.Instance.PlayOneShot(SoundKey.HammerHit, 1f);
 
         if (mainCam.orthographicSize >= 20f)
         {
@@ -281,8 +289,16 @@ public class LevelManager : Singleton<LevelManager>
             boxHandleCollider.BoxBreak(pipes);
             ShakeCamera();
             Destroy(boxHandleCollider.gameObject);
-            Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxHit), new Vector3(boxHandleCollider.transform.position.x, boxHandleCollider.transform.position.y, 0));
+            Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxHit), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -1f));
+            Transform boxBreak = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxBreak), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -1f));
+            ParticleSystemRenderer colorBox = boxBreak.transform.Find("Color").GetComponent<ParticleSystemRenderer>();
+            colorBox.material = SOMaterialColor.GetMaterial(boxHandleCollider.BoxData.color);
+
+            ParticleSystemRenderer colorGalssBox = boxBreak.transform.Find("Glass").GetComponent<ParticleSystemRenderer>();
+            colorGalssBox.material = SOMaterialColor.GetMaterialTrans(boxHandleCollider.BoxData.color);
+
             DOVirtual.DelayedCall(0.33f, () =>
+
             {
                 Destroy(hammerObj);
                 IsHammerWaiting = false;

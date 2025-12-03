@@ -73,6 +73,9 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (LevelManager.Instance.IsBoxTouched) return;
+        LevelManager.Instance.IsBoxTouched = true;
+
         if (!LevelManager.Instance.IsTimeRunning) LevelManager.Instance.StartTimer();
 
         if (LevelManager.Instance.IsHammerWaiting)
@@ -97,6 +100,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public void OnPointerUp(PointerEventData eventData = default)
     {
+        LevelManager.Instance.IsBoxTouched = false;
         transform.DOKill();
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 

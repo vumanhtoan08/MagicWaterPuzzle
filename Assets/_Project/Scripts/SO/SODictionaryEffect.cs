@@ -33,6 +33,7 @@ public class EffectData
 public enum EffectType
 {
     BoxHit,
+    BoxBreak,
     BombExplosion,
     BoxClear,
 }

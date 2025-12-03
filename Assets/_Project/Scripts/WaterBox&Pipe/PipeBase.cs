@@ -208,7 +208,16 @@ public class PipeBase : MonoBehaviour
         // Scale những vị trí bị hết trong Pipe
         foreach (var child in children)
         {
-            child.DOScaleY(0, 0.5f);
+            child.DOScaleY(0, 0.5f).OnComplete(() =>
+            {
+                if (pipeData.waterColors.Count <= 0)
+                {
+                    idleBubble.Stop();
+                    headRenderer.material = SOMaterialColor.GetMaterial(EnumColor.None);
+                }
+                else
+                    headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
+            });
         }
 
         foreach (var child in childrenDic)
@@ -227,13 +236,6 @@ public class PipeBase : MonoBehaviour
                 waters[i].DOLocalMoveZ(positionY * -3, 0.5f);
                 positionY += pipeData.waterColors[i].Value;
             }
-            if (pipeData.waterColors.Count <= 0)
-            {
-                idleBubble.Stop();
-                headRenderer.material = SOMaterialColor.GetMaterial(EnumColor.None);
-            }
-            else
-                headRenderer.material = SOMaterialColor.GetMaterial(pipeData.waterColors[0].color);
         }
     }
 

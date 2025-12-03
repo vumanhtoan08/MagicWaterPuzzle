@@ -50,18 +50,21 @@ public class BoxVisual : MonoBehaviour
             case HolderType.Basic:
                 ApplyMaterials(data);
                 ApplyMaterialsToMainWater(data);
+                ApplyMaterialsToMergeWater(data);
                 break;
 
             case HolderType.Ice:
                 UpdateIceVisual(data);
                 ApplyMaterials(data);
                 ApplyMaterialsToMainWater(data);
+                ApplyMaterialsToMergeWater(data);
                 break;
 
             case HolderType.Direction:
                 UpdateDirectionVisual(data);
                 ApplyMaterials(data);
                 ApplyMaterialsToMainWater(data);
+                ApplyMaterialsToMergeWater(data);
                 break;
 
             case HolderType.Stone:
@@ -72,6 +75,7 @@ public class BoxVisual : MonoBehaviour
                 UpdateKeyVisual(data);
                 ApplyMaterials(data);
                 ApplyMaterialsToMainWater(data);
+                ApplyMaterialsToMergeWater(data);
                 break;
 
             case HolderType.Lock:
@@ -85,6 +89,7 @@ public class BoxVisual : MonoBehaviour
 
                 ApplyMaterialsToMainWater(data);
                 ApplyMaterialsToLayerWater(data);
+                ApplyMaterialsToMergeWater(data);
 
                 if (data.secondaryHolder.type == HolderType.Key)
                 {
@@ -104,6 +109,9 @@ public class BoxVisual : MonoBehaviour
             case HolderType.MergeColor:
                 ApplyMaterials(data);
                 ApplyMaterialsToHalf(half_02.meshRenderers, data, false, data.secondaryColor);
+
+                ApplyMaterialsToMainWater(data);
+                ApplyMaterialsToMergeWater(data);
                 break;
         }
     }
@@ -253,6 +261,51 @@ public class BoxVisual : MonoBehaviour
         SetFillAmountToLayerMesh(0);
     }
 
+    private void ApplyMaterialsToMergeWater(HolderData data)
+    {
+        if (data.shapeType == HolderShape.Plus || data.shapeType == HolderShape.ThreeSquare) return;
+
+        mesh1.material = SOMaterialColor.GetMaterialWater(data.color);
+        mesh2.material = SOMaterialColor.GetMaterialWater(data.secondaryColor);
+        switch (data.rotation)
+        {
+            case 0:
+                mesh1.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                mesh2.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh1.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh2.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh1.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh2.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                break;
+            case 90:
+                mesh1.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                mesh2.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh1.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh2.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh1.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh2.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                break;
+            case 180:
+                mesh1.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                mesh2.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh1.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh2.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh1.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh2.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                break;
+            case 270:
+                mesh1.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                mesh2.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh1.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mesh2.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh1.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL) mesh2.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                break;
+        }
+        SetFillAmountToHalf_01Mesh(0);
+        SetFillAmountToHalf_02Mesh(0);
+    }
+
     // Chỉnh nước chính 
     public void SetFillAmountToMainMesh(float amount) => mainMesh.material.SetFloat("_FillAmount", amount);
     public float GetFillAmountToMainMesh() => mainMesh.material.GetFloat("_FillAmount");
@@ -267,7 +320,7 @@ public class BoxVisual : MonoBehaviour
 
     // chỉnh nước half02
     public void SetFillAmountToHalf_02Mesh(float amount) => mesh2.material.SetFloat("_FillAmount", amount);
-    public void GetFillAmountToHalf_02Mesh() => mesh2.material.GetFloat("_FillAmount");
+    public float GetFillAmountToHalf_02Mesh() => mesh2.material.GetFloat("_FillAmount");
 
     #endregion
 

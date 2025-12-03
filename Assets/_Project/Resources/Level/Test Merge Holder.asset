@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 5
   height: 5
+  level: 0
+  levelDifficult: 0
   time: 180
   nodes:
   - x: 0
@@ -105,26 +107,8 @@ MonoBehaviour:
     keyColor: 0
     waterColors:
     - color: 2
-      Value: 2
+      Value: 3
   holders:
-  - x: 3
-    y: 2
-    rotation: 0
-    type: 0
-    holderValue:
-    - color: 1
-      Value: 2
-    shapeType: 8
-    color: 1
-    direction: 0
-    iceBreak: 0
-    keyColor: 0
-    secondaryColor: 1
-    secondaryHolder:
-      type: 0
-      color: 1
-      holderValue: []
-      keyColor: 0
   - x: 1
     y: 2
     rotation: 0
@@ -158,6 +142,26 @@ MonoBehaviour:
     iceBreak: 1
     keyColor: 0
     secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 2
+    rotation: 0
+    type: 5
+    holderValue:
+    - color: 1
+      Value: 1
+    - color: 2
+      Value: 1
+    shapeType: 8
+    color: 1
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 2
     secondaryHolder:
       type: 0
       color: 1
