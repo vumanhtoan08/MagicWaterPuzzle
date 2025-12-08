@@ -364,9 +364,7 @@ public class LevelManager : Singleton<LevelManager>
     public void LoadLevel(int level)
     {
         // Clear old map
-        gridGenerator.ClearGrid();
-        RemoveAllBoxWater();
-        RemoveAllPupeWater();
+        ClearDataInLevel();
 
         // SetUp dữ liệu ban đầu
         currentMap = dictionaryMapDatas[level];
@@ -378,7 +376,15 @@ public class LevelManager : Singleton<LevelManager>
         {
             if (!b.IsNull("Không có BoxHandleCollider")) b.OnStart();
         });
-        GameManager.Instance.ChangeState(GameState.Playing);
+        //GameManager.Instance.ChangeState(GameState.Playing);
+    }
+
+    public void ClearDataInLevel()
+    {
+        // Clear old map
+        gridGenerator.ClearGrid();
+        RemoveAllBoxWater();
+        RemoveAllPupeWater();
     }
 
     public void LoadMapToDictinary()

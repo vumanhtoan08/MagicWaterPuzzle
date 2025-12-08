@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameplayScreen : ScreenUI
 {
+    DataManager dataManager;
+
     [Header("Properties Level & Time")]
     [SerializeField] private Image iconLevelImg;
     [SerializeField] private List<Sprite> levelSprites;
@@ -40,10 +42,16 @@ public class GameplayScreen : ScreenUI
     }
 
     #endregion
-
+    public override void Initialize(UIManager uiManager)
+    {
+        base.Initialize(uiManager);
+        dataManager = DataManager.Instance;
+    }
     public override void Active()
     {
         base.Active();
+        int currentLevel = dataManager.GetLevelData();
+        LevelManager.Instance.LoadLevel(currentLevel);
 
         Color32 textColor = new Color32(255, 255, 255, 255);
         // Level & Time
@@ -72,6 +80,19 @@ public class GameplayScreen : ScreenUI
 
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
 
+        // Button 
+        homeBtn.onClick.RemoveAllListeners();
+        homeBtn.onClick.AddListener(() =>
+        {
+            // Clear old map
+            LevelManager.Instance.ClearDataInLevel(); 
+
+            GameManager.Instance.ChangeState(GameState.MainMenu);
+        });
+        
+        retryBtn.onClick.RemoveAllListeners();
+        retryBtn.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Playing));
+
         // Button Booster
         frozenBtn.onClick.RemoveAllListeners();
         frozenBtn.onClick.AddListener(LevelManager.Instance.OnFrozeBoosterActive);
@@ -90,7 +111,6 @@ public class GameplayScreen : ScreenUI
 
         previourButton.onClick.RemoveAllListeners();
         previourButton.onClick.AddListener(LevelManager.Instance.OnPreviourLevel);
-
     }
 
     protected override void OnScreenDestroyed()

@@ -14,35 +14,49 @@ namespace D.Editor
     public class DataManagerEditor : Editor
     {
         public Dictionary<string, string> prefInfos;
+        private bool foldOut;
 
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
+
             if (prefInfos == null)
             {
                 foldOut = true;
-                if (GUILayout.Button("Show Prefs"))
+
+                if (GUILayout.Button("Show Prefs (PlayerPrefs)"))
                 {
-                    string data = SaveSystem.LoadGame(DataManager.DATAPATH);
-                    if (data == null || data.Length == 0) return;
+                    string data = PlayerPrefs.GetString(DataManager.DATAPATH, "");
+
+                    if (string.IsNullOrEmpty(data)) return;
+
                     var userData = JsonConvert.DeserializeObject<PlayerData>(data);
-                    if (userData.prefData == null || userData.prefData.Length == 0) return;
+
+                    if (string.IsNullOrEmpty(userData.prefData)) return;
+
                     prefInfos = JsonConvert.DeserializeObject<Dictionary<string, string>>(userData.prefData);
                 }
             }
             else
             {
                 ShowPrefs();
-                if (GUILayout.Button("Save Prefs"))
+
+                if (GUILayout.Button("Save Prefs → PlayerPrefs"))
                 {
-                    string data = SaveSystem.LoadGame(DataManager.DATAPATH);
-                    if (data == null || data.Length == 0) return;
-                    var userData = JsonConvert.DeserializeObject<PlayerData>(data);
+                    string rawData = PlayerPrefs.GetString(DataManager.DATAPATH, "");
+                    if (string.IsNullOrEmpty(rawData)) return;
+
+                    var userData = JsonConvert.DeserializeObject<PlayerData>(rawData);
+
                     string newData = JsonConvert.SerializeObject(prefInfos);
                     userData.prefData = newData;
-                    var d = JsonConvert.SerializeObject(userData);
-                    PlayerPrefs.SetString("user_data", d);
-                    Debug.Log("Saved:" + d);
+
+                    string json = JsonConvert.SerializeObject(userData);
+                    PlayerPrefs.SetString(DataManager.DATAPATH, json);
+                    PlayerPrefs.Save();
+
+                    Debug.Log("Saved to PlayerPrefs: " + json);
+
                     if (Application.isPlaying)
                     {
                         DataManager dataManager = target as DataManager;
@@ -53,43 +67,40 @@ namespace D.Editor
             }
         }
 
-        private bool foldOut;
-
         private void ShowPrefs()
         {
             int index = 0;
-            foldOut = EditorGUILayout.Foldout(foldOut, "ListPrefs");
+            foldOut = EditorGUILayout.Foldout(foldOut, "List Prefs");
             if (foldOut)
             {
                 EditorGUI.indentLevel++;
-                var newList = new Dictionary<string, string>(prefInfos);
-                foreach (var item in newList)
+                var copy = new Dictionary<string, string>(prefInfos);
+
+                foreach (var item in copy)
                 {
-                    EditorGUILayout.LabelField("Element " + index);
+                    EditorGUILayout.LabelField($"Element {index}");
                     EditorGUI.indentLevel++;
+
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField(item.Key);
-                    string newValue = "";
-                    if (int.TryParse(item.Value, out int newNum))
-                    {
-                        newValue = EditorGUILayout.IntField(newNum).ToString();
-                    }
+
+                    string newValue;
+                    if (int.TryParse(item.Value, out int intValue))
+                        newValue = EditorGUILayout.IntField(intValue).ToString();
                     else
-                    {
                         newValue = EditorGUILayout.TextField(item.Value);
-                    }
+
                     if (newValue != item.Value)
-                    {
                         prefInfos[item.Key] = newValue;
-                        Debug.Log("change " + item.Key + ":" + newValue);
-                    }
+
                     EditorGUILayout.EndHorizontal();
+
                     index++;
                     EditorGUI.indentLevel--;
                 }
+
                 EditorGUI.indentLevel--;
             }
-
         }
     }
 
@@ -98,10 +109,10 @@ namespace D.Editor
 }
 public class DataManager : Singleton<DataManager>
 {
-    public static readonly string DATAPATH = "player_data";
+    public static readonly string DATAPATH = "player_data"; // key PlayerPrefs
     public PlayerData data;
     private Dictionary<string, string> userDicDataPref;
-    
+
     public void OnAwake()
     {
         LoadData();
@@ -109,88 +120,77 @@ public class DataManager : Singleton<DataManager>
 
     void LoadData()
     {
-        string myData = SaveSystem.LoadGame(DATAPATH);
-        if (myData.Length > 1)
+        string myData = PlayerPrefs.GetString(DATAPATH, "");
+
+        if (!string.IsNullOrWhiteSpace(myData))
         {
             Debug.Log("Load:" + myData);
             data = JsonUtility.FromJson<PlayerData>(myData);
-            if (data.prefData != null && data.prefData.Length > 0)
+
+            if (!string.IsNullOrEmpty(data.prefData))
             {
                 userDicDataPref = JsonConvert.DeserializeObject<Dictionary<string, string>>(data.prefData);
+            }
+            else
+            {
+                userDicDataPref = new Dictionary<string, string>();
             }
         }
         else
         {
             data = new PlayerData();
             userDicDataPref = new Dictionary<string, string>();
-          
         }
     }
+
     void SaveData()
     {
         data.prefData = JsonConvert.SerializeObject(userDicDataPref);
         string dt = JsonConvert.SerializeObject(data);
         Debug.Log("Save:" + dt);
-        SaveSystem.SaveFile(DATAPATH, dt);
+
+        PlayerPrefs.SetString(DATAPATH, dt);
+        PlayerPrefs.Save();
     }
+
     private void ReloadPref()
     {
         Debug.Log("Reload");
-        userDicDataPref = JsonConvert.DeserializeObject<Dictionary<string, string>>(data.prefData);
+        if (!string.IsNullOrEmpty(data.prefData))
+        {
+            userDicDataPref = JsonConvert.DeserializeObject<Dictionary<string, string>>(data.prefData);
+        }
     }
 
     #region Save Sync
 
     public string GetString(string key, string defaultValue)
     {
-        if (userDicDataPref.ContainsKey(key))
-        {
-            return userDicDataPref[key];
-        }
-        else
-        {
-            return defaultValue;
-        }
+        return userDicDataPref.ContainsKey(key) ? userDicDataPref[key] : defaultValue;
     }
+
     public void SetString(string key, string newValue)
     {
-        if (userDicDataPref.ContainsKey(key))
-        {
-            userDicDataPref[key] = newValue;
-        }
-        else
-        {
-            userDicDataPref.Add(key, newValue);
-        }
+        userDicDataPref[key] = newValue;
         SaveData();
     }
+
     public int GetInt(string key, int defaultValue)
     {
-        if (userDicDataPref.ContainsKey(key))
-        {
-            int data = Convert.ToInt32(userDicDataPref[key]);
-            return data;
-        }
-        else
-        {
-            return defaultValue;
-        }
+        if (!userDicDataPref.ContainsKey(key)) return defaultValue;
+
+        return Convert.ToInt32(userDicDataPref[key]);
     }
+
     public void SetInt(string key, int newValue)
     {
-        if (userDicDataPref.ContainsKey(key))
-        {
-            userDicDataPref[key] = newValue.ToString();
-        }
-        else
-        {
-            userDicDataPref.Add(key, newValue.ToString());
-        }
+        userDicDataPref[key] = newValue.ToString();
         SaveData();
     }
+
     #endregion
 
-    public void StartGameData()
+    public GameDataSave GetGameData()
     {
         string loadData = GetString("game_data", "");
 
@@ -202,15 +202,95 @@ public class DataManager : Singleton<DataManager>
             string json = JsonConvert.SerializeObject(newData);
 
             SetString("game_data", json);
-            return;
+            return newData;
+        }
+
+        return JsonConvert.DeserializeObject<GameDataSave>(loadData);
+    }
+
+    public void CheckInitData()
+    {
+        int isInit = GetInt("init", -1);
+        
+        if (isInit <= 0)
+        {
+            SetLevelData(1);
+            SetMoneyData(0);
+            SetLifeData(5);
+            SetFrozenData(0);
+            SetBombData(0);
+            SetHammerData(0);
+
+            SetInt("init", 1);
         }
     }
 
+    public int GetLevelData()
+    {
+        int level = GetInt("level", 1);
+        return level;
+    }
+    public void SetLevelData(int value)
+    {
+        SetInt("level", value);
+    }
+
+    public int GetMoneyData()
+    {
+        int money = GetInt("money", 0);
+        return money;
+    }
+    public void SetMoneyData(int value)
+    {
+        SetInt("money", value);
+    }
+
+    public int GetLifeData()
+    {
+        int life = GetInt("life", 5);
+        return life;
+    }
+    public void SetLifeData(int value)
+    {
+        SetInt("life", value);
+    }
+
+    public int GetFrozenData()
+    {
+        int life = GetInt("frozen", 0);
+        return life;
+    }
+    public void SetFrozenData(int value)
+    {
+        SetInt("frozen", value);
+    }
+
+    public int GetBombData()
+    {
+        int life = GetInt("bomb", 0);
+        return life;
+    }
+    public void SetBombData(int value)
+    {
+        SetInt("bomb", value);
+    }
+
+    public int GetHammerData()
+    {
+        int life = GetInt("hammer", 0);
+        return life;
+    }
+    public void SetHammerData(int value)
+    {
+        SetInt("hammer", value);
+    }
 }
+
 [System.Serializable]
 public class PlayerData
 {
     public string prefData;
+
     public PlayerData()
     {
         prefData = "";

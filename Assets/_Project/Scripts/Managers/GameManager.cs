@@ -5,14 +5,16 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [Header("GameState")]
-    [SerializeField] private GameState currentGameState; 
+    [SerializeField] private GameState currentGameState;
     public GameState CurrentGameState => currentGameState;
-    
-    [Header ("Manager REF")]
+
+    [Header("Manager REF")]
     [SerializeField] private DataManager dataManager;
-    [SerializeField] private LevelManager levelManager; 
+    [SerializeField] private LevelManager levelManager;
     [SerializeField] private UIManager uiManager;
-    [SerializeField] private AudioManager audioManager;      
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private ShopManager shopManager;
+    public bool IsInited { get; set; }
 
     public void ChangeState(GameState newState)
     {
@@ -22,13 +24,21 @@ public class GameManager : Singleton<GameManager>
         switch (currentGameState)
         {
             case GameState.Init:
-                DataManager.Instance.StartGameData();
-                AudioManager.Instance.PlayMusic(SoundKey.MainMusic, 0.3f, true);
+                DataManager.Instance.CheckInitData();
+                uiManager.ShowScreen<FlashScreen>();
                 break;
             case GameState.MainMenu:
+                if (IsInited)
+                    uiManager.ShowScreen<LoadingScreen>();
+                else
+                {
+                    uiManager.ShowScreen<MainMenuScreen>();
+                    IsInited = true;
+                }
+                AudioManager.Instance.PlayMusic(SoundKey.MainMusic, 0.3f, true);
                 break;
             case GameState.Playing:
-                uiManager.ShowScreen<GameplayScreen>();
+                uiManager.ShowScreen<LoadingScreen>();
                 break;
             case GameState.Pause:
                 break;
@@ -51,9 +61,10 @@ public class GameManager : Singleton<GameManager>
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        IsInited = false;
 
         if (!dataManager.IsNull("DataManager đang null")) dataManager.OnAwake();
-        if (!uiManager.IsNull("UIManager đang null")) uiManager.Initialize(); 
+        if (!uiManager.IsNull("UIManager đang null")) uiManager.Initialize();
     }
 
     private void Start()
@@ -61,6 +72,7 @@ public class GameManager : Singleton<GameManager>
         ChangeState(GameState.Init);
 
         if (!levelManager.IsNull("Level Manager đang null")) levelManager.OnStart();
+        if (!shopManager.IsNull("Wallet Manager đang null")) shopManager.OnStart();
     }
 
     private void Update()
