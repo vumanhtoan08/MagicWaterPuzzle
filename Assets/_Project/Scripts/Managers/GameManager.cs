@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,10 +17,13 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private ShopManager shopManager;
     public bool IsInited { get; set; }
 
-    public void ChangeState(GameState newState)
+    public void ChangeState(GameState newState, bool isAuto = true)
     {
         //if (newState == currentGameState) return;
         currentGameState = newState;
+        Debug.Log($"Chuyển trạng thái {currentGameState}");
+
+        if (!isAuto) return;
 
         switch (currentGameState)
         {
@@ -43,14 +47,19 @@ public class GameManager : Singleton<GameManager>
             case GameState.Pause:
                 break;
             case GameState.Win:
+                DOVirtual.DelayedCall(3f, () =>
+                {
+                    UIManager.Instance.ShowPopup<PopupWin>(null);
+                    LevelManager.Instance.ClearDataInLevel();
+                });
+                
                 break;
             case GameState.Lose:
+                UIManager.Instance.ShowPopup<PopupWaitingLose>(null);
                 break;
             case GameState.GiveUp:
                 break;
         }
-
-        Debug.Log($"Chuyển trạng thái {currentGameState}");
     }
 
     #region Unity Methods

@@ -22,6 +22,8 @@ public class LevelManager : Singleton<LevelManager>
     public MapData CurrentMap => currentMap;
     public bool IsBoxTouched { get; set; }
 
+    public bool IsLevelGenComplete { get; set; }
+
     #region Unity Methods
 
     public void OnStart()
@@ -33,6 +35,9 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnUpdate()
     {
+        Debug.Log(IsLevelGenComplete);
+        if (!IsLevelGenComplete) return;
+
         boxHandleColliders.ForEach((b) =>
         {
             if (!b.IsNull("Không có BoxHandleCollider")) b.OnUpdate();
@@ -339,21 +344,33 @@ public class LevelManager : Singleton<LevelManager>
         CheckGameWinLose();
     }
 
+    public void AddCounterTime(float value)
+    {
+        Debug.Log(currentTime);
+        currentTime += value; 
+    }
+
     #endregion
     public void CheckGameWinLose()                                              // Check liên tục theo delta time, vì thằng thua có liên quan tới thời gian 
     {
-        if (GameManager.Instance.CurrentGameState != GameState.Playing) return;
-        if (!IsTimeRunning) return;
-
         List<BoxHandleCollider> currentHolder = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Stone);
 
         if (currentTime > 0)
         {
-            if (currentHolder.Count <= 0) GameManager.Instance.ChangeState(GameState.Win);
+            //if (currentHolder.Count <= 0) UIManager.Instance.ShowPopup<PopupWin>(() => LoadLevel(1)); // dùng hảm ẩn danh 
+            if (currentHolder.Count <= 0)
+            {
+                GameManager.Instance.ChangeState(GameState.Win);
+                IsLevelGenComplete = false;
+            }
         }
         else
         {
-            if (currentHolder.Count > 0) GameManager.Instance.ChangeState(GameState.Lose);
+            if (currentHolder.Count > 0)
+            {
+                GameManager.Instance.ChangeState(GameState.Lose);
+                //IsLevelGenComplete = false;
+            }
         }
     }
 

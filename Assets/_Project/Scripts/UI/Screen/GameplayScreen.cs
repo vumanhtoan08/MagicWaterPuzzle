@@ -51,6 +51,7 @@ public class GameplayScreen : ScreenUI
     {
         base.Active();
         int currentLevel = dataManager.GetLevelData();
+
         LevelManager.Instance.LoadLevel(currentLevel);
 
         Color32 textColor = new Color32(255, 255, 255, 255);

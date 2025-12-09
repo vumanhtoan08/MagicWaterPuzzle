@@ -361,6 +361,8 @@ public class GridGenerator : MonoBehaviour
             holderObj.name = $"Box {index}";
             index++;
         } 
+
+        LevelManager.Instance.IsLevelGenComplete = true;
     }
 
     #endregion
