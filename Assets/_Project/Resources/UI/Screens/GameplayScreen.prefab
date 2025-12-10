@@ -882,6 +882,15 @@ MonoBehaviour:
   previourButton: {fileID: 6010276394491695890}
   hammerGroup: {fileID: 7845339083439731333}
   closeHammer: {fileID: 7570253570949936374}
+  sprites:
+  - {fileID: 21300000, guid: bed02a603a050ce469321207834f9c04, type: 3}
+  - {fileID: 21300000, guid: eb49e961fc24c5e408d3969d839b1ae8, type: 3}
+  frozenValueImg: {fileID: 223070536608644986}
+  frozenText: {fileID: 8863894944843645302}
+  bombValueImg: {fileID: 6345720692359647663}
+  bombText: {fileID: 6377292029507204915}
+  hammerValueImg: {fileID: 6804709546974669841}
+  hammerText: {fileID: 8023126228708654440}
 --- !u!114 &1819964102340369533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3089,7 +3098,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 153.76, y: 81.15}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &559601502173705781
 CanvasRenderer:
   m_ObjectHideFlags: 0

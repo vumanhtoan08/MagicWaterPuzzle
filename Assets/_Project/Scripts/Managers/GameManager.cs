@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -45,6 +46,7 @@ public class GameManager : Singleton<GameManager>
                 uiManager.ShowScreen<LoadingScreen>();
                 break;
             case GameState.Pause:
+                uiManager.ShowPopup<PopupPause>(null);
                 break;
             case GameState.Win:
                 DOVirtual.DelayedCall(3f, () =>

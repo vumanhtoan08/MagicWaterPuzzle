@@ -139,7 +139,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         musicPlayer.Play();
     }
-    public void EnableMusic(bool status)
+    public void EnableMusic(bool status, float previourValue = 1f)
     {
         MusicSetting = status ? 1 : 0;
         if (MusicSetting != 1)
@@ -153,7 +153,7 @@ public class AudioManager : Singleton<AudioManager>
         {
             for (int i = 0; i < activeAudioSources.Count; i++)
             {
-                activeAudioSources[i].volume = 1;
+                activeAudioSources[i].volume = previourValue;
             }
         }
     }

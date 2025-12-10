@@ -9,6 +9,8 @@ using UnityEngine;
 /// </summary>
 public class LevelManager : Singleton<LevelManager>
 {
+    DataManager dataManager;
+
     [Header("Component REF")]
     [SerializeField] private GridGenerator gridGenerator;
     [SerializeField] private MapData currentMap;
@@ -31,12 +33,15 @@ public class LevelManager : Singleton<LevelManager>
         LoadAllMapsInResouces();
         LoadMapToDictinary();
         //LoadLevel(levelTest);
+        dataManager = DataManager.Instance;
     }
 
     public void OnUpdate()
     {
-        Debug.Log(IsLevelGenComplete);
+        //Debug.Log(IsLevelGenComplete);
         if (!IsLevelGenComplete) return;
+
+        if (GameManager.Instance.CurrentGameState != GameState.Playing) return;
 
         boxHandleColliders.ForEach((b) =>
         {
@@ -131,7 +136,28 @@ public class LevelManager : Singleton<LevelManager>
     public bool IsFroze { get; set; }
     public void OnFrozeBoosterActive()
     {
-        InitFrozeBooster();
+        if (CheckBoosterFrozen())
+            InitFrozeBooster();
+        else
+        {
+            GameManager.Instance.ChangeState(GameState.Pause, false);
+            UIManager.Instance.ShowPopup<PopupBuyFrozen>(() =>
+            {
+                GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
+                gameplayScreen.OnUpdateUIFooter();
+            });
+        }
+    }
+
+    public bool CheckBoosterFrozen()
+    {
+        int frozenValue = dataManager.GetFrozenData();
+        if (frozenValue > 0)
+        {
+            dataManager.SetFrozenData(frozenValue - 1);
+            return true;
+        }
+        return false;
     }
 
     private void InitFrozeBooster()
@@ -139,6 +165,8 @@ public class LevelManager : Singleton<LevelManager>
         frozeTimeCouter += frozeDuration;
         IsFroze = true;
         AudioManager.Instance.PlayOneShot(SoundKey.Freeze, 1f);
+        GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
+        gameplayScreen.OnUpdateUIFooter();
     }
 
     private void SubFrozeCounterTime()
@@ -167,66 +195,90 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnBombBoosterActive()
     {
-        if (boxHandleColliders.Count <= 0) return;
-        if (isBombActive) return;
-        isBombActive = true;
-
-        List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
-        if (boxEnableDestroy.Count <= 0) return;
-        BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
-
-        GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
-        gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(0, 0.2f).SetEase(Ease.InBack));
-        gameplayScreen.FrozenBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
-        gameplayScreen.BombBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
-        gameplayScreen.HammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() => gameplayScreen.gameObject.SetActive(false));
-
-        Vector3 startPos = new Vector3(mainCam.transform.position.x, -mainCam.orthographicSize * 1.5f, -5f);
-        Vector3 endPos = boxHandleCollider.BoxVisual.CenterPos.position;
-
-        GameObject bomb = Instantiate(bombPrefab, startPos, Quaternion.identity);
-
-        if (mainCam.orthographicSize >= 20f)
+        if (CheckBoosterBomb())
         {
-            bomb.transform.localScale = new Vector3(20f / mainCam.orthographicSize, 20 / mainCam.orthographicSize, 20f / mainCam.orthographicSize);
+            if (boxHandleColliders.Count <= 0) return;
+            if (isBombActive) return;
+            isBombActive = true;
+
+            List<BoxHandleCollider> boxEnableDestroy = boxHandleColliders.FindAll(x => x.BoxData.type != HolderType.Ice && x.BoxData.type != HolderType.Stone);         // lấy hết tất cả box trên sân trừ ice và stone
+            if (boxEnableDestroy.Count <= 0) return;
+            BoxHandleCollider boxHandleCollider = boxEnableDestroy[Random.Range(0, boxEnableDestroy.Count)];
+
+            GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
+            gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(0, 0.2f).SetEase(Ease.InBack));
+            gameplayScreen.FrozenBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+            gameplayScreen.BombBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+            gameplayScreen.HammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() => gameplayScreen.gameObject.SetActive(false));
+
+            Vector3 startPos = new Vector3(mainCam.transform.position.x, -mainCam.orthographicSize * 1.5f, -5f);
+            Vector3 endPos = boxHandleCollider.BoxVisual.CenterPos.position;
+
+            GameObject bomb = Instantiate(bombPrefab, startPos, Quaternion.identity);
+
+            if (mainCam.orthographicSize >= 20f)
+            {
+                bomb.transform.localScale = new Vector3(20f / mainCam.orthographicSize, 20 / mainCam.orthographicSize, 20f / mainCam.orthographicSize);
+            }
+            else
+            {
+                bomb.transform.localScale = new Vector3((20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2);
+            }
+
+            MoveParabola(
+                 bomb.transform,
+                 startPos,
+                 endPos,
+                 height: 4f,
+                 duration: 0.8f,
+                 onComplete: () =>
+                 {
+                     boxHandleCollider.BoxBreak(pipes);
+                     Destroy(bomb);
+                     AudioManager.Instance.PlayOneShot(SoundKey.Explo, 1f);
+                     ShakeCamera();
+                     Destroy(boxHandleCollider.gameObject);
+                     Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BombExplosion), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -2f));
+                     DOVirtual.DelayedCall(0.5f, () =>
+                     {
+                         gameplayScreen.BombBtn.transform.localScale = Vector3.zero;
+                         gameplayScreen.gameObject.SetActive(true);
+                         gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(1, 0.2f).SetEase(Ease.OutBack));
+                         ObjectPooling.ReturnObject(effect);
+
+                         DOVirtual.DelayedCall(0.5f, () =>
+                         {
+                             gameplayScreen.FrozenBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                             gameplayScreen.BombBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                             gameplayScreen.HammerBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
+                            
+                             gameplayScreen.OnUpdateUIFooter();
+                         }).OnComplete(() => isBombActive = false);
+                     });
+                 }
+             );
         }
         else
         {
-            bomb.transform.localScale = new Vector3((20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2, (20f / mainCam.orthographicSize) / 2);
+            GameManager.Instance.ChangeState(GameState.Pause, false);
+            UIManager.Instance.ShowPopup<PopupBuyBomb>(() =>
+            {
+                GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
+                gameplayScreen.OnUpdateUIFooter();
+            });
         }
-
-        MoveParabola(
-             bomb.transform,
-             startPos,
-             endPos,
-             height: 4f,
-             duration: 0.8f,
-             onComplete: () =>
-             {
-                 boxHandleCollider.BoxBreak(pipes);
-                 Destroy(bomb);
-                 AudioManager.Instance.PlayOneShot(SoundKey.Explo, 1f);
-                 ShakeCamera();
-                 Destroy(boxHandleCollider.gameObject);
-                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BombExplosion), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -2f));
-                 DOVirtual.DelayedCall(0.5f, () =>
-                 {
-                     gameplayScreen.BombBtn.transform.localScale = Vector3.zero;
-                     gameplayScreen.gameObject.SetActive(true);
-                     gameplayScreen.ListObjInScreen.ForEach(x => x.transform.DOScale(1, 0.2f).SetEase(Ease.OutBack));
-                     ObjectPooling.ReturnObject(effect);
-
-                     DOVirtual.DelayedCall(0.5f, () =>
-                     {
-                         gameplayScreen.FrozenBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-                         gameplayScreen.BombBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-                         gameplayScreen.HammerBtn.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack);
-                     }).OnComplete(() => isBombActive = false);
-                 });
-             }
-         );
-
     }
+    public bool CheckBoosterBomb()
+    {
+        int bombValue = dataManager.GetBombData();
+        if (bombValue > 0)
+        {
+            dataManager.SetBombData(bombValue - 1);
+            return true;
+        }
+        return false;
+    }
+
     public void MoveParabola(Transform obj, Vector3 startPos, Vector3 endPos, float height, float duration, TweenCallback onComplete = null)
     {
         float t = 0;
@@ -308,6 +360,8 @@ public class LevelManager : Singleton<LevelManager>
                 Destroy(hammerObj);
                 IsHammerWaiting = false;
                 gameplayScreen.OnHammerClose();
+
+                gameplayScreen.OnUpdateUIFooter();
                 ObjectPooling.ReturnObject(effect);
             });
         });
@@ -335,7 +389,7 @@ public class LevelManager : Singleton<LevelManager>
     public void StartTimer() => IsTimeRunning = true;
     private void SubCounterTime()
     {
-        if (!IsTimeRunning || GameManager.Instance.CurrentGameState != GameState.Playing) return;
+        if (!IsTimeRunning) return;
         if (IsFroze) return;
 
         currentTime -= Time.deltaTime;
@@ -347,7 +401,7 @@ public class LevelManager : Singleton<LevelManager>
     public void AddCounterTime(float value)
     {
         Debug.Log(currentTime);
-        currentTime += value; 
+        currentTime += value;
     }
 
     #endregion

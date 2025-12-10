@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,19 +24,34 @@ public class GameplayScreen : ScreenUI
     [SerializeField] private Button frozenBtn;
     [SerializeField] private Button bombBtn;
     [SerializeField] private Button hammerBtn;
-    [SerializeField] private List<GameObject> listObjInScreen; 
+    [SerializeField] private List<GameObject> listObjInScreen;
     public Button FrozenBtn => frozenBtn;
     public Button BombBtn => bombBtn;
     public Button HammerBtn => hammerBtn;
-    public List<GameObject> ListObjInScreen => listObjInScreen; 
+    public List<GameObject> ListObjInScreen => listObjInScreen;
 
     private LevelManager levelManager = LevelManager.Instance;
 
     #region Unity Methods
 
+    int previourTime = -9999;
+
     private void Update()
     {
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
+        
+        int currentTime = (int)levelManager.CurrentTime;
+        
+        if (levelManager.CurrentTime <= 30 && previourTime != currentTime)
+        {
+            timeTxt.color = Color.red;
+            timeTxt.transform.DOScale(1.1f, 0.1f).OnComplete(() => timeTxt.transform.DOScale(1, 0.05f));
+            previourTime = currentTime;
+        }
+        else if (levelManager.CurrentTime > 30)
+        {
+            timeTxt.color = Color.white;
+        }
         OnScreenFroze();
     }
 
@@ -45,6 +59,7 @@ public class GameplayScreen : ScreenUI
     public override void Initialize(UIManager uiManager)
     {
         base.Initialize(uiManager);
+        frozeScreen = UIManager.Instance.GetScreen<FrozeScreen>();
         dataManager = DataManager.Instance;
     }
     public override void Active()
@@ -53,6 +68,7 @@ public class GameplayScreen : ScreenUI
         int currentLevel = dataManager.GetLevelData();
 
         LevelManager.Instance.LoadLevel(currentLevel);
+        OnUpdateUIFooter();
 
         Color32 textColor = new Color32(255, 255, 255, 255);
         // Level & Time
@@ -74,8 +90,6 @@ public class GameplayScreen : ScreenUI
                 break;
         }
 
-        frozeScreen = UIManager.Instance.GetScreen<FrozeScreen>();
-
         levelTxt.text = $"LEVEL {levelManager.CurrentMap.level}";
         levelTxt.color = textColor;
 
@@ -86,13 +100,24 @@ public class GameplayScreen : ScreenUI
         homeBtn.onClick.AddListener(() =>
         {
             // Clear old map
-            LevelManager.Instance.ClearDataInLevel(); 
+            LevelManager.Instance.ClearDataInLevel();
 
             GameManager.Instance.ChangeState(GameState.MainMenu);
         });
-        
+
         retryBtn.onClick.RemoveAllListeners();
-        retryBtn.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Playing));
+        retryBtn.onClick.AddListener(() =>
+        {
+            //GameManager.Instance.ChangeState(GameState.Playing);
+            uiManager.ShowPopup<PopupRetry>(null);
+            GameManager.Instance.ChangeState(GameState.Pause, false);
+        });
+
+        pauseBtn.onClick.RemoveAllListeners();
+        pauseBtn.onClick.AddListener(() =>
+        {
+            GameManager.Instance.ChangeState(GameState.Pause);
+        });
 
         // Button Booster
         frozenBtn.onClick.RemoveAllListeners();
@@ -176,38 +201,50 @@ public class GameplayScreen : ScreenUI
 
     private void OnHammerReady()
     {
-        LevelManager.Instance.IsHammerWaiting = true;
-
-        listObjInScreen.ForEach(x =>
+        if (CheckBoosterFrozen())
         {
-            x.transform.DOKill();
-            x.transform.DOScale(0, 0.2f).SetEase(Ease.InBack);
-        });
+            LevelManager.Instance.IsHammerWaiting = true;
 
-        frozenBtn.transform.DOKill();
-        frozenBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+            listObjInScreen.ForEach(x =>
+            {
+                x.transform.DOKill();
+                x.transform.DOScale(0, 0.2f).SetEase(Ease.InBack);
+            });
 
-        bombBtn.transform.DOKill();
-        bombBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+            frozenBtn.transform.DOKill();
+            frozenBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
 
-        hammerBtn.transform.DOKill();
-        hammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() =>
+            bombBtn.transform.DOKill();
+            bombBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack);
+
+            hammerBtn.transform.DOKill();
+            hammerBtn.transform.DOScale(0f, 0.2f).SetEase(Ease.InBack).OnComplete(() =>
+            {
+                hammerGroup.DOKill();
+                hammerGroup.DOFade(1, 0.3f).SetEase(Ease.OutBack);
+            });
+        }
+        else
         {
-            hammerGroup.DOKill();             
-            hammerGroup.DOFade(1, 0.3f).SetEase(Ease.OutBack);
-        });
+            GameManager.Instance.ChangeState(GameState.Pause, false);
+            UIManager.Instance.ShowPopup<PopupBuyHammer>(() =>
+            {
+                GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
+                gameplayScreen.OnUpdateUIFooter();
+            });
+        }
     }
 
     public void OnHammerClose()
     {
         LevelManager.Instance.IsHammerWaiting = false;
 
-        hammerGroup.DOKill();                   
+        hammerGroup.DOKill();
         hammerGroup.DOFade(0, 0.3f).SetEase(Ease.InCubic).OnComplete(() =>
         {
             listObjInScreen.ForEach(x =>
             {
-                x.transform.DOKill();          
+                x.transform.DOKill();
                 x.transform.DOScale(1, 0.2f).SetEase(Ease.OutBack);
             });
 
@@ -224,7 +261,73 @@ public class GameplayScreen : ScreenUI
             });
         });
     }
+    public bool CheckBoosterFrozen()
+    {
+        int hammerValue = dataManager.GetHammerData();
+        if (hammerValue > 0)
+        {
+            dataManager.SetHammerData(hammerValue - 1);
+            return true;
+        }
+        return false;
+    }
 
     #endregion
 
+    #region Footer Visual
+
+    [Header("Footer Visual")]
+    [SerializeField] private List<Sprite> sprites;
+    [SerializeField] private Image frozenValueImg;
+    [SerializeField] private Text frozenText;
+    [SerializeField] private Image bombValueImg;
+    [SerializeField] private Text bombText;
+    [SerializeField] private Image hammerValueImg;
+    [SerializeField] private Text hammerText;
+
+    public void OnUpdateUIFooter()
+    {
+        int frozenValue = dataManager.GetFrozenData();
+        int bombValue = dataManager.GetBombData();
+        int hammerValue = dataManager.GetHammerData();
+
+        if (frozenValue > 0)
+        {
+            frozenValueImg.sprite = sprites[0];
+            frozenText.gameObject.SetActive(true);
+            frozenText.text = $"{frozenValue}";
+        }
+        else
+        {
+            frozenValueImg.sprite = sprites[1];
+            frozenText.gameObject.SetActive(false);
+        }
+
+        if (bombValue > 0)
+        {
+            bombValueImg.sprite = sprites[0];
+            bombText.gameObject.SetActive(true);
+            bombText.text = $"{bombValue}";
+        }
+        else
+        {
+            bombValueImg.sprite = sprites[1];
+            bombText.gameObject.SetActive(false);
+        }
+
+        if (hammerValue > 0)
+        {
+            hammerValueImg.sprite = sprites[0];
+            hammerText.gameObject.SetActive(true);
+            hammerText.text = $"{hammerValue}";
+        }
+        else
+        {
+            hammerValueImg.sprite = sprites[1];
+            hammerText.gameObject.SetActive(false);
+        }
+
+    }
+
+    #endregion
 }

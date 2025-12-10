@@ -48,6 +48,12 @@ public class MainMenuScreen : ScreenUI
         #region Header
         moneyHeaderBtn.onClick.RemoveAllListeners();
         moneyHeaderBtn.onClick.AddListener(OnShopButtonClick);
+
+        settingHeaderBtn.onClick.RemoveAllListeners();
+        settingHeaderBtn.onClick.AddListener(() =>
+        {
+            uiManager.ShowPopup<PopupSetting>(null);
+        });
         #endregion
 
         #region Footer
