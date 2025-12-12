@@ -294,7 +294,7 @@ public class DataManager : Singleton<DataManager>
         DateTime savedTime = DateTime.Parse(saved);
         TimeSpan span = DateTime.Now - savedTime;
 
-        Debug.Log((int)span.TotalSeconds);
+        //Debug.Log((int)span.TotalSeconds);
 
         return (int)span.TotalSeconds;
     }
@@ -303,6 +303,17 @@ public class DataManager : Singleton<DataManager>
         string time = DateTime.Now.ToString();
         SetString("time_quit", time);
         Debug.Log(time);
+    }
+
+    public int GetCoolDownTime()
+    {
+        int time = GetInt("time_cooldown_left", (int)HeartManager.Instance.CoolDownHeart);
+        return time;
+    }
+
+    public void SetCoolDownTime(int timeCoolDownLeft)
+    {
+        SetInt("time_cooldown_left", timeCoolDownLeft);
     }
 }
 

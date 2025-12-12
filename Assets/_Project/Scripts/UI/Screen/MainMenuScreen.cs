@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -97,7 +97,8 @@ public class MainMenuScreen : ScreenUI
         lifeValueHeaderTxt.text = $"{currentLife}";
 
         var resulHeart = heartManager.NumberOfRecoveryHearts();
-        timeCounter = heartManager.CoolDownHeart - resulHeart.timeOverflow;
+        int timeCoolDownLeft = dataManager.GetCoolDownTime();
+        timeCounter = timeCoolDownLeft - resulHeart.timeOverflow;
         UpdateHeartCountWhenActive(resulHeart.recoveryHeartsCount, resulHeart.timeOverflow);
     }
 
@@ -148,6 +149,8 @@ public class MainMenuScreen : ScreenUI
             int seconds = time % 60;
 
             lifeCounterHeaderTxt.text = $"{minutes:00}:{seconds:00}";
+            dataManager.SetDateTimeData();
+            dataManager.SetCoolDownTime((int)timeCounter);
         }
     }
 
@@ -263,6 +266,11 @@ public class MainMenuScreen : ScreenUI
         if (currentHeart > 0)
         {
             GameManager.Instance.ChangeState(GameState.Playing);
+            if (timeCounter <= 0)
+                dataManager.SetCoolDownTime((int)heartManager.CoolDownHeart);
+            else
+                dataManager.SetCoolDownTime((int)timeCounter);
+            dataManager.SetDateTimeData();
         }
         else
         {
@@ -283,4 +291,6 @@ public class MainMenuScreen : ScreenUI
     }
 
     #endregion
+
+
 }

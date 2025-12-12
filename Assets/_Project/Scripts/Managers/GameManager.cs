@@ -109,11 +109,15 @@ public class GameManager : Singleton<GameManager>
 
     private void OnApplicationFocus(bool focus)
     {
-        Debug.Log($"Trạng thái game: {focus}");
-        if (!focus)
-        {
-            
-
-        }
+        Debug.Log(focus);
+        //if (!focus)
+        //{
+        //    dataManager.SetDateTimeData();
+        //}
+        //else
+        //{
+        //    var resulHeart = heartManager.NumberOfRecoveryHearts();
+        //    UpdateHeartCountWhenActive(resulHeart.recoveryHeartsCount, resulHeart.timeOverflow);
+        //}
     }
 }

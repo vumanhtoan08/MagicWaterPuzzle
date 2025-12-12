@@ -41,12 +41,16 @@ public class PopupGiveUp : PopupUI
 
     private void OnGiveUpButtonClick()
     {
-        heartManager.ChangeLife(-1);
+        int currentLife = dataManager.GetLevelData();
+        if (currentLife > 0)
+        {
+            heartManager.ChangeLife(-1);
+        }
+        
         GameManager.Instance.ChangeState(GameState.MainMenu);
         LevelManager.Instance.ClearDataInLevel();
         LevelManager.Instance.IsLevelGenComplete = false;
         uiManager.CloseAllPopup();
-
     }
 
     private void OnExitButtonClick()

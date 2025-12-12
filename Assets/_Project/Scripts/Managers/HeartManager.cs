@@ -5,7 +5,7 @@ public class HeartManager : Singleton<HeartManager>
 {
     private DataManager dataManager;
     private int heartCount;
-    private float coolDownHeart = 20f; 
+    private float coolDownHeart = 300f; 
     public float CoolDownHeart => coolDownHeart;
 
     public void OnStart()
@@ -36,6 +36,5 @@ public class HeartManager : Singleton<HeartManager>
         currentLife += value;
         currentLife = Mathf.Clamp(currentLife, 0, 10000);
         dataManager.SetLifeData(currentLife);
-        dataManager.SetDateTimeData();
     }
 }
