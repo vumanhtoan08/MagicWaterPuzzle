@@ -73,13 +73,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 123
-    m_Alignment: 8
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'x1
+  m_Text: 'x5
 
 '
 --- !u!114 &6912745840062193882
@@ -265,11 +265,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: 0
-  life: 0
+  life: 5
   frozenBooter: 0
   bombBooter: 0
-  hammerBooter: 1
-  cost: 1800
+  hammerBooter: 0
+  cost: 1350
 --- !u!1 &1033385059337365083
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,14 +341,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 50
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Break any box on the map \nand filled it."
+  m_Text: Recovery your life!
 --- !u!1 &1734139435299294850
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,9 +640,9 @@ GameObject:
   - component: {fileID: 3633570582932134358}
   - component: {fileID: 4804043595174043051}
   - component: {fileID: 4406900749332479675}
-  - component: {fileID: 8222130852357277141}
+  - component: {fileID: 2548360189949155475}
   m_Layer: 5
-  m_Name: PopupBuyHammer
+  m_Name: PopupOutOfHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,7 +718,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8222130852357277141
+--- !u!114 &2548360189949155475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -727,15 +727,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2217152784971912860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff7a45fc514d0940b93c0233d4ae647, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c129c2ec85c81b45909c17de6a003ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCache: 0
   isAniClose: 1
-  animType: 2
+  animType: 3
   mainPopUp: {fileID: 5392295810646560575}
-  darkPanel: {fileID: 4804043595174043051}
-  canvasGroup: {fileID: 0}
+  darkPanel: {fileID: 0}
+  canvasGroup: {fileID: 4406900749332479675}
   buyButton: {fileID: 6299563486783563659}
   exitButton: {fileID: 3303998996961159331}
   buttonBuy: {fileID: 7396313351758863515}
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: efddb14e793413e47ad4ee6180cc70fb, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 8e13019b9d91754428c364278ff8461d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1003,7 +1003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 780, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5316070148523133697
@@ -1160,7 +1160,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1800
+  m_Text: '1350
 
 '
 --- !u!114 &892551842012021883
@@ -1257,9 +1257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HAMMER
-
-'
+  m_Text: OUT OF LIFE!
 --- !u!114 &4627217986823972620
 MonoBehaviour:
   m_ObjectHideFlags: 0

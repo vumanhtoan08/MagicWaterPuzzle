@@ -5,12 +5,13 @@ public class HeartManager : Singleton<HeartManager>
 {
     private DataManager dataManager;
     private int heartCount;
+    private float coolDownHeart = 20f; 
+    public float CoolDownHeart => coolDownHeart;
 
     public void OnStart()
     {
         dataManager = DataManager.Instance;
         heartCount = dataManager.GetLifeData();
-        CalculateWhenFocusGame();
     }
 
     public void OnUpdate()
@@ -18,20 +19,23 @@ public class HeartManager : Singleton<HeartManager>
 
     }
 
-    public int HeartCount
+    public (int recoveryHeartsCount,int timeOverflow) NumberOfRecoveryHearts()
     {
-        get { return heartCount; }
-        set 
-        { 
-            heartCount = value;
-            dataManager.SetLifeData(heartCount);
-        }
+        int timePass = dataManager.GetTimePassData();
+
+        int recoveryHeartsCount = timePass / (int)coolDownHeart;       // tính toán số lượng trái tim nhân được
+        int timeOverflow = timePass % (int)coolDownHeart;              // chia lấy dư để có được thời gian dư thừa
+
+        return (recoveryHeartsCount, timeOverflow);
     }
 
-    public void CalculateWhenFocusGame()
+    // thay đổi life lưu 1 lần date time
+    public void ChangeLife(int value)
     {
-        int lasttime = dataManager.GetDateTimeData();              // thời trong trong data được lưu 
-
-    
+        int currentLife = dataManager.GetLifeData();
+        currentLife += value;
+        currentLife = Mathf.Clamp(currentLife, 0, 10000);
+        dataManager.SetLifeData(currentLife);
+        dataManager.SetDateTimeData();
     }
 }

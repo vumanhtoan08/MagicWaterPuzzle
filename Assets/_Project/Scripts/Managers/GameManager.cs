@@ -101,7 +101,7 @@ public class GameManager : Singleton<GameManager>
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            dataManager.GetDateTimeData();
+            dataManager.GetTimePassData();
         }
     }
 

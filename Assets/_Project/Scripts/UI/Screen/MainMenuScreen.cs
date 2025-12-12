@@ -7,6 +7,7 @@ using DG.Tweening;
 public class MainMenuScreen : ScreenUI
 {
     DataManager dataManager;
+    HeartManager heartManager;
 
     [Header("Header Property")]
     [SerializeField] private Button moneyHeaderBtn;
@@ -37,6 +38,7 @@ public class MainMenuScreen : ScreenUI
         base.Initialize(uiManager);
         OnHomeButtonClick();
         dataManager = DataManager.Instance;
+        heartManager = HeartManager.Instance;
 
     }
     public override void Active()
@@ -77,7 +79,14 @@ public class MainMenuScreen : ScreenUI
 
     }
 
+    private void Update()
+    {
+        UpdateHeartCountVisual();
+    }
+
     #region Header
+
+    private float timeCounter;
 
     public void InitHeader()
     {
@@ -86,6 +95,60 @@ public class MainMenuScreen : ScreenUI
 
         moneyValueHeaderTxt.text = $"{currentMoney}";
         lifeValueHeaderTxt.text = $"{currentLife}";
+
+        var resulHeart = heartManager.NumberOfRecoveryHearts();
+        timeCounter = heartManager.CoolDownHeart - resulHeart.timeOverflow;
+        UpdateHeartCountWhenActive(resulHeart.recoveryHeartsCount, resulHeart.timeOverflow);
+    }
+
+    public void UpdateHeartCountVisual()
+    {
+        int currentHeart = dataManager.GetLifeData();
+        if (currentHeart >= 5)
+        {
+            lifeValueHeaderTxt.text = $"{currentHeart}";
+            lifeCounterHeaderTxt.text = $"MAX";
+        }
+        else
+        {
+            timeCounter -= Time.deltaTime;
+            int mins = (int)timeCounter / 60;
+            int seconds = (int)timeCounter % 60;
+            lifeCounterHeaderTxt.text = $"{mins:00}:{seconds:00}";
+
+            if (timeCounter <= 0)
+            {
+                mins = (int)heartManager.CoolDownHeart / 60;
+                seconds = (int)heartManager.CoolDownHeart % 60;
+                lifeCounterHeaderTxt.text = $"{mins:00}:{seconds:00}";
+                heartManager.ChangeLife(1);
+                currentHeart = dataManager.GetLifeData();
+                lifeValueHeaderTxt.text = $"{currentHeart}";
+                timeCounter = heartManager.CoolDownHeart;
+            }
+        }
+    }
+
+    public void UpdateHeartCountWhenActive(int recoveryHeartCount, int timeLeft = 0)
+    {
+        int currentHeart = dataManager.GetLifeData();
+        if (currentHeart >= 5)
+        {
+            lifeValueHeaderTxt.text = $"{currentHeart}";
+            lifeCounterHeaderTxt.text = $"MAX";
+        }
+        else
+        {
+            currentHeart = Mathf.Clamp(currentHeart + recoveryHeartCount, 0, 5);
+            dataManager.SetLifeData(currentHeart);
+            lifeValueHeaderTxt.text = $"{currentHeart}";
+
+            int time = (int)heartManager.CoolDownHeart - timeLeft;
+            int minutes = time / 60;
+            int seconds = time % 60;
+
+            lifeCounterHeaderTxt.text = $"{minutes:00}:{seconds:00}";
+        }
     }
 
     #endregion
@@ -185,7 +248,7 @@ public class MainMenuScreen : ScreenUI
 
     [Header("Home Property")]
     [SerializeField] private Button playHomeBtn;
-    [SerializeField] private List<Text> displayText;   
+    [SerializeField] private List<Text> displayText;
 
     private void InitHome()
     {
@@ -196,7 +259,16 @@ public class MainMenuScreen : ScreenUI
 
     private void ChangePlayScreen()
     {
-        GameManager.Instance.ChangeState(GameState.Playing);
+        int currentHeart = dataManager.GetLifeData();
+        if (currentHeart > 0)
+        {
+            GameManager.Instance.ChangeState(GameState.Playing);
+        }
+        else
+        {
+            // Show Popup
+            uiManager.ShowPopup<PopupOutOfHeart>(null);
+        }
     }
 
     private void UpdateUIForLevel()
@@ -206,7 +278,7 @@ public class MainMenuScreen : ScreenUI
         for (int i = 0; i < displayText.Count; i++)
         {
             displayText[i].text = currentLevel.ToString();
-            currentLevel++; 
+            currentLevel++;
         }
     }
 

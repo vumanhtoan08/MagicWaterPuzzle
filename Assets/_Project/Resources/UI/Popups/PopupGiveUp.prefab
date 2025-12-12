@@ -94,6 +94,7 @@ MonoBehaviour:
   animType: 2
   mainPopUp: {fileID: 3993151518129592239}
   darkPanel: {fileID: 606404903589639151}
+  canvasGroup: {fileID: 0}
   giveUpButton: {fileID: 6419642603085182982}
   exit: {fileID: 413833768682624012}
 --- !u!1 &1205686730291543832
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!114 &1633791519233620545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &1854892318399024765
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100.00002}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 780, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5451812687393075638

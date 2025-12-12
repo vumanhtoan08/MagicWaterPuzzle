@@ -5,6 +5,9 @@ using PathologicalGames;
 
 public class PopupRetry : PopupUI
 {
+    DataManager dataManager;
+    HeartManager heartManager;
+
     [SerializeField] private Button giveUpButton;
     [SerializeField] private Button exit;
 
@@ -16,6 +19,9 @@ public class PopupRetry : PopupUI
 
         exit.onClick.RemoveAllListeners();
         exit.onClick.AddListener(OnExitButtonClick);
+
+        heartManager = HeartManager.Instance;
+        dataManager = DataManager.Instance;
     }
 
     public override void Show(Action onClose)
@@ -35,10 +41,19 @@ public class PopupRetry : PopupUI
 
     private void OnGiveUpButtonClick()
     {
-        GameManager.Instance.ChangeState(GameState.Playing);
-        LevelManager.Instance.ClearDataInLevel();
-        LevelManager.Instance.IsLevelGenComplete = false;
-        uiManager.CloseAllPopup();
+        int currentHeart = dataManager.GetLifeData();
+        if(currentHeart > 0)
+        {
+            heartManager.ChangeLife(-1);
+            GameManager.Instance.ChangeState(GameState.Playing);
+            LevelManager.Instance.ClearDataInLevel();
+            LevelManager.Instance.IsLevelGenComplete = false;
+            uiManager.CloseAllPopup();
+        }
+        else
+        {
+            uiManager.ShowPopup<PopupOutOfHeart>(null);
+        }
     }
 
     private void OnExitButtonClick()

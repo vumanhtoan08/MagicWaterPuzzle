@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &1441409863126633361
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +323,7 @@ MonoBehaviour:
   animType: 2
   mainPopUp: {fileID: 2558085455162550589}
   darkPanel: {fileID: 757808899480830431}
+  canvasGroup: {fileID: 0}
   giveUpButton: {fileID: 7323181732868533257}
   exit: {fileID: 4139001112327432459}
 --- !u!1 &1548503774094649129
@@ -799,6 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!114 &6741461113344930214
 MonoBehaviour:
   m_ObjectHideFlags: 0

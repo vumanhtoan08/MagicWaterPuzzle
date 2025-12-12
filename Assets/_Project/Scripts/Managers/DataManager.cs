@@ -285,7 +285,7 @@ public class DataManager : Singleton<DataManager>
         SetInt("hammer", value);
     }
 
-    public int GetDateTimeData()
+    public int GetTimePassData()
     {
         string saved = GetString("time_quit", "");
         if (string.IsNullOrEmpty(saved))

@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class GameplayScreen : ScreenUI
 {
+    GameManager gameManager;
     DataManager dataManager;
+    LevelManager levelManager;
 
     [Header("Properties Level & Time")]
     [SerializeField] private Image iconLevelImg;
@@ -31,8 +33,6 @@ public class GameplayScreen : ScreenUI
     public Button HammerBtn => hammerBtn;
     public List<GameObject> ListObjInScreen => listObjInScreen;
 
-    private LevelManager levelManager = LevelManager.Instance;
-
     #region Unity Methods
 
     int previourTime = -9999;
@@ -40,9 +40,9 @@ public class GameplayScreen : ScreenUI
     private void Update()
     {
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
-        
+
         int currentTime = (int)levelManager.CurrentTime;
-        
+
         if (levelManager.CurrentTime <= 30 && previourTime != currentTime)
         {
             timeTxt.color = Color.red;
@@ -62,13 +62,15 @@ public class GameplayScreen : ScreenUI
         base.Initialize(uiManager);
         frozeScreen = UIManager.Instance.GetScreen<FrozeScreen>();
         dataManager = DataManager.Instance;
+        gameManager = GameManager.Instance;
+        levelManager = LevelManager.Instance;
     }
     public override void Active()
     {
         base.Active();
         int currentLevel = dataManager.GetLevelData();
 
-        LevelManager.Instance.LoadLevel(currentLevel);
+        levelManager.LoadLevel(currentLevel);
         OnUpdateUIFooter();
 
         MapData mapData = levelManager.CurrentMap;
@@ -106,51 +108,59 @@ public class GameplayScreen : ScreenUI
 
         levelTxt.text = $"LEVEL {levelManager.CurrentMap.level}";
         levelTxt.color = textColor;
-
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
 
-        // Button 
         homeBtn.onClick.RemoveAllListeners();
         homeBtn.onClick.AddListener(() =>
         {
-            // Clear old map
-            LevelManager.Instance.ClearDataInLevel();
-
-            GameManager.Instance.ChangeState(GameState.MainMenu);
+            levelManager.ClearDataInLevel();
+            gameManager.ChangeState(GameState.MainMenu);
         });
 
         retryBtn.onClick.RemoveAllListeners();
         retryBtn.onClick.AddListener(() =>
         {
-            //GameManager.Instance.ChangeState(GameState.Playing);
-            uiManager.ShowPopup<PopupRetry>(null);
-            GameManager.Instance.ChangeState(GameState.Pause, false);
+            if (gameManager.CurrentGameState == GameState.Playing)
+            {
+                uiManager.ShowPopup<PopupRetry>(null);
+                gameManager.ChangeState(GameState.Pause, false);
+            }
         });
 
         pauseBtn.onClick.RemoveAllListeners();
         pauseBtn.onClick.AddListener(() =>
         {
-            GameManager.Instance.ChangeState(GameState.Pause);
+            if (gameManager.CurrentGameState == GameState.Playing)
+                gameManager.ChangeState(GameState.Pause);
         });
 
-        // Button Booster
         frozenBtn.onClick.RemoveAllListeners();
-        frozenBtn.onClick.AddListener(LevelManager.Instance.OnFrozeBoosterActive);
+        frozenBtn.onClick.AddListener(() =>
+        {
+            if (gameManager.CurrentGameState == GameState.Playing)
+                levelManager.OnFrozeBoosterActive();
+        });
 
         bombBtn.onClick.RemoveAllListeners();
-        bombBtn.onClick.AddListener(LevelManager.Instance.OnBombBoosterActive);
+        bombBtn.onClick.AddListener(() =>
+        {
+            if (gameManager.CurrentGameState == GameState.Playing)
+                levelManager.OnBombBoosterActive();
+        });
 
         hammerBtn.onClick.RemoveAllListeners();
-        hammerBtn.onClick.AddListener(OnHammerReady);
+        hammerBtn.onClick.AddListener(() =>
+        {
+            if (gameManager.CurrentGameState == GameState.Playing)
+                OnHammerReady();
+        });
         closeHammer.onClick.RemoveAllListeners();
         closeHammer.onClick.AddListener(OnHammerClose);
 
-        // Test
         nextButton.onClick.RemoveAllListeners();
-        nextButton.onClick.AddListener(LevelManager.Instance.OnNextLevel);
-
-        previourButton.onClick.RemoveAllListeners();
-        previourButton.onClick.AddListener(LevelManager.Instance.OnPreviourLevel);
+        nextButton.onClick.AddListener(levelManager.OnNextLevel);
+         previourButton.onClick.RemoveAllListeners();
+        previourButton.onClick.AddListener(levelManager.OnPreviourLevel);
     }
 
     protected override void OnScreenDestroyed()
@@ -164,8 +174,8 @@ public class GameplayScreen : ScreenUI
     [SerializeField] private FrozeScreen frozeScreen;
     [SerializeField] private Image timeButtonImg;
     [SerializeField] private List<Sprite> timeButtonFroze;
-    [SerializeField] private GameObject clockObj;                       // đồng hồ lúc bình thường
-    [SerializeField] private GameObject frezenObj;                       // đồng hồ lúc đóng băng
+    [SerializeField] private GameObject clockObj;                   
+    [SerializeField] private GameObject frezenObj;                  
     [SerializeField] private GameObject iceCounter;
     [SerializeField] private Text timeFrozeTxt;
 
@@ -177,15 +187,15 @@ public class GameplayScreen : ScreenUI
 
         if (!isReskinFrozen)
         {
-            frozeScreen.gameObject.SetActive(LevelManager.Instance.IsFroze ? true : false);
-            timeButtonImg.sprite = LevelManager.Instance.IsFroze ? timeButtonFroze[1] : timeButtonFroze[0];
-            timeBtn.interactable = LevelManager.Instance.IsFroze ? false : true;
-            clockObj.SetActive(LevelManager.Instance.IsFroze ? false : true);
-            frezenObj.SetActive(LevelManager.Instance.IsFroze ? true : false);
-            iceCounter.SetActive(LevelManager.Instance.IsFroze ? true : false);
+            frozeScreen.gameObject.SetActive(levelManager.IsFroze ? true : false);
+            timeButtonImg.sprite = levelManager.IsFroze ? timeButtonFroze[1] : timeButtonFroze[0];
+            timeBtn.interactable = levelManager.IsFroze ? false : true;
+            clockObj.SetActive(levelManager.IsFroze ? false : true);
+            frezenObj.SetActive(levelManager.IsFroze ? true : false);
+            iceCounter.SetActive(levelManager.IsFroze ? true : false);
         }
 
-        timeFrozeTxt.text = $"{(int)LevelManager.Instance.FrozeTimeCouter}";
+        timeFrozeTxt.text = $"{(int)levelManager.FrozeTimeCouter}";
     }
 
     #endregion
@@ -217,7 +227,7 @@ public class GameplayScreen : ScreenUI
     {
         if (CheckBoosterFrozen())
         {
-            LevelManager.Instance.IsHammerWaiting = true;
+            levelManager.IsHammerWaiting = true;
 
             listObjInScreen.ForEach(x =>
             {
@@ -240,7 +250,7 @@ public class GameplayScreen : ScreenUI
         }
         else
         {
-            GameManager.Instance.ChangeState(GameState.Pause, false);
+            gameManager.ChangeState(GameState.Pause, false);
             UIManager.Instance.ShowPopup<PopupBuyHammer>(() =>
             {
                 GameplayScreen gameplayScreen = UIManager.Instance.GetScreenActive<GameplayScreen>();
@@ -251,7 +261,7 @@ public class GameplayScreen : ScreenUI
 
     public void OnHammerClose()
     {
-        LevelManager.Instance.IsHammerWaiting = false;
+        levelManager.IsHammerWaiting = false;
 
         hammerGroup.DOKill();
         hammerGroup.DOFade(0, 0.3f).SetEase(Ease.InCubic).OnComplete(() =>
