@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water 01
-  m_Shader: {fileID: 4800000, guid: 5166ddf2010fe3a478d6720f4567a6c9, type: 3}
+  m_Name: Water_Flow 17
+  m_Shader: {fileID: 4800000, guid: f442b1458e58aef44839f106000f509a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -20,12 +20,28 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _Pattern
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _WaterEdge:
+    - _Pattern:
+        m_Texture: {fileID: 2800000, guid: b3855eab61ffedc47afeb75eb0c0ce4d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D:
         m_Texture: {fileID: 2800000, guid: 27c4f0e564defd141a65892c467b2407, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -41,7 +57,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DepthStrength: 0
+    - _DepthStrength: 0.35
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -49,24 +65,25 @@ Material:
     - _EnvironmentReflections: 1
     - _Fill: 1
     - _FillAmount: 1
-    - _Float: 1
-    - _Float_1: -1.12
     - _FresnelPower: 3
     - _FresnelStrength: 0.5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighlightIntensity: 2
+    - _HighlightIntensity: 0.8
     - _HighlightWidth: 0.1
-    - _MaxValue: 1
+    - _MaxValue: 6
     - _Metallic: 0
     - _MinValue: -1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueControl: 1
+    - _PatternIntensity: 0.6
+    - _PatternScrollSpeed: 0.5
+    - _PatternTiling: 1
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0
@@ -75,19 +92,21 @@ Material:
     - _Speed02: 0.3
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _StencilID: 2
+    - _StencilID: 0
     - _Surface: 0
-    - _WaveScale: 0.015
-    - _WaveSpeed: 2
+    - _WaveScale: 0.01
+    - _WaveSpeed: 1
+    - _Width: 3
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BorderColor: {r: 1, g: 0.2, b: 0.2, a: 1}
-    - _Color: {r: 1, g: 0.03351955, b: 0, a: 1}
+    - _BorderColor: {r: 0.87058824, g: 1, b: 0.53333336, a: 1}
+    - _Color: {r: 0.9254902, g: 0.24705882, b: 0.22352941, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FillDir: {r: -1, g: 0, b: 0, a: 0}
+    - _FillDir: {r: 0, g: -1, b: 0, a: 0}
+    - _FillDirection: {r: 1, g: 1, b: 1, a: 0}
     - _HighlightColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _WaterColor: {r: 1, g: 0.03529412, b: 0, a: 1}
+    - _WaterColor: {r: 0.87058824, g: 1, b: 0.53333336, a: 1}
   m_BuildTextureStacks: []

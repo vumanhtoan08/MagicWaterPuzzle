@@ -17921,6 +17921,9 @@ MonoBehaviour:
   headRenderer: {fileID: 2367176490214752521}
   idleBubble: {fileID: 4691413393995578138}
   activeBubble: {fileID: 7916690078824713048}
+  waterFlow_U: {fileID: 3796949290397174577}
+  waterFlow_R: {fileID: 2603114781343465694}
+  waterFlow_L: {fileID: 4392041629506334269}
   waters: []
 --- !u!61 &8874114135867193460
 BoxCollider2D:

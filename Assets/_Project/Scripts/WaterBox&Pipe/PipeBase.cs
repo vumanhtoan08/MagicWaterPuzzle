@@ -20,8 +20,13 @@ public class PipeBase : MonoBehaviour
 
     [Header("Pipe Bubble")]
     [SerializeField] private ParticleSystem idleBubble;
-    [SerializeField] private ParticleSystem activeBubble; 
+    [SerializeField] private ParticleSystem activeBubble;
     private float durationTime = 0.25f;
+
+    [Header("Pipe Water_Flow")]
+    [SerializeField] private Renderer waterFlow_U;
+    [SerializeField] private Renderer waterFlow_R;
+    [SerializeField] private Renderer waterFlow_L;
 
     public bool IsFilling { get; set; }
     public PipeData PipeData => pipeData;
@@ -57,6 +62,22 @@ public class PipeBase : MonoBehaviour
         activeBubble.Play();
 
         StartCoroutine(FillingWater(boxTouchMove, data));
+    }
+
+    public void UpdateVisualWaterFlow(HolderData data)
+    {
+        if (transform.localRotation.z == -180)
+        {
+            
+        }
+        else if (transform.localRotation.z == -90)
+        {
+
+        }
+        else if (transform.localRotation.z == 90)
+        {
+
+        }
     }
 
     // sửa lại để có thể thực hiện với nhiều màu nước
@@ -356,4 +377,6 @@ public class PipeBase : MonoBehaviour
 
     #endregion
 
+    private float GetFillAmountToLayerMesh(Renderer mesh) => mesh.material.GetFloat("_FillAmount");
+    private void SetFillAmountToLayerMesh(Renderer mesh, float amount) => mesh.material.SetFloat("_FillAmount", amount);
 }
