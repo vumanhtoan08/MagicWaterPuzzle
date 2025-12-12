@@ -41,5 +41,7 @@ public class PopupLose : PopupUI
         uiManager.CloseAllPopup();
         LevelManager.Instance.ClearDataInLevel();
         LevelManager.Instance.IsLevelGenComplete = false;
+
+        AudioManager.Instance.StopSound();
     }
 }

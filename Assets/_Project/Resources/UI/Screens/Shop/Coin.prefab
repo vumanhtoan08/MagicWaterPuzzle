@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 86e05254386c36e4ea58032f4e2026cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f7ee5eb3a40b09489e558f2801e1b32, type: 2}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -155,7 +155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '3000
+  m_Text: '20000
 
 '
 --- !u!114 &8359479979968363857
@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 2906120907706976908}
   - component: {fileID: 5253157129704441645}
   - component: {fileID: 8509442938280526389}
+  - component: {fileID: 7538356641511998701}
   m_Layer: 5
   m_Name: PushCharge
   m_TagString: Untagged
@@ -325,6 +326,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7538356641511998701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922917998645793998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a04c70d23784b47acde3997e22c67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: 20000
+  life: 0
+  frozenBooter: 0
+  bombBooter: 0
+  hammerBooter: 0
+  cost: 0
 --- !u!1 &5223279033716596035
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +466,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7003300085029780519}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

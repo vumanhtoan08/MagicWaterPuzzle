@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &615040762261402050
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &1606477451625595042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &2644311409294812922
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,6 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &4706513642173793021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,7 +2413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3020339195670124006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2540,6 +2544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &5791142134061950880
 GameObject:
   m_ObjectHideFlags: 0
@@ -3061,6 +3066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &8200251288415215901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,6 +3663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &9048860531096780825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,7 +3702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 183.90002, y: -93.72485}
+  m_AnchoredPosition: {x: 72.09998, y: -93.72485}
   m_SizeDelta: {x: 78, y: 82.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8195882883839751529
@@ -3809,3 +3816,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0

@@ -8,4 +8,11 @@ public static class SoundKey
     public static string HammerHit = "HammerHit";
 
     public static string MainMusic = "MainGameplayLOOP";
+    public static string Win = "Win";
+    public static string Lose = "Lose";
+    public static string Intro = "intro";
+    public static string Warning = "Warning";
+    public static string Coin = "Coin";
+    public static string ReceiveCoin = "ReceiveCoin";
+    public static string CollectBooster = "CollectBooster";
 }

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -16,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private UIManager uiManager;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private ShopManager shopManager;
+    [SerializeField] private HeartManager heartManager;
     public bool IsInited { get; set; }
 
     public void ChangeState(GameState newState, bool isAuto = true)
@@ -84,12 +86,34 @@ public class GameManager : Singleton<GameManager>
 
         if (!levelManager.IsNull("Level Manager đang null")) levelManager.OnStart();
         if (!shopManager.IsNull("Wallet Manager đang null")) shopManager.OnStart();
+        if (!heartManager.IsNull("Heart Manager đang null")) heartManager.OnStart();
     }
 
     private void Update()
     {
         if (!levelManager.IsNull("Level Manager đang null")) levelManager.OnUpdate();
+        if (!heartManager.IsNull("Heart Manager đang null")) heartManager.OnUpdate();
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            dataManager.SetDateTimeData();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            dataManager.GetDateTimeData();
+        }
     }
 
     #endregion
+
+    private void OnApplicationFocus(bool focus)
+    {
+        Debug.Log($"Trạng thái game: {focus}");
+        if (!focus)
+        {
+            
+
+        }
+    }
 }

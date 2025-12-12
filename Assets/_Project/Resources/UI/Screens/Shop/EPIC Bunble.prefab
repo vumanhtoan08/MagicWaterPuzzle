@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 6828349498703621781}
   - component: {fileID: 5485956795845440671}
   - component: {fileID: 1115841244612338844}
+  - component: {fileID: 318161540241981395}
   m_Layer: 5
   m_Name: PushCharge
   m_TagString: Untagged
@@ -494,6 +495,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &318161540241981395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838894910831636774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a04c70d23784b47acde3997e22c67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: 24000
+  life: 0
+  frozenBooter: 6
+  bombBooter: 6
+  hammerBooter: 6
+  cost: 0
 --- !u!1 &3997586337621488273
 GameObject:
   m_ObjectHideFlags: 0

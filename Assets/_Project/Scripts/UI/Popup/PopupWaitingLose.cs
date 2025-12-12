@@ -8,19 +8,22 @@ using UnityEngine.UI;
 
 public class PopupWaitingLose : PopupUI, IPointerDownHandler, IPointerUpHandler
 {
-    GameManager gameManager;
-    DataManager dataManager;
+    AudioManager audioManager;
 
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private CanvasGroup canvasGroupFade;
     [SerializeField] private Button keepPlaying;
     [SerializeField] private Button exit;
+    [SerializeField] private ButtonBuy buttonBuy;
+    [SerializeField] private UIButtonEffect effect;
+    [SerializeField] private ButtonSoundEffect sound;
+
+    [Header("Money")]
+    [SerializeField] private Text money;
 
     public override void Initialize(UIManager manager)
     {
         base.Initialize(manager);
-
-        gameManager = GameManager.Instance;
-        dataManager = DataManager.Instance;
+        audioManager = AudioManager.Instance;
 
         keepPlaying.onClick.RemoveAllListeners();
         keepPlaying.onClick.AddListener(OnKeepPlayingButtonClick);
@@ -32,6 +35,22 @@ public class PopupWaitingLose : PopupUI, IPointerDownHandler, IPointerUpHandler
     public override void Show(Action onClose)
     {
         base.Show(onClose);
+        audioManager.PlayOneShot(SoundKey.Lose, 1f);
+
+        int currentMoney = DataManager.Instance.GetMoneyData();
+        if (currentMoney < buttonBuy.Cost)
+        {
+            keepPlaying.interactable = false;
+            effect.enabled = false;
+            sound.enabled = false;
+        }
+        else
+        {
+            keepPlaying.interactable = true;
+            effect.enabled = true;
+            sound.enabled = true;
+        }
+        money.text = $"{currentMoney}";
     }
 
     public override void Hide()
@@ -60,12 +79,12 @@ public class PopupWaitingLose : PopupUI, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         DOTween.Kill(this);
-        canvasGroup.DOFade(0, 0.3f).SetTarget(this);
+        canvasGroupFade.DOFade(0, 0.3f).SetTarget(this);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         DOTween.Kill(this);
-        canvasGroup.DOFade(1, 0.3f).SetTarget(this);
+        canvasGroupFade.DOFade(1, 0.3f).SetTarget(this);
     }
 }

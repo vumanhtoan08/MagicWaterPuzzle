@@ -14,6 +14,8 @@ public class ButtonBuy : MonoBehaviour, IPointerClickHandler
 
     [SerializeField] private int cost = 0; 
 
+    public int Cost => cost;
+
     ShopManager shopManager;
 
     public void OnEnable()

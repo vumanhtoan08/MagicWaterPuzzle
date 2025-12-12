@@ -792,6 +792,7 @@ MonoBehaviour:
   animType: 2
   mainPopUp: {fileID: 5686857383217580121}
   darkPanel: {fileID: 9066317591393583009}
+  canvasGroup: {fileID: 0}
   claimCoin: {fileID: 108115517860260703}
 --- !u!1 &5860699433446069862
 GameObject:
@@ -1018,7 +1019,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!114 &108115517860260703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,6 +1093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!114 &269975517187133747
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -536,6 +536,7 @@ MonoBehaviour:
   uiManager: {fileID: 99787688}
   audioManager: {fileID: 672614691}
   shopManager: {fileID: 2112872631}
+  heartManager: {fileID: 727396846}
 --- !u!114 &676082900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 727396844}
   - component: {fileID: 727396845}
+  - component: {fileID: 727396846}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -688,6 +690,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     prefData: 
+--- !u!114 &727396846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090b291eaa673ab4088ad2b6f8cc976d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786929886
 GameObject:
   m_ObjectHideFlags: 0

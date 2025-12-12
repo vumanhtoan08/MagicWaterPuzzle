@@ -36,6 +36,8 @@ public class PopupRetry : PopupUI
     private void OnGiveUpButtonClick()
     {
         GameManager.Instance.ChangeState(GameState.Playing);
+        LevelManager.Instance.ClearDataInLevel();
+        LevelManager.Instance.IsLevelGenComplete = false;
         uiManager.CloseAllPopup();
     }
 

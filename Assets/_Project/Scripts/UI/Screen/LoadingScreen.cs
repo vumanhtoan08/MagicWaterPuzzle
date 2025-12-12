@@ -11,6 +11,7 @@ public class LoadingScreen : ScreenUI
     {
         base.Active();
         OnActiveLoading();
+        //AudioManager.Instance.PlayOneShot(SoundKey.Intro, 1f);
     }
 
     protected override void OnScreenDestroyed()

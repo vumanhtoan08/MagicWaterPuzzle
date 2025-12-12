@@ -8,6 +8,7 @@ public class PopupWin : PopupUI
 {
     GameManager gameManager;
     DataManager dataManager;
+    AudioManager audioManager;
     [SerializeField] private Button claimCoin;
 
     public override void Initialize(UIManager manager)
@@ -16,6 +17,7 @@ public class PopupWin : PopupUI
 
         dataManager = DataManager.Instance;
         gameManager = GameManager.Instance;
+        audioManager = AudioManager.Instance;
 
         claimCoin.onClick.RemoveAllListeners();
         claimCoin.onClick.AddListener(OnClaimButtonClick);
@@ -24,6 +26,7 @@ public class PopupWin : PopupUI
     public override void Show(Action onClose)
     {
         base.Show(onClose);
+        audioManager.PlayOneShot(SoundKey.Win, 0.7f);
     }
 
     public override void Hide()
@@ -38,19 +41,6 @@ public class PopupWin : PopupUI
 
     private void OnClaimButtonClick()
     {
-        int currentLevel = dataManager.GetLevelData();
-        currentLevel++; 
-        dataManager.SetLevelData(currentLevel);
-
-        if (currentLevel <= 5)
-        {
-            gameManager.ChangeState(GameState.Playing);
-        }
-        else
-        {
-            gameManager.ChangeState(GameState.MainMenu);
-        }
-
-        Hide();
+        uiManager.ShowPopup<PopupReciveCoin>(null);
     }
 }

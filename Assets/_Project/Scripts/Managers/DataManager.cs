@@ -284,6 +284,26 @@ public class DataManager : Singleton<DataManager>
     {
         SetInt("hammer", value);
     }
+
+    public int GetDateTimeData()
+    {
+        string saved = GetString("time_quit", "");
+        if (string.IsNullOrEmpty(saved))
+            return 0;
+
+        DateTime savedTime = DateTime.Parse(saved);
+        TimeSpan span = DateTime.Now - savedTime;
+
+        Debug.Log((int)span.TotalSeconds);
+
+        return (int)span.TotalSeconds;
+    }
+    public void SetDateTimeData()
+    {
+        string time = DateTime.Now.ToString();
+        SetString("time_quit", time);
+        Debug.Log(time);
+    }
 }
 
 [System.Serializable]

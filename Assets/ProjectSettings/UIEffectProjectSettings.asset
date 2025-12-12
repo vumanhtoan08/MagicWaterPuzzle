@@ -15,6 +15,8 @@ ShaderVariantCollection:
         passType: 0
       - keywords: GRADATION_COLOR2
         passType: 0
+      - keywords: TRANSITION_PATTERN
+        passType: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

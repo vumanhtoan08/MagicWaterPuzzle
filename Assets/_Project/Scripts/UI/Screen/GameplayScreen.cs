@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -69,6 +70,19 @@ public class GameplayScreen : ScreenUI
 
         LevelManager.Instance.LoadLevel(currentLevel);
         OnUpdateUIFooter();
+
+        MapData mapData = levelManager.CurrentMap;
+        switch (mapData.levelDifficult)
+        {
+            case LevelDifficult.Normal:
+                break;
+            case LevelDifficult.Hard:
+                uiManager.ShowPopup<PopupHard>(null);
+                break;
+            case LevelDifficult.SuperHard:
+                uiManager.ShowPopup<PopupSuperHard>(null);
+                break;
+        }
 
         Color32 textColor = new Color32(255, 255, 255, 255);
         // Level & Time

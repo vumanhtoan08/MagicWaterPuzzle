@@ -94,6 +94,7 @@ MonoBehaviour:
   animType: 2
   mainPopUp: {fileID: 3675132393137975618}
   darkPanel: {fileID: 3773109936610293393}
+  canvasGroup: {fileID: 0}
   retryBtn: {fileID: 8168403842276017929}
 --- !u!1 &3661139257865697090
 GameObject:
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!114 &8168403842276017929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &4279229969665358713
 GameObject:
   m_ObjectHideFlags: 0

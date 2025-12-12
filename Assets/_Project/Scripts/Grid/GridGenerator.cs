@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
@@ -18,22 +19,67 @@ public class GridGenerator : MonoBehaviour
         GenBorder();
         GenPipe();
         GenBox();
+
+        ShowMap();
     }
 
     public void ClearGrid()
     {
         for (int i = nodeHolder.childCount - 1; i >= 0; i--)
-            Destroy(nodeHolder.GetChild(i).gameObject);
-        
+        {
+            Transform child = nodeHolder.GetChild(i);
+            child.DOScale(Vector3.zero, 0.2f)
+                 .SetEase(Ease.InBack)
+                 .OnComplete(() => Destroy(child.gameObject));
+        }
+
         for (int i = boderHolder.childCount - 1; i >= 0; i--)
-            Destroy(boderHolder.GetChild(i).gameObject);
+        {
+            Transform child = boderHolder.GetChild(i);
+            child.DOScale(Vector3.zero, 0.2f)
+                 .SetEase(Ease.InBack)
+                 .OnComplete(() => Destroy(child.gameObject));
+        }
 
         for (int i = pipeHolder.childCount - 1; i >= 0; i--)
-            Destroy(pipeHolder.GetChild(i).gameObject);
+        {
+            Transform child = pipeHolder.GetChild(i);
+            child.DOScale(Vector3.zero, 0.2f)
+                 .SetEase(Ease.InBack)
+                 .OnComplete(() => Destroy(child.gameObject));
+        }
 
         for (int i = boxHolder.childCount - 1; i >= 0; i--)
-            Destroy(boxHolder.GetChild(i).gameObject);
+        {
+            Transform child = boxHolder.GetChild(i);
+            child.DOScale(Vector3.zero, 0.2f)
+                 .SetEase(Ease.InBack)
+                 .OnComplete(() => Destroy(child.gameObject));
+        }
+
     }
+
+    public void ShowMap()
+    {
+        ShowHolder(nodeHolder);
+        ShowHolder(boderHolder);
+        ShowHolder(pipeHolder);
+        ShowHolder(boxHolder);
+    }
+
+    void ShowHolder(Transform holder, float duration = 0.5f)
+    {
+        for (int i = 0; i < holder.childCount; i++)
+        {
+            Transform child = holder.GetChild(i);
+
+            child.localScale = Vector3.zero;
+
+            child.DOScale(Vector3.one, duration)
+                 .SetEase(Ease.OutBack);
+        }
+    }
+
 
     #region Gen Node and Boder
 
