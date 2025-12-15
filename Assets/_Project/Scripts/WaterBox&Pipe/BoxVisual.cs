@@ -9,6 +9,7 @@ public class BoxVisual : MonoBehaviour
 
     [Header("BoxVFX")]
     [SerializeField] public GameObject VFX_Fly;
+    [SerializeField] public GameObject VFX_Fly_2;
 
     [Header("Box Visual")]
     [SerializeField] public HalfBox half_01;
@@ -38,6 +39,10 @@ public class BoxVisual : MonoBehaviour
     [SerializeField] private Renderer layerMesh;
     [SerializeField] private Renderer mesh1;
     [SerializeField] private Renderer mesh2;
+
+    [Header("Water Mask")]
+    [SerializeField] private GameObject waterMask;
+    public void ChangeActiveWaterMesh(bool active) => waterMask.SetActive(active);
 
     public GameObject Stack2Layer => stack2Layer;
     public MeshRenderer KeyMesh => keyMesh;
@@ -210,23 +215,27 @@ public class BoxVisual : MonoBehaviour
         {
             case 0:
                 mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
-                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
-                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ShortL) mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL || data.shapeType == HolderShape.L || data.shapeType == HolderShape.ShortT) 
+                    mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
                 break;
             case 90:
                 mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
-                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
-                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
+                if (data.shapeType == HolderShape.ReverseL || data.shapeType == HolderShape.L || data.shapeType == HolderShape.ShortT) 
+                    mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
                 break;
             case 180:
                 mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, -1, 0));
-                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
-                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ShortL) mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ReverseL || data.shapeType == HolderShape.L || data.shapeType == HolderShape.ShortT) 
+                    mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
                 break;
             case 270:
                 mainMesh.material.SetVector("_FillDir", new Vector4(-1, 0, 0, 0));
-                if (data.shapeType == HolderShape.ShortL || data.shapeType == HolderShape.L) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
-                if (data.shapeType == HolderShape.ReverseL) mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
+                if (data.shapeType == HolderShape.ShortL) mainMesh.material.SetVector("_FillDir", new Vector4(0, 0, 1, 0));
+                if (data.shapeType == HolderShape.ReverseL || data.shapeType == HolderShape.L || data.shapeType == HolderShape.ShortT) 
+                    mainMesh.material.SetVector("_FillDir", new Vector4(1, 0, 0, 0));
                 break;
         }
         SetFillAmountToMainMesh(0);

@@ -77,6 +77,7 @@ public class GameplayScreen : ScreenUI
         switch (mapData.levelDifficult)
         {
             case LevelDifficult.Normal:
+                AudioManager.Instance.PlayOneShot(SoundKey.Intro, 0.7f);
                 break;
             case LevelDifficult.Hard:
                 uiManager.ShowPopup<PopupHard>(null);

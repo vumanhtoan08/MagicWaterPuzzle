@@ -637,6 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defb5fe13fc181b48afc74c4795b03be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIParticle: {fileID: 0}
 --- !u!1 &4489029998519888723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1325,7 @@ MonoBehaviour:
   canvasGroupFade: {fileID: 6358267204022540876}
   keepPlaying: {fileID: 5456040080703141953}
   exit: {fileID: 3749639357075076690}
-  buttonBuy: {fileID: 0}
+  buttonBuy: {fileID: 5392584800464005602}
   effect: {fileID: 8689839732768012293}
   sound: {fileID: 5515734437587595871}
   money: {fileID: 270694700531682322}

@@ -36,5 +36,6 @@ public enum EffectType
     BoxBreak,
     BombExplosion,
     BoxClear,
-    Coin
+    Coin,
+    IceBreak
 }

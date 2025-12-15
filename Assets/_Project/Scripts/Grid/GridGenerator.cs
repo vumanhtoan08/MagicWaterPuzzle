@@ -87,8 +87,8 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] private GameObject straightPrefab;
     [SerializeField] private GameObject outerPrefab;
     [SerializeField] private GameObject interPrefab;
-    [SerializeField] private Transform nodeHolder;
-    [SerializeField] private Transform boderHolder;
+    [SerializeField] public Transform nodeHolder;
+    [SerializeField] public Transform boderHolder;
 
     [Header("Outer Border Settings")]
     public OuterBorderConfig topRightOuterConfig;
@@ -121,7 +121,7 @@ public class GridGenerator : MonoBehaviour
         }
 
         camObj.transform.position = new Vector3(mapData.width - 1, mapData.height - 3, camObj.transform.position.z);
-        camObj.orthographicSize = mapData.width * 3;
+        camObj.orthographicSize = mapData.cameraSize;
     }
 
     private void GenBorder()
@@ -321,7 +321,7 @@ public class GridGenerator : MonoBehaviour
 
     [Header("Pipe REF")]
     [SerializeField] private GameObject pipePrefabs;
-    [SerializeField] private Transform pipeHolder;
+    [SerializeField] public Transform pipeHolder;
 
     private void GenPipe()
     {
@@ -383,7 +383,7 @@ public class GridGenerator : MonoBehaviour
     #region Gen Box
 
     [Header("Holder REF")]
-    [SerializeField] private Transform boxHolder; 
+    [SerializeField] public Transform boxHolder; 
 
     private void GenBox()
     {

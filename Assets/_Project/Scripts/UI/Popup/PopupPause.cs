@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PopupPause : PopupUI
 {
     AudioManager audioManager;
+    DataManager dataManager;
 
     [SerializeField] private Button musicButton;
     [SerializeField] private Button soundButton;    
@@ -17,6 +18,7 @@ public class PopupPause : PopupUI
     {
         base.Initialize(manager);
         audioManager = AudioManager.Instance;
+        dataManager = DataManager.Instance;
 
         musicButton.onClick.RemoveAllListeners();
         musicButton.onClick.AddListener(OnMusicButtonClick);
@@ -136,7 +138,18 @@ public class PopupPause : PopupUI
 
     private void OnHomeButtonClick()
     {
-        uiManager.ShowPopup<PopupGiveUp>(null);
+        int currentLife = dataManager.GetLifeData();
+        if (currentLife > 0)
+        {
+            uiManager.ShowPopup<PopupGiveUp>(null);
+        }
+        else
+        {
+            GameManager.Instance.ChangeState(GameState.MainMenu);
+            LevelManager.Instance.ClearDataInLevel();
+            LevelManager.Instance.IsLevelGenComplete = false;
+            uiManager.CloseAllPopup();
+        }
     }
 
     private void OnExitButtonClick()

@@ -299,6 +299,7 @@ public class GridEditorWindow : EditorWindow
         int width = EditorGUILayout.IntField("Width", currentMap.width);
         int height = EditorGUILayout.IntField("Height", currentMap.height);
         int level = EditorGUILayout.IntField("Level", currentMap.level);
+        int cameraSize = EditorGUILayout.IntField("CameraSize", currentMap.cameraSize);
         LevelDifficult levelDifficult = (LevelDifficult)EditorGUILayout.EnumPopup("Difficult", currentMap.levelDifficult);
         float time = EditorGUILayout.FloatField("Time", currentMap.time);
 
@@ -311,6 +312,12 @@ public class GridEditorWindow : EditorWindow
         if (level != currentMap.level)
         {
             currentMap.level = level;
+            EditorUtility.SetDirty(currentMap);
+        }
+
+        if (cameraSize != currentMap.cameraSize)
+        {
+            currentMap.cameraSize = cameraSize;
             EditorUtility.SetDirty(currentMap);
         }
 
@@ -1061,6 +1068,10 @@ public class GridEditorWindow : EditorWindow
             EnumColor.lightgreen => new Color(0.6f, 1f, 0.6f),
             EnumColor.lightpurple => new Color(0.8f, 0.6f, 1f),
             EnumColor.darkgreen => new Color(0f, 0.3f, 0f),
+            EnumColor.nude => new Color(0.96f, 0.80f, 0.69f),        // màu da
+            EnumColor.darkBrown => new Color(0.25f, 0.13f, 0.05f),  // nâu đậm
+            EnumColor.purplePink => new Color(0.75f, 0.3f, 0.6f),  // tím hồng
+            EnumColor.turquoise => new Color(0.25f, 0.88f, 0.82f), // xanh ngọc
             _ => Color.white,
         };
     }

@@ -15,4 +15,7 @@ public static class SoundKey
     public static string Coin = "Coin";
     public static string ReceiveCoin = "ReceiveCoin";
     public static string CollectBooster = "CollectBooster";
+    public static string WaterPOUR2 = "WaterPOURvar2S1";
+    public static string WaterPOUR1 = "WaterPOURvar1S1";
+    public static string IceBreak = "etfx_explosion_liquid2";
 }

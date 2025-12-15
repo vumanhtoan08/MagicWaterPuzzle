@@ -12,7 +12,7 @@ public class LevelManager : Singleton<LevelManager>
     DataManager dataManager;
 
     [Header("Component REF")]
-    [SerializeField] private GridGenerator gridGenerator;
+    [SerializeField] public GridGenerator gridGenerator;
     [SerializeField] private MapData currentMap;
 
     [Header("List Manager")]
@@ -82,6 +82,9 @@ public class LevelManager : Singleton<LevelManager>
         {
             box.SubIceBreak();
             if (box.BoxData.iceBreak <= 0) box.BoxData.type = HolderType.Basic;
+            Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.IceBreak), new Vector3(box.BoxVisual.CenterPos.position.x, box.BoxVisual.CenterPos.position.y, -2f));
+            AudioManager.Instance.PlayOneShot(SoundKey.IceBreak, 0.7f);
+            DOVirtual.DelayedCall(0.5f, () => ObjectPooling.ReturnObject(effect));
         }
     }
 
@@ -324,9 +327,11 @@ public class LevelManager : Singleton<LevelManager>
 
     [SerializeField] private GameObject hammerPrefab;
     public bool IsHammerWaiting { get; set; }
+    public bool IsHammerActive {  get; set; }
 
     public void OnHammerActive(BoxHandleCollider boxHandleCollider)
     {
+        IsHammerActive = true;
         GameObject hammerObj = Instantiate(hammerPrefab, new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -3), Quaternion.identity);
         AudioManager.Instance.PlayOneShot(SoundKey.HammerHit, 1f);
 
@@ -359,6 +364,7 @@ public class LevelManager : Singleton<LevelManager>
             {
                 Destroy(hammerObj);
                 IsHammerWaiting = false;
+                IsHammerActive = false;
                 gameplayScreen.OnHammerClose();
 
                 gameplayScreen.OnUpdateUIFooter();

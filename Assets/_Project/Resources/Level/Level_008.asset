@@ -17,6 +17,7 @@ MonoBehaviour:
   level: 8
   levelDifficult: 0
   time: 180
+  cameraSize: 17
   nodes:
   - x: 0
     y: 0
@@ -134,7 +135,7 @@ MonoBehaviour:
     - color: 11
       Value: 2
     - color: 8
-      Value: 0.5
+      Value: 1
   - x: 2
     y: 0
     type: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
     - color: 7
       Value: 4
     - color: 8
-      Value: 2.5
+      Value: 2
   - x: 0
     y: 1
     type: 0

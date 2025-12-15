@@ -17,6 +17,7 @@ MonoBehaviour:
   level: 12
   levelDifficult: 0
   time: 180
+  cameraSize: 16
   nodes:
   - x: 0
     y: 0
@@ -123,5 +124,263 @@ MonoBehaviour:
   - x: 4
     y: 6
     isSpawn: 1
-  pipes: []
-  holders: []
+  pipes:
+  - x: 4
+    y: 4
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 9
+      Value: 2
+    - color: 1
+      Value: 2
+    - color: 4
+      Value: 2
+  - x: 0
+    y: 2
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 3
+      Value: 2
+    - color: 8
+      Value: 2
+    - color: 2
+      Value: 3
+  - x: 3
+    y: 0
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 5
+      Value: 3
+    - color: 1
+      Value: 1
+  - x: 4
+    y: 1
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 10
+      Value: 1
+    - color: 11
+      Value: 3
+  - x: 1
+    y: 6
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 7
+      Value: 2
+    - color: 8
+      Value: 1
+  - x: 0
+    y: 5
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 10
+      Value: 2
+    - color: 3
+      Value: 1
+    - color: 8
+      Value: 2
+  holders:
+  - x: 0
+    y: 6
+    rotation: 90
+    type: 2
+    holderValue:
+    - color: 8
+      Value: 3
+    shapeType: 3
+    color: 8
+    direction: 1
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 1
+    y: 4
+    rotation: 270
+    type: 0
+    holderValue:
+    - color: 3
+      Value: 3
+    shapeType: 3
+    color: 3
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 1
+    y: 1
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 8
+      Value: 2
+    shapeType: 8
+    color: 8
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 0
+    y: 0
+    rotation: 180
+    type: 0
+    holderValue:
+    - color: 2
+      Value: 3
+    shapeType: 3
+    color: 2
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 2
+    y: 2
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 7
+      Value: 2
+    shapeType: 8
+    color: 7
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 2
+    y: 1
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 5
+      Value: 3
+    shapeType: 3
+    color: 5
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 4
+    y: 0
+    rotation: 270
+    type: 2
+    holderValue:
+    - color: 1
+      Value: 3
+    shapeType: 3
+    color: 1
+    direction: 2
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 4
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 9
+      Value: 2
+    shapeType: 8
+    color: 9
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 5
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 4
+      Value: 2
+    shapeType: 8
+    color: 4
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 4
+    y: 6
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 10
+      Value: 3
+    shapeType: 3
+    color: 10
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 2
+    rotation: 180
+    type: 0
+    holderValue:
+    - color: 11
+      Value: 3
+    shapeType: 3
+    color: 11
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0

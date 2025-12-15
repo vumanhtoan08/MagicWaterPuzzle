@@ -80,7 +80,9 @@ public class BoxHandleCollider : MonoBehaviour
     private void ReceiveWater(PipeBase pipeBase)
     {
         // fill 
+        boxVisual.ChangeActiveWaterMesh(true);
         WaterColor fillValue = boxData.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+        if (fillValue == null) return; 
         float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
 
         fillValue.Value -= subValue;
@@ -186,13 +188,18 @@ public class BoxHandleCollider : MonoBehaviour
                 if (boxData.type == HolderType.Key) LevelManager.Instance.KeyBreakDown(boxData);
 
                 LevelManager.Instance.RemoveBoxWater(this);
-                AnimWhenBoxFillMax();
+                AnimWhenBoxFillMax(transform);
             });
+        }
+        else
+        {
+            DOVirtual.DelayedCall(subValue * 0.25f, () => boxVisual.ChangeActiveWaterMesh(false));
         }
     }
     private void ReceiveSecondaryWater(PipeBase pipeBase)
     {
         // fill 
+        boxVisual.ChangeActiveWaterMesh(true);
         WaterColor fillValue = boxData.secondaryHolder.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
         float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
         fillValue.Value -= subValue;
@@ -219,7 +226,7 @@ public class BoxHandleCollider : MonoBehaviour
         }
         else
         {
-            tempColor = boxDataTemp.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
+            tempColor = boxDataTemp.secondaryHolder.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
             fillAmountValueMax = tempColor.Value;
             fillAmountBefore = boxVisual.GetFillAmountToLayerMesh();
             fillAmountAfter = fillAmountBefore + subValue / fillAmountValueMax;
@@ -243,8 +250,15 @@ public class BoxHandleCollider : MonoBehaviour
                     boxVisual.KeyMesh.transform.DOScale(0, 0.25f);
                     LevelManager.Instance.KeyBreakDown(boxData);
                 }
-                boxVisual.Stack2Layer.transform.DOScale(0, 0.5f);
+                //boxVisual.Stack2Layer.transform.DOScale(0, 0.1f);
+                AnimWhenSecondBoxFillMax(boxVisual.Stack2Layer.transform);
+                boxVisual.Stack2Layer.transform.SetParent(LevelManager.Instance.gridGenerator.boxHolder.transform);
+                boxVisual.ChangeActiveWaterMesh(false);
             });
+        }
+        else
+        {
+            DOVirtual.DelayedCall(subValue * 0.25f, () => boxVisual.ChangeActiveWaterMesh(false));
         }
     }
     public void BoxBreak(List<PipeBase> pipeBases)
@@ -368,7 +382,7 @@ public class BoxHandleCollider : MonoBehaviour
     [SerializeField] private float jumpHeight;
     [SerializeField] private float duration;
 
-    public void AnimWhenBoxFillMax()
+    public void AnimWhenBoxFillMax(Transform transform)
     {
         Sequence seq = DOTween.Sequence();
 
@@ -397,6 +411,36 @@ public class BoxHandleCollider : MonoBehaviour
                 else
                 {
                     transform.DOLocalJump(new Vector3(-10, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 2).SetEase(Ease.InCubic);
+                }
+                transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 2f).SetEase(Ease.InCubic);
+            });
+    }
+
+    public void AnimWhenSecondBoxFillMax(Transform transform)
+    {
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(transform.DOMoveZ(-2f, 0.1f).SetEase(Ease.InCubic))
+            .AppendInterval(0.5f)
+            .AppendCallback(() =>
+            {
+                boxVisual.VFX_Fly_2.SetActive(true);
+                Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxClear), new Vector3(boxVisual.CenterPos.position.x, boxVisual.CenterPos.position.y, -3));
+                AudioManager.Instance.PlayOneShot(SoundKey.ClearBlock, 1f);
+                DOVirtual.DelayedCall(0.5f, () => ObjectPooling.ReturnObject(effect));
+            })
+            .AppendCallback(() =>
+            {
+                // Bay sang phải
+                if (Mathf.RoundToInt(transform.position.x) > Mathf.RoundToInt(LevelManager.Instance.CurrentMap.width / 2))
+                {
+                    transform.DOLocalJump(new Vector3(2.5f, transform.localPosition.y - 40f, transform.localPosition.z), 25, 1, 2).SetEase(Ease.InCubic);
+
+                }
+                // Bay sang trái
+                else
+                {
+                    transform.DOLocalJump(new Vector3(2.5f, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 2).SetEase(Ease.InCubic);
                 }
                 transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 2f).SetEase(Ease.InCubic);
             });

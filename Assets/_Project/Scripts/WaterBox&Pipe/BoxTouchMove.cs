@@ -78,7 +78,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
         if (!LevelManager.Instance.IsTimeRunning) LevelManager.Instance.StartTimer();
 
-        if (LevelManager.Instance.IsHammerWaiting)
+        if (LevelManager.Instance.IsHammerWaiting && !LevelManager.Instance.IsHammerActive)
         {
             LevelManager.Instance.OnHammerActive(handleCollider);
             return;

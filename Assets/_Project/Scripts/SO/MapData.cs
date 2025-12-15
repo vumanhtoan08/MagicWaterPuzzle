@@ -9,7 +9,8 @@ public class MapData : ScriptableObject
 
     public int level; 
     public LevelDifficult levelDifficult;
-    public float time; 
+    public float time;
+    public int cameraSize;
 
     public List<NodeData> nodes = new List<NodeData>();
     public List<PipeData> pipes = new List<PipeData>();

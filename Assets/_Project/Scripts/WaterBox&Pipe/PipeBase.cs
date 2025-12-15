@@ -62,29 +62,68 @@ public class PipeBase : MonoBehaviour
         activeBubble.Play();
 
         StartCoroutine(FillingWater(boxTouchMove, data));
+        AudioManager.Instance.PlayOneShot(SoundKey.WaterPOUR2, 0.7f);
+        DOVirtual.DelayedCall(0.63f, () => AudioManager.Instance.PlayOneShot(SoundKey.WaterPOUR1, 0.7f));
     }
 
     public void UpdateVisualWaterFlow(HolderData data)
     {
-        if (transform.localRotation.z == -180)
-        {
-            
-        }
-        else if (transform.localRotation.z == -90)
-        {
+        float fillAmountBefore;
+        float fillAmountAfter;
+        float z = Mathf.Round(transform.eulerAngles.z);
 
-        }
-        else if (transform.localRotation.z == 90)
+        if (z == 180f)
         {
+            waterFlow_U.material = SOMaterialColor.GetMaterialWaterFlow(pipeData.waterColors[0].color);
+            SetFillAmountToLayerMesh(waterFlow_U, 0);
+            waterFlow_U.gameObject.SetActive(true);
 
+            fillAmountBefore = GetFillAmountToLayerMesh(waterFlow_U);
+            fillAmountAfter = 1f;
+            DOTween.To(() => fillAmountBefore, x =>
+            {
+                fillAmountBefore = x;
+                SetFillAmountToLayerMesh(waterFlow_U, fillAmountBefore);
+            }, fillAmountAfter, 0.25f);
+        }
+        else if (z == 90f)
+        {
+            waterFlow_R.material = SOMaterialColor.GetMaterialWaterFlow(pipeData.waterColors[0].color);
+            SetFillAmountToLayerMesh(waterFlow_R, 0);
+            waterFlow_R.gameObject.SetActive(true);
+
+            fillAmountBefore = GetFillAmountToLayerMesh(waterFlow_R);
+            fillAmountAfter = 1f;
+            DOTween.To(() => fillAmountBefore, x =>
+            {
+                fillAmountBefore = x;
+                SetFillAmountToLayerMesh(waterFlow_R, fillAmountBefore);
+            }, fillAmountAfter, 0.25f);
+        }
+        else if (z == 270f)
+        {
+            waterFlow_L.material = SOMaterialColor.GetMaterialWaterFlow(pipeData.waterColors[0].color);
+            SetFillAmountToLayerMesh(waterFlow_L, 0);
+            waterFlow_L.gameObject.SetActive(true);
+
+            fillAmountBefore = GetFillAmountToLayerMesh(waterFlow_L);
+            fillAmountAfter = 1f;
+            DOTween.To(() => fillAmountBefore, x =>
+            {
+                fillAmountBefore = x;
+                SetFillAmountToLayerMesh(waterFlow_L, fillAmountBefore);
+            }, fillAmountAfter, 0.25f);
         }
     }
 
     // sửa lại để có thể thực hiện với nhiều màu nước
     private IEnumerator FillingWater(BoxTouchMove boxTouchMove, HolderData data)
     {
+
         WaterColor goalWaterColor;
         float subValue;
+
+        UpdateVisualWaterFlow(data);
 
         if (data.type == HolderType.Stack2 && data.secondaryHolder.holderValue.Count > 0)
         {
@@ -104,7 +143,7 @@ public class PipeBase : MonoBehaviour
 
         if (pipeData.waterColors[0].Value <= 0)
         {
-            firstWater.DOScaleY(0f, subValue * durationTime).OnComplete(() =>
+            firstWater.DOScaleY(0f, subValue * 0.25f).OnComplete(() =>
             {
                 RemoveWater();
                 RemoveWaterTrans(firstWater);
@@ -124,14 +163,14 @@ public class PipeBase : MonoBehaviour
                 for (int i = 1; i < waters.Count; i++)
                 {
                     //waters[i].DOKill();
-                    waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
+                    waters[i].DOLocalMoveZ(positionY * -3, subValue * 0.25f);
                     positionY += pipeData.waterColors[i].Value;
                 }
             }
         }
         else
         {
-            firstWater.DOScaleY(pipeData.waterColors[0].Value * 3f, subValue * durationTime);
+            firstWater.DOScaleY(pipeData.waterColors[0].Value * 3f, subValue * 0.25f);
 
             float positionY = pipeData.waterColors[0].Value;
 
@@ -140,17 +179,20 @@ public class PipeBase : MonoBehaviour
                 for (int i = 1; i < waters.Count; i++)
                 {
                     //waters[i].DOKill();
-                    waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
+                    waters[i].DOLocalMoveZ(positionY * -3, subValue * 0.25f);
                     positionY += pipeData.waterColors[i].Value;
                 }
             }
         }
 
-        yield return new WaitForSeconds(subValue * durationTime);
+        yield return new WaitForSeconds(subValue * 0.25f);
 
         IsFilling = false;
         boxTouchMove.IsFilling = false;
         activeBubble.Stop(false);
+        waterFlow_U.gameObject.SetActive(false);
+        waterFlow_R.gameObject.SetActive(false);
+        waterFlow_L.gameObject.SetActive(false);
     }
 
     public void FillingWaterWhenBoxBreak(PipeBase pipeBase, List<WaterColor> waterColorsInBox, BoxHandleCollider boxCollider)
