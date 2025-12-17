@@ -37,6 +37,6 @@ public class ButtonBuy : MonoBehaviour, IPointerClickHandler
         if (hammerBooter > 0) shopManager.ChangeHammerBooster(hammerBooter);
 
         MainMenuScreen mainMenuScreen = UIManager.Instance.GetScreenActive<MainMenuScreen>();
-        mainMenuScreen.InitHeader();
+        if(mainMenuScreen != null) mainMenuScreen.InitHeader();
     }
 }

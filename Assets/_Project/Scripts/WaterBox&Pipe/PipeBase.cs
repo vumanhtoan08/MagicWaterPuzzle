@@ -21,7 +21,7 @@ public class PipeBase : MonoBehaviour
     [Header("Pipe Bubble")]
     [SerializeField] private ParticleSystem idleBubble;
     [SerializeField] private ParticleSystem activeBubble;
-    private float durationTime = 0.25f;
+    private float durationTime = 0.4f;
 
     [Header("Pipe Water_Flow")]
     [SerializeField] private Renderer waterFlow_U;
@@ -143,7 +143,7 @@ public class PipeBase : MonoBehaviour
 
         if (pipeData.waterColors[0].Value <= 0)
         {
-            firstWater.DOScaleY(0f, subValue * 0.25f).OnComplete(() =>
+            firstWater.DOScaleY(0f, subValue * durationTime).OnComplete(() =>
             {
                 RemoveWater();
                 RemoveWaterTrans(firstWater);
@@ -163,14 +163,14 @@ public class PipeBase : MonoBehaviour
                 for (int i = 1; i < waters.Count; i++)
                 {
                     //waters[i].DOKill();
-                    waters[i].DOLocalMoveZ(positionY * -3, subValue * 0.25f);
+                    waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
                     positionY += pipeData.waterColors[i].Value;
                 }
             }
         }
         else
         {
-            firstWater.DOScaleY(pipeData.waterColors[0].Value * 3f, subValue * 0.25f);
+            firstWater.DOScaleY(pipeData.waterColors[0].Value * 3f, subValue * durationTime);
 
             float positionY = pipeData.waterColors[0].Value;
 
@@ -179,13 +179,13 @@ public class PipeBase : MonoBehaviour
                 for (int i = 1; i < waters.Count; i++)
                 {
                     //waters[i].DOKill();
-                    waters[i].DOLocalMoveZ(positionY * -3, subValue * 0.25f);
+                    waters[i].DOLocalMoveZ(positionY * -3, subValue * durationTime);
                     positionY += pipeData.waterColors[i].Value;
                 }
             }
         }
 
-        yield return new WaitForSeconds(subValue * 0.25f);
+        yield return new WaitForSeconds(subValue * durationTime);
 
         IsFilling = false;
         boxTouchMove.IsFilling = false;

@@ -23,7 +23,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public MapData CurrentMap => currentMap;
     public bool IsBoxTouched { get; set; }
-
+    public List<BoxHandleCollider> BoxHandleColliders => boxHandleColliders;
     public bool IsLevelGenComplete { get; set; }
 
     #region Unity Methods

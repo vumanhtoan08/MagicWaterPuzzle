@@ -42,7 +42,7 @@ public class PopupGiveUp : PopupUI
     private void OnGiveUpButtonClick()
     {
         heartManager.ChangeLife(-1);
-
+        GameManager.Instance.IsInited = true;
         GameManager.Instance.ChangeState(GameState.MainMenu);
         LevelManager.Instance.ClearDataInLevel();
         LevelManager.Instance.IsLevelGenComplete = false;

@@ -12,6 +12,7 @@ public class FlashScreen : ScreenUI
 
     private float maxWidth = 775f;
     private int percent = 5;
+    private int currentLevel;
 
     public override void Initialize(UIManager uiManager)
     {
@@ -28,6 +29,7 @@ public class FlashScreen : ScreenUI
     {
         base.Active();
         PlayLoadingTween();
+        currentLevel = DataManager.Instance.GetLevelData();
     }
 
     protected override void OnScreenDestroyed()
@@ -51,7 +53,8 @@ public class FlashScreen : ScreenUI
 
         DOTween.To(
             () => percent,
-            x => {
+            x =>
+            {
                 percent = x;
                 percentTxt.text = $"{x}%";
             },
@@ -59,7 +62,15 @@ public class FlashScreen : ScreenUI
             1.2f
         ).SetEase(Ease.Linear).OnComplete(() =>
         {
-            GameManager.Instance.ChangeState(GameState.MainMenu);
+            if (currentLevel <= 15)
+            {
+                GameManager.Instance.ChangeState(GameState.Playing);
+            }
+            else
+            {
+                GameManager.Instance.ChangeState(GameState.MainMenu);
+            }
+            AudioManager.Instance.PlayMusic(SoundKey.MainMusic, 0.3f, true);
         });
     }
 

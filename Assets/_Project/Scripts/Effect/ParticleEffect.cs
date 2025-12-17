@@ -19,6 +19,7 @@ public class ParticleEffect : MonoBehaviour
             float pitch = Random.Range(1f, 1.2f);
             UIParticle.Play();
             AudioManager.Instance.PlayOneShot(SoundKey.Coin, 1, pitch); 
+            Handheld.Vibrate();
             transform.DOScale(1, 0.05f);
         });
     }

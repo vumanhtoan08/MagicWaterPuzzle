@@ -44,7 +44,7 @@ public class PopupReciveCoin : PopupUI
             currentLevel++;
             dataManager.SetLevelData(currentLevel);
 
-            if (currentLevel <= 5)
+            if (currentLevel <= 15)
             {
                 gameManager.ChangeState(GameState.Playing);
             }

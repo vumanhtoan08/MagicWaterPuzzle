@@ -1,0 +1,476 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be0b7170f1bae847a33f07a008dc83e, type: 3}
+  m_Name: Level_040
+  m_EditorClassIdentifier: 
+  width: 5
+  height: 5
+  level: 40
+  levelDifficult: 0
+  time: 180
+  cameraSize: 15
+  nodes:
+  - x: 0
+    y: 0
+    isSpawn: 1
+  - x: 0
+    y: 1
+    isSpawn: 1
+  - x: 0
+    y: 2
+    isSpawn: 1
+  - x: 0
+    y: 3
+    isSpawn: 1
+  - x: 0
+    y: 4
+    isSpawn: 1
+  - x: 1
+    y: 0
+    isSpawn: 1
+  - x: 1
+    y: 1
+    isSpawn: 1
+  - x: 1
+    y: 2
+    isSpawn: 1
+  - x: 1
+    y: 3
+    isSpawn: 1
+  - x: 1
+    y: 4
+    isSpawn: 1
+  - x: 2
+    y: 0
+    isSpawn: 1
+  - x: 2
+    y: 1
+    isSpawn: 1
+  - x: 2
+    y: 2
+    isSpawn: 1
+  - x: 2
+    y: 3
+    isSpawn: 1
+  - x: 2
+    y: 4
+    isSpawn: 1
+  - x: 3
+    y: 0
+    isSpawn: 1
+  - x: 3
+    y: 1
+    isSpawn: 1
+  - x: 3
+    y: 2
+    isSpawn: 1
+  - x: 3
+    y: 3
+    isSpawn: 1
+  - x: 3
+    y: 4
+    isSpawn: 1
+  - x: 4
+    y: 0
+    isSpawn: 1
+  - x: 4
+    y: 1
+    isSpawn: 1
+  - x: 4
+    y: 2
+    isSpawn: 1
+  - x: 4
+    y: 3
+    isSpawn: 1
+  - x: 4
+    y: 4
+    isSpawn: 1
+  pipes:
+  - x: 2
+    y: 4
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 7
+      Value: 1
+    - color: 2
+      Value: 1
+    - color: 7
+      Value: 2
+    - color: 3
+      Value: 1
+    - color: 1
+      Value: 2
+  - x: 2
+    y: 0
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 4
+      Value: 2
+    - color: 8
+      Value: 1
+    - color: 4
+      Value: 2
+    - color: 10
+      Value: 1
+  - x: 4
+    y: 3
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 6
+      Value: 2
+  - x: 0
+    y: 3
+    type: 0
+    keyColor: 0
+    waterColors:
+    - color: 3
+      Value: 1
+    - color: 1
+      Value: 1
+    - color: 9
+      Value: 1
+    - color: 6
+      Value: 1
+    - color: 5
+      Value: 1
+    - color: 11
+      Value: 1
+    - color: 13
+      Value: 1
+  holders:
+  - x: 0
+    y: 2
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 7
+      Value: 2
+    shapeType: 8
+    color: 7
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 1
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 7
+      Value: 1
+    shapeType: 0
+    color: 7
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 1
+    y: 0
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 9
+      Value: 1
+    shapeType: 0
+    color: 9
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 4
+    y: 0
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 4
+      Value: 2
+    shapeType: 8
+    color: 4
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 1
+    y: 4
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 4
+      Value: 1
+    shapeType: 0
+    color: 4
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 4
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 2
+      Value: 1
+    shapeType: 0
+    color: 2
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 4
+    y: 3
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 1
+      Value: 1
+    shapeType: 0
+    color: 1
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 1
+    y: 2
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 8
+      Value: 1
+    shapeType: 0
+    color: 8
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 4
+    y: 1
+    rotation: 0
+    type: 0
+    holderValue:
+    - color: 6
+      Value: 2
+    shapeType: 8
+    color: 6
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 1
+    y: 3
+    rotation: 0
+    type: 2
+    holderValue:
+    - color: 6
+      Value: 1
+    shapeType: 0
+    color: 6
+    direction: 1
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 2
+    y: 3
+    rotation: 0
+    type: 2
+    holderValue:
+    - color: 5
+      Value: 1
+    shapeType: 0
+    color: 5
+    direction: 1
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 2
+    y: 0
+    rotation: 0
+    type: 2
+    holderValue:
+    - color: 10
+      Value: 1
+    shapeType: 0
+    color: 10
+    direction: 1
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 3
+    rotation: 0
+    type: 1
+    holderValue:
+    - color: 3
+      Value: 1
+    shapeType: 0
+    color: 3
+    direction: 0
+    iceBreak: 5
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 0
+    y: 4
+    rotation: 0
+    type: 1
+    holderValue:
+    - color: 4
+      Value: 1
+    shapeType: 0
+    color: 4
+    direction: 0
+    iceBreak: 8
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 2
+    y: 2
+    rotation: 0
+    type: 1
+    holderValue:
+    - color: 13
+      Value: 1
+    shapeType: 0
+    color: 13
+    direction: 0
+    iceBreak: 10
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 3
+    y: 2
+    rotation: 0
+    type: 1
+    holderValue:
+    - color: 3
+      Value: 1
+    shapeType: 0
+    color: 3
+    direction: 0
+    iceBreak: 15
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 2
+    y: 1
+    rotation: 90
+    type: 1
+    holderValue:
+    - color: 1
+      Value: 2
+    shapeType: 8
+    color: 1
+    direction: 0
+    iceBreak: 15
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0
+  - x: 2
+    y: 4
+    rotation: 90
+    type: 0
+    holderValue:
+    - color: 11
+      Value: 1
+    shapeType: 0
+    color: 11
+    direction: 0
+    iceBreak: 0
+    keyColor: 0
+    secondaryColor: 1
+    secondaryHolder:
+      type: 0
+      color: 1
+      holderValue: []
+      keyColor: 0

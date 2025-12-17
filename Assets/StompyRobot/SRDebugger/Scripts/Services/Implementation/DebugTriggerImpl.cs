@@ -60,7 +60,7 @@
             {
                 _consoleService = SRServiceManager.GetService<IConsoleService>();
                 _consoleService.Error += OnError;
-            }
+            }   
         }
         protected override void OnDisable()
         {

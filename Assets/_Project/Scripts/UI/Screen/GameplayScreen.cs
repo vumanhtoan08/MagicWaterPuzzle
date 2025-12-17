@@ -71,8 +71,7 @@ public class GameplayScreen : ScreenUI
         int currentLevel = dataManager.GetLevelData();
 
         levelManager.LoadLevel(currentLevel);
-        OnUpdateUIFooter();
-
+     
         MapData mapData = levelManager.CurrentMap;
         switch (mapData.levelDifficult)
         {
@@ -111,6 +110,7 @@ public class GameplayScreen : ScreenUI
         levelTxt.color = textColor;
         timeTxt.text = FormatTimeMMSS(levelManager.CurrentTime);
 
+        #region Add Event
         homeBtn.onClick.RemoveAllListeners();
         homeBtn.onClick.AddListener(() =>
         {
@@ -140,6 +140,10 @@ public class GameplayScreen : ScreenUI
         {
             if (gameManager.CurrentGameState == GameState.Playing)
                 levelManager.OnFrozeBoosterActive();
+            if(currentLevel == 8)
+            {
+                ChangeUnmaskFrozen(false);
+            }
         });
 
         bombBtn.onClick.RemoveAllListeners();
@@ -147,6 +151,10 @@ public class GameplayScreen : ScreenUI
         {
             if (gameManager.CurrentGameState == GameState.Playing)
                 levelManager.OnBombBoosterActive();
+            if (currentLevel == 10)
+            {
+                ChangeUnmaskBomb(false);
+            }
         });
 
         hammerBtn.onClick.RemoveAllListeners();
@@ -154,6 +162,10 @@ public class GameplayScreen : ScreenUI
         {
             if (gameManager.CurrentGameState == GameState.Playing)
                 OnHammerReady();
+            if (currentLevel == 13)
+            {
+                ChangeUnmaskHammer(false);
+            }
         });
         closeHammer.onClick.RemoveAllListeners();
         closeHammer.onClick.AddListener(OnHammerClose);
@@ -162,6 +174,12 @@ public class GameplayScreen : ScreenUI
         nextButton.onClick.AddListener(levelManager.OnNextLevel);
          previourButton.onClick.RemoveAllListeners();
         previourButton.onClick.AddListener(levelManager.OnPreviourLevel);
+        #endregion
+
+        OnListButtonHide(currentLevel);
+        TutorialManager.Instance.OnTutorialTrigger(currentLevel);
+        InitVisualForBooster();
+        OnUpdateUIFooter();
     }
 
     protected override void OnScreenDestroyed()
@@ -352,6 +370,138 @@ public class GameplayScreen : ScreenUI
             hammerText.gameObject.SetActive(false);
         }
 
+    }
+
+    #endregion
+
+    #region Screen After play
+
+    [Header("Button Interact")]
+    [SerializeField] private List<Button> buttons;
+    [SerializeField] private List<CanvasGroup> buttonCanvasGroup;
+    [SerializeField] private List<UIButtonEffect> buttonUIEffect;
+    [SerializeField] private List<ButtonSoundEffect> buttonSoundEffect;
+    public bool IsHasPlayerInput {  get; set; }
+
+    public void OnListButtonInteract(bool active)
+    {
+        if (active)
+        {
+            buttons.ForEach(x => x.interactable = true);
+            buttonCanvasGroup.ForEach(c => c.alpha = 1);
+            buttonUIEffect.ForEach(u => u.enabled = true);
+            buttonSoundEffect.ForEach(s => s.enabled = true);
+        }
+        else
+        {
+            buttons.ForEach(x => x.interactable = false);
+            buttonCanvasGroup.ForEach(c => c.alpha = 0.5f);
+            buttonUIEffect.ForEach(u => u.enabled = false);
+            buttonSoundEffect.ForEach(s => s.enabled = false);
+        }
+    }
+
+    public void OnListButtonHide(int level)
+    {
+        if(level == 1)
+        {
+            buttons.ForEach(b => b.gameObject.SetActive(false));
+            IsHasPlayerInput = false;
+        }
+        else
+        {
+            buttons.ForEach(b => b.gameObject.SetActive(true));
+            OnListButtonInteract(false);
+            IsHasPlayerInput = false;
+        }
+    }
+
+    #endregion
+
+    #region Tutorial
+
+    [SerializeField] GameObject unmaskFrozenBooster; 
+    [SerializeField] GameObject unmaskBombBooster; 
+    [SerializeField] GameObject unmaskHammerBooster; 
+    public void ChangeUnmaskFrozen(bool active)
+    {
+        buttons[2].interactable = true;
+        buttonCanvasGroup[0].alpha = 1;
+        buttonUIEffect[2].enabled = true;
+        buttonSoundEffect[2].enabled = true;
+
+        unmaskFrozenBooster.SetActive(active);
+    }
+
+    public void ChangeUnmaskBomb(bool active)
+    {
+        buttons[3].interactable = true;
+        buttonCanvasGroup[1].alpha = 1;
+        buttonUIEffect[3].enabled = true;
+        buttonSoundEffect[3].enabled = true;
+
+        unmaskBombBooster.SetActive(active);
+    }
+
+    public void ChangeUnmaskHammer(bool active)
+    {
+        buttons[4].interactable = true;
+        buttonCanvasGroup[2].alpha = 1;
+        buttonUIEffect[4].enabled = true;
+        buttonSoundEffect[4].enabled = true;
+
+        unmaskHammerBooster.SetActive(active);
+    }
+
+    #endregion
+
+    #region Unlock Booster
+
+    [SerializeField] private GameObject frozenLock; 
+    [SerializeField] private GameObject frozenUnLock; 
+    [SerializeField] private GameObject bombLock; 
+    [SerializeField] private GameObject bombUnLock; 
+    [SerializeField] private GameObject hammerLock; 
+    [SerializeField] private GameObject hammerUnLock; 
+
+    public void InitVisualForBooster()
+    {
+        int level = dataManager.GetLevelData();
+        if (level < 8)
+        {
+            frozenLock.SetActive(true);
+            frozenUnLock.SetActive(false);
+            frozenBtn.onClick.RemoveAllListeners();
+        }
+        else
+        {
+            frozenLock.SetActive(false);
+            frozenUnLock.SetActive(true);
+        }
+
+        if (level < 10)
+        {
+            bombLock.SetActive(true);
+            bombUnLock.SetActive(false);
+            bombBtn.onClick.RemoveAllListeners();
+        }
+        else
+        {
+            bombLock.SetActive(false);
+            bombUnLock.SetActive(true);
+        }
+
+        if (level < 13)
+        {
+            hammerLock.SetActive(true);
+            hammerUnLock.SetActive(false);
+            hammerBtn.onClick.RemoveAllListeners();
+        }
+        else
+        {
+            hammerLock.SetActive(false);
+            hammerUnLock.SetActive(true);
+        }
     }
 
     #endregion

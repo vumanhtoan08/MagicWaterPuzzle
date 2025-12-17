@@ -18,6 +18,8 @@ public class BoxHandleCollider : MonoBehaviour
     [SerializeField] private List<WaterColor> currentColor;
     [SerializeField] private List<NodeBoxCheckCollider> childColliders;
 
+    private float durationTime = 0.4f;
+
     public HolderData BoxData => boxData;
     public BoxVisual BoxVisual => boxVisual;
 
@@ -50,7 +52,7 @@ public class BoxHandleCollider : MonoBehaviour
         PipeBase pipeBase = other.GetComponent<PipeBase>();
         if (pipeBase.CheckBoxCondition(boxData))
         {
-            boxTouchMove.OnPointerUp();
+            boxTouchMove.OnHandlePointerUp();
 
             Vector3 offset = transform.position - childTransform.position;
             Vector3 snappedChild = boxTouchMove.GetSnappedPosition(childTransform.position);
@@ -81,8 +83,9 @@ public class BoxHandleCollider : MonoBehaviour
     {
         // fill 
         boxVisual.ChangeActiveWaterMesh(true);
+        boxVisual.ChangeActiveBubble(true);
         WaterColor fillValue = boxData.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
-        if (fillValue == null) return; 
+        if (fillValue == null) return;
         float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
 
         fillValue.Value -= subValue;
@@ -105,7 +108,7 @@ public class BoxHandleCollider : MonoBehaviour
                     {
                         fillAmountBefore = x;
                         boxVisual.SetFillAmountToHalf_01Mesh(fillAmountBefore);
-                    }, fillAmountAfter, subValue * 0.25f);
+                    }, fillAmountAfter, subValue * durationTime);
                 }
                 if (boxData.secondaryColor == pipeBase.PipeData.waterColors[0].color)
                 {
@@ -115,7 +118,7 @@ public class BoxHandleCollider : MonoBehaviour
                     {
                         fillAmountBefore = x;
                         boxVisual.SetFillAmountToHalf_02Mesh(fillAmountBefore);
-                    }, fillAmountAfter, subValue * 0.25f);
+                    }, fillAmountAfter, subValue * durationTime);
                 }
             }
             else
@@ -126,7 +129,7 @@ public class BoxHandleCollider : MonoBehaviour
                 {
                     fillAmountBefore = x;
                     boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
-                }, fillAmountAfter, subValue * 0.25f);
+                }, fillAmountAfter, subValue * durationTime);
             }
 
             boxData.holderValue.Remove(fillValue);
@@ -145,7 +148,7 @@ public class BoxHandleCollider : MonoBehaviour
                     {
                         fillAmountBefore = x;
                         boxVisual.SetFillAmountToHalf_01Mesh(fillAmountBefore);
-                    }, fillAmountAfter, subValue * 0.25f);
+                    }, fillAmountAfter, subValue * durationTime);
                 }
                 if (boxData.secondaryColor == pipeBase.PipeData.waterColors[0].color)
                 {
@@ -157,7 +160,7 @@ public class BoxHandleCollider : MonoBehaviour
                     {
                         fillAmountBefore = x;
                         boxVisual.SetFillAmountToHalf_02Mesh(fillAmountBefore);
-                    }, fillAmountAfter, subValue * 0.25f);
+                    }, fillAmountAfter, subValue * durationTime);
                 }
             }
             else
@@ -170,14 +173,14 @@ public class BoxHandleCollider : MonoBehaviour
                 {
                     fillAmountBefore = x;
                     boxVisual.SetFillAmountToMainMesh(fillAmountBefore);
-                }, fillAmountAfter, subValue * 0.25f);
+                }, fillAmountAfter, subValue * durationTime);
             }
         }
 
         // nếu không còn nữa destroy holder
         if (boxData.holderValue.Count <= 0)
         {
-            DOVirtual.DelayedCall(subValue * 0.25f, () =>
+            DOVirtual.DelayedCall(subValue * durationTime, () =>
             {
                 boxTouchMove.IsFillMax = true;
 
@@ -191,15 +194,17 @@ public class BoxHandleCollider : MonoBehaviour
                 AnimWhenBoxFillMax(transform);
             });
         }
-        else
+        DOVirtual.DelayedCall(subValue * durationTime, () =>
         {
-            DOVirtual.DelayedCall(subValue * 0.25f, () => boxVisual.ChangeActiveWaterMesh(false));
-        }
+            boxVisual.ChangeActiveWaterMesh(false);
+            boxVisual.ChangeActiveBubble(false);
+        });
     }
     private void ReceiveSecondaryWater(PipeBase pipeBase)
     {
         // fill 
         boxVisual.ChangeActiveWaterMesh(true);
+        boxVisual.ChangeActiveBubble(true);
         WaterColor fillValue = boxData.secondaryHolder.holderValue.Find(x => x.color == pipeBase.PipeData.waterColors[0].color);
         float subValue = Mathf.Min(pipeBase.PipeData.waterColors[0].Value, fillValue.Value);
         fillValue.Value -= subValue;
@@ -218,7 +223,7 @@ public class BoxHandleCollider : MonoBehaviour
             {
                 fillAmountBefore = x;
                 boxVisual.SetFillAmountToLayerMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.25f);
+            }, fillAmountAfter, subValue * durationTime);
 
             boxData.holderValue.Remove(fillValue);
 
@@ -234,12 +239,12 @@ public class BoxHandleCollider : MonoBehaviour
             {
                 fillAmountBefore = x;
                 boxVisual.SetFillAmountToLayerMesh(fillAmountBefore);
-            }, fillAmountAfter, subValue * 0.25f);
+            }, fillAmountAfter, subValue * durationTime);
         }
         // nếu không còn nữa destroy holder
         if (boxData.secondaryHolder.holderValue.Count <= 0)
         {
-            DOVirtual.DelayedCall(subValue * 0.25f, () =>
+            DOVirtual.DelayedCall(subValue * durationTime, () =>
             {
                 // voi truong hop la ice holder
                 LevelManager.Instance.SubIceBreakAllHolder();
@@ -254,11 +259,16 @@ public class BoxHandleCollider : MonoBehaviour
                 AnimWhenSecondBoxFillMax(boxVisual.Stack2Layer.transform);
                 boxVisual.Stack2Layer.transform.SetParent(LevelManager.Instance.gridGenerator.boxHolder.transform);
                 boxVisual.ChangeActiveWaterMesh(false);
+                boxVisual.ChangeActiveBubble(false);
             });
         }
         else
         {
-            DOVirtual.DelayedCall(subValue * 0.25f, () => boxVisual.ChangeActiveWaterMesh(false));
+            DOVirtual.DelayedCall(subValue * durationTime, () =>
+            {
+                boxVisual.ChangeActiveWaterMesh(false);
+                boxVisual.ChangeActiveBubble(false);
+            });
         }
     }
     public void BoxBreak(List<PipeBase> pipeBases)
@@ -386,7 +396,7 @@ public class BoxHandleCollider : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
 
-        seq.Append(transform.DOMoveZ(-2f, 0.1f).SetEase(Ease.InCubic))
+        seq.Append(transform.DOMoveZ(-2f, 0.3f).SetEase(Ease.InCubic))
             .AppendCallback(() =>
             {
                 childColliders.ForEach(c => c.gameObject.SetActive(false));
@@ -404,13 +414,13 @@ public class BoxHandleCollider : MonoBehaviour
                 // Bay sang phải
                 if (Mathf.RoundToInt(transform.position.x) > Mathf.RoundToInt(LevelManager.Instance.CurrentMap.width / 2))
                 {
-                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y - 40f, transform.localPosition.z), 25, 1, 2).SetEase(Ease.InCubic);
-                   
+                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y - 40f, transform.localPosition.z), 25, 1, 1.5f).SetEase(Ease.InCubic);
+
                 }
                 // Bay sang trái
                 else
                 {
-                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 2).SetEase(Ease.InCubic);
+                    transform.DOLocalJump(new Vector3(-10, transform.localPosition.y + 40f, transform.localPosition.z), -25, 1, 1.5f).SetEase(Ease.InCubic);
                 }
                 transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 2f).SetEase(Ease.InCubic);
             });

@@ -27,7 +27,11 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public bool IsFillMax { get; set; }
     public Rigidbody2D Rb => rb;
 
+    private bool isPointerDown = false;
+
     #region Unity Methods
+
+    GameplayScreen gameplayScreen;
     public void OnStart()
     {
         cam = Camera.main;
@@ -76,7 +80,18 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         if (LevelManager.Instance.IsBoxTouched) return;
         LevelManager.Instance.IsBoxTouched = true;
 
+        if (IsFillMax) return;
         if (!LevelManager.Instance.IsTimeRunning) LevelManager.Instance.StartTimer();
+
+
+        gameplayScreen = UIManager.Instance.GetScreen<GameplayScreen>();
+        if (!gameplayScreen.IsHasPlayerInput)
+        {
+            gameplayScreen.IsHasPlayerInput = true;
+            gameplayScreen.OnListButtonInteract(true);
+        }
+
+        if (TutorialManager.Instance.IsTutorialActive) TutorialManager.Instance.OnHasPlayerInput();
 
         if (LevelManager.Instance.IsHammerWaiting && !LevelManager.Instance.IsHammerActive)
         {
@@ -99,6 +114,13 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     }
 
     public void OnPointerUp(PointerEventData eventData = default)
+    {
+        if (IsFillMax) return;
+
+        OnHandlePointerUp();
+    }
+
+    public void OnHandlePointerUp()
     {
         LevelManager.Instance.IsBoxTouched = false;
         transform.DOKill();

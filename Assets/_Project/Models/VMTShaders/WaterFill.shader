@@ -34,6 +34,13 @@
         Blend SrcAlpha OneMinusSrcAlpha
         ZWrite Off
 
+        Stencil
+        {
+            Ref 2
+            Comp always
+            Pass replace
+        }
+
         Pass
         {
             CGPROGRAM
