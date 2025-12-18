@@ -12,7 +12,8 @@ public class ButtonBuy : MonoBehaviour, IPointerClickHandler
     [SerializeField] private int bombBooter = 0; 
     [SerializeField] private int hammerBooter = 0;
 
-    [SerializeField] private int cost = 0; 
+    [SerializeField] private int cost = 0;
+    [SerializeField] private bool isMainMenu = false;   
 
     public int Cost => cost;
 
@@ -38,5 +39,6 @@ public class ButtonBuy : MonoBehaviour, IPointerClickHandler
 
         MainMenuScreen mainMenuScreen = UIManager.Instance.GetScreenActive<MainMenuScreen>();
         if(mainMenuScreen != null) mainMenuScreen.InitHeader();
+        if (isMainMenu) mainMenuScreen.OnBuyItemInShop();
     }
 }

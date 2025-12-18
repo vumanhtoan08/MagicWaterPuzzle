@@ -7,15 +7,19 @@ using UnityEngine.UI;
 
 public class ParticleEffect : MonoBehaviour
 {
+    [SerializeField] UIParticle UIParticle;
+
     public void ReceiveCoin()
     {
         transform.DOKill();
+        //UIParticle.Stop();
 
         transform.localScale = Vector3.one;
-        transform.DOScale(1.2f, 0.1f).OnComplete(() =>
+        transform.DOScale(1.2f, 0.05f).OnComplete(() =>
         {
+            //UIParticle.Play();
             float pitch = Random.Range(1f, 1.2f);
-            AudioManager.Instance.PlayOneShot(SoundKey.Coin, 1, pitch);
+            AudioManager.Instance.PlayOneShot(SoundKey.Coin, 0.7f, pitch);
             MobileVibration.Vibrate(10);
             transform.DOScale(1, 0.05f);
         });

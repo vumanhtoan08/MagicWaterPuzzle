@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Coffee.UIExtensions;
 
 public class MainMenuScreen : ScreenUI
 {
@@ -291,6 +292,17 @@ public class MainMenuScreen : ScreenUI
     }
 
     #endregion
+    [Header("UI Partical")]
+    [SerializeField] private ParticleSystem particleSystemSSSS;
 
+    public void OnBuyItemInShop()
+    {
+        Sequence seq = DOTween.Sequence(); 
 
+        for (int i = 0;i < 20; i++)
+        {
+            seq.AppendCallback(() => particleSystemSSSS.Emit(1))
+                .AppendInterval(0.1f);
+        }
+    }
 }

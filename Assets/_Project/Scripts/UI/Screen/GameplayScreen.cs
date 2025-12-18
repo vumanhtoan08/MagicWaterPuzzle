@@ -423,13 +423,17 @@ public class GameplayScreen : ScreenUI
     [SerializeField] GameObject unmaskFrozenBooster; 
     [SerializeField] GameObject unmaskBombBooster; 
     [SerializeField] GameObject unmaskHammerBooster; 
+    [SerializeField] Transform tutFrozenBooster; 
+    [SerializeField] Transform tutBombBooster; 
+    [SerializeField] Transform tutHammerBooster; 
     public void ChangeUnmaskFrozen(bool active)
     {
         buttons[2].interactable = true;
         buttonCanvasGroup[0].alpha = 1;
         buttonUIEffect[2].enabled = true;
         buttonSoundEffect[2].enabled = true;
-
+        
+        tutFrozenBooster.position = FrozenBtn.transform.position;
         unmaskFrozenBooster.SetActive(active);
     }
 
@@ -440,6 +444,7 @@ public class GameplayScreen : ScreenUI
         buttonUIEffect[3].enabled = true;
         buttonSoundEffect[3].enabled = true;
 
+        tutBombBooster.position = BombBtn.transform.position;
         unmaskBombBooster.SetActive(active);
     }
 
@@ -450,6 +455,7 @@ public class GameplayScreen : ScreenUI
         buttonUIEffect[4].enabled = true;
         buttonSoundEffect[4].enabled = true;
 
+        tutHammerBooster.position = HammerBtn.transform.position;
         unmaskHammerBooster.SetActive(active);
     }
 

@@ -57,7 +57,7 @@ public class TutorialManager : Singleton<TutorialManager>
     {
         Transform boxColliderHandTut = LevelManager.Instance.BoxHandleColliders[0].transform;
         IsTutorialActive = true;
-        handTutSlide.transform.position = new Vector3(boxColliderHandTut.transform.position.x, boxColliderHandTut.transform.position.y, 0);
+        handTutSlide.transform.position = new Vector3(boxColliderHandTut.transform.position.x - 2f, boxColliderHandTut.transform.position.y, 0);
         handTutSlide.gameObject.SetActive(true);    
     }
 

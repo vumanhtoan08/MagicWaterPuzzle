@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: MagicWaterPuzzle_ToonyColorPro
+  productName: MagicWaterPuzzle_Demo
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -141,7 +141,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.1
+  bundleVersion: 1.0.1
   preloadedAssets:
   - {fileID: 11400000, guid: 87c33263418cfe04cabb07c24ecc639d, type: 2}
   - {fileID: 11400000, guid: 966e926aa3c5bae469377ca70a4194af, type: 2}
@@ -165,7 +165,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.MagicWaterPuzzle_ToonyColorPro
+    Android: com.DefaultCompany.MagicWaterPuzzle_Demo
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -293,7 +293,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: bbd914af1d68bfd4f8b6c79fa49c40be, type: 3}
+      m_Icon: {fileID: 2800000, guid: 07864ce99add0b9438ab380fb8777627, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

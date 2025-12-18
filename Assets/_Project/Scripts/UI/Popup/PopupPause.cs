@@ -26,6 +26,9 @@ public class PopupPause : PopupUI
         soundButton.onClick.RemoveAllListeners();
         soundButton.onClick.AddListener(OnSoundButtonClick);
 
+        vibrateButton.onClick.RemoveAllListeners();
+        vibrateButton.onClick.AddListener(OnVibrateButtonClick);
+
         resumeButton.onClick.RemoveAllListeners();
         resumeButton.onClick.AddListener(OnResumeButtonClick);
 
@@ -70,7 +73,22 @@ public class PopupPause : PopupUI
                 item.gameObject.SetActive(true);
             }
         }
-            
+
+        int vibrate = AudioManager.VibrateSetting;
+        if (vibrate == 1)
+        {
+            foreach (Transform item in vibrateButton.transform)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (Transform item in vibrateButton.transform)
+            {
+                item.gameObject.SetActive(true);
+            }
+        }
     }
 
     public override void Hide()
@@ -127,7 +145,23 @@ public class PopupPause : PopupUI
 
     private void OnVibrateButtonClick()
     {
-
+        int vibrate = AudioManager.VibrateSetting;
+        if (vibrate == 1)
+        {
+            audioManager.EnableVibrate(false);
+            foreach (Transform item in vibrateButton.transform)
+            {
+                item.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            audioManager.EnableVibrate(true);
+            foreach (Transform item in vibrateButton.transform)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnResumeButtonClick()

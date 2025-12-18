@@ -1318,6 +1318,9 @@ MonoBehaviour:
   unmaskFrozenBooster: {fileID: 2731134527477335339}
   unmaskBombBooster: {fileID: 5693053793241869961}
   unmaskHammerBooster: {fileID: 2631011465580410888}
+  tutFrozenBooster: {fileID: 1310304464315769005}
+  tutBombBooster: {fileID: 5757452931384450308}
+  tutHammerBooster: {fileID: 1443638530740015833}
   frozenLock: {fileID: 8975741545363113241}
   frozenUnLock: {fileID: 9030894454880408035}
   bombLock: {fileID: 6421837212550953842}
@@ -2854,7 +2857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4072685223771451531
 RectTransform:
   m_ObjectHideFlags: 0

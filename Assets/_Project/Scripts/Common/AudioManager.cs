@@ -14,6 +14,11 @@ public class AudioManager : Singleton<AudioManager>
         get { return PlayerPrefs.GetInt("sound_setting", 1); }
         private set { PlayerPrefs.SetInt("sound_setting", value); }
     }
+    public static int VibrateSetting
+    {
+        get { return PlayerPrefs.GetInt("vibrate_setting", 1); }
+        private set { PlayerPrefs.SetInt("vibrate_setting", value); }
+    }
     [SerializeField] AudioContainerSO commonSound;
     [SerializeField] AudioContainerSO musics;
     [SerializeField] AudioSource soundPlayer;
@@ -162,4 +167,8 @@ public class AudioManager : Singleton<AudioManager>
         SoundSetting = status ? 1 : 0;
     }
 
+    public void EnableVibrate(bool status)
+    {
+        VibrateSetting = status ? 1 : 0;
+    }
 }
