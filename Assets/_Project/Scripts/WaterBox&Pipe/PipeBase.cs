@@ -63,7 +63,11 @@ public class PipeBase : MonoBehaviour
 
         StartCoroutine(FillingWater(boxTouchMove, data));
         AudioManager.Instance.PlayOneShot(SoundKey.WaterPOUR2, 0.7f);
-        DOVirtual.DelayedCall(0.63f, () => AudioManager.Instance.PlayOneShot(SoundKey.WaterPOUR1, 0.7f));
+        MobileVibration.Vibrate(20);
+        DOVirtual.DelayedCall(0.63f, () =>
+        {
+            AudioManager.Instance.PlayOneShot(SoundKey.WaterPOUR1, 0.7f);
+        });
     }
 
     public void UpdateVisualWaterFlow(HolderData data)

@@ -242,6 +242,7 @@ public class LevelManager : Singleton<LevelManager>
                      ShakeCamera();
                      Destroy(boxHandleCollider.gameObject);
                      Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BombExplosion), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -2f));
+                     MobileVibration.Vibrate(100);
                      DOVirtual.DelayedCall(0.5f, () =>
                      {
                          gameplayScreen.BombBtn.transform.localScale = Vector3.zero;
@@ -353,6 +354,7 @@ public class LevelManager : Singleton<LevelManager>
             Destroy(boxHandleCollider.gameObject);
             Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxHit), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -1f));
             Transform boxBreak = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxBreak), new Vector3(boxHandleCollider.BoxVisual.CenterPos.position.x, boxHandleCollider.BoxVisual.CenterPos.position.y, -1f));
+            MobileVibration.Vibrate(50);
             ParticleSystemRenderer colorBox = boxBreak.transform.Find("Color").GetComponent<ParticleSystemRenderer>();
             colorBox.material = SOMaterialColor.GetMaterial(boxHandleCollider.BoxData.color);
 

@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class ParticleEffect : MonoBehaviour
 {
-    [SerializeField] private UIParticle UIParticle;
-
     public void ReceiveCoin()
     {
         transform.DOKill();
@@ -17,9 +15,8 @@ public class ParticleEffect : MonoBehaviour
         transform.DOScale(1.2f, 0.1f).OnComplete(() =>
         {
             float pitch = Random.Range(1f, 1.2f);
-            UIParticle.Play();
-            AudioManager.Instance.PlayOneShot(SoundKey.Coin, 1, pitch); 
-            Handheld.Vibrate();
+            AudioManager.Instance.PlayOneShot(SoundKey.Coin, 1, pitch);
+            MobileVibration.Vibrate(10);
             transform.DOScale(1, 0.05f);
         });
     }
