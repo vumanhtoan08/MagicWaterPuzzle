@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &1581762054817701572
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &3266556087169519636
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +395,7 @@ GameObject:
   - component: {fileID: 5812079609839474234}
   - component: {fileID: 8684392603540995169}
   - component: {fileID: 3825521703837667110}
+  - component: {fileID: 5409900701255624307}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -475,6 +478,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0.20392159, g: 0.29411766, b: 0.5058824, a: 1}
   m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
+--- !u!114 &5409900701255624307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395667659109189859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -8}
   m_UseGraphicAlpha: 1
 --- !u!1 &3418563366267672506
 GameObject:
@@ -628,6 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &4957481656619645640
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +933,7 @@ MonoBehaviour:
   animType: 2
   mainPopUp: {fileID: 7204153589145070075}
   darkPanel: {fileID: 5487598024387434436}
+  canvasGroup: {fileID: 0}
   musicButton: {fileID: 3230587668123316620}
   soundButton: {fileID: 7250159586099585539}
   vibrateButton: {fileID: 5580324514743190464}
@@ -1145,6 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7873d6c0c9989e14c809a7f4e276a2e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundType: 0
 --- !u!1 &9010357074170996820
 GameObject:
   m_ObjectHideFlags: 0

@@ -74746,6 +74746,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.03
   snapSmoothTime: 0.01
+  tiltAmount: 1
+  tiltSmooth: 8
+  resetTiltSmooth: 6
 --- !u!114 &6580471689795240838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80345,7 +80348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1507440542235755667
 Transform:
   m_ObjectHideFlags: 0
@@ -116733,7 +116736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7710119083279094339
 Transform:
   m_ObjectHideFlags: 0
@@ -121942,7 +121945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9200813283350088269
 Transform:
   m_ObjectHideFlags: 0
@@ -144528,7 +144531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3825754509917141469
 Transform:
   m_ObjectHideFlags: 0
@@ -149502,7 +149505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9093697825265291779
 Transform:
   m_ObjectHideFlags: 0
@@ -171969,7 +171972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1640414708063766432
 Transform:
   m_ObjectHideFlags: 0
@@ -201487,7 +201490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5091329718386476945
 Transform:
   m_ObjectHideFlags: 0
@@ -206399,7 +206402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6271312360889864860
 Transform:
   m_ObjectHideFlags: 0
@@ -206547,7 +206550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9063568748965616613
 Transform:
   m_ObjectHideFlags: 0

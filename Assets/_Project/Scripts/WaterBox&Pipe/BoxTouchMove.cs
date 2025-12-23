@@ -6,6 +6,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 {
     [Header("Main REF")]
     private BoxHandleCollider handleCollider;
+    private BoxVisual boxVisual;
 
     private Camera cam;
     private Rigidbody2D rb;
@@ -29,6 +30,12 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private bool isPointerDown = false;
 
+    [Header("Tilt")]
+    [SerializeField] float tiltAmount = 1f;
+    [SerializeField] float tiltSmooth = 8f;
+    [SerializeField] float resetTiltSmooth = 6f;
+    private float maxDegRotate = 7f;
+
     #region Unity Methods
 
     GameplayScreen gameplayScreen;
@@ -37,6 +44,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         cam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
         handleCollider = GetComponent<BoxHandleCollider>();
+        boxVisual = GetComponent<BoxVisual>();
 
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
@@ -59,6 +67,17 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
             Vector2 newPos = Vector2.SmoothDamp(rb.position, targetPos, ref smoothVelocity, smoothTime);
             rb.MovePosition(newPos);
+
+            Vector2 velocity = smoothVelocity;
+
+            float tiltX = Mathf.Clamp(velocity.y * tiltAmount, -maxDegRotate, maxDegRotate);
+            float tiltY = Mathf.Clamp(-velocity.x * tiltAmount, -maxDegRotate, maxDegRotate);
+
+            Quaternion targetRot = Quaternion.Euler(tiltX, tiltY, boxVisual.CenterPos.transform.localRotation.z);
+            boxVisual.CenterPos.localRotation = Quaternion.Lerp(boxVisual.CenterPos.localRotation,
+                targetRot,
+                Time.deltaTime * tiltSmooth
+            );
         }
         else if (snapping)
         {
@@ -125,6 +144,7 @@ public class BoxTouchMove : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         LevelManager.Instance.IsBoxTouched = false;
         transform.DOKill();
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+        boxVisual.CenterPos.transform.DOLocalRotate(Vector3.zero, 0.3f);
 
         dragging = false;
         SnapBoxToGrid();

@@ -407,6 +407,7 @@ public class BoxHandleCollider : MonoBehaviour
                 boxVisual.VFX_Fly.SetActive(true);
                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxClear), new Vector3(boxVisual.CenterPos.position.x, boxVisual.CenterPos.position.y, -3));
                 AudioManager.Instance.PlayOneShot(SoundKey.ClearBlock, 1f);
+                MobileVibration.Vibrate(20);
                 DOVirtual.DelayedCall(0.5f, () => ObjectPooling.ReturnObject(effect));
             })
             .AppendCallback(() =>
@@ -437,6 +438,7 @@ public class BoxHandleCollider : MonoBehaviour
                 boxVisual.VFX_Fly_2.SetActive(true);
                 Transform effect = ObjectPooling.GetObject(SODictionaryEffect.GetEffectByType(EffectType.BoxClear), new Vector3(boxVisual.CenterPos.position.x, boxVisual.CenterPos.position.y, -3));
                 AudioManager.Instance.PlayOneShot(SoundKey.ClearBlock, 1f);
+                MobileVibration.Vibrate(20);
                 DOVirtual.DelayedCall(0.5f, () => ObjectPooling.ReturnObject(effect));
             })
             .AppendCallback(() =>

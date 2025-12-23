@@ -10,6 +10,7 @@ public class TutorialManager : Singleton<TutorialManager>
     [SerializeField] private Transform boxChatDirection;
     [SerializeField] private Transform boxChatIce;
     [SerializeField] private Transform boxChatStack; 
+    [SerializeField] private Transform boxChatRock; 
 
     public bool IsTutorialActive { get; set; }
 
@@ -49,6 +50,10 @@ public class TutorialManager : Singleton<TutorialManager>
             case 31:
                 uiManager.ShowPopup<PopupTutorial>(null);
                 OnLevel31TutorialTrigger();
+                break;
+            case 43:
+                uiManager.ShowPopup<PopupTutorial>(null);
+                OnLevel43TutorialTrigger();
                 break;
         }
     }
@@ -106,12 +111,21 @@ public class TutorialManager : Singleton<TutorialManager>
         boxChatStack.gameObject.SetActive(true);
     }
 
+    public void OnLevel43TutorialTrigger()
+    {
+        Transform boxColliderHandTut = LevelManager.Instance.BoxHandleColliders[0].transform;
+        IsTutorialActive = true;
+        boxChatRock.transform.position = new Vector3(boxColliderHandTut.transform.position.x - 1.5f, boxColliderHandTut.transform.position.y + 2.5f, -2);
+        boxChatRock.gameObject.SetActive(true);
+    }
+
     public void OnHasPlayerInput()
     {
         handTutSlide.gameObject.SetActive(false);
         boxChatDirection.gameObject.SetActive(false);
         boxChatIce.gameObject.SetActive(false);
         boxChatStack.gameObject.SetActive(false);
+        boxChatRock.gameObject.SetActive(false);
         IsTutorialActive = false;
     }
 }
